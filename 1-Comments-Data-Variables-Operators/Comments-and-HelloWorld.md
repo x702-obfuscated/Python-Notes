@@ -1,5 +1,7 @@
 # `Comments and Hello World!`
-___
+---
+
+<br>
 
 Covered in this file:
 1. Introduction to the Python Programming Language
@@ -9,14 +11,18 @@ Covered in this file:
 5. Executing Python Programs
 6. You are Experiencing an Error!
 
+<br>
+
+---
 # `Script Kiddie's First Program:`
 ##  `An Introduction to the Python Programming Language!`
-___
 
 ### ***Welcome Script Kiddies, to the Python Programming Language***
 *As a new programmer you might be refered to as a Script Kiddie.*   
 *This is a programmer joke to describe someone who does not know much about programming*  
 *Script Kiddies often use code they do not understand written by other programmers, this is ok for now as you will get better as you code more!*  
+
+<br>
 
 Python is a high level interpreted procedural object oriented programming language. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability and simplicity, using significant whitespace to enhance its readability. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming. Python is widely used in various domains, including web development, data analysis, artificial intelligence, scientific computing, and automation.
 
@@ -54,6 +60,8 @@ Linux/MacOS command syntax ( $ represents the terminal prompt and can be omitted
 
     $ python3
 
+<br>
+
 > * The interpreter can be envoked and provided a filepath argument in order to interpret code written in a text file (.py)  
 
 Windows command syntax:
@@ -65,8 +73,14 @@ Linux/MacOS command syntax:
     $ python3 <filepath>
 
 Examples:
-    > python main.py  
-    $ python3 main.py
+```
+> python main.py  
+```
+```
+$ python3 main.py
+```
+
+<br>
 
 *NOTE: <> angle brackets indicate a variable part of the command. For example: \<filepath\> indicates any filepath*  
 *NOTE: For simplicity commands with a leading **>** should be understood as Windows Commands unless otherwise specified*  
@@ -78,8 +92,11 @@ Examples:
 
 *Current Python Version at the time of writting: Python3.12.4*
 
+<br>
+
+---
 # `Single/Multi-Line Comments`
-___
+
 Comments are a way for programmers to make notes about thier code.
 > * comments are not interpreted as code and are simply ignored by the interpreter.
 > * the best programmers write easy to read and well documented (commented) code.
@@ -90,7 +107,9 @@ Comments are a way for programmers to make notes about thier code.
 >
 > * use a pair of triple single quotes **'''** or triple double quotes **"""** to make a multiline comment called a docstring.
 
-### Single-line comments
+<br>
+
+### `Single-line comments`
 
 
 ```python
@@ -98,7 +117,9 @@ Comments are a way for programmers to make notes about thier code.
 # use a '#' hash tag to make a single line comment in python
 ```
 
-### Multi-line comments (docstrings)
+<br>
+
+### `Multi-line comments (docstrings)`
 > * Everything between the pair of triple quotes is apart of the comment
 
 
@@ -123,8 +144,11 @@ You
 
 Use Ctrl + / in editors like VScode to make a quick multi-line comment, or to comment out a single line easily
 
+<br>
+
+---
 # `First Program: Console Output`
-___
+
 > * To build your first program use the built-in ***print( )*** function call to send output to console (called standard output or stdout)
 
  
@@ -145,8 +169,11 @@ To print out this text we use the built-in function call ***print( )*** with the
 print("Hello World")
 ```
 
+<br>
+
+---
 # `First Program: User Input`
-___
+
 
 > * To handle input from a user (called standard input or stdin), use the built-in function call ***input( )***.
 
@@ -176,8 +203,11 @@ If you place the ***input()*** function call inside of the ***print()*** functio
 print(input("Type your input: "))
 ```
 
+<br>
+
+---
+
 # `Executing a Python Program`
-___
 
 **Congrats you have written your first python program! Now, how do you get the computer to run this 'code'?**
 
@@ -206,20 +236,28 @@ ___
 > * Then the python virtual machine PVM converts the bytecode into machinecode and the CPU  executes the instructions one by one.
 
 
-To execute your own Python program invoke the interpreter through the command line or python shell and provide your filename as an argument. Then hit ENTER.
-
-    > python <filename>
-
-    $ python3 <filename>
+To execute your own Python program invoke the interpreter through the command line or python shell and provide your filename as an argument. Then hit ENTER.  
+Syntax:
+```
+> python <filename>
+```
+```
+$ python3 <filename>
+```
 
 Examples:
-  
-    > python main.py  
-    $ python3 main.py
+```  
+> python main.py 
+```
+``` 
+$ python3 main.py
+```
 
 *NOTE: > for Windows, and $ for Linux/MacOS. These symbols should be omitted when typing the command on your computer.*  
 *NOTE: If you are experiencing issued with using the python or python3 commands, make sure that the executable has been added to the system path*
 
+
+<br>
 
 ## `Python on Windows`
 Python is installed by default here on Windows depending on the version installed.  
@@ -259,7 +297,7 @@ To execute .py files on linux and Mac type the following on the command line int
 <br>
 
 # `You are Experiencing an Error!`
-___
+---
 Oh no... you have done something incorrect and are now experiencing an error. 
 Not to worry as a human you are prone to many errors, that we machines don't make.
 
@@ -277,8 +315,9 @@ To make it easier for you to correct your many PEBKAC and ID 10 T Errors, these 
 *Note: PEBKAC Errors are raised when the Problem Exists Between the Keyboard and Chair.*  
 *Note: ID 10 T Errors are raised when the issue is caused by the user.* 
 
+<br>
 
-### Syntax/Compile Time Errors
+### `Syntax/Compile Time Errors`
 * > Are typically the easiest errors to fix, and the most common one you humans make. 
 
 **What to do to fix a Syntax/Compile Time Error?**
@@ -303,8 +342,10 @@ Print("Hello World")
 # What did I do wrong?
 ```
 
+<br>
+
 # `Runtime Errors`
-___
+---
 > * are the second most common errors you humans make
 > * Occur when your code is syntatically correct, but you have performed and operation that cannot be performed.
 
@@ -350,8 +391,12 @@ print(my_list[3])
 # What did I do wrong?
 ```
 
+<br>
+
+---
+
 # `Logical Errors`
-___
+
 > * are the least common errors you humans make, but the hardest to track down
 > * Occur when your code is syntatically correct and all operations are possible, but your code isn't doing what you expect it to do. 
 
@@ -359,6 +404,8 @@ ___
 **STEP ONE: Debugging!**
 * This will be harder than Syntax or Runtime Errors, because you will not get any help from the computer in tracking down the error.
 * Learning to use a debugging tool will be the most useful to you, but beginners usually start with print() debugging.
+
+<br>
 
 ### Lets try an example with a common beginner mistake
 *In this problem we will be printing out the first 8 powers of 2*
@@ -373,6 +420,8 @@ Here is what we expect:
 |6|64|
 |7|128|
 |8|256|
+
+<br>
 
 ### Let's write the code:
 
@@ -398,6 +447,8 @@ Time to use a search engine or AI tool to help us track down the problem.<br>
 It looks like the operator we used '^' is not for powers, but for something called a bitwise XOR operation.   
 That's why our code was not working!.  
 
+<br>
+
 ### Let's try again using the correct operator:
 
 
@@ -421,6 +472,7 @@ print(2 ** 8) # Output: 256
     128
     256
     
+<br>
 
 ### One More Example:
 *This time we will include a little more complicated code*
@@ -475,4 +527,5 @@ area = length * width
 print(area) # Output: 12.5
 ```
 
+---
     
