@@ -4,12 +4,12 @@
 <br>
 
 Covered in this file:
-1. Introduction to the Python Programming Language
-2. Single/Multi Line Comments
-3. First Program: Console Output
-4. First Program: User Input
-5. Executing Python Programs
-6. You are Experiencing an Error!
+1. [Introduction to the Python Programming Language](#an-introduction-to-the-python-programming-language)
+2. [Single/Multi Line Comments](#singlemulti-line-comments)
+3. [First Program: Console Output](#first-program-console-output)
+4. [First Program: User Input](#first-program-user-input)
+5. [Executing Python Programs](#executing-a-python-program)
+6. [You are Experiencing an Error!](#you-are-experiencing-an-error)
 
 <br>
 
@@ -50,19 +50,23 @@ To install python on your computer start here: [https://www.python.org/downloads
 >
 > * The python interpreter is invoked using the 'python3' command on UNIX like systems (Linux, Mac) 
 
-> * The interpreter can be envoked interactively allowing you to write and execute line by line. 
+> * The interpreter can be invoked interactively allowing you to write and execute line by line. 
 
-Windows command syntax ( > represents the terminal prompt and can be omitted):
+<br>
+
+Windows command syntax 
+> '>' represents the terminal prompt and can be omitted:
 
     > python
 
-Linux/MacOS command syntax ( $ represents the terminal prompt and can be omitted):
+Linux/MacOS command syntax 
+> '$' represents the terminal prompt and can be omitted:
 
     $ python3
 
 <br>
 
-> * The interpreter can be envoked and provided a filepath argument in order to interpret code written in a text file (.py)  
+> * The interpreter can be invoked and provided a filepath argument in order to interpret code written in a text file (.py)  
 
 Windows command syntax:
 
@@ -90,7 +94,7 @@ $ python3 main.py
 >
 >    * If it is your first time programming I recommend VScode as a text editor you can get it here: [https://code.visualstudio.com/](https://code.visualstudio.com/)
 
-*Current Python Version at the time of writting: Python3.12.4*
+*Current Stable Python Version at the time of writting: Python 3.12.5*
 
 <br>
 
@@ -148,21 +152,20 @@ Use Ctrl + / in editors like VScode to make a quick multi-line comment, or to co
 
 ---
 # `First Program: Console Output`
+To build your first program use the built-in ***print( )*** function call to send output to console (called standard output or stdout)
 
-> * To build your first program use the built-in ***print( )*** function call to send output to console (called standard output or stdout)
+<br>
 
- 
-
-
-Here we will print out "Hello World".   
-Literal text must be written in quotes, and is called a string. 
+> Here we will print out "Hello World".   
+> Literal text must be written in quotes, and is called a string. 
 
 
 ```python
 "Hello World"
 ```
+<br>
 
-To print out this text we use the built-in function call ***print( )*** with the argument "Hello World"
+> To print out this text we use the built-in function call ***print( )*** with the argument "Hello World"
 
 
 ```python
@@ -173,31 +176,29 @@ print("Hello World")
 
 ---
 # `First Program: User Input`
-
-
-> * To handle input from a user (called standard input or stdin), use the built-in function call ***input( )***.
-
-> * ***input( )*** stops the execution of the program, and waits for the user to type in some text, it then returns the text that was entered.
+* To handle input from a user (called standard input or stdin), use the built-in function call ***input( )***.
+* ***input( )*** stops the execution of the program, and waits for the user to type in some text, it then returns the text that was entered.
 
 *Note: returning will show up alot in programming, when something "returns" it brings a value back to that point in the program where it can be used*
 
-Here we will print out whatever the user, in this case you types when prompted for input.  
-We will begin by calling the built-in ***input( )*** function call.
+> Here we will print out whatever the user, in this case you, types when prompted for input.  
+> We will begin by calling the built-in ***input( )*** function call.
 
 
 ```python
 input()
 ```
 
-Placing a string argument inside of the ***input( )*** function call prints out a prompt to tell the user what input to provide.
+<br>
 
+> Placing a string argument inside of the ***input( )*** function call prints out a prompt to tell the user what input to provide.
 
 ```python
 input("Type your input: ")
 ```
+<br>
 
-If you place the ***input()*** function call inside of the ***print()*** function call the user input will be output back to the console.
-
+> If you place the ***input()*** function call inside of the ***print()*** function call the user input will be output back to the console.
 
 ```python
 print(input("Type your input: "))
@@ -211,11 +212,11 @@ print(input("Type your input: "))
 
 **Congrats you have written your first python program! Now, how do you get the computer to run this 'code'?**
 
-> * What you have just written is called scource code. Scource code refers to the human-readable set of instructions and statements written by a programmer using a programming language.  
-> * While it may not seem like it the code that you have just written is not actually readable by the computer.   
-> * We will need another program to translate this high-level scource code into another form of code that the computer can understand.   
->
-> * For python this program is the python interpreter.   
+* What you have just written is called scource code. Scource code refers to the human-readable set of instructions and statements written by a programmer using a programming language.  
+* While it may not seem like it the code that you have just written is not actually readable by the computer.   
+* We will need another program to translate this high-level scource code into another form of code that the computer can understand.   
+
+* For python this program is the python interpreter.   
   
 
 
@@ -317,14 +318,18 @@ To make it easier for you to correct your many PEBKAC and ID 10 T Errors, these 
 
 <br>
 
-### `Syntax/Compile Time Errors`
+# `Syntax/Compile Time Errors`
 * > Are typically the easiest errors to fix, and the most common one you humans make. 
 
+<br>
+
 **What to do to fix a Syntax/Compile Time Error?**
-# STEP ONE: READ THE ERROR OUTPUT!
-* You are looking for two things: a line number, and the specific error info. 
+# 1. STEP ONE: READ THE ERROR OUTPUT!
+> * You are looking for two things: a line number, and the specific error info. 
 
+<br>
 
+Example:
 ```python
 #lets make a simple Syntax/Compile Time Error
 Print("Hello World")
@@ -346,14 +351,16 @@ Print("Hello World")
 
 # `Runtime Errors`
 ---
-> * are the second most common errors you humans make
+> * Are the second most common errors you humans make
 > * Occur when your code is syntatically correct, but you have performed and operation that cannot be performed.
 
+<br>
+
 **What to do to fix a Runtime Error?**
-# STEP ONE: READ THE ERROR OUTPUT!
-* You are looking for two things: a line number, and the specific error info. 
+# 1. STEP ONE: READ THE ERROR OUTPUT!
+> * You are looking for two things: a line number, and the specific error info. 
 
-
+Example:
 ```python
 #Let's make a simple Runtime Error
 print(5 / 0)
@@ -371,7 +378,7 @@ print(5 / 0)
 # What did I do wrong?
 ```
 
-
+Example:
 ```python
 #Let's make a simple Runtime Error this is a little more advanced: see lists for more info
 
@@ -396,14 +403,15 @@ print(my_list[3])
 ---
 
 # `Logical Errors`
-
-> * are the least common errors you humans make, but the hardest to track down
+> * Are the least common errors you humans make, but the hardest to track down
 > * Occur when your code is syntatically correct and all operations are possible, but your code isn't doing what you expect it to do. 
 
+<br>
+
 **What to do to fix a Runtime Error?**  
-**STEP ONE: Debugging!**
-* This will be harder than Syntax or Runtime Errors, because you will not get any help from the computer in tracking down the error.
-* Learning to use a debugging tool will be the most useful to you, but beginners usually start with print() debugging.
+1. **STEP ONE: Debugging!**
+>    * This will be harder than Syntax or Runtime Errors, because you will not get any help from the computer in tracking down the error.
+>    * Learning to use a debugging tool will be the most useful to you, but beginners usually start with print() debugging.
 
 <br>
 
