@@ -1,34 +1,51 @@
+
 # `Python Operators`
-___
 
 Covered in this file:
-1. Concatenation and Duplication (combining strings)
-2. Casting (changing data type)
-3. Arithmetic operators (math)
-4. Relational operators (inequalities)
-5. Membership operators
-6. Identity operators
-7. Assignment vs Equality Operator
-8. Compound Assignment Operators
-9. Logical operators (not, and, or)
-10. Compound Logical Expressions and De Morgan's Laws
-11. Built-in Operation Function Calls
-12. Bitwise Operators
-13. Complete Operator Precedence
+1. [Concatenation](#concatenation)
+1. [Duplication](#duplication)
+1. [Casting (changing data type)](#casting-changing-data-type)
+1. [Complete Operator Precedence](#complete-operator-precedence)
+1. [Arithmetic operators (math)](#arithmetic-operators-math)
+1. [Comparison operators (inequalities)](#comparision-operators-inequalities)
+1. [Membership operators](#membership-operators)
+1. [Identity operators](#identity-operators)
+1. [Assignment vs Equality Operator](#assignment-vs-equality-operators)
+1. [Compound Assignment Operators](#compound-assignment-operators)
+    1. [Incrementing a Value](#incrementing-a-value)
+    1. [Decrementing a Value](#decrementing-a-value)
+1. [Logical operators (not, and, or)](#logical-operators)
+    1. [NOT Truth table](#not-truth-table)
+    1. [AND Truth table](#and-truth-table)
+    1. [OR Truth table](#or-truth-table)
+1. [De Morgan's Laws](#de-morgans-laws)
+1. [Built-in Operation Function Calls](#built-in-operation-function-calls)
+    1. [Binary Data Representation: Two's complement notation](#binary-data-representation-twos-complement-notation)
+    1. [Bitwise NOT](#bitwise-not)
+    1. [Bitwise Shift <<|>>](#bitwise-shift)
+    1. [Bitwise AND](#bitwise-and)
+    1. [Bitwise XOR](#bitwise-xor)
+    1. [Bitwise OR](#bitwise-or)
+1. [Appendix](#appendix)
 
 
-# `Concatenation and Duplication`
+<br>
+
 ___
-## Concatenation:
-> * Basically: concatenation means "to join"
-> * Specifically: the operation of joining two or more strings, arrays, or other sequences end-to-end to form a single sequence.
-> * use the '+' sign to concatenate
+
+<br>
+
+# `Concatenation`
+Basically: `concatenation` means "to join"
+
+Specifically: `concatenation` is the operation of joining two or more strings, arrays, or other sequences end-to-end to form a single sequence.
+> * use the `+` sign to concatenate
 
 syntax: 
 ```
 sequence1 + sequence2
 ```   
-
+example:
 ```python
 # Concatenating strings
 "Hello" + "World"
@@ -58,8 +75,6 @@ second_list = [4, 5, 6]
 print(first_list + second_list)
 # Output: [1, 2, 3, 4, 5, 6]
 ```
-
-
 ```python
 # Concatenating tuples
 tuple1 = (1, 2, 3)
@@ -74,9 +89,17 @@ print(first_tuple + second_tuple)
 # Output: (1, 2, 3, 4, 5, 6)
 ```
 
-## Duplication:
-> * is the operation of copying an object or repeating a sequence.
-> * use the '*' sign to duplicate
+<br>
+
+[Back to Top](#python-operators)
+
+___
+
+<br>
+
+# `Duplication`
+`Duplication` is the operation of copying an object or repeating a sequence.
+> * use the `*` sign to duplicate
 
 syntax:
 ```
@@ -93,42 +116,49 @@ object * n
 laugh = "ha"
 print(laugh * 3) 
 #Output: hahaha
-
 ```
 
-# `Casting (changing data type)`
+<br>
+
+[Back to Top](#python-operators)
+
 ___
-## Casting
-> * the process of converting data from one type to another. This is also known as type conversion. 
+
+<br>
+
+# `Casting (changing data type)`
+`Casting` is the process of converting data from one type to another. This is also known as type conversion. 
+
+<br>
 
 Built-in Function Calls for casting
-> * type(object)  returns the data type
-> * str(object)   converts to string
-> * int(object)   converts to an integer
+ * `type(object)`  returns the data type
+ * `str(object)`   converts to string
+ * `int(object)`   converts to an integer
+ * `float(object)` converts to a float
 
-> * float(object) converts to a float
+<br>
 
-
+`type(object)` 
 syntax:
 ```
 type(object)
 ```  
-
-type() returns the data type of the object
-
-
+> `type()` returns the data type of the object  
 ```python
 type(5)   #Returns: <class 'int'>
 type("5") #Returns: <class 'str'>
 type(5.0) #Returns: <class 'float'>
 ```
 
-syntax:
+<br>
+
+`str(object)` syntax:
 ```
 str(object) 
 ```
 
-> * creates a new string object from another object
+> * `str(object)` creates a new string object from another object
 > * ie. converts to a string
 > * works on custom classes with the \_\_str\_\_ method defined
 
@@ -181,12 +211,14 @@ str(len)        #Returns: '<built-in function len>'
 type(str(len))  #Returns: <class 'str'>
 ```
 
-syntax:
+<br>
+
+`int(object)` syntax:
 ```
 int(object)
 ```
 
-> * converts a number or string into an integer object
+> * `int(object)` converts a number or string into an integer object
 > * can be used to convert between bases (>= 2 and <=36) 
 >     * base 2  (binary) (prefix: 0b)
 >     * base 8  (octal) (prefix: 0o)
@@ -202,24 +234,18 @@ txt = "404"
 int(txt)        #Returns: 404
 type(int(txt))  #Returns: <class 'int'>
 ```
-
-
 ```python
 int(0b1101) #Returns: 13
 
 binary = "1101"
 int(binary, 2) #Returns: 13
 ```
-
-
 ```python
 int(0o147) #Returns: 103
 
 octal = "147"
 int(octal, 8) #Returns: 103
 ```
-
-
 ```python
 int(0xff) #Returns: 255
 
@@ -227,11 +253,13 @@ hexadecimal = "ff"
 int(hexadecimal, 16) #Returns: 255
 ```
 
-syntax:
+<br>
+
+`float(object)` syntax:
 ```
 float(object)
 ```
-> * converts a number or string into a floating point object if possible
+> * `float(object)` converts a number or string into a floating point object if possible
 
 
 ```python
@@ -247,93 +275,136 @@ float(txt)      #Returns: 2.17
 type(float(txt))#Returns: <class 'float'>
 ```
 
-# `General Order of Operations`
+<br>
+
+[Back to Top](#python-operators)
+
 ___
-|||
-|-:|:-:|
-|1.| Arithmetic Operators (PEMDAS)|
-|2.| Relational Operators (LEFT TO RIGHT)|
-|3.| Logical Operators (NAO)|
+
+<br>
+
+# `Complete Operator Precedence`
+*Operations at the same level proceed from left to right*
+
+|Operators|Description|
+|:-:|:-|
+| `()`          | Parentheses                     |
+| `**`          | Exponentiation                  |
+| `+x` `-x` `~x`    | Unary plus, unary minus, and bitwise NOT |
+| `*` `/` `//` `%`    | Multiplication, division, floor division, and modulus |
+| `+` `-`         | Addition and subtraction        |
+| `<<` `>>`       | Bitwise left and right shifts   |
+| `&`           | Bitwise AND                     |
+| `^`           | Bitwise XOR                     |
+| `\|`          | Bitwise OR                      |
+| `==` `!=` `>` `>=` `<` `<=` | Comparisons             |
+| `is`, `is not`      | Identity                        |
+| `in`, `not in`   | Membership operators            |
+| `not`         | Logical NOT                     |
+| `and `        | Logical AND                     |
+| `or`          | Logical OR                      |
+
+*NOTE*:   
+> *If you have trouble remembering operation precedence remember that you can always use parenthesis to make your code clear*
+
+<br>
+
+[Back to Top](#python-operators)
+
+___
+
+<br>
 
 # `Arithmetic Operators (Math)`
-___
-> * Order of operations follows PEMDAS from Algebra (BODMAS for the EU)
+Arithmetic operations are used to perform arithmetic.
+
+Order of operations follows PEMDAS from Algebra (BODMAS for the EU)
 
 *PEMDAS --> Parenthesis, Exponents, Multiply/Divide, Add/Subtract*  
 *BODMAS --> Brackets, Orders, Division/Multiplication, Addition/Subtraction*
 
 |Symbol| Operation                         |
 |:----:|:---------------------------------:|
-|   ** | exponentiation (power)            |
+|   `**` | exponentiation (power)            |
 |      |                                   |
-|   *  | multiplication                    |
-|   /  | normal division                   |
-|   // | floor division (Integer division) |
-|   %  | modulo division (remainder division)|
+|   `*`  | multiplication                    |
+|  `/`  | normal division                   |
+|   `//` | floor division (Integer division) |
+|   `%`  | modulo division (remainder division)|
 |      |                                   |
-|   +  | addition                          |
-|   -  | subtraction                       |
+|   `+`  | addition                          |
+|   `-`  | subtraction                       |
 
-## Exponentiation **    
+<br>
 
-
+## `Exponentiation` `**`    
 ```python
-5 ** 2   #Returns: 25
+5 ** 2   # Returns: 25
 ```
 
-## Multiplication *
+<br>
 
-
+## `Multiplication` `*`
 ```python
-5 * 2 #Returns: 10 
+5 * 2 # Returns: 10 
 ```
 
-## Regular Division \\
-> * always returns a \<class 'float'\>
+<br>
 
+## `Regular Division` `\`
+> * always returns a `<class 'float'>`
 
 ```python
-5 / 2 #Returns: 2.5 
-4 / 2 #Returns: 2.0
+5 / 2 # Returns: 2.5 
+4 / 2 # Returns: 2.0
 ```
 
-## Floor Division (Integer Division) \\\\
-> * returns a <class 'int'>
+<br>
+
+## `Floor Division (Integer Division)` `\\`
+> * returns a `<class 'int'>`
 > * truncates (2.5 --> 2): cuts off the fractional part
-
 
 ```python
 5 // 2 # Returns: 2
 ```
 
-## Modulo Division (Remainder Division) %
-> * returns a <class 'int'>
-> * returns the remainder of a division, not the quotient
+<br>
 
+## `Modulo Division (Remainder Division)` `%`
+> * returns a `<class 'int'>`
+> * returns the remainder of a division, not the quotient
 
 ```python
 5 % 2 #Returns: 1
 # 5 / 2 == 2 remainder 1
 ```
 
-## Addition +
+<br>
 
-
+## `Addition` `+`
 ```python
 5 + 2 #Returns: 7
 ```
 
-## Subtraction -
+<br>
 
-
+## `Subtraction` `-`
 ```python
 5 - 2 #Returns: 3
 ```
 
-# `Relational Operators (Inequalities)`
+<br>
+
+[Back to Top](#python-operators)
+
 ___
-> * are used for comparisions
-> * evaluate to a boolean value (True/False)
+
+<br>
+
+# `Comparision Operators (Inequalities)`
+`Comparision operators` are used to compare two values.
+> * they evaluate to a boolean value (True/False)
 > * Order of Operations is Left to Right
 
 |Symbol| Inequality Operation      |
@@ -345,7 +416,7 @@ ___
 |  ==  | equal to                  |
 |  !=  | not equal to              |
 
-
+<br>
 
 ```python
 x = 50; y = 45; z = 45
@@ -358,18 +429,26 @@ y == z              # Returns: True
 y != x              # Returns: True
 ```
 
-# `Membership Operators`
+<br>
+
+[Back to Top](#python-operators)
+
 ___
+
+<br>
+
+# `Membership Operators`
+`Membership operators` check if a value is found in a sequence
+> * ie. checks if one thing is 'apart of' another
 
 |Symbol |Membership Operation|
 |:-----:|:------------------:|
 |in     |apart of            |
 |not in |not apart of        |
 
-> * Membership Operators check if a value is found in a sequence
-> * ie. checks if one thing is 'apart of' another
 
 
+<br>
 
 ```python
 txt = "Hello World"
@@ -377,21 +456,27 @@ list1d = ["a","b","c"]
 
 "a" in txt      # Returns: False
 "a" in list1d   # Returns: True
-
 "d" not in txt      # Returns: True
 "d" not in list1d   # Returns: False
 ```
 
-# `Identity Operators`
+<br>
+
+[Back to Top](#python-operators)
+
 ___
+
+<br>
+
+# `Identity Operators`
+Identity Operators check if the memory location of the two objects is identical
+
 |Symbol| Identity Operation |
 |:----:|:------------------:|
 |is    |identical to        |
 |is not|not identical       |
 
-> * Identity Operators check if the memory location of the two objects are identical
-
-
+<br>
 
 ```python
 w = "Hello World"
@@ -419,9 +504,15 @@ obj2 = Example()
 obj1 is obj2     # Returns: False
 obj1 is not obj2 # Returns: True
 ```
+<br>
+
+[Back to Top](#python-operators)
+
+___
+
+<br>
 
 # `Assignment vs. Equality Operators`
-___
 |Symbol| Operation    | Description |
 |:----:|:------------:|:------------|
 |=     | assignment   | assigns a value to a variable |
@@ -436,10 +527,16 @@ a == 1 # compares if the value of 'a' is equal to 1
 # Returns: True
 ```
 
-# `Compound Assignment Operators`
+<br>
+
+[Back to Top](#python-operators)
+
 ___
-## Compound Assignment Operators
-> * are short hand operators for performing an operation and then assigning the result back the to variable
+
+<br>
+
+# `Compound Assignment Operators`
+`Compound Assignment Operators` are short hand operators for performing an operation and then assigning the result back the to variable
 
 
 ```python
@@ -447,31 +544,37 @@ num = 0
 num = num + 1 # num = 1 
 ```
 
-This code above can become tedious when done often.  
-There is a shorthand way to perform this type of operation.
+> The code above can become tedious when written often.  
 
-|Symbol| Compound Operation |
-|:----:|:------------------:|
-|+=    | add and assign     |
-|-=    | subtract and assign |
-|*=    | multiply and assign |
-|/=    | divide and assign   |
-|//=   | floor divide and assign |
-|%=    | modulo (remainder) and assign |
-|**=   | exponentiation (power) and assign |
+> Thus there is a shorthand way to perform this type of operation.
+
+|Symbol| Compound Operation ||||
+|:----:|:------------------:|:-:|:-:|:-:|
+|`+=`   | add and assign     |x = x + 1 |-->|x+=1|
+|`-=`    | subtract and assign |x = x - 1 |-->|x-=1|
+|`*=`    | multiply and assign |x = x * 1 |-->|x*=1|
+|`/=`    | divide and assign   |x = x / 1 |-->|x/=1|
+|`//=`   | floor divide and assign |x = x // 1|-->|x//=1|
+|`%=`    | modulo (remainder) and assign |x = x % 1 |-->|x%=1|
+|`**=`   | exponentiation (power) and assign |x = x ** 1|-->|x**=1|
+
+<br>
 
 Often it is necessary to change the value of a variable by taking its current value performing and operation then setting the variable to the new value
 
-Like this:
+> Like this:
 ```
 variable = current_value + n
 ```
 
-Compound Operations allow us to shorten this code:
+> Compound Operations allow us to shorten this code:
 ```
 variable += n
 ```
-### Compound Operation Examples:
+
+<br>
+
+## Compound Operation Examples:
 
 
 ```python
@@ -522,18 +625,10 @@ x = x - 1 # Instead of this
 x -= 1    # Do this
 ```
 
-|This|Same As|
-|:-:|:-:|
-|x = x + 1 |x+=1|
-|x = x - 1 |x-=1|
-|x = x * 1 |x*=1|
-|x = x / 1 |x/=1|
-|x = x // 1|x//=1|
-|x = x % 1 |x%=1|
-|x = x ** 1|x**=1|
+<br>
 
-## Incrementing a Value
-> * increasing the value of a variable by 1 or more
+## `Incrementing a Value`
+`Increment`: increasing the value of a variable by 1 or more
 
 
 ```python
@@ -542,8 +637,10 @@ number += 1 # number = 1
 number += 1 # number = 2
 ```
 
-## Decrementing a Value
-> * decreasing the value of a variable by 1 or more
+<br>
+
+## `Decrementing a Value`
+`Decrement`: decreasing the value of a variable by 1 or more
 
 
 ```python
@@ -553,23 +650,36 @@ number -= 1 # number = 8
 number -= 1 # number = 7
 ```
 
-# `Logical Operators`
+<br>
+
+[Back to Top](#python-operators)
+
 ___
-* Order of Operations
-    * NOT
-    * AND
-    * OR
+
+<br>
+
+# `Logical Operators`
+`Logical operators` in Python (and most programming languages) are used to perform logical operations on boolean values (True or False). 
+> * They help control the flow of a program by allowing you to evaluate expressions and make decisions based on their truth values.
+
+Order of Operations
+* NOT
+* AND
+* OR
     
 |Operator| Operation| Description|
 |:------:|:--------:|:-----------|
-| not    | NOT      | opposite   |
-| and    | AND      | both       |
-| or     | OR       | at least one |
+| `not`    | NOT      | opposite   |
+| `and`    | AND      | both       |
+| `or`     | OR       | at least one |
 
-Truth Tables are used to illustrate the evaluation of a logical expression. In this case they show how we evaluate, not, and, and or.  
+`Truth Tables` are used to illustrate the evaluation of a logical expression. In this case they show how we evaluate, `not`, `and`, and `or`.  
 
-## NOT truth table
-> * returns the opposite
+<br>
+
+## `NOT truth table`
+NOT is a negation operation
+> * `not` returns the opposite
 
 
 |a|NOT a|
@@ -577,13 +687,10 @@ Truth Tables are used to illustrate the evaluation of a logical expression. In t
 |True| False|
 |False|True|
 
-
-
 ```python
 not True    # Returns: False    
 not False   # Returns: True  
 ```
-
 
 ```python
 #examples
@@ -598,8 +705,13 @@ is_sunny = True
 not is_sunny and is_raining # Returns: True 
 ```
 
-## AND truth table
-> * both must be True to evaluate True
+<br>
+
+## `AND truth table`
+AND is a conjunction operation.
+> * `and` returns True when both operands are True  
+
+*both must be True to evaluate True*
 
 |a|b|a AND b|
 |:-:|:-:|:-:|
@@ -645,8 +757,13 @@ age >= 18 and has_license
 # Returns: False
 ```
 
-## OR truth table
-> * at least one must be True to evaluate True
+<br>
+
+## `OR truth table`
+OR is a disjuntion operation.
+> * or returns True when at least one operand is True
+
+*at least one must be True to evaluate True*
 
 |a|b|a OR b|
 |:-:|:-:|:-:|
@@ -672,31 +789,35 @@ temp > 78 or temp < 68 # Returns: True
 
 grade = "D"
 
-grade == "A" or grade == "B" or grade =="C" # Returns: False\
-
-
+grade == "A" or grade == "B" or grade =="C" # Returns: False
+```
+```python
 password_hash = "password123"
 has_master_key = False
 
 input_password = input()
 
-
 input_password == password or has_master_key
-
-
 ```
 
-# `De Morgan's Laws`
+<br>
+
+[Back to Top](#python-operators)
+
 ___
-De Morgan's Laws are a set of fundamental principles in logic that describe the relationship between negation (logical NOT) and conjunction (logical AND), as well as negation and disjunction (logical OR). 
+
+<br>
+
+# `De Morgan's Laws`
+`De Morgan's Laws` are a set of fundamental principles in logic that describe the relationship between negation (logical NOT) and conjunction (logical AND), as well as negation and disjunction (logical OR). 
 
 *The way these laws are applied to logical operators is similiar to the Distributive Property in Mathematics*
+
+<br>
 
 |This|Same As|
 |:-:|:-:|
 |not(a and b)|(not a or not b)|
-
-
 
 ```python
 a = True or False
@@ -711,6 +832,8 @@ not(a and b) == (not a or not b)  # Returns: True
 #regardless of the values for 'a' and 'b'
 
 ```
+
+<br>
 
 |This|Same As|
 |:-:|:-:|
@@ -728,16 +851,42 @@ not(a or b)
 not(a or b)  == (not a and not b)  # Returns: True 
 #regardless of the values for 'a' and 'b' 
 ```
+<br>
 
- # `Built-in Operation Function Calls`
+[Back to Top](#python-operators)
+
 ___
 
+<br>
+
+# `Built-in Operation Function Calls`
+
+* isinstance(object, classinfo)
+
+`isinstance()` returns True if the object is an instance or subclass of the specified class or types, otherwise returns False. 
+> It is particularly useful when you need to verify the type of an object, and it's more flexible than the type() function because it also works with class inheritance.
+> * object: The object to be checked.
+> * classinfo: A class, type, or a tuple of classes and types to check against.
+
+```python
+x = 10
+print(isinstance(x, int))  # Returns: True
+```
+Checking against multiple types
+```python
+x = 10
+print(isinstance(x, (int, float)))  # Returns: True, because x is an integer
+```
+
+<br>
 
 * abs(x,/)
 ```python
 abs(-10) #10
 # Returns the absolute value of x. 
 ```
+
+<br>
 
 * max(iterable, *, key, default)
     * \* : separates the positional arguments from the keyword-only arguments that follow.
@@ -747,81 +896,94 @@ max(3, 7, 2, 10) #10
 # Returns the largest item in an iterable or the largest of two or more arguments.
 ```
 
+<br>
+
 * min(iterable, *, key, default)
-
-
 ```python
 min(3, 7, 2, 10) # 2
 # Returns the smallest item in an iterable or the smallest of two or more arguments.
 
 ```
 
+<br>
+
 * sum(iterable, /, start=0)
-
-
 ```python
 sum([1, 2, 3, 4, 5]) # 15
 # Sums the items of an iterable from left to right and returns the total.
 
 ```
 
+<br>
+
 * pow(x, y, z=None, /)
-
-
 ```python
 pow(2, 3) # 8
 # Raises x to the power of y, optionally modulo z.
 
 ```
 
+<br>
+
 * round(number, ndigits)
-
-
 ```python
 round(3.14159, 2) # 3.14
 # Rounds a floating-point number to a specified number of decimal digits.
-
 ```
 
+<br>
+
 * divmod(x, y,/)
-
-
 ```python
 divmod(10, 3) # (3,1)
 # Returns a tuple containing the quotient and remainder of the division of a by b.
 
 ```
 
+<br>
+
 * complex([real,imag)
-
-
 ```python
 complex(1, 2) # 1 + 2j
 # Creates a complex number.
 #complex numbers are a built-in data type used to represent numbers in the form of a + bj, 
 #where a and b are real numbers, and j represents the imaginary unit (√(-1)).
-
 ```
 
+<br>
+
 * all(iterable)
+```python
+all([True, True, True])
+# Returns True if all elements of the iterable are True
+```
 
+<br>
 
+* round(float)
 ```python
 round(3.7) # 4
 # Rounds a number to the nearest integer.
 ```
 
+<br>
+
 * any(iterable)
-
-
 ```python
-all([True, True, False]) #False
+any([True, True, False]) #False
 # Returns True if all elements of the iterable are true (or if the iterable is empty).
 ```
 
-# `Bitwise Operations`
+<br>
+
+[Back to Top](#python-operators)
+
 ___
-> * Bitwise operations work on individual bits within data.  
+
+<br>
+
+# `Bitwise Operations`
+`Bitwise operations` work on individual bits within data.  
 > * Order of operations for Bitwise Operators is Not, Shifts, And, Xor, Or (NSAXO)
 
 
@@ -839,11 +1001,14 @@ ___
 |True| 1|
 |False| 0|
 
+<br>
 
-## Binary Data Representation: Two's complement notation.
-***To accurately understand bitwise NOT, and bitshift operations an understanding of how Integers are stored in memory is required***
+## `Binary Data Representation: Two's complement notation.`
+*To accurately understand bitwise NOT, and bitshift operations an understanding of how Integers are stored in memory is required*
 
-Integers use as many bits as they need in memory  
+<br>
+
+In Python integers use as many bits as they need in memory  
 
 <br>
 
@@ -864,12 +1029,11 @@ In two's complement representation:
 |....11111111111111111111111 |
 
 
-## **Bitwise NOT (~)**
-> * flips all the bits in a binary number, changing each 0 to 1 and each 1 to 0.
+<br>
+
+## `Bitwise NOT`
+`Bitwise NOT (~)` flips all the bits in a binary number, changing each 0 to 1 and each 1 to 0.
 > * When you see NOT think *'opposite'*
-
-
-
 
 ```python
 x = 3
@@ -877,7 +1041,7 @@ bin(x)  #Returns: 0b11  --> ...011
 bin(~x) #Returns: 0b100 --> ...100
 ```
 
-Bitwise NOT truth table
+`Bitwise NOT truth table`
 
 |a|~a|
 |:-:|:-:|
@@ -890,8 +1054,12 @@ not 1   #Returns: 0
 not 0   #Returns: 1  
 ```
 
-## **Bitwise Shift (<<) Left | Right (>>)**
-> * moves all the bits in a number by a specified number of positions.
+<br>
+
+## `Bitwise Shift`
+`Bitwise Shift (<<) Left | Right (>>)` moves all the bits in a number by a specified number of positions.
+
+<br>
 
 ### Left Shift
 > * equivalent to (x * 2**shift_amount)
@@ -905,6 +1073,8 @@ print( x << 3) #8 --> 0b1000
 #shift left 3      3 2 1 0
 ```
 
+<br>
+
 ### Right Shift
 > * equivalent to (x / 2** shift_amount)
 
@@ -917,8 +1087,10 @@ print( x >> 7) # 1 --> 0b1
 # shift right 7     0 1 2 3 4 5 6 7
 ```
 
-## **Bitwise AND ( & )**
-> * takes two numbers and performs a logical AND operation on each pair of corresponding bits.
+<br>
+
+## `Bitwise AND`
+`Bitwise AND (&)` takes two numbers and performs a logical AND operation on each pair of corresponding bits.
 > * The resultant bit is 1 if both bits are 1
 > * When you see AND think *'both'*
 
@@ -929,7 +1101,7 @@ y = 10         # 0b1010
 x & y          # 0b1000 --> 8
 ```
 
-Bitwise AND truth table
+`Bitwise AND truth table`
 
 |a|b|a & b|
 |:-:|:-:|:-:|
@@ -946,9 +1118,10 @@ Bitwise AND truth table
 0 and 0  #Returns: 0  
 ```
 
-## **Bitwise XOR ( ^ )** 
+<br>
 
-> * takes two numbers and performs a logical XOR operation on each pair of corresponding bits.
+## `Bitwise XOR` 
+`Bitwise XOR (^)` takes two numbers and performs a logical XOR operation on each pair of corresponding bits.
 > * The resultant bit is 1 if only one bit is 1
 > * When you see XOR think *'only one'*
 
@@ -959,7 +1132,7 @@ y = 10         # 0b1010
 x ^ y          # 0b0110 --> 6
 ```
 
-Bitwise XOR truth table
+`Bitwise XOR truth table`
 
 |a|b|a ^ b|
 |:-:|:-:|:-:|
@@ -976,8 +1149,10 @@ Bitwise XOR truth table
 0 ^ 0   #Returns: 0 
 ```
 
-## **Bitwise OR ( | )**
-> * takes two numbers and performs a logical OR operation on each pair of corresponding bits
+<br>
+
+## `Bitwise OR`
+`Bitwise OR (|)` takes two numbers and performs a logical OR operation on each pair of corresponding bits
 > * The resultant bit is 1 if at least on bit is 1\
 > * When you see OR think *'at least one'*
 
@@ -988,7 +1163,7 @@ y = 10         # 0b1010
 x | y          # 0b1110 --> 14
 ```
 
-### Bitwise OR truth table
+`Bitwise OR truth table`
 
 |a|b|a \| b|
 |:-:|:-:|:-:|
@@ -1005,31 +1180,15 @@ x | y          # 0b1110 --> 14
 0 or 0  #Returns: 0 
 ```
 
-# `Complete Operator Precedence`
+<br>
+
+[Back to Top](#python-operators)
+
 ___
-*Operations at the same level proceed from left to right*
 
-|Opertors|Description|
-|:-:|:-:|
-| ()          | Parentheses                     |
-| **          | Exponentiation                  |
-| +x -x ~x    | Unary plus, unary minus, and bitwise NOT       |
-| * / // %    | Multiplication, division, floor division, and modulus       |
-| + -         | Addition and subtraction        |
-| << >>       | Bitwise left and right shifts   |
-| &           | Bitwise AND                     |
-| ^           | Bitwise XOR                     |
-| \|          | Bitwise OR                      |
-| == != > >= < <= | Comparisons             |
-| is, is not      | Identity                        |
-| in, not in   | Membership operators            |
-| not         | Logical NOT                     |
-| and         | Logical AND                     |
-| or          | Logical OR                      |
+<br>
 
-***NOTE: If you have trouble remembering operation precedence remember that you can always use parenthesis to make your code clear***
-
-
+# `Appendix`
 ```python
 'Appendix'
 
@@ -1044,6 +1203,8 @@ for x in range(128):
 
 print(str(bitwise_NOT).replace("),","),\n"))
 
+
+# Outputs:
 [(0,  '0b0', '-0b1', -1),
  (1,  '0b1', '-0b10', -2),
  (2,  '0b10', '-0b11', -3),
@@ -1226,3 +1387,13 @@ def create_shift_table(number, shift):
 
     return shifts
 ```
+
+<br>
+
+[Back to Top](#python-operators)
+
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt* 

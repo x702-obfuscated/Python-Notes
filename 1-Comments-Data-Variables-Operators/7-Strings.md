@@ -1,48 +1,95 @@
 # `Python Strings`
-___
-Covered in this file
-1. Defining a Character
-2. Special Characters
-3. Converting Between Character Encodings
-4. Defining a String
-5. String Concatenation and Duplication
-6. String Comparision
-7. String Indexing
-8. Substrings: Slicing
-9. Built-in String Function Calls
-10. Built-in String Method Calls
 
-## `Defining a Character`
+Covered in this file:
+1. [Defining Characters](#defining-characters)
+1. [Special Characters](#special-characters)
+    1. [Special Character in Python](#special-characters-in-python)
+    1. [Escape Character](#escape-character)
+    1. [ASCII Linefeed (Newline Character)](#ascii-linefeed-newline-character)
+    1. [Backslash Character](#backslash-character)
+    1. [Quotes: Single and Double](#quotes-single-and-double)
+    1. [UTF-8 Encoding (1 byte) Hexadecimal Bytes](#utf-8-encoding-1-byte-hexadecimal-bytes)
+    1. [UTF-16 Encoding (2 bytes)](#utf-16-encoding-2-bytes)
+    1. [UTF-32 Encoding (4 bytes)](#utf-32-encoding-4-bytes)
+    1. [Tab Character](#tab-character)
+    1. [Carriage Return Character](#carriage-return-character)
+    1. [Backspace Character](#backslash-character)
+1. [Converting Between Character Encodings](#converting-between-character-encodings)
+    1. [Convert to an Integer int()](#convert-to-an-integer-int)
+    1. [Convert to Binary bin()](#convert-to-binary-bin)
+    1. [Convert From Character to Binary](#convert-from-a-character-to-binary)
+    1. [Convert to Hexadecimal hex()](#convert-to-hexadecimal-hex)
+    1. [Convert from a Character to Hexadecimal](#convert-from-a-character-to-hexadecimal)
+    1. [Convert to a String](#convert-to-a-string)
+    1. [Convert from a Character to an Integer ord()](#convert-from-an-integer-to-a-character-chr)
+1. [Defining a String](#defining-a-string)
+1. [Multiline Strings](#multiline-strings)
+1. [String Concatenation](#string-concatenation)
+    1. [Manually Concatenate with + ](#manually-concatenate)
+    1. [Compound Concatenate and Assign String += ](#compound-concatenate-and-assign-strings)
+1. [String Duplication](#string-duplication)
+    1. [Compound Duplicate and Assign Strings *= ](#compound-duplicate-and-assign-strings)
+1. [String Comparision](#string-comparision)
+    1. [Equality Comparision == ](#equality-comparision)
+    1. [NOT Equal != ](#not-equal)
+    1. [Greater Than > and Less Than < ](#greater-than-and-less-than)
+    1. [Length Comparision](#length-comparision)
+1. [String Indexing](#string-indexing)
+    1. [Why do indexes start at 0?](#why-do-indexes-start-at-0)
+    1. [Accessing Characters in a String](#accessing-characters-in-a-string)
+    1. [Changing Characters in a String](#changing-characters-in-a-string)
+1. [Substrings: Slicing](#string-slicing)
+    1. [Ascending Slices](#ascending-slices)
+    1. [Descending Slices](#descending-slices)
+1. [Built-in String Function Calls](#built-in-string-function-calls)
+1. [Built-in String Method Calls](#built-in-string-method-calls)
+1. [Format Strings: f-strings](#format-strings-f-strings)
+    1. [Inserting Variables Directly Into Strings](#inserting-variables-directly-into-strings)
+    1. [Formatting Numbers for Output](#formatting-numbers-for-output)
+    1. [Formatting Expression for Output](#formatting-expressions-for-output)
+    1. [Padding and Alignment](#padding-and-alignment)
+    1. [Removing quotes from output](#removing-quotes-from-output)
+1. [Raw Strings](#raw-strings)
+1. [Bytes Strings](#bytes-strings)
+1. [Appendix](#appendix)
+
+<br>
 ___
-**Characters:**
+
+<br>
+
+# `Defining Characters`
+
+`Characters:`
 > * Basically: a basic unit of information that represents a letter, number, symbol, or control code
 > * Specifically: a binary value mapped to a specific symbol as defined by ASCII or UTF
 
 <br>
 
-**American Standard Code for Information Interchange (ASCII)**
+`American Standard Code for Information Interchange (ASCII)`
 > * is a character encoding standard used to represent text in computers and other devices that use text.
 > * defines a set of 128 characters, where each character is represented by a unique 7-bit binary number.
 > * forms the basis for more extensive character encoding schemes like Unicode.
 
 <br>
 
-**Unicode** 
+`Unicode` 
 > * is a universal character encoding standard designed to represent and handle text in most of the world's writing systems.
 > * The Unicode standard assigns a unique code point to every character, regardless of platform, program, or language
 > * These code points are hexadeximal values prefixed with 'U+'
 
 <br>
 
-**Unicode Transformation Format (UTF)**
+`Unicode Transformation Format (UTF)`
 > * is a family of character encoding schemes used to represent Unicode characters. 
 > * The most common encodings are UTF-8, UTF-16, and UTF-32. These encoding transform unicode code points into sequences of bytes.
 
 <br>
 
-***NOTE: 1 byte equals 8 bits***
-***NOTE: The prefix 0b indicates a binary value***
-***NOTE: The prefix 0x indicates a hexadecimal value***
+*NOTE*: 
+> * 1 byte equals 8 bits
+> * The prefix 0b indicates a binary value
+> * The prefix 0x indicates a hexadecimal value
 
 <br>
 
@@ -67,11 +114,12 @@ For more on Unicode and character encodings: [https://home.unicode.org/](https:/
 "0"
 ```
 
-**American Standard Code for Information Interchange (ASCII)**
+`American Standard Code for Information Interchange (ASCII)`
 > * 7 bit ASCII defines 128 characters including all alphanumeric characters
 > * In many cases this is the only table we will need to interact with characters
 
-***NOTE: You may notice that this table does not include all 128 characters, this is because the omitted codes are control codes and not currently relevant.***
+*NOTE*: 
+> You may notice that this table does not include all 128 characters, this is because the omitted codes are control codes and not currently relevant.
 
 |**Character**|**Unicode Code Point**|**Decimal**|**Hexadecimal**|**Binary**|**Octal**|
 |:-:|:-:|:-:|:-:|:-:|:-:|
@@ -179,16 +227,20 @@ For more on Unicode and character encodings: [https://home.unicode.org/](https:/
 
 <br>
 
-# `Special Characters`
+[Back to Top](#python-strings)
 ___
-## Special Characters
-> * have a special meaning and are used to perform specific functions in strings and some other types of data.  
-> * are typically difficult or impossible to represent directly  
-> * most of these characters have other default meanings and therefore must be "escaped" in order to perform the special function.  
 
-***NOTE: "escaping a character" refers to the use of special sequences or combinations of characters to represent characters that are difficult or impossible to represent directly.***
+<br>
 
-### Special Characters in Python
+# `Special Characters`
+`Special Characters` have a special meaning and are used to perform specific functions in strings and some other types of data.  
+> * These characters are typically difficult or impossible to represent directly  
+> * Most of these characters have other default meanings and therefore must be "escaped" in order to perform the special function.  
+
+*NOTE*: 
+> "escaping a character" refers to the use of special sequences or combinations of characters to represent characters that are difficult or impossible to represent directly.
+
+## `Special Characters in Python`
 |Character|Description|
 |:-:|:-|
 |\\ | Escape |
@@ -214,10 +266,14 @@ ___
 |\ooo| Character Octal Value|
 |\N{name}| Unicode Character By Name|
 
+<br>
 
-## Escape Character ( \ )
-> * In python as well as many other languages the backslash character **\\** is used as the escape character.
-> * Placing a backslash \\ in front of another character we "escape" that characters normal function, and indicate a different one.
+
+## `Escape Character`
+`Escape Character \`
+
+In Python, as well as many other languages, the backslash character `\` is used as the escape character.
+> * Placing a backslash `\` in front of another character we "escape" that characters normal function, and indicate a different one.
 
 example:
 ```python
@@ -226,7 +282,10 @@ example:
 "\a \b \f \r \t \v \e \141 \N{GREEK SMALL LETTER ALPHA}"
 ```
 
-## ASCII Linefeed (Newline Character) ( \n )
+<br>
+
+## `ASCII Linefeed (Newline Character)`
+`ASCII Linefeed (Newline Character) ( \n )`
 > * the newline character returns the cursor to the beginning next line
 
 ```python
@@ -237,10 +296,15 @@ print("First line\nSecond line")
 # Second line
 ```
 
-## Backslash Character ( \\\\ )
-> * Because the backslash character is used to escape other character, it is necessary to use two backslashes in order to treat the second backslash as a literal. 
+<br>
 
-***NOTE: This will often come up when using Windows file paths in your code. Windows uses \\ to seperate folder/file names in the path***
+## `Backslash Character`
+`Backslash Character ( \\ )`
+
+Because the backslash character `\` is used to escape other characters, it is necessary to use two backslashes `\\` in order to treat the second backslash as a literal. 
+
+*NOTE*: 
+> This will often come up when using Windows file paths in your code. Windows uses \\ to seperate folder/file names in the path
 
 ```python
 print( "C:\\Users\\USERNAME\\Documents" )
@@ -249,8 +313,13 @@ print( "C:\\Users\\USERNAME\\Documents" )
 # C:\Users\USERNAME\Documents 
 ```
 
-## Quotes: Single ( \' ), Double( \" )
-> * Because single quotes and double quotes are used in the syntax of Python to indicate a string literal, it is necessary to escape these characters in order to make them apart of a string. 
+<br>
+
+## `Quotes: Single and Double`
+`Quotes: Single ( ' ), Double( " )`
+
+Because single quotes `'` and double quotes `"`  are used in the syntax of Python to indicate a string literal.
+>  * It is necessary to escape these characters in order to make them apart of a string. 
 
 ```python
 print('It\'s an escaped character!')
@@ -272,21 +341,30 @@ print(""This text includes the quotes!"")
 # Output: SyntaxError: invalid syntax.
 ```
 
-## Hexadecimal Bytes ( \xhh )
-> * Binary data is often difficult for humans to read easily so much of the time binary data is represented as hexadecimal bytes.
+<br>
+
+## `UTF-8 Encoding (1 byte) Hexadecimal Bytes`
+`UTF-8 Encoding (1 byte) Hexadecimal Bytes ( \xhh )`
+
+Binary data is often difficult for humans to read easily so much of the time binary data is represented as hexadecimal bytes.
 > * Use \xhh in Python in order to represent data as a byte 
 
-***NOTE: hh indicates two places for a hexadecimal value***
+*NOTE*: 
+> `hh` indicates two places for a hexadecimal value
 
 ```python
 print("\x68\x65\x6c\x6c\x6f")
 # Output: hello
 ```
 
-## UTF-16 Encoding (2 bytes) ( \uxxxx )
-> * In order to represent characters not available on the keyboard, such as the greek alphabet, UTF encoding escape sequences are neccessary.
+<br>
 
-For example the code below prints out the uppercase, and lowercase greek alphabet
+## `UTF-16 Encoding (2 bytes)`
+`UTF-16 Encoding (2 bytes) ( \uxxxx )`
+
+In order to represent characters not available on the keyboard, such as the greek alphabet, UTF encoding escape sequences are neccessary.
+
+> *For example the code below prints out the uppercase, and lowercase greek alphabet*
 
 ```python
 print("\u0391 \u0392 \u0393 \u0394 \u0395 \u0396 \u0397 \u0398 \u0399 \u039a \u039b \u039c \u039d \u039e \u039f \u03a0 \u03a1 \u03a2 \u03a3 \u03a4 \u03a5 \u03a6 \u03a7 \u03a8 \u03a9")
@@ -296,12 +374,13 @@ print("\u03b1 \u03b2 \u03b3 \u03b4 \u03b5 \u03b6 \u03b7 \u03b8 \u03b9 \u03ba \u0
 # Output: α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ ς σ τ υ φ χ ψ ω
 ```
 
-### UTF-32 Encoding (4 bytes) ( \uxxxxxxxx )
-> * In order to represent characters not available on the keyboard, such as emojies, UTF encoding escape sequences are neccessary.
+<br>
 
-For example the code below prints out the common smiley face emojies
+## `UTF-32 Encoding (4 bytes)`
+`UTF-32 Encoding (4 bytes) ( \uxxxxxxxx )`
+In order to represent characters not available on the keyboard, such as emojies, UTF encoding escape sequences are neccessary.
 
-
+> *For example the code below prints out the common smiley face emojies*
 ```python
 emojies = [
     "\U0001f600","\U0001f601","\U0001f602","\U0001f603",
@@ -342,10 +421,13 @@ print(emojies)
 
 ```
 
-## Tab Character ( \t )
-> * used to insert horizontal spacing.
+<br>
 
 
+## `Tab Character`
+`Tab Character ( \t )`
+
+`\t` is used to insert horizontal spacing.
 
 ```python
 print( "First\tSecond\tThird" )
@@ -354,10 +436,12 @@ print( "First\tSecond\tThird" )
 # First   Second  Third
 ```
 
-## Carriage Return Character ( \r )
-> * returns the cursor to the beginning of the current line
+<br>
 
+## `Carriage Return Character`
+`Carriage Return Character ( \r )`
 
+`\r` returns the cursor to the beginning of the current line
 
 ```python
 print("123\rabc")
@@ -366,10 +450,11 @@ print("123\rabc")
 # abc
 ```
 
-## Backspace Character ( \b )
-> * used to delete the preceding character
+<br>
 
-
+## `Backspace Character`
+`Backspace Character ( \b )`  
+`\b` is used to delete the preceding character
 ```python
 print("abc\bd")
 #         ^
@@ -377,26 +462,33 @@ print("abc\bd")
 # abd
 ```
 
-# `Converting Between Character Encodings`
+<br>
+
+[Back to Top](#python-strings)
 ___
-> * characters can be represented in multiple ways called encodings.
-> * there are builtin function calls to convert between these encodings
 
-> * ***int()***, ***bin()***, ***hex()***, ***oct()***, ***str()***, ***chr()***, ***ord()***
+<br>
 
-## Convert to an Integer (***int()***)
+# `Converting Between Character Encodings`
+Characters can be represented in multiple ways called encodings.
+> * There are builtin function calls to convert between these encodings
+
+> * `int()`, `bin()`, `hex()`, `oct()`, `str()`, `chr()`, `ord()`
+
+## `Convert to an Integer int()`
 syntax:
 ```
 int(object, base=10)
 ```
 
-> * ***int()*** converts a number or string into an integer object
+> * `int()` converts a number or string into an integer object
 > * can be used to convert between bases (>= 2 and <=36) 
 >    * base 2  (binary) (prefix: 0b)
 >    * base 8  (octal) (prefix: 0o)
 >    * base 16 (hexadecimal) (prefix: 0x)
 
-***NOTE: Floats are truncated to Integers. Truncating means to cut off at the floating point, NOT round.***
+*NOTE*: 
+> Floats are truncated to Integers. Truncating means to cut off at the floating point, NOT round.
 
 
 ```python
@@ -410,12 +502,12 @@ int("61",16)      # 97 hexadecimal to int
 
 <br>
 
-## Convert to Binary (***bin()***)
+## `Convert to Binary bin()`
 syntax:
 ```
 bin(number)
 ```
-> * ***bin()*** converts decimal to base 2 (binary)
+> * bin() converts decimal to base 2 (binary)
 > * coverts from a number to binary
 > * 0b is used to indicate binary values in Python
 
@@ -426,9 +518,10 @@ bin(0x61)   #Returns: 0b1100001 hex to binary
 
 <br>
 
-## Convert From a Character to Binary
-> * ***bin()*** cannot directly convert characters to binary
-> * use the ***ord(str)*** call to convert to decimal value first
+## `Convert From a Character to Binary`
+`bin()` cannot directly convert characters to binary
+
+Use the `ord(str)` call to convert to decimal value first
 
 
 ```python
@@ -438,16 +531,17 @@ bin(ord("a")) # Returns: 0b1100001
 
 <br>
 
-## Convert to Hexadecimal (***hex()***)
+## `Convert to Hexadecimal hex()`
+`hex()` converts decimal to base 16 (hexadecimal)
+> * 0x is used to indicate hex values in Python
+
 syntax:
 ```
 hex(number)
 ```
 
-> * ***hex()*** converts decimal to base 16(hexadecimal)
-> * 0x is used to indicate hex values in Python
-
-***NOTE: In other areas of computing hexadecimal is also indicated using 0x, #, and h .***
+*NOTE*: 
+> In other areas of computing hexadecimal is also indicated using 0x, #, and h .
 
 
 ```python
@@ -455,26 +549,28 @@ hex(97)         # Returns: 0x61 decimal to hex
 hex(0b1100001)  # Returns: 0x61 binary to hex
 ```
 
-## Converting From a Character to Hexadecimal
-> * ***hex()*** cannot directly convert characters to hexadecimal
-> * use the **ord(str)** call to convert to decimal first
+<br>
+
+## `Convert From a Character to Hexadecimal`
+`hex()` cannot directly convert characters to hexadecimal
+Use the `ord(str)` call to convert to decimal first
 
 ```python
 hex("a")      # Output: TypeError: 'str' object cannot be interpreted as an integer
 hex(ord("a")) # Returns: 0x61
 ```
 
-### Convert to a String
+<br>
+
+## `Convert to a String`
+`str()` creates a new string object from another object type
+> * ie. converts to a string
+> * works on custom classes with the \_\_str\_\_ method defined
+
 syntax:
 ```
 str(object) 
 ```
-
-> * ***str()*** creates a new string object from another object type
-> * ie. converts to a string
-> * works on custom classes with the \_\_str\_\_ method defined
-
-
 ```python
 null = None
 str(null)       # Returns: 'None'
@@ -513,26 +609,29 @@ type(str(len))  # Returns: <class 'str'>
 
 <br>
 
-# Convert from an Integer to a Character ***chr()***
+## `Convert from an Integer to a Character chr()`
+`chr()` converts an integer `i` to its character representation
+
 syntax:
 ```
 chr(i)
 ```
-> * ***chr()*** converts an integer *i* to its character representation
-
-
 ```python
 chr(97)         # Returns: "a" decimal to character
 chr(0b1100001)  # Returns: "a" binary to character
 chr(0x61)       # Returns: "a" hex to character
 ```
 
-## Convert from a Character to an Integer ***ord()***
+<br>
+
+## `Convert from a Character to an Integer ord()`
+`ord()` converts a character `c` to its Unicode code point (a base 10 integer) representing the given character.
+
 syntax:
 ```
 ord(c)
 ```
-> * ***ord()*** converts a character *c* to its decimal representation
+ 
 
 ```python
 ord('a') #Returns: 97
@@ -545,17 +644,24 @@ ord('g') #Returns: 103
 ord('h') #Returns: 104
 ```
 
-# `Defining a String`
+<br>
+
+[Back to Top](#python-strings)
 ___
-## Strings
 
-> * are immutable (cannot be changed) sequences of characters surrounded by quotation marks ("" or '').
-> * If you need to change the string you must creat a new string.
+<br>
 
-***NOTE: Fundamentally, a string is just an array of characters***
+# `Defining a String`
+Basically: `Strings` are text surrounded by single or double quotes.
+
+Specifically: `Strings` are immutable (cannot be changed) sequences of characters surrounded by quotation marks ("" or '').
+> * If you need to change the string you must create a new string.
+
+*NOTE*: 
+> Fundamentally, a string is just an array of characters
 
 
-### String Example:
+## String Example:
 
 ```python
 "Hello World" 
@@ -565,13 +671,31 @@ ___
 'Hello World'
 ```
 
-variables can be pointed to strings
+> variables can be pointed to strings
 ```python
 str_ = "This is some text"
 ```
 
-String literals can span multiple lines and automatically include the newline character at the end  
-*use \ to remove the automatic newline character at the end(does not work for the first line).*
+<br>
+
+## Strings are objects of the *str* class in python
+
+```python
+type("My String") # Returns: <class 'str'>
+```
+
+<br>
+
+[Back to Top](#python-strings)
+___
+
+<br>
+
+
+# `Multiline Strings`
+String literals can span multiple lines by using triple quotes (`'''` or `"""`) and automatically include the newline character `\n` at the end. 
+
+*use \ to remove the automatic newline character at the end (does not work for the first line).*
 
 ```python
 print("""  
@@ -583,24 +707,22 @@ line 3\
 #Output: line 1line 2line 3
 ```
 
-## Strings are objects of the *str* class in python
+<br>
 
-```python
-type("My String") # Returns: <class 'str'>
-```
+[Back to Top](#python-strings)
+___
 
 <br>
 
-# `String Concatenation and Duplication`
-___
-## Concatenation:
-> * means to join
-> *  use **+** to concatenate two strings
-> *  use **\*** to duplicate a string
 
-> * String literals next to each other are automatically concatenated
-> * useful for breaking up long strings
+# `String Concatenation`
+`Concatenate` means to join
+> *  use `+` to concatenate two strings
 
+<br>
+
+String literals next to each other are automatically concatenated
+>   * useful for breaking up long strings
 
 ```python
 print(
@@ -615,9 +737,10 @@ print(
 # Output:
 # Python is an easy to learn, powerful programming language.It has efficient high-level data structures and a simple but effective approach to object-oriented programming.Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.
 ```
+<br>
 
-## Concatenate with **+**
-> * use **+** to concatenate two strings
+## `Manually Concatenate`
+Use `+` to concatenate two strings
 
 
 ```python
@@ -625,9 +748,7 @@ print(
 #          ^ don't forget the space
 ```
 
-Concatenation is often practically used with variables
-
-
+> Concatenation is often practically used with variables
 ```python
 first = "John" 
 last = "Smith" 
@@ -637,10 +758,13 @@ print("Hello my name is " + first + " " + last)
 # Hello my name is John Smith
 ```
 
-### Compound Concatenate and Assign Strings with **+=**
-> * use **+=** to concatenate and assign
+<br>
 
-***NOTE: Compound Assignment operations perform the operation and assign the result to the variable on the left hand side***
+## `Compound Concatenate and Assign Strings`
+Use `+=` to concatenate and assign
+
+
+> Compound Assignment operations perform the operation and assign the result to the variable on the left hand side
 
 
 ```python
@@ -652,8 +776,18 @@ letters += "c" # letters = "ab" + "c"
 print(letters) # Output: abc
 ```
 
-## Duplicate Strings with **\***
-> * use \* to duplicate a string
+<br>
+
+[Back to Top](#python-strings)
+___
+
+<br>
+
+# `String Duplication`
+`Duplicate` means to make a copy.
+> *  use `*` to duplicate a string
+
+
 
 
 ```python
@@ -662,10 +796,12 @@ print("000 " * 10)
 #000 000 000 000 000 000 000 000 000 000 
 ```
 
-## Compound Duplicate and Assign Strings with **\*=**
-> * use \*= to duplicate a string and assign
+<br>
 
-***NOTE: Compound Assignment operations perform the operation and assign the result to the variable on the left hand side***
+## `Compound Duplicate and Assign Strings`
+Use `*=` to duplicate a string and assign
+
+> Compound Assignment operations perform the operation and assign the result to the variable on the left hand side
 
 
 ```python
@@ -676,13 +812,22 @@ print(pattern)
 # Output: _--[O]--__--[O]--__--[O]--__--[O]--__--[O]--_
 ```
 
-# `String Comparision`
-___
-**Strings are compared Lexicographically**
+<br>
 
-**Lexicographical Comparision**
-> * Basically: is like comparing the alphabetical order of characters or strings.
-> * Specifically: is the comparision of strings character by character, taking the difference between their Unicode codepoint values. 
+[Back to Top](#python-strings)
+___
+
+<br>
+
+# `String Comparision`
+Strings are compared `Lexicographically`
+
+`Lexicographical Comparision`  
+* Basically: is like comparing the alphabetical order of characters or strings.
+
+* Specifically: is the comparision of strings character by character, taking the difference between their Unicode codepoint (base 10 integer) values. 
+
+<br>
  
 How it works:
 > 1. Compare the first character of each string. 
@@ -691,8 +836,9 @@ How it works:
 > 4. If every character is equal return 0. 
 
 
-## Equality Comparision ( **==** )
-> * Compares the value of two strings, returns True if they are equal and False if they are not. 
+## `Equality Comparision`
+`Equality Comparision ==`  
+Compares the value of two strings, returns True if they are equal and False if they are not. 
 
 
 ```python
@@ -704,8 +850,11 @@ last = "Smith"
 first == last # Returns: False
 ```
 
-## NOT Equal ( **!=** )
-> * Compares the value of two strings, returns True if they are NOT equal and False if they are equal. 
+<br>
+
+## `NOT Equal`
+`NOT Equal !=`  
+Compares the value of two strings, returns True if they are NOT equal and False if they are equal. 
 
 
 ```python
@@ -717,11 +866,17 @@ last = "Smith"
 first != last # Returns: True
 ```
 
-## Greater Than ( **>** ) and Less Than ( **<** )
-> * **\>** Compares if the first string is lexicographically greater than the second.
-> * **\<** Compares if the first string is lexicographically lesser than the second. 
+<br>
 
-***NOTE: similiar to alphabetical order, but based on Unicode codepoints***
+## `Greater Than and Less Than`
+`Greater Than > and Less Than <`  
+
+`>` Compares if the first string is lexicographically `greater than `the second.  
+
+`<` Compares if the first string is lexicographically `lesser than` the second. 
+
+*NOTE*: 
+> This is similiar to comparing based on alphabetical order, but instead is based on Unicode codepoints to compare non-alphabetical characters.*
 
 
 ```python
@@ -733,8 +888,10 @@ str1 > str2   # Returns: False
 #apple comes before banana
 ```
 
-## Length Comparision
->* If the strings have different lengths but the shorter string is identical to the longer one up to the length of the shorter string, Python considers the shorter string less than the longer one.  
+<br>
+
+## `Length Comparision`
+If the strings have different lengths but the shorter string is identical to the longer one up to the length of the shorter string, Python considers the shorter string less than the longer one.  
 > For example, "abc" is less than "abcd".
 
 
@@ -745,18 +902,25 @@ str4 = "abcd"
 str3 < str4 #Returns: True (because 'abc' is shorter)
 ```
 
-# `String Indexing`
+<br>
+
+[Back to Top](#python-strings)
 ___
-## Indexing:
-> * Basically: elements are assigned a number starting at 0 and increasing for each character.
-> * Specifically: elements are associated with a specific identifier (index), which can be used to directly locate and access the data in a collection
+
+<br>
+
+# `String Indexing`
+
+Basically: `Indexing` is the assigment of a number to each element starting at 0 and increasing for each element (character).
+
+Specifically: `Indexing` is the association of a specific identifier (index) with each element of and iterable, which can be used to directly locate and access the data in a collection.
 
 > * Strings are a sequence or "string" of characters.
 > * Strings can be thought of as a list of characters.
 > * Strings can be indexed like lists
 > * each character in the string is given an index starting from 0.
 
-***NOTE: spaces are counted as characters***
+IMPORTANT --> `spaces are counted as characters`
 
 <br> 
 
@@ -771,7 +935,11 @@ ___
 <br>
 <br>
 
-***Why do indexes start at 0?***   
+## `Why do indexes start at 0?`  
+TLDR: The beginning of the array and the first element are the same spot in memory
+
+<br> 
+
 *The convention of starting indexes at 0 was solidified by early programming languages like C, which was heavily influenced by the needs and constraints of the hardware at the time.*
 *C, developed in the early 1970s, adopted 0-based indexing and became one of the most influential programming languages. Many subsequent languages, such as C++, Java, and Python, followed this convention due to C's widespread influence.*
 
@@ -782,10 +950,14 @@ ___
     Address = Base Address + (Index * Element Size)
 
 *When the index is 0 the address of the element is equal to the base address of the array*  
-***Summary: the beginning of the array and the first element are the same spot in memory***
 
-### Accessing Characters in a String
-> * Individual characters of a string can be accessed using subscripting with [ ]  
+
+<br>
+
+
+
+## `Accessing Characters in a String`
+Individual characters of a string can be accessed using subscripting with `[]`  
 > * Use the index of the character and subscripting to access it  
 
 syntax:
@@ -806,8 +978,10 @@ print( txt[-2] )# Output: n
 print( txt[-3] )# Output: i
 ```
 
-## Changing Characters in a String
-**Strings are immutable meaning its values cannot be changed**
+<br>
+
+## `Changing Characters in a String`
+Strings are immutable meaning its values cannot be changed
 > * new strings can be created, but cannot change the original string
 > * attempting to change the value of a string results in an error. 
 
@@ -821,10 +995,13 @@ txt[0] = "a"
 
 <br>
 
-# `String Slicing`
+[Back to Top](#python-strings)
 ___
-## Slicing:
-> * is creating a substring, by returning parts of the orginal string
+
+<br>
+
+# `String Slicing`
+`Slicing` is the creation a substring, by returning parts of the orginal string
 > * use slicing notation [ : : ] to return a substring
 
 Example with the string "Programming"
@@ -868,7 +1045,7 @@ print( txt[7:0:-1])     # Returns: mmargor
 print( txt[8:0:-2] )    # Returns: imro
 ```
 
-## Ascending Slices:
+## `Ascending Slices`
 > * Default start_index is 0
 > * Default stop_index is len(string) (end of the string)
 > * Default step is 1
@@ -893,7 +1070,9 @@ txt[:5]     # Returns: Progr
 txt[6::]    # Returns: mming
 ```
 
-## Descending Slices:
+<br>
+
+## `Descending Slices`
 > * Default start_index is len(list) (end of the list)
 > * Default stop_index is the beginning of the list
 >   * In order to include the character at index 0 you must use the default stop_index 
@@ -913,23 +1092,29 @@ txt[-3::-1]    # Returns: immargorP
 txt[::-3]      # Returns: gmrr
 ```
 
-# `Built-in Function Calls for Strings`
-___
-## Functions:
-> * are blocks of reusable code, that perform a specific task.
-> * must be defined before they are called
+<br>
 
+[Back to Top](#python-strings)
+___
+
+<br>
+
+# `Built-in String Function Calls`
+`Functions` are blocks of reusable code, that perform a specific task.
+> * must be defined before they are called
 > * are typically called using their name followed by parenthesis with any required arguments inside.
 
 
-## Built-in Functions are pre-defined by the standard library
+`Built-in Functions are pre-defined by the Python standard library`
 
-len(obj)
+<br>
+
+`len(obj)`
 
 > * returns the number of characters in the string   
-***NOTE: spaces count as characters***  
 > * subtracting 1 from the length of a string or list returns the last index of that sequence
 
+IMPORTANT --> `spaces are counted as characters`
 
 ```python
 len("Hello World!") # Returns: 12
@@ -943,9 +1128,11 @@ len(txt)-1          # Returns: 10
 
 ```
 
-max(iterable)
-> * Returns the maximum character (according to Unicode code point) in a string.
-> * an iterable is a sequence that can return its members one by one (like a list)
+<br>
+
+`max(iterable)`
+Returns the maximum character (according to Unicode code point) in a string.
+> * an `iterable` is a sequence that can return its members one by one (like a list)
 
 
 ```python
@@ -953,37 +1140,45 @@ txt = "Programming"
 max(txt) # Returns: r
 ```
 
-min(iterable)
-> * Returns the minimum character (according to Unicode code point) in a string.
+<br>
 
-***NOTE: an interable is a sequence that can return its members one by one(like a list)***
+`min(iterable)`
+Returns the minimum character (according to Unicode code point) in a string.
+> * an `iterable` is a sequence that can return its members one by one (like a list)
 
 ```python
 txt = "Programming"
 min(txt) # Returns: P
 ```
 
-# `Built-in String Method Calls`
+<br>
+
+[Back to Top](#python-strings)
 ___
-## Methods:
-> * are functions defined by a class
+
+<br>
+
+# `Built-in String Method Calls`
+`Methods` are functions defined by a class
 > * are typically called using an object or class and dot ( . ) syntax
 
-syntax for methods which require objects:
+<br>
+
+> syntax for methods which require objects:
 
     object.method(arguments)
 
-syntax for methods which DO NOT require objects:
+> syntax for methods which DO NOT require objects:
 
     class.method(arguments)
 
-Built-in methods are pre-defined by classes pre-defined by the standard library
+`Built-in methods are pre-defined by classes pre-defined by the standard library`
 
-To see what methods you can call on an object use:  
+> To see what methods you can call on an object use:  
     
     dir(object)  
 
-To see more information on a specific method use:  
+> To see more information on a specific method use:  
     
     help(object.method)
 
@@ -1214,21 +1409,28 @@ txt.zfill()
 
 <br> 
 
-# `Format Strings: f-strings`
+[Back to Top](#python-strings)
 ___
+
+<br>
+
+# `Format Strings: f-strings`
 Introduced in Python 3.6, f-strings provide a convenient way to embed expressions inside string literals. 
 
-## Format Strings:
-> * Basically: is a way to use variables inside of strings
-> * Specifically: is a way to embed expressions inside of string literals  
+
+Basically: `Format Strings` are a way to use variables inside of strings
+
+Specifically: `Format Strings` are a way to embed expressions inside of string literals  
 > * They are prefixed with an 'f' or 'F' character and contain expressions enclosed in curly braces { }.
 
 syntax:
 
     f"literal {var} text"
 
-## Inserting Variables Directly Into Strings
-> * f-strings can be used to add variables to strings without the need for concatenation (+)
+<br>
+
+## `Inserting Variables Directly Into Strings`
+f-strings can be used to add variables to strings without the need for concatenation (+)
 > * prefix strings with 'f' or 'F' to indicate a f-string
 > * enclose variables within { } inside of the f-string
 
@@ -1242,11 +1444,12 @@ print(greeting)  # Output: Hello, my name is Sam and I am 30 years old.
 
 ```
 
-## Formating Numbers for Output
-> * use a **:** to seperate the variable from format information
-> * numbers can be formated with ( **_** ) or with ( **,** ) for readability
+<br>
 
+## `Formatting Numbers for Output`
+Use a `:` to seperate the variable from format information
 
+> Numbers can be formated with `_` or with `,` for readability
 ```python
 #Integers
 n = 1000000000
@@ -1255,9 +1458,7 @@ print( f'{n:_}' ) #Output: 1_000_000_000
 print( f'{n:,}' ) #Output: 1,000,000,000
 ```
 
-Floats can be rounded to *n* decimal places with ( : .*n*f )
-
-
+> Floats can be rounded to `n` decimal places with ( : .`n`f )
 ```python
 #Floats (.nf) to round to n decimal places
 n = 1234.56789
@@ -1269,9 +1470,7 @@ f"{n:_.2f}" # Returns: 1_234.57
 f"{n:,.3f}" # Returns: 1,234.568
 ```
 
-Scientific Notation can be used with ( :e )
-
-
+> Scientific Notation can be used with ( :e )
 ```python
 n = 602200000000000000000000
 
@@ -1279,9 +1478,12 @@ print(f'{n:e}') #6.022000e+23
 print(f'{n:.3e}') #6.022e+23
 ```
 
-## Formating Expressions for Output
-> * expressions can be inserted into strings
-> * this can be helpful with debugging
+<br>
+
+
+## `Formatting Expressions for Output`
+Expressions can be inserted into strings
+> * this can be helpful with debugging and logging
 
 
 ```python
@@ -1295,20 +1497,20 @@ c = 0.1; d = 0.2
 f'{c + d = :.1f}' # Returns:  c + d = 0.3
 ```
 
-formatting information can be stored inside of a string variable
-
-
+> formatting information can be stored inside of a string variable
 ```python
 c = 3.141592665
 form = ".2f"
 f'{c:{form}}'  # Returns: 3.14
 ```
 
-## Padding and Alignment
-> * right align with >
-> * left align with <
-> * center align with ^
-> * align and pad with numbers (see examples)
+<br>
+
+## `Padding and Alignment`
+* right align with `>`
+* left align with `<`
+* center align with `^`
+* align and pad with numbers (see examples)
 
 
 ```python
@@ -1323,14 +1525,16 @@ print(f'|{var:<5}|') #Output: |x    |
 print(f'|{var:^5}|') #Output: |  x  |
 
 #align and pad to n with character
-print(f'|{var:_>5}|') #Output: |____x|
+print(f'|{var:_>5}|') #Output: _x|
 print(f'|{var:#<5}|') #Output: |x####|
 print(f'|{var:|^5}|') #Output: |||x|||
 print(f'|{var:a^5}|') #Output: |aaxaa|
 ```
 
-## Removing quotes from output
-> * use !s to remove quotes from output expressions
+<br> 
+
+## `Removing quotes from output`
+Use `!s` to remove quotes from output expressions
 
 ```python
 name = "Alice"
@@ -1338,16 +1542,24 @@ f'{name = }' #Returns: name = 'Alice'
 f'{name = !s}' #Returns: name = Alice
 ```
 
-# `Raw Strings`
-___
-> * Raw strings are string literals prefixed with an 'r' or 'R' character. 
-> * They treat backslashes \ as literal characters, and they are often used for regular expressions, file paths, or any string where backslashes are prevalent and should not be treated as escape characters.
+<br>
 
-> * prefix strings with ***r*** to indicate a raw string
+[Back to Top](#python-strings)
+___
+
+<br>
+
+# `Raw Strings`
+`Raw strings` are string literals prefixed with an `r` or `R` character. 
+> * r-strings treat backslashes `\` as literal characters, and they are often used for regular expressions, file paths, or any string where backslashes are prevalent and should not be treated as escape characters.
+
+> * prefix strings with `r` or `R` to indicate a raw string
 
 syntax:
 
     r"literal text"
+
+    R"literal text"
 
 
 ```python
@@ -1361,30 +1573,45 @@ print(r'C:\Users\Username\Desktop\Myfolder')
 
 ```
 
-# `Bytes Strings`
+<br>
+
+[Back to Top](#python-strings)
 ___
-> * Bytes literals, prefixed with a 'b' or 'B' character, represent sequences of bytes. 
-> * They are used to store binary data such as images, audio files, or any data that is not necessarily text.
-> * prefix strings with ***b*** to indicate a bytes literal
+
+<br>
+
+# `Bytes Strings`
+`Bytes Strings`, prefixed with a `b` or `B` character, represent sequences of bytes. 
+> * Bytes strings are used to store binary data such as images, audio files, or any data that is not necessarily text.
+> * prefix strings with `b` to indicate a bytes literal
 
 syntax:
+```
+b"bytes literal"
 
-    b"bytes literal"
+B"bytes literal"
+```
 
 
 ```python
 b'\x48\x65\x6C\x6C\x6F' #bytes literal
 ```
 
-decode bytes literals with .decode()
+> decode bytes literals with `.decode(encoding='utf-8', errors='strict')`
 
 ```python
 print(b'\x48\x65\x6C\x6C\x6F'.decode()) # Hello
 print(b'Hello') # b'Hello'
 ```
 
-# `Appendix`
+<br>
+
+[Back to Top](#python-strings)
 ___
+
+<br>
+
+# `Appendix`
 
 
 ```python
@@ -1420,3 +1647,13 @@ def return_bytes(txt):
 
 return_bytes(b"hello")
 ```
+<br>
+
+___
+
+[Back to Top](#python-strings)
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt* 

@@ -1,42 +1,66 @@
 # `Python Variables`
-___
-
 Covered in this file:
-1. Defining a Variable
-2. Creating a Variable
-3. Rules For Naming Variables
-4. Variables are Pointers to Locations in Memory
-5. Variable Aliasing
-6. Type Annotations: Declaring a Variable Type
-7. Variable Scope/Context
+1. [Defining a Variable](#defining-a-variable)
+1. [Creating a Variable](#creating-a-variable)
+    1. [Assigning Multiple Variables the same value](#assigning-multiple-variables-the-same-value)
+    1. [Assigning Multiple Variables on the same line](#assigning-multiple-variables-on-the-same-line)
+    1. [Reassigning a Variable](#reassigning-a-variable)
+1. [Rules For Naming Variables](#rules-for-naming-variables)
+1. [Variables are Pointers to Locations in Memory](#variables-are-pointers-to-locations-in-memory)
+    1. [A Lower Level Explanation of Variables](#a-lower-level-explanation-of-variables)
+    1. [NameError: name is not defined](#nameerror-name-is-not-defined)
+1. [Variable Aliasing](#variable-aliasing)
+    1. [Creating Aliases](#creating-aliases)
+    1. [Aliasing: Immutable Types](#aliasing-immutable-types)
+    1. [Aliasing: Mutable Types](#aliasing-mutable-types)
+1. [Type Annotations: Declaring a Variable Type](#type-annotation-declaring-variable-type)
+1. [Variable Scope/Context](#variable-scopecontext)
+    1. [Built-in Namespace](#built-in-namespace)
+    1. [Global Namespace](#global-namespace-and-scope)
+    1. [Local Namespace and Scope](#local-namespace-and-scope)
+    1. [global keyword](#global-keyword)
+    1. [nonlocal keyword](#nonlocal-keyword)
+    1. [Special Scoping Errors](#special-scoping-errors)
+
+<br>
+
+___
 
 <br>
 
 # `Defining a Variable`
-___
-## Variables:
-> * Basically: are like containers that store literal data 
-> * Specifically: are pointers that reference a location in memory where the literal data is stored
-> * The data a variable points to can change
+Basically: `variables` are like containers that store literal data 
 
-***NOTE: The distinction between the basic explaination and the specific one is important here.***  
-*Variables can be thought of as containers in most cases, however this analogy does not hold for all uses of variables and it is important to understand how they actually work.*
+Specifically: `variables` are pointers that reference a location in memory where the literal data is stored
+> * The data a variable points to can change
 
 <br>
 
+*NOTE*: 
+> The distinction between the basic explaination and the specific one is important here. 
+> * Variables can be thought of as containers in most cases, however this analogy does not hold for all uses of variables and it is important to understand how they actually work.*
+
+<br>
+
+[Back to Top](#python-variables)
+
+___
+
+<br>
 
 # `Creating a Variable`
-___
-> * write the name of the variable followed by a single equal sign **=**
-> * a single equals sign **=**is used to assign a variable to the data it references
+To define a variable write the name of the variable followed by a single equal sign `=`
+> * a single equals sign `=` is used to assign a variable to the data it references
 
-> * **For code readability variable names should represent the data they store**
+> * **For source code readability variable names should represent the data they store**
+
+<br>
 
 Variable Creation Syntax:
 
     variable = value
 
-variable examples:
+examples:
 
 ```python
 switch = False
@@ -59,12 +83,15 @@ e = ["a","b","c"]
 # a, b, c, d, e are variables
 ```
 
-***NOTE: In many examples I will use a single letter as a variable, while this is perfectly legal python it is bad practice to code this way.***  
-*I do this for simplicity, and because often the example variables just store example data.* 
+*NOTE*: 
+> In many examples I will use a single letter as a variable, while this is perfectly legal python it is bad practice to code this way.***  
+> * I do this for simplicity, and because often the example variables just store example data. 
 <br>
  
-***TO BE CLEAR: Variable names should be representative of the data that they reference***  
-For example: If you are keeping track of a count with a variable, name the variable count. 
+***TO BE CLEAR:***
+- Variable names should be representative of the data that they reference
+
+> For example: If you are keeping track of a count with a variable, name the variable count. 
 
 
 ```python
@@ -73,10 +100,9 @@ count = 1
 
 <br>
 
-## Multiple Variables can be assigned the same value
-> * set each variable equal to the next and finally to the value they will store
->   * this also make the variables aliases
-
+## `Assigning Multiple Variables the same value`
+Set each variable equal to the next and finally to the value they will store
+>   * this also makes the variables aliases
 
 ```python
 a = b = c = 1
@@ -85,7 +111,7 @@ a = b = c = 1
 
 <br>
 
-## Multiple Variables can be assigned on the same line
+## `Assigning Multiple Variables on the same line`
 There are two ways to assign multiple variabes on the same line.
 
 > * perform multiple assignment statements seperated with a **;**
@@ -106,10 +132,9 @@ i, j, k = 5, 6, 7
 
 <br>
 
-## Reassigning a Variable
-> * reassigning a variable, is changing the value the variable references (points to) in memory
-
-
+## `Reassigning a Variable`
+Reassigning a variable, is changing the value the variable references (points to) in memory
+> * Rewrite the name of the variable and set it to a new value with `=`
 ```python
 num = 1
 #at this point in the program num is 1
@@ -120,20 +145,24 @@ num = 2
 print(num) # Output: 2
 ```
 
+
+[Back to Top](#python-variables)
+<br>
+___
+
 <br>
 
 # `Rules for Naming Variables`
-___
-|Rules for Naming Variables|
-|:-:|
-|They are case sensitive (a and A are not the same)|
-|Must start with letter or underscore "_"|
-|Cannot start with a number| 
-|Can only contain a-z, A-Z, 0-9, and "_" characters|
-|Cannot contain spaces|
-|Variables should be named after what they store/reference|
+1. They are case sensitive (a and A are not the same)
+1. Must start with letter or underscore "_"
+1. Cannot start with a number 
+1. Can only contain a-z, A-Z, 0-9, and "_" characters
+1. Cannot contain spaces
+1. Variables should be named after what they store/reference
 
-### Example: Legal Variable Names
+<br>
+
+## `Example: Legal Variable Names`
 
 
 ```python
@@ -145,8 +174,9 @@ VAR = 0
 var1 = 0 
 ```
 
-### Example: Illegal Variable Names
+<br>
 
+## `Example: Illegal Variable Names`
 
 ```python
 1var = 0
@@ -157,28 +187,37 @@ v ar = 0
 
 #each of these will raise an error
 ```
+
+[Back to Top](#python-variables)
+<br>
+___
+
 <br>
 
 # `Variables are pointers to locations in memory`
-___
-### A Lower Level Explanation of Variables
-> * This following is a lower level explaination of how variables work in Python.  
->
-> * The basic definition will work most of the time for beginners, but to understand some higher level concepts this information is required. 
 
-    x = 10
+## `A Lower Level Explanation of Variables`
+This following is a lower level explaination of how variables work in Python.  
+>
+> * The basic definition of variables will work most of the time for beginners, but to understand some higher level concepts this information is required.
+
+<br>
+
 
 What happens when you assign 10 to x:
-1. Python allocates memory for and creates an integer object in memory with the data literal ***10***.
-2. The variable ***x*** is assigned a reference to the memory location of the integer object ***10***.
+```python
+x = 10
+```
+1. Python allocates memory for and creates an integer object in memory with the data literal `10`.
+2. The variable `x` is assigned a reference to the memory location of the integer object `10`.
     * Python maintains a table that associates variables and their assigned references
 3. When you access or modify a variable, Python uses the reference(memory address) to locate the actual object in memory
 
 <br>
 
-We can visualize this idea using the id() function call
-* Use the id() function call to return the memory location to which variable points.
-* Returns a integer *<class 'int'>* that is a unique identifier for a location in memory where the data is stored.
+We can visualize this idea using the `id()` function call
+* Use the `id()` function call to return the memory location to which variable points.
+* Returns a integer `<class 'int'>` that is a unique identifier for a location in memory where the data is stored.
 * The number will potentially be different each time the program is executed. 
 
 
@@ -192,8 +231,9 @@ id(memory_pointer) # Returns: 139029373780496
 # id() returns the memory location of the data to which a variable points 
 # The value that is returned will be different from the examples above
 ```
+<br>
 
-## NameError: name is not defined.
+## `NameError: name is not defined.`
 > * if you attempt to use a variable name that was never assigned a reference, a NameError is raised
 
 
@@ -201,20 +241,22 @@ id(memory_pointer) # Returns: 139029373780496
 print(var) #Output: NameError: name 'var' is not defined.
 ```
 
+
+[Back to Top](#python-variables)
+<br>
+___
+
 <br>
 
 # `Variable Aliasing`
-___
-## Aliasing:
-> * is the act of assigning one variable to the same reference as another variable  
-> * aliases all point to the same memory location  
->   
-> * the act of assigning one variable to another passes a reference data  
+
+`Aliasing` is the act of assigning one variable to the same reference as another variable  
+> * aliases all point to the same memory location   
+> * the act of assigning one variable to another passes a reference to the memory location of the data  
 
 <br>
 
-## Creating Aliases
-
+## `Creating Aliases`
 ```python
 #a, b, and c are aliases (ie they point to the same data)
 a = "some text"
@@ -232,8 +274,8 @@ print(id(c)) # 125810368587504 <-- Same Memory Location
 
 <br>
 
-## Changing the reference of an immutable type
-> * Changing the reference of one variable, does not change the reference of the aliases
+## `Aliasing: Immutable Types`
+Changing the reference of one variable, does not change the reference of the aliases
 
 
 ```python
@@ -304,8 +346,8 @@ print(id(c)) # 125810368880496 <-- Different Memory Location
 
 <br>
 
-## Changing the data in a mutable type
-> * Changing the value of a mutable type, changes the value for all aliases
+## `Aliasing: Mutable Types`
+Changing the value of a mutable type, changes the value for all aliases
 
 
 ```python
@@ -327,23 +369,29 @@ print(id(c)) # 125810368584576 <-- Same Memory Location
 
 ```
 
+
+[Back to Top](#python-variables)
+<br>
+___
+
 <br>
 
-# `Type Annotations: Declaring Variable Type`
-___
-## Type Annotation:
-> * is a way to declare the type of data the variable is expected to reference
-> * is not enforced by the interpreter
->   * This means if the variable references a different data type an error will NOT be raised
+# `Type Annotation: Declaring Variable Type`
+`Type Annotation` is a way to declare the type of data the variable is expected to reference
+> * This is not enforced by the interpreter
+>   * Which means if the variable references a different data type an error will NOT be raised
 
-Many other programming languages require that you declare the type of data a variable holds.  
-This is an excellent way to better document your code.
+*Many other programming languages require that you declare the type of data a variable holds.*  
+
+*Type Annotation is an excellent way to better document your code.*
+
+<br>
 
 Type Annotation Syntax:
 
     variable: type = value
 
-
+examples:
 ```python
 boolean: bool = True
 
@@ -364,43 +412,48 @@ set1d: set = {"a","b","c"}
 dictionary: dict = {"a": 97, "b": 98, "c":99}
 ```
 
+
+[Back to Top](#python-variables)
+<br>
+___
+
 <br>
 
 # `Variable Scope/Context`
-___
-## Scope/Context
-> * Basically: the area within code in which a variable can be accessed and used 
-> * Specifically: refers to the visibility and accessibility of variables, functions, and other identifiers within a program.
-> * can be global, local, or nonlocal
-> * Python looks for variables by searching from the most local scope, to the least local scope. 
+Basically: the area within code in which a variable can be accessed and used 
 
-    global
-> * The global keyword can be used to access and modify global variables
+Specifically: refers to the visibility and accessibility of variables, functions, and other identifiers within a program.
 
-    nonlocal
-> * The nonlocal keyword can be used to indicate variable access one scope up
+* Scope/Context can be `global`, `local`, or `nonlocal`
+* Python looks for variables by searching from the most local scope, to the least local scope. 
 
-Namespace:
-> * a mapping of names (variables) to objects, there are built-in, global and local namespaces.
+`global`: The global keyword can be used to access and modify global variables
+
+`nonlocal`: The nonlocal keyword can be used to indicate variable access one scope up
+
+`Namespace`: a mapping of names (variables) to objects, there are built-in, global and local namespaces.
 
 
-***NOTE: It is important to understand that global and local are relative terms. Depending on where you are in a program and what variable you are refering to that same variable may   described as global or local. Try this to help with your understanding:***
-* local variables are local to something
-    * **when you see local think 'inside of'**
-    * example: local to a module(file), class, method, or function
+*NOTE*: 
+> It is important to understand that global and local are relative terms. Depending on where you are in a program and what variable you are refering to that same variable may described as global or local. 
 
-* global variables are global to something
-    * **when you see global think 'outside of'**
-    * example: global to a module(file), class, method, or function
+Try this to help with your understanding:
+
+`local variables` are local to something
+> * **when you see local think 'inside of'**
+>    * example: local to a module(file), class, method, or function
+
+`global variables` are global to something
+> * **when you see global think 'outside of'**
+>    * example: global to a module(file), class, method, or function
 
 <br>
 
-## **Built-in Namespace**
-> * contains all of the built-in names provided by defualt
+## `Built-in Namespace`
+The built-in namespace contains all of the built-in names provided by defualt
 
 
-Use the dir() function to see the current local namespace
-
+*Use the dir() function to see the current local namespace*
 
 ```python
 # dir() returns a list of the current local namespace
@@ -411,7 +464,7 @@ print(namespace)
 # ['__annotations__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__']
 ```
 
-Add the \_\_builtins\_\_ argument to see the built-in namespace
+> Add the \_\_builtins\_\_ argument to see the built-in namespace
 
 
 ```python
@@ -442,10 +495,9 @@ print(builtin_namespace)
 
 <br>
 
-### **Global Namespace and Scope**
-> * typically any variable created inside of a file (module), but not inside of another construct (function, method, class, etc.) has a global scope.  
->
-> * Variables with globals scope are called global variables
+## `Global Namespace and Scope`
+Typically any variable created inside of a file (`module`), but not inside of another construct (`function`, `method`, `class`, etc.) has a global scope.  
+* Variables with globals scope are called `global variables`
 
 
 ```python
@@ -459,11 +511,10 @@ print(dir())
 # in this case dir() returns the local namespace for the module, but what is local to the module is global to another part of the module's code
 ```
 
-#### Unlike other languages, variables created inside of a Conditional, or Loop are accessible outside of that construct.
+*NOTE*:
+> Unlike other languages, variables created inside of a Conditional, or Loop are accessible outside of that construct.
 
-Conditionals
-
-
+`Conditionals`
 ```python
 #if example
 if(False): 
@@ -477,7 +528,6 @@ print(x) # Output: NameError: name 'x' is not defined
 print(y) # Output: NameError: name 'y' is not defined
 ```
 
-
 ```python
 if(True):
     x = "x"
@@ -489,9 +539,7 @@ print(x) # x
 print(y) # y
 ```
 
-While loops
-
-
+`While loops`
 ```python
 i = 0
 while(i<1):
@@ -502,7 +550,7 @@ while(i<1):
 print(var) # Output: while
 ```
 
-For Loops
+`For Loops`
 
 
 ```python
@@ -517,12 +565,10 @@ print(var) #Output: for
 
 <br>
 
-## **Local Namespace and Scope**
-* variables created inside of a Function, Class, etc. is local to that construct
+## `Local Namespace and Scope`
+Variables created inside of a Function, Class, etc. are local to that construct
 
-Functions
-
-
+`Functions`
 ```python
 def example(parameter):
     var = "inside function"
@@ -545,7 +591,7 @@ print(parameter)    #NameError: name 'parameter' is not defined
 print(var)          #NameError: name 'var' is not defined
 ```
 
-Classes
+`Classes`
 
 
 ```python
@@ -575,8 +621,10 @@ print(var) #NameError: name 'var' is not defined
 
 ```
 
-**global keyword**
-* the global keyword is used to access and modify a global scope variable inside of a local scope
+<br>
+
+## `global keyword`
+The `global` keyword is used to access and modify a global scope variable inside of a local scope
 
 
 ```python
@@ -609,8 +657,10 @@ example()   # Changes only occur after the function has been called.
 print(text) # Output: Made a local change
 ```
 
-**nonlocal keyword**
-* use the nonlocal keyword to access 1 scope up
+<br>
+
+## `nonlocal keyword`
+Use the `nonlocal` keyword to access 1 scope up
 
 
 ```python
@@ -634,9 +684,7 @@ print(text) # Output: I am global
 
 <br>
 
-## Special Scoping Errors
-
-
+## `Special Scoping Errors`
 ```python
 x = 'global'
 
@@ -649,7 +697,6 @@ example()
 
 UnboundLocalError: local variable referenced before assignment
 
-
 ```python
 x = "global"
 
@@ -660,3 +707,15 @@ def example():
 #Python assumes that since you created a local 'x' you ment to print the local 'x' and not the global 'x'
 example()  
 ```
+
+<br>
+
+___
+
+
+[Back to Top](#python-variables)
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt* 

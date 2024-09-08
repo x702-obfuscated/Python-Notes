@@ -1,74 +1,119 @@
-# <table><th>Python Lists</th></table>
+# `Python Lists`
+
+Covered in this file:
+1. [Collection Types](#collection-types)
+1. [Defining a List](#defining-a-list)
+1. [Creating a List ](#creating-a-list)
+1. [Converting from Tuples and Sets](#converting-from-tuples-and-sets)
+1. [List Operations](#list-operations)
+    1. [Assigning Multiple Variables with Lists](#assigning-multiple-varibles-with-lists)
+    1. [Checking List Membership](#checking-list-membership)
+    1. [Concatenating Lists (joining)](#concatenating-lists-joining)
+    1. [Concatenate and Assign Lists](#concatenate-and-assign-lists)
+    1. [Duplicate Lists](#duplicate-lists)
+    1. [Duplicate and Assign Lists](#duplicate-and-assign-lists)
+1. [Accessing Elements in a List](#accessing-elements-in-a-list)
+1. [Changing Elements in a List](#changing-elements-in-a-list)
+1. [Built-in list function calls ](#built-in-list-function-calls)
+1. [Built-in list methods calls](#built-in-list-method-calls)
+1. [Sublists: Slicing and Concatenation](#sublists-slicing-and-concatenation)
+    1. [Ascending Slices](#ascending-slices)
+    1. [Descending Slices](#descending-slices)
+    1. [Assigning to a Sublist](#assigning-to-a-sublist)
+1. [Lists of Lists: Nested Lists](#lists-of-lists-nested-lists)
+    1. [Accessing Elements in 2D Lists](#accessing-elements-in-2d-lists)
+    1. [Changing Elements in 2D List](#changing-elements-in-2d-lists)
+    1. [Length of 2D Lists](#length-of-2d-lists)
+1. [Unpacking Collections](#unpacking-collections)
+    1. [Unpacking Into Variables](#unpacking-into-variables)
+    1. [Unpacking Multiple Values Into One Variable](#unpacking-mutliple-values-into-one-variable)
+    1. [Ignoring Unpacked Values](#ignore-unpacked-values)
+1. [List Comprehension](#list-comprehension)
+    1. [1D List Comprehensions](#1d-list-comprehensions)
+    1. [2D List Comprehensions](#2d-list-comprehensions)
+1. [List Iteration: Looping](#list-iteration-looping)
+    1. [Looping through the indexes of a list](#looping-through-the-indexes-of-a-list)
+    1. [Looping through the elements of a list](#looping-through-the-elements-of-a-list)
+    1. [Looping through the elements backwards](#looping-through-the-elements-backwards)
+    1. [Looping through the index and elements at the same time](#looping-through-the-index-and-elements-at-the-same-time)
+    1. [Combine values from multiple lists into a tuple](#combine-values-from-multiple-lists-into-a-tuple)
+
+<br>
+
 ___
-**Covered in this file:**
-```
-1. Defining a list
-2. Creating a List 
-3. Converting from Tuples and Sets
-4. List Operations
-5. Accessing Elements in a List
-6. Changing Elements in a List
-7. Built-in list function calls 
-8. Built-in list methods calls
-9. List Slicing and Concatenation
-10. Lists of Lists: Nested Lists
-11. Unpacking Collections
-12. List Comprehension
-13. List Iteration: Looping
-```
+
+<br>
+
+# `Collection Types`
 
 There are four major collection data types in the Python programming language:
 
-> **List:**   
-collection which is ordered(indexed), mutable, allows duplicate members, and uses [ ] to enclose members.
+A `List` is a collection which is ordered(indexed), mutable, allows duplicate members, and uses [ ] to enclose members.
 ```python
 list1d = [1,2,3]
 ```
 
-> **Tuple:**  
-collection which is ordered(indexed), immutable, allows duplicate members and uses ( ) to enclose members.
+<br>
+
+A `Tuple` is a collection which is ordered(indexed), immutable, allows duplicate members and uses ( ) to enclose members.
 ```python
 tuple1d = (1,2,3)
 ```
-> **Set:**   
-collection which is unordered(not indexed), mutable, does NOT allow duplicate members and uses { } to enclose members.
+
+<br>
+
+A `Set` is a collection which is unordered(not indexed), mutable, does NOT allow duplicate members and uses { } to enclose members.
 ```python
 set1d = {1,2,3}
 ```
-> **Dictionary:**   
-collection which is ordered(indexed with a key), mutable, does NOT allow duplicate members and uses { : } to enclose members.
+
+<br>
+
+A `Dictionary` is a collection which is ordered(indexed with a key), mutable, does NOT allow duplicate members and uses { : } to enclose members.
 ```python
 dict1d = {"a": 1, "b": 2,"c": 3}
 ```
-|**List**|**Tuple**|**Set**|**Dictionary**|
+
+<br>
+
+|`List`|`Tuple`|`Set`|`Dictionary`|
 |:-:|:-:|:-:|:-:|
 |ordered (numerically indexed)|ordered (numerically indexed)|unordered (not indexed)|ordered (indexed with a key)|
 |mutable|immutable|mutable|mutable|
 |duplicates|duplicates|NO duplicates|NO duplicates|
 |**[ ]**|**( )**|**{ }**|**{ : }**| 
 
-> * *Data Structure: a specialized format for organizing, processing, retrieving, and storing data.*
-> * *Collection: a data structure that holds multiple elements*
-> * *Member: an item stored within a collection*
-> * *Element: is a synonym for member*
-> * *Ordered: having a specific order 0,1,2,... (ie. indexed)*
-> * *Indexed:  elements are associated with a specific identifier (index), which can be used to directly locate and access the data*
-> * *Mutable: elements can change*
-> * *Immutable: elements cannot change*
+* *`Data Structure`: a specialized format for organizing, processing, retrieving, and storing data.*
+* *`Collection`: a data structure that holds multiple elements*
+* *`Member`: an item stored within a collection*
+* *`Element`: is a synonym for member*
+* *`Ordered`: having a specific order 0,1,2,... (ie. indexed)*
+* *`Indexed`:  elements are associated with a specific identifier (index), which can be used to directly locate and access the data*
+* *`Mutable`: elements can change*
+* *`Immutable`: elements cannot change*
 
 
-## <table><th>Defining a List</th></table>
+<br>
+
+
+[Back to Top](#python-lists)
+
 ___
-**Lists:** 
-> * are basically a collection of  comma seperated elements
-> * are specifically a collection of data that is ordered, mutable, and allows duplicate members.
+
+<br>
+
+# `Defining a List`
+Basically: `Lists` are a collection of  comma seperated elements
+
+Specifically: `Lists` are a collection of data that is ordered, mutable, and allows duplicate members.
 > * use [ ] to enclose elements
 
-*Note: Python lists are similiar to arrays in other programming languages. Unlike lists, arrays have a fixed size meaning values cannot be added to the array.*
+*Note*: 
+> Python lists are similiar to arrays in other programming languages. Unlike lists, arrays have a fixed size meaning values cannot be added to the array. Lists in python are most closely related to ArrayLists in other languages.*
 
-### List Example
+<br>
 
-
+List Example
 ```python
 ["a","b","c","d","e"] #a list
 
@@ -105,20 +150,17 @@ ucase_alpha = [
 ]
 ```
 
-A list contains multiple items called elements or members
+<br>
+
+A `list` contains multiple items called `elements` or `members`
 |elements|"a"|"b"|"c"|"d"|"e"|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |indexes|0|1|2|3|4|
 |Length|||||5|
 
-An index indicates the spot at which an element is located.   
-Indexes can be used to access each element in the list. 
-
-The length of a list is the total number of elements contained in the list   
-
-
-
-
+> - An `index` indicates the spot at which an `element` is located.   
+> - `Indexes` can be used to access each `element` in the list.   
+> - The length of a list is the total number of elements contained in the list   
 ```python
 #         [------------------elements---------------------]
 list1d =  ["a","b","c","d","e","f","g","h","i","j","k","l"]
@@ -127,22 +169,28 @@ list1d =  ["a","b","c","d","e","f","g","h","i","j","k","l"]
 #                          Length = 12
 ```
 
-## <table><th>Creating a list</th></table>
+<br>
+
+
+[Back to Top](#python-lists)
+
 ___
-> * use [ ] to denote a list
+
+<br>
+
+# `Creating a list`
+Use `[]` to denote a list
 > * seperate elements of a list with commas
-> * The list(iterable) constructor builds a list
+> * The `list(iterable)` constructor builds a list
 
-> * Create and empty list with [ ]
-
-
+Create and empty list with `[]`
 ```python
 [] #creates an empty list
 
 list1d = [] 
 ```
 
-> * Enclose comma seperated elements with [ ]
+Enclose comma seperated elements with `[]`
 
 
 ```python
@@ -152,13 +200,12 @@ list1d = [1,2,3,4,5,6,7,8,9]
 #length = 9
 ```
 
-> * Use the list(iterable) constructor call
+Use the `list(iterable)` constructor call
 
 syntax:
 
     list(iterable)
     
-
 
 ```python
 #use the list(iterable) constructor call
@@ -166,14 +213,23 @@ list() # Returns: []
 list('abcdef') # Returns: ['a', 'b', 'c', 'd', 'e', 'f']
 ```
 
-## <table><th>Converting from Tuples and Sets</th></table>
+<br> 
+
+[Back to Top](#python-lists)
+
 ___
-> * The list(iterable) constructor builds a list
-> * The tuple(iterable) constructor builds a tuple
-> * The set(iterable) constructor builds a set
+
+<br>
+
+# `Converting from Tuples and Sets`
+* The `list(iterable)` constructor builds a list
+* The `tuple(iterable)` constructor builds a tuple
+* The `set(iterable)` constructor builds a set
+
+<br>
 
 Constructors are special methods defined by a class that are used to build instances of a class. 
-> * ie. the list(iterable) constructor makes a list.
+> * ie. the `list(iterable)` constructor makes a list.
 
 
 ```python
@@ -205,19 +261,28 @@ tuple1d = tuple(list1d) #Returns: (1,2,3,4,5)
 set1d = set(list1d) #Returns: {1,2,3,4,5}
 ```
 
-## <table><th>List Operations</th></table>
+<br>
+
+[Back to Top](#python-lists)
+
 ___
+
+<br>
+
+# `List Operations`
 
 |Operation| Description|
 |:-:|:-:|
-|in| checks if a value is a member|
-|not in| checks if a value is not a member|
-|+|concatenates two lists|
-|+=|concatenates and assigns|
-|*| duplicates a list|
-|*=|duplicates and assigns|
+|`in`| checks if a value is a member|
+|`not in`| checks if a value is not a member|
+|`+`|concatenates two lists|
+|`+=`|concatenates and assigns|
+|`*`| duplicates a list|
+|`*=`|duplicates and assigns|
 
+<br>
 
+## `Assigning Multiple Variables with Lists`
 
 ```python
 #multi variable assignment with lists
@@ -225,7 +290,10 @@ a, b, c = [1,2,3]
 #a = 1 b = 2 c = 3
 ```
 
-> * Check if a value is a member of a list
+<br>
+
+## `Checking List Membership`
+Use `in` to check if a value is apart of a list
 
 syntax:
 
@@ -246,7 +314,9 @@ alpha = [
 
 ```
 
-> * Check if a value is not apart of a list
+<br>
+
+Use `not in` to check if a value is not apart of a list.  
 
 syntax:
 
@@ -270,7 +340,10 @@ alpha = [
 "5" not in numerals #Returns: False
 ```
 
-> * Concatenation (joining)
+<br>
+
+## `Concatenating Lists (joining)`
+Use `+` to concatenate lists.  
 
 syntax:
 
@@ -299,7 +372,10 @@ numerals + alpha
 #   'u', 'v', 'w', 'x', 'y', 'z' ] 
 ```
 
-> * Concatenate and Assign
+<br>
+
+## `Concatenate and Assign Lists`
+Use `+=` to concatenate and assign lists.
 
 syntax:
 
@@ -314,16 +390,16 @@ a += [9,10,11,12]
 print(a) #Outputs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 ```
 
-> * Duplication
+<br>
+
+## `Duplicate Lists`
+Use `*` to duplicate lists.
 
 syntax:
 
     list1 * n
 
-*n is the number of times to duplicate the list*
-
-
-
+> *n is the number of times to duplicate the list*
 ```python
 pattern = [1, 0, 0, 1]
 
@@ -331,36 +407,46 @@ pattern * 4
 # Returns: [1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1]
 ```
 
-> * Duplicate and Assign
+<br>
+
+## `Duplicate and Assign Lists`
+Use `*=` to duplicate and assign lists. 
 
 syntax:
 
     list1 *= n
 
-*n is the number of times to duplicate the list*
-
-
+> *n is the number of times to duplicate the list*
 ```python
 b = [1, 0]
 b *= 5
 print(b) #Output: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
 ```
 
-## <table><th>Accessing Elements in a List</th></table>
+<br>
+
+[Back to Top](#python-lists)
+
 ___
 
-To access the data in a list using the index an subscripting []
+<br>
+
+# `Accessing Elements in a List`
+To access the data in a list using the `index` an subscripting `[]`
+
 syntax:
 
     list[index]
 
-list1d = ["a","b","c","d","e","f","g","h","i","j","k","l"]
+<br>
+
+`list1d = ["a","b","c","d","e","f","g","h","i","j","k","l"]`
 |elements |"a"|"b"|"c"|"d"|"e"|"f"|"g"|"h"|"i"|"j"|"k"|"l"|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |index|0|1|2|3|4|5|6|7|8|9|10|11|
 |reverse/negative index|-12|-11|-10|-9|-8|-7|-6|-5|-4|-3|-2|-1|
 
-elements in a list are accessed by their index
+`elements in a list are accessed by their index`
 
 
 ```python
@@ -371,7 +457,9 @@ list1d =  ["a","b","c","d","e","f","g","h","i","j","k","l"]
 #                          Length = 12
 ```
 
-**Regular Indexing**
+<br>
+
+`Regular Indexing`
 
 
 ```python
@@ -382,7 +470,9 @@ list1d[5]   # Returns: f
 list1d[10]  # Returns: k
 ```
 
-**Reverse/Negative Indexing**
+<br>
+
+`Reverse/Negative Indexing`
 
 
 ```python
@@ -393,23 +483,28 @@ list1d[-5]  # Returns: h
 list1d[-10] # Returns: c
 ```
 
-## <table><th>Changing Elements in a List</th></table>
+<br>
+
+[Back to Top](#python-lists)
+
 ___
 
-Elements (data) in a list can be changed using the index of the element and subscripting []
+<br>
+
+# `Changing Elements in a List`
+`Elements` (data) in a list can be changed using the `index` of the element and subscripting `[]`
 
 syntax:
 
     list[index] = new_value
 
-list1d = ["a","b","c","d","e","f","g","h","i","j","k","l"]
+`list1d = ["a","b","c","d","e","f","g","h","i","j","k","l"]`
 |elements |"a"|"b"|"c"|"d"|"e"|"f"|"g"|"h"|"i"|"j"|"k"|"l"|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |index|0|1|2|3|4|5|6|7|8|9|10|11|
 |reverse/negative index|-12|-11|-10|-9|-8|-7|-6|-5|-4|-3|-2|-1|
 
-elements in a list are changed by assigning a new value to its index
-
+`elements in a list are changed by assigning a new value to its index`
 
 ```python
 list1d = ["a","b","c","d","e","f","g","h","i","j","k","l"]
@@ -434,16 +529,21 @@ print(f"After:  {list1d}")
 #reverse [-12 -11 -10 -9  -8  -7  -6  -5  -4  -3  -2   -1]
 ```
 
-## <table><th>Built-in List Function Calls</th></table>
+<br>
+
+[Back to Top](#python-lists)
+
 ___
-**Functions:**
-* are blocks of reusable code, that perform a specific task.
-* must be defined before they are called
 
-* are typically called using their name followed by parenthesis with any required arguments inside.
+<br>
+
+# `Built-in List Function Calls`
+`Functions` are blocks of reusable code, that perform a specific task.
+> * must be defined before they are called
+> * are typically called using their name followed by parenthesis with any required arguments inside.
 
 
-Built-in Functions are pre-defined by the standard library
+`Built-in Functions are pre-defined by the Python standard library`
 
 
 ```python
@@ -483,27 +583,35 @@ zip(list1, list2)
 # ("a",1),("b",2),("c",3)
 ```
 
-## <table><th>Built-in List Method Calls</th></table>
-___
-**Methods:**
-* are functions defined by a class
-* are typically called using an object or class and dot ( . ) syntax
+<br>
 
-syntax for methods which require objects:
+[Back to Top](#python-lists)
+
+___
+
+<br>
+
+# `Built-in List Method Calls`
+`Methods` are functions defined by a class
+> * are typically called using an object or class and dot ( . ) syntax
+
+<br>
+
+> syntax for methods which require objects:
 
     object.method(arguments)
 
-syntax for methods which DO NOT require objects:
+> syntax for methods which DO NOT require objects:
 
     class.method(arguments)
 
-Built-in methods are pre-defined by classes pre-defined by the standard library
+`Built-in methods are pre-defined by classes pre-defined by the standard library`
 
-To see what methods you can call on an object use:  
+> To see what methods you can call on an object use:  
     
     dir(object)  
 
-To see more information on a specific method use:  
+> To see more information on a specific method use:  
     
     help(object.method)
 
@@ -550,14 +658,20 @@ list1d.reverse()# Reverses the elements of the list in place.
 list1d.copy()# Returns a shallow copy (reference location) of the list.
 ```
 
-## <table><th>List Slicing and Concatenation</th></table>
+<br>
+
+[Back to Top](#python-lists)
+
 ___
 
-**Slicing:**
-> * is creating a sublist, by returning parts of the original list
-> * use slicing notation [ : : ] to return a sublist
+<br>
 
-slicing syntax:
+# `Sublists: Slicing and Concatenation`
+`Slicing` is the creation of a sublist, by returning parts of an original list.
+> * use slicing notation `[ : : ]` to return a sublist
+
+<br>
+syntax:
     
     list[start_index:stop_index:step]
 
@@ -569,9 +683,9 @@ Be sure to pick the right stop_index
 > * for ascending ( + step ) sublists add one to the last index you want to include (stop + 1)  
 > * for descending ( - step ) sublists subtract one from the last index you want to include (stop - 1)
 
-### Slicing Examples:
+<br>
 
-
+examples:
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 
@@ -589,7 +703,9 @@ list1d[8:0:-2]    # Returns: ['i', 'g', 'e', 'c']
 
 ```
 
-### Ascending Slices:
+<br>
+
+## `Ascending Slices`
 > * Default start_index is 0
 > * Default stop_index is len(list) (end of the list)
 > * Default step is 1
@@ -614,7 +730,9 @@ list1d[:3]  # Returns: ['a', 'b', 'c']
 list1d[6::] # Returns: ['g', 'h', 'i']
 ```
 
-### Descending Slices:
+<br>
+
+## `Descending Slices`
 > * Default start_index is len(list) (end of the list)
 > * Default stop_index is the beginning of the list
 >   * In order to include the character at index 0 you must use the default stop_index 
@@ -636,9 +754,14 @@ list1d[-3::-1]    # Returns: ['g', 'f', 'e', 'd', 'c', 'b', 'a']
 list1d[::-3]      # Returns: ['i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a']
 ```
 
-> * Assign to a slice of a list using slice notation
+<br>
 
-slice assignment syntax:
+## `Assigning to a Sublist`
+Use slicing notation to assign to a part of a list.
+
+<br>
+
+syntax:
 
     list[start_index:stop_index:step] = [new list values]
 
@@ -650,9 +773,16 @@ list1d[2:5] = [1,2,3]
 print(list1d) # Outputs: ['a', 'b', 1, 2, 3, 'f', 'g', 'h', 'i']
 ```
 
-## <table><th>Lists of Lists: Nested Lists</th></table>
+<br>
+
+[Back to Top](#python-lists)
+
 ___
-> * a 2D list is a list that contains other lists (a list of lists).  
+
+<br>
+
+# `Lists of Lists: Nested Lists`
+A `Nested List` or `Multidimensional List` is a 2D list is a list that contains other lists (a list of lists).  
 > * called a nested list or multidimensional list  
 > * each list is accessed with its index and subscripting
 >
@@ -670,10 +800,10 @@ list2d = [["a","b","c","d","e","f"],["g","h","i","j","k","l"],["m","n","o","p","
 #reverse [[-6  -5  -4  -3  -2  -1 ],[-6  -5  -4  -3  -2  -1 ],[-6  -5  -4  -3  -2  -1 ],[-6  -5  -4  -3  -2  -1 ]]   
 ```
 
-Formatting the 2D lists in our code can make them easier to read.  
-A 2D list can then be thought of as rows, and columns.
+<br>
 
-
+Formatting the 2D lists in your code can make them easier to read.
+> A 2D list can then be thought of as `rows`, and `columns`.
 ```python
 #simplify by formatting the code this way 
 list2d = [
@@ -694,13 +824,17 @@ list2d = [
 ] #    column indexes
 ```
 
-### Accessing Elements from a 2D List
-syntax:
-    
-    2DList[list_index][element_index]
-    OR
-    2DList[row][col]
+<br>
 
+## `Accessing Elements in 2D Lists`
+syntax:
+```    
+2DList[list_index][element_index]
+
+OR
+
+2DList[row][col]
+```
 
 ```python
 list2d = [
@@ -716,13 +850,15 @@ list2d[0][1] # Returns: b
 list2d[3][5] # Returns: x
 ```
 
-### Changing the Value of an index in a 2D List
+## `Changing Elements in 2D Lists`
 syntax:
+```
+2DList[list_index][element_index] = new_value
 
-    2DList[list_index][element_index] = new_value
-    OR
-    2DList[row][col] = new_value
+OR
 
+2DList[row][col] = new_value
+```
 
 ```python
 list2d = [
@@ -742,13 +878,15 @@ list2d[3][5] = "xx"
 #-->                                                                                                   ^^     
 ```
 
-### Length of 2D Lists
-The len() function call returns the number of elements in the list
-> * len(list2d) returns the number of rows/lists
-> * len(list2d[row]) returns the number of columns/elements in a given row/list
+<br>
 
-> * len(list2d)-1 returns the last row index
-> * len(list2d[row])-1 returns the last column index in a given row/list
+## `Length of 2D Lists`
+The `len()` function call returns the number of elements in the list
+> * `len(list2d)` returns the number of rows/lists
+> * `len(list2d[row])` returns the number of columns/elements in a given row/list
+
+> * `len(list2d)-1` returns the last row index
+> * `len(list2d[row])-1` returns the last column index in a given row/list
 
 
 ```python
@@ -770,18 +908,24 @@ len(list2d[row])   # 6 number of columns/elements in a given row/list
 len(list2d[row])-1 # 5 last column index 
 ```
 
-## <table><th>Unpacking Collections</th></table>
+<br>
+
+[Back to Top](#python-lists)
+
 ___
 
-> * Unpacking refers to the process of extracting individual elements from a container (such as a list, tuple, dictionary)
+<br>
+
+# `Unpacking Collections`
+`Unpacking` refers to the process of extracting individual elements from a container (such as a list, tuple, dictionary)
 > * Values in a collection can be automatically assigned to variables
-> * Use the \* symbol to unpack multiple values into a single variable
+> * Use the `*` symbol to unpack multiple values into a single variable
 >
-> * This used with *args and **kwargs, see variable length arguments 
+> * This used with `*args` and `**kwargs`, see variable length arguments 
 
-### Unpack Into Variables
+<br>
 
-
+## `Unpacking Into Variables`
 ```python
 list1d = [1,2,3]
 a, b, c = list1d
@@ -794,9 +938,9 @@ a, b = list1d
 # Outputs: ValueError: too many values to unpack (expected 2)
 ```
 
-### Unpack Mutliple Values Into One Variable With *
+<br>
 
-
+## `Unpacking Mutliple Values Into One Variable`
 ```python
 # collects multiple values into a single variable
 list1d = ["a","b","c","d"]
@@ -813,8 +957,10 @@ l2 = [4,5,6]
 print( [*l1,*l2] )# Output: [1,2,3,4,5,6]
 ```
 
-### Ignore Unpacked Values with ( _ )
+<br>
 
+## `Ignore Unpacked Values` 
+Ignore Unpacked Values with `_`
 
 ```python
 list1d = [1,2,3]
@@ -822,12 +968,20 @@ _, b, _ = list1d
 #b = 2
 ```
 
-## <table><th>List Comprehension</th></table>
+<br>
+
+[Back to Top](#python-lists)
+
 ___
 
-A list comprehension is a shorthand way to algorithmically create a list
+<br>
 
-### 1D List Comprehensions
+# `List Comprehension`
+A `list comprehension` is a shorthand way to algorithmically create a list
+
+<br>
+
+## `1D List Comprehensions`
 
 syntax:
 
@@ -859,7 +1013,9 @@ print(list1d)
 # Output: Varies
 ```
 
-### 2D List Comprehensions
+<br>
+
+## `2D List Comprehensions`
 
 syntax:
 
@@ -889,10 +1045,16 @@ print(list2d)
 # Output: Varies
 ```
 
-## <table><th>List Iteration: Looping</th></table>
+<br>
+
+[Back to Top](#python-lists)
+
 ___
 
-It is often necessary to go through the contents of a list item by item. This is called iterating through a list.
+<br>
+
+# `List Iteration: Looping`
+It is often necessary to go through the contents of a list item by item. This is called `iterating` through a list.
 
 There are several ways to iterate through a list.
 
@@ -912,7 +1074,9 @@ print(alphanumeric)
 #  'y', 'z']
 ```
 
-### Looping through the indexes of a list
+<br>
+
+## `Looping through the indexes of a list`
 syntax:
 
     for index in range(len(list)):
@@ -935,7 +1099,9 @@ for i in range(len(alphanumeric)):
 
 ```
 
-### Looping through the elements of a list
+<br>
+
+## `Looping through the elements of a list`
 syntax:
 
     for element in list:
@@ -957,7 +1123,9 @@ for char in alphanumeric:
 # z
 ```
 
-### Looping through the elements backwards
+<br>
+
+## `Looping through the elements backwards`
 syntax:
 
     for element in reversed(list):
@@ -979,7 +1147,9 @@ for elem in reversed(alphanumeric):
 # 0
 ```
 
-### Looping through the index and elements at the same time
+<br>
+
+## `Looping through the index and elements at the same time`
 
 syntax:
 
@@ -1005,7 +1175,9 @@ print(alphanumeric)
 #  (60, 'y'), (61, 'z')]
 ```
 
-### Combine values from multiple lists into a tuple
+<br>
+
+## `Combine values from multiple lists into a tuple`
 syntax:
 
     for item1, item2, ... in zip(iter1, iter2, ...):
@@ -1030,3 +1202,14 @@ for number, upper, lower in zip(num, upper_alpha, lower_alpha):
 #  (19, 'S', 's'), (20, 'T', 't'), (21, 'U', 'u'), (22, 'V', 'v'), (23, 'W', 'w'), (24, 'X', 'x'), 
 #  (25, 'Y', 'y'), (26, 'Z', 'z')]
 ```
+___
+
+<br>
+
+[Back to Top](#python-lists)
+
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*  
