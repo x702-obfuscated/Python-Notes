@@ -60,28 +60,30 @@ ___
 
 # `Defining Characters`
 
-`Characters:`
-> * Basically: a basic unit of information that represents a letter, number, symbol, or control code
-> * Specifically: a binary value mapped to a specific symbol as defined by ASCII or UTF
+`Characters:`  
+Basically: a basic unit of information that represents a letter, number, symbol, or control code 
+
+
+Specifically: a binary value mapped to a specific symbol as defined by ASCII or UTF
 
 <br>
 
-`American Standard Code for Information Interchange (ASCII)`
-> * is a character encoding standard used to represent text in computers and other devices that use text.
+`American Standard Code for Information Interchange (ASCII)`  
+ASCII is a character encoding standard used to represent text in computers and other devices that use text.
 > * defines a set of 128 characters, where each character is represented by a unique 7-bit binary number.
 > * forms the basis for more extensive character encoding schemes like Unicode.
 
 <br>
 
-`Unicode` 
-> * is a universal character encoding standard designed to represent and handle text in most of the world's writing systems.
+`Unicode`   
+Unicode is a universal character encoding standard designed to represent and handle text in most of the world's writing systems.
 > * The Unicode standard assigns a unique code point to every character, regardless of platform, program, or language
 > * These code points are hexadeximal values prefixed with 'U+'
 
 <br>
 
-`Unicode Transformation Format (UTF)`
-> * is a family of character encoding schemes used to represent Unicode characters. 
+`Unicode Transformation Format (UTF)`  
+UTF is a family of character encoding schemes used to represent Unicode characters. 
 > * The most common encodings are UTF-8, UTF-16, and UTF-32. These encoding transform unicode code points into sequences of bytes.
 
 <br>
@@ -114,8 +116,8 @@ For more on Unicode and character encodings: [https://home.unicode.org/](https:/
 "0"
 ```
 
-`American Standard Code for Information Interchange (ASCII)`
-> * 7 bit ASCII defines 128 characters including all alphanumeric characters
+`7-bit American Standard Code for Information Interchange (ASCII)`  
+7 bit ASCII defines 128 characters including all alphanumeric characters
 > * In many cases this is the only table we will need to interact with characters
 
 *NOTE*: 

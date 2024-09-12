@@ -161,6 +161,7 @@ A `list` contains multiple items called `elements` or `members`
 > - An `index` indicates the spot at which an `element` is located.   
 > - `Indexes` can be used to access each `element` in the list.   
 > - The length of a list is the total number of elements contained in the list   
+
 ```python
 #         [------------------elements---------------------]
 list1d =  ["a","b","c","d","e","f","g","h","i","j","k","l"]
