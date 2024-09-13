@@ -1,11 +1,11 @@
 # `Python Syntax`
 
 Covered in this file
-1. [General Syntax](#general-syntax) 
-1. [Every Open Needs a Close: '', "", (), [], {}](#every-opening-needs-a-closing-----)
-1. [Indentation is required in Python](#indentation-is-required-in-python)
-1. [Python Programming Style Guide](#python-programming-style-guide)
-1. [Univeral Programming Truths](#universal-programming-truths)
+1. [`General Syntax`](#general-syntax) 
+1. [`Every Open Needs a Close: '', "", (), [], {}`](#every-opening-needs-a-closing-----)
+1. [`Indentation is required in Python`](#indentation-is-required-in-python)
+1. [`Python Programming Style Guide`](#python-programming-style-guide)
+1. [`Univeral Programming Truths`](#universal-programming-truths)
 
 <br>
 

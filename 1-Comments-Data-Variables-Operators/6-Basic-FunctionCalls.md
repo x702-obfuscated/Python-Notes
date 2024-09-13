@@ -2,19 +2,19 @@
 
 Covered in this file:
 
-1. [Common Built-in Functions for Beginners](#common-built-in-functions-for-beginners)
-1. [Quickstart Guide to Functions](#quickstart-guide-to-functions)
-1. [The print() Function Call](#the-print-function-call)
-    1. [print() multiple comma seperated values](#print-multiple-comma-seperated-values)
-    1. [end parameter](#end-parameter)
-    1. [sep parameter](#sep-parameter)
-    1. [file parameter](#file-parameter)
-    1. [flush parameter](#flush-parameter)
-1. [The input() Function Call](#the-input-function-call)
-    1. [prompt parameter](#prompt-parameter)
-1. [The len() Function Call](#the-len-function-call)
-1. [The type() Function Call](#the-type-function-call)
-1. [Nested Function Calls](#nested-function-calls)
+1. [`Common Built-in Functions for Beginners`](#common-built-in-functions-for-beginners)
+1. [`Quickstart Guide to Functions`](#quickstart-guide-to-functions)
+1. [`The print() Function Call`](#the-print-function-call)
+    1. [`print() multiple comma seperated values`](#print-multiple-comma-seperated-values)
+    1. [`end parameter`](#end-parameter)
+    1. [`sep parameter`](#sep-parameter)
+    1. [`file parameter`](#file-parameter)
+    1. [`flush parameter`](#flush-parameter)
+1. [`The input() Function Call`](#the-input-function-call)
+    1. [`prompt parameter`](#prompt-parameter)
+1. [`The len() Function Call`](#the-len-function-call)
+1. [`The type() Function Call`](#the-type-function-call)
+1. [`Nested Function Calls`](#nested-function-calls)
 
 # `Common Built-in Functions for Beginners`
 * `print(*values, sep=" ", end="\n", file=None, flush=False)`

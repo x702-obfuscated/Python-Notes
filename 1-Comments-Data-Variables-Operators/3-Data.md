@@ -4,23 +4,23 @@
 Covered in this File:
 
 Data Types
-1. [Beginner Data Types](#beginner-data-types)
-1. [Mutable vs. Immutable](#mutable-vs-immutable-data)
-1. [Determining Data Type with type()](#determining-data-type-with-type)
+1. [`Beginner Data Types`](#beginner-data-types)
+1. [`Mutable vs. Immutable`](#mutable-vs-immutable-data)
+1. [`Determining Data Type with type()`](#determining-data-type-with-type)
 
 Data Literals
-1. [NULL](#null-literals-class-nonetype)
-1. [Boolean](#boolean-literals-class-bool)
-1. [Integer](#integer-literals-class-int)
-1. [Float](#float-literals-class-float)
-1. [Complex Numbers](#complex-literals-class-complex)
-1. [Character](#character-literals-class-str)
-1. [String](#string-literals-class-str)
-1. [Collections](#collection-literals)
-1. [Lists](#list-literals-class-list)
-1. [Tuples](#tuple-literals-class-tuple)
-1. [Sets](#set-literals-class-set)
-1. [Dictionaries](#dictionary-literals-class-dict)
+1. [`NULL`](#null-literals-class-nonetype)
+1. [`Boolean`](#boolean-literals-class-bool)
+1. [`Integer`](#integer-literals-class-int)
+1. [`Float`](#float-literals-class-float)
+1. [`Complex Numbers`](#complex-literals-class-complex)
+1. [`Character`](#character-literals-class-str)
+1. [`String`](#string-literals-class-str)
+1. [`Collections`](#collection-literals)
+1. [`Lists`](#list-literals-class-list)
+1. [`Tuples`](#tuple-literals-class-tuple)
+1. [`Sets`](#set-literals-class-set)
+1. [`Dictionaries`](#dictionary-literals-class-dict)
 
 
 <br>
