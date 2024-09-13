@@ -1,73 +1,118 @@
-# <table><th>Python Sets</th></table>
-___
-    Covered in this file
-1. Defining a Set
-2. Creating a Set 
-3. Converting from Tuples and Sets
-4. Set Operations
-5. Accessing Elements in a Set
-6. Changing Elements in a Set
-7. Built-in Set function calls 
-8. Built-in Set methods calls
-9. Unpacking Collections
-10. Set Comprehension
+# `Python Sets`
 
-11. Set Iteration: Looping
+
+Covered in this file
+1. [`Collection Types`](#collection-types)
+1. [`Defining a Set`](#defining-a-set)
+1. [`Creating a Set`](#creating-a-set)
+1. [`Converting from Lists and Tuples`](#converting-from-lists-and-tuples)
+1. [`Set Operations`](#set-operations)
+    1. [`Checking Set Membership`](#checking-set-membership)
+    1. [`Union`](#union)
+    1. [`Intersection`](#intersection)
+    1. [`Difference`](#difference)
+    1. [`Symmetric Difference`](#symmetric-difference)
+    1. [`Delete a Set`](#delete-a-set)
+1. [`Individual Set Elements Cannot be Accessed`](#individual-set-elements-cannot-be-accessed)
+1. [`Individual Set Elements Cannot be Changed`](#individual-set-elements-cannot-be-changed)
+1. [`Built-in Set Function Calls`](#built-in-set-function-calls)
+1. [`Built-in Set Method Calls`](#built-in-set-method-calls)
+1. [`Unpacking Collections`](#unpacking-collections)
+1. [`Unpacking Into Variables`](#unpacking-into-variables)
+1. [`Unpacking Multiple Values Into One Variable`](#unpacking-multiple-values-into-one-variable)
+1. [`Ignore Unpacked Values`](#ignore-unpacked-values)
+1. [`Set Comprehension`](#set-comprehension)
+1. [`Set Iteration: Looping`](#set-iteration-looping)
+
+<br>
+
+___
+
+<br>
+
+# `Collection Types`
 
 There are four major collection data types in the Python programming language:
 
-> **List:**   
-collection which is ordered(indexed), mutable, allows duplicate members, and uses [ ] to enclose members.
+A `List` is a collection which is ordered(indexed), mutable, allows duplicate members, and uses [ ] to enclose members.
 ```python
 list1d = [1,2,3]
 ```
 
-> **Tuple:**  
-collection which is ordered(indexed), immutable, allows duplicate members and uses ( ) to enclose members.
+<br>
+
+A `Tuple` is a collection which is ordered(indexed), immutable, allows duplicate members and uses ( ) to enclose members.
 ```python
 tuple1d = (1,2,3)
 ```
-> **Set:**   
-collection which is unordered(not indexed), mutable, does NOT allow duplicate members and uses { } to enclose members.
+
+<br>
+
+A `Set` is a collection which is unordered(not indexed), mutable, does NOT allow duplicate members and uses { } to enclose members.
 ```python
 set1d = {1,2,3}
 ```
-> **Dictionary:**   
-collection which is ordered(indexed with a key), mutable, does NOT allow duplicate members and uses { : } to enclose members.
+
+<br>
+
+A `Dictionary` is a collection which is ordered(indexed with a key), mutable, does NOT allow duplicate members and uses { : } to enclose members.
 ```python
 dict1d = {"a": 1, "b": 2,"c": 3}
 ```
-|**List**|**Tuple**|**Set**|**Dictionary**|
+
+<br>
+
+|`List`|`Tuple`|`Set`|`Dictionary`|
 |:-:|:-:|:-:|:-:|
 |ordered (numerically indexed)|ordered (numerically indexed)|unordered (not indexed)|ordered (indexed with a key)|
 |mutable|immutable|mutable|mutable|
 |duplicates|duplicates|NO duplicates|NO duplicates|
 |**[ ]**|**( )**|**{ }**|**{ : }**| 
 
-> * *Data Structure: a specialized format for organizing, processing, retrieving, and storing data.*
-> * *Collection: a data structure that holds multiple elements*
-> * *Member: an item stored within a collection*
-> * *Element: is a synonym for member*
-> * *Ordered: having a specific order 0,1,2,... (ie. indexed)*
-> * *Indexed:  elements are associated with a specific identifier (index), which can be used to directly locate and access the data*
-> * *Mutable: elements can change*
-> * *Immutable: elements cannot change*
+* *`Data Structure`: a specialized format for organizing, processing, retrieving, and storing data.*
+* *`Collection`: a data structure that holds multiple elements*
+* *`Member`: an item stored within a collection*
+* *`Element`: is a synonym for member*
+* *`Ordered`: having a specific order 0,1,2,... (ie. indexed)*
+* *`Indexed`:  elements are associated with a specific identifier (index), which can be used to directly locate and access the data*
+* *`Mutable`: elements can change*
+* *`Immutable`: elements cannot change*
 
 
-## <table><th>Defining a Set</th></table>
+<br>
+
+
+[Back to Top](#python-sets)
+
 ___
-**Sets:**
-> * are basically a list with no order, and no duplicates.
-> * are specifically collection which is unordered(not indexed), mutable, and does NOT allow duplicate members.
-> * use { } to enclose members.
+
+<br>
+
+
+# `Defining a Set`
+Basically: A `Set` is a list with no order, and no duplicates.
+
+Specifically: A `Set` is a collection which is unordered(not indexed), mutable, and does NOT allow duplicate members.
+> * use `{}` to enclose members.
 > * can only contain immutable types
+
+<br>
 
 *Sets in Python can only contain immutable types because sets rely on the concept of hashing to ensure the uniqueness of their elements and to provide efficient access.*
 
+<br>
 
-Set Example:
+A `set` contains multiple items called `elements` or `members`. 
 
+<br>
 
+> ***Sets unlike lists, tuples, and dictionaries are not indexed and have no order.***
+
+The `length` of a set is the total number of elements contained in the list  
+
+<br>
+
+example:
 ```python
 {"a","b","c","d","e"} #a Set
 
@@ -104,39 +149,42 @@ ucase_alpha = {
 }
 ```
 
-A set contains multiple items called elements or members. 
+<br>
 
-***Sets unlike lists, tuples, and dictionaries are not indexed and have no order.***
 
-The length of a set is the total number of elements contained in the list  
+[Back to Top](#python-sets)
 
-## <table><th>Creating a Set</th></table>
 ___
-> * use { } to denote a Set
+
+<br>
+
+# `Creating a Set`
+Use `{}` to denote a Set
 > * seperate elements of a Set with commas
-> * The set(iterable) constructor builds a Set
+> * The `set(iterable)` constructor builds a Set
 
+<br>
 
+### Create an empty set with `{}`
 ```python
 {} # creates an empty set
 
 set1d = {}
 ```
 
-> * Enclose comma seperated elements with { }
+<br>
 
-
+### Enclose comma seperated elements with `{}`
 ```python
 set1d = {1,2,3,4,5,6,7,8,9}
 ```
 
-> * Use the set(iterable) constructor call
+<br>
 
+### Use the `set(iterable)` constructor call
 syntax:
 
     set(iterable)
-
-
 
 ```python
 #use the set(iterable) constructor call
@@ -144,21 +192,26 @@ set() # Returns: {}
 set('abcdef') # Returns in random order: {}'a', 'b', 'c', 'd', 'e', 'f'}
 ```
 
+<br>
 
 
+[Back to Top](#python-sets)
 
-    {'a', 'b', 'c', 'd', 'e', 'f'}
-
-
-
-## <table><th>Converting from Lists and Tuples</th></table>
 ___
-> * The list(iterable) constructor builds a list
-> * The tuple(iterable) constructor builds a tuple
-> * The set(iterable) constructor builds a set
 
-Constructors are special methods defined by a class that are used to build instances of a class. 
-> * ie. the set(iterable) constructor makes a set.
+<br>
+
+
+# `Converting from Lists and Tuples`
+
+> * The `list(iterable)` constructor builds a list
+> * The `tuple(iterable)` constructor builds a tuple
+> * The `set(iterable)` constructor builds a set
+
+<br>
+
+`Constructors` are special methods defined by a class that are used to build instances of a class. 
+> * ie. the `set(iterable)` constructor makes a set.
 
 
 ```python
@@ -172,14 +225,6 @@ list1d = ["dog","cat","horse","horse"]
 set(list1d) # Returns: {'cat', 'dog', 'horse'}
 ```
 
-
-
-
-    {'cat', 'dog', 'horse'}
-
-
-
-
 ```python
 set1d = {1,2,3,4,5}
 
@@ -190,33 +235,32 @@ tuple1d = tuple(set1d) # Returns: (1,2,3,4,5)
 list1d = list(set1d) # Returns: [1,2,3,4,5]
 ```
 
-## <table><th>Set Operations</th></table>
+<br>
+
+
+[Back to Top](#python-sets)
+
 ___
+
+<br>
+
+# `Set Operations`
+
 
 |Operation| Description|
 |:-:|:-:|
-|in| checks if a value is a member|
-|not in| checks if a value is not a member|
-|\||Union: joins a set with another iterable|
-|&|Intersection: joins and keeps only duplicates |
-|-|Difference: joins and keeps all items from the first that are not present in the second|
-|^|Symmetric Difference: joins and keeps all but duplicates|
-|del| Deletes a set|
+|`in`| checks if a value is a member|
+|`not in`| checks if a value is not a member|
+|`\`||Union: joins a set with another iterable|
+|`&`|Intersection: joins and keeps only duplicates |
+|`-`|Difference: joins and keeps all items from the first that are not present in the second|
+|`^`|Symmetric Difference: joins and keeps all but duplicates|
+|`del`| Deletes a set|
 
+<br>
 
-
-```python
-set_1 = {1,2,3,4,5,6}
-set_2 = {7,8,9,0}
-set_3 = {4,5,6,7,8}
-
-print( set_1 ^ set_2 ^ set_3)
-```
-
-    {0, 1, 2, 3, 9}
-    
-
-> * Check if a value is a member of a set
+## `Checking Set Membership`
+Use `in` to check if a value is a member of a set
 
 syntax:
 
@@ -230,15 +274,9 @@ numerals = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
 "a" in numerals # Returns: False
 ```
 
+<br>
 
-
-
-    False
-
-
-
-> * Check if a values is NOT a member of a set
-
+Use `not in` to check if a value is not apart of a set
 syntax:
 
     value not in set
@@ -251,21 +289,15 @@ numerals = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
 "a" not in numerals # Returns: True
 ```
 
+<br>
 
-
-
-    True
-
-
-
-> * Union ( | ) (joining a set with another iterable)
+## `Union`
+Use `|` to join a set with another iterable
 
 syntax:
 
     set | iterable
     
-
-
 ```python
 set_1 = {1,2,3,4,5,6}
 set_2 = {7,8,9,0}
@@ -276,7 +308,10 @@ set_2 | set_3 # Returns in random orde: {9,0,4,5,6}
 #creates a new set of all unique elements from both sets
 ```
 
-> * Intersection (&) (keep only duplicates)
+<br>
+
+## `Intersection`
+Use `&` to join a set with another set keeping only the duplicates.
 
 syntax:
 
@@ -292,7 +327,10 @@ set_1 & set_3 #  Returns in random order: {4,5,6}
 set_2 & set_3 #  Returns in random order: {7,8}
 ```
 
-> * Difference (-) (keep all items from the first set not present in the second)
+<br>
+
+## `Difference` 
+Use `-` to keep all items from the first set not present in the second.
 
 syntax:
 
@@ -308,14 +346,10 @@ set_1 - set_3 # Returns in random order: {1,2,3}
 set_2 - set_3 # Returns in random order: {9,0}
 ```
 
+<br>
 
-
-
-    {0, 9}
-
-
-
-> * Symmetric Difference (^) (keep all but the duplicates)
+## `Symmetric Difference` 
+Use `^` to join two sets keeping all but the duplicates.
 
 syntax:
 
@@ -331,47 +365,67 @@ set_1 ^ set_3 # Returns in random order:{1,2,3,7,8}
 set_2 ^ set_3 # Returns in random order:{4,5,6,9,0}
 ```
 
+<br>
 
-
-
-    {0, 4, 5, 6, 9}
-
-
-
-> * Delete a Set
+## `Delete a Set`
+Use `del` to delete a set.
 
 syntax:
 
     del set
-
 
 ```python
 set1d = {"a","b","c"}
 del set1d
 ```
 
-## <table><th>Accessing Elements in a Set</th></table>
+<br>
+
+
+[Back to Top](#python-sets)
+
 ___
 
-***Sets are unordered and therfore unindexed, this means that it is not possible to access and individual elements in a set without iteration***
+<br>
 
-## <table><th>Changing Elements in a Set</th></table>
+
+# `Individual Set Elements Cannot be Accessed`
+Sets are unordered and therfore unindexed, this means that it is not possible to access and individual elements in a set without iteration.
+
+<br>
+
+
+[Back to Top](#python-sets)
+
 ___
 
-***Sets are unordered and therfore unindexed, this means that it is not possible change individual values of a set***  
+<br>
 
-***HOWEVER, there are some functions and methods that can be used to change what data the set stores***
+# `Individual Set Elements Cannot be Changed.`
 
-## <table><th>Built-in Sets Function Calls</th></table>
+
+Sets are unordered and therfore unindexed, this means that it is not possible change individual values of a set. 
+
+<br>
+
+HOWEVER, there are some functions and methods that can be used to change what data the set stores.
+
+<br>
+
+
+[Back to Top](#python-sets)
+
 ___
-**Functions:**
-* are blocks of reusable code, that perform a specific task.
-* must be defined before they are called
 
-* are typically called using their name followed by parenthesis with any required arguments inside.
+<br>
+
+# `Built-in Set Function Calls`
+`Functions` are blocks of reusable code, that perform a specific task.
+> * must be defined before they are called
+> * are typically called using their name followed by parenthesis with any required arguments inside.
 
 
-Built-in Functions are pre-defined by the standard library
+`Built-in Functions are pre-defined by the Python standard library`
 
 
 ```python
@@ -401,28 +455,35 @@ zip(set1, set2)
 
 ```
 
+<br>
 
-## <table><th>Built-in Set Method Calls</th></table>
+[Back to Top](#python-sets)
+
 ___
-**Methods:**
-* are functions defined by a class
-* are typically called using an object or class and dot ( . ) syntax
 
-syntax for methods which require objects:
+<br>
+
+# `Built-in Set Method Calls`
+`Methods` are functions defined by a class
+> * are typically called using an object or class and dot ( . ) syntax
+
+<br>
+
+> syntax for methods which require objects:
 
     object.method(arguments)
 
-syntax for methods which DO NOT require objects:
+> syntax for methods which DO NOT require objects:
 
     class.method(arguments)
 
-Built-in methods are pre-defined by classes pre-defined by the standard library
+`Built-in methods are pre-defined by classes pre-defined by the standard library`
 
-To see what methods you can call on an object use:  
+> To see what methods you can call on an object use:  
     
     dir(object)  
 
-To see more information on a specific method use:  
+> To see more information on a specific method use:  
     
     help(object.method)
 
@@ -508,18 +569,24 @@ set2 = {3, 4, 5}
 set1.update(set2)  # set1 is now {1, 2, 3, 4, 5}
 ```
 
-## <table><th>Unpacking Collections</th></table>
+<br>
+
+[Back to Top](#python-sets)
+
 ___
 
-> * Unpacking refers to the process of extracting individual elements from a container (such as a list, tuple, dictionary)
+<br>
+
+# `Unpacking Collections`
+`Unpacking` refers to the process of extracting individual elements from a container (such as a list, tuple, set, dictionary)
 > * Values in a collection can be automatically assigned to variables
-> * Use the \* symbol to unpack multiple values into a single variable
+> * Use the `*` symbol to unpack multiple values into a single variable
 >
-> * This used with *args and **kwargs, see variable length arguments 
+> * This used with `*args` and `**kwargs`, see variable length arguments 
 
-### Unpack Into Variables
+<br>
 
-
+## `Unpacking Into Variables`
 ```python
 set1d = {1,2,3}
 a, b, c = set1d
@@ -531,12 +598,10 @@ a, b = set1d
 # Outputs: ValueError: too many values to unpack (expected 2)
 ```
 
-    1 2 3
+<br>
     
 
-### Unpack Mutliple Values Into One Variable With *
-
-
+## `Unpacking Multiple Values Into One Variable`
 ```python
 # collects multiple values into a single variable
 set1d = {"a","b","c","d"}
@@ -553,11 +618,11 @@ l2 = {4,5,6}
 print( {*l1,*l2} )# Output will vary in order: {1,2,3,4,5,6}
 ```
 
-    {1, 2, 3, 4, 5, 6}
-    ['b', 'c', 'a']
+<br>
     
 
-### Ignore Unpacked Values with ( _ )
+## `Ignore Unpacked Values` 
+Ignore Unpacked Values with `_`
 
 
 ```python
@@ -566,10 +631,16 @@ _, b, _ = set1d
 #b = varies 
 ```
 
-## <table><th>Set Comprehension</th></table>
+<br>
+
+[Back to Top](#python-sets)
+
 ___
 
-A set comprehension is a shorthand way to algorithmically create a list
+<br>
+
+# `Set Comprehension`
+A `set comprehension` is a shorthand way to algorithmically create a list
 
 syntax:
 
@@ -581,11 +652,6 @@ set1d = {num ** 2 for num in range(5)}
 
 print(set1d) # Output order varies: {0, 1, 4, 9, 16}
 ```
-
-    {0, 1, 4, 9, 16}
-    
-
-
 ```python
 import random
 set1d = { random.randint(0,100) for _ in range(5)}
@@ -594,13 +660,18 @@ print(set1d)
 # Output: varies
 ```
 
-    {96, 72, 42, 85, 63}
-    
+<br>
 
-## <table><th>Set Iteration: Looping</th></table>
+[Back to Top](#python-sets)
+
 ___
 
-It is often necessary to go through the contents of a set item by item. This is called iterating through a set.
+<br>
+    
+
+# `Set Iteration: Looping`
+
+It is often necessary to go through the contents of a set item by item. This is called `iterating` through a set.
 
 ***Sets are unordered and unindexed which means that looping through the values will occur in a random order.***
 
@@ -623,5 +694,16 @@ print(list1d)
 # 5 ['b', 'c', 'd', 'e', 'a']
 ```
 
-    ['d', 'b', 'a', 'e', 'c']
+___
+
+<br>
+
+[Back to Top](#python-sets)
+
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*  
+
     

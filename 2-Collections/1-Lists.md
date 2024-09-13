@@ -1,42 +1,42 @@
 # `Python Lists`
 
 Covered in this file:
-1. [Collection Types](#collection-types)
-1. [Defining a List](#defining-a-list)
-1. [Creating a List ](#creating-a-list)
-1. [Converting from Tuples and Sets](#converting-from-tuples-and-sets)
-1. [List Operations](#list-operations)
-    1. [Assigning Multiple Variables with Lists](#assigning-multiple-varibles-with-lists)
-    1. [Checking List Membership](#checking-list-membership)
-    1. [Concatenating Lists (joining)](#concatenating-lists-joining)
-    1. [Concatenate and Assign Lists](#concatenate-and-assign-lists)
-    1. [Duplicate Lists](#duplicate-lists)
-    1. [Duplicate and Assign Lists](#duplicate-and-assign-lists)
-1. [Accessing Elements in a List](#accessing-elements-in-a-list)
-1. [Changing Elements in a List](#changing-elements-in-a-list)
-1. [Built-in list function calls ](#built-in-list-function-calls)
-1. [Built-in list methods calls](#built-in-list-method-calls)
-1. [Sublists: Slicing and Concatenation](#sublists-slicing-and-concatenation)
-    1. [Ascending Slices](#ascending-slices)
-    1. [Descending Slices](#descending-slices)
-    1. [Assigning to a Sublist](#assigning-to-a-sublist)
-1. [Lists of Lists: Nested Lists](#lists-of-lists-nested-lists)
-    1. [Accessing Elements in 2D Lists](#accessing-elements-in-2d-lists)
-    1. [Changing Elements in 2D List](#changing-elements-in-2d-lists)
-    1. [Length of 2D Lists](#length-of-2d-lists)
-1. [Unpacking Collections](#unpacking-collections)
-    1. [Unpacking Into Variables](#unpacking-into-variables)
-    1. [Unpacking Multiple Values Into One Variable](#unpacking-mutliple-values-into-one-variable)
-    1. [Ignoring Unpacked Values](#ignore-unpacked-values)
-1. [List Comprehension](#list-comprehension)
-    1. [1D List Comprehensions](#1d-list-comprehensions)
-    1. [2D List Comprehensions](#2d-list-comprehensions)
-1. [List Iteration: Looping](#list-iteration-looping)
-    1. [Looping through the indexes of a list](#looping-through-the-indexes-of-a-list)
-    1. [Looping through the elements of a list](#looping-through-the-elements-of-a-list)
-    1. [Looping through the elements backwards](#looping-through-the-elements-backwards)
-    1. [Looping through the index and elements at the same time](#looping-through-the-index-and-elements-at-the-same-time)
-    1. [Combine values from multiple lists into a tuple](#combine-values-from-multiple-lists-into-a-tuple)
+1. [`Collection Types`](#collection-types)
+1. [`Defining a List`](#defining-a-list)
+1. [`Creating a List `](#creating-a-list)
+1. [`Converting from Tuples and Sets`](#converting-from-tuples-and-sets)
+1. [`List Operations`](#list-operations)
+    1. [`Assigning Multiple Variables with Lists`](#assigning-multiple-varibles-with-lists)
+    1. [`Checking List Membership`](#checking-list-membership)
+    1. [`Concatenating Lists (joining)`](#concatenating-lists-joining)
+    1. [`Concatenate and Assign Lists`](#concatenate-and-assign-lists)
+    1. [`Duplicate Lists`](#duplicate-lists)
+    1. [`Duplicate and Assign Lists`](#duplicate-and-assign-lists)
+1. [`Accessing Elements in a List`](#accessing-elements-in-a-list)
+1. [`Changing Elements in a List`](#changing-elements-in-a-list)
+1. [`Built-in list function calls `](#built-in-list-function-calls)
+1. [`Built-in list methods calls`](#built-in-list-method-calls)
+1. [`Sublists: Slicing and Concatenation`](#sublists-slicing-and-concatenation)
+    1. [`Ascending Slices`](#ascending-slices)
+    1. [`Descending Slices`](#descending-slices)
+    1. [`Assigning to a Sublist`](#assigning-to-a-sublist)
+1. [`Lists of Lists: Nested Lists`](#lists-of-lists-nested-lists)
+    1. [`Accessing Elements in 2D Lists`](#accessing-elements-in-2d-lists)
+    1. [`Changing Elements in 2D List`](#changing-elements-in-2d-lists)
+    1. [`Length of 2D Lists`](#length-of-2d-lists)
+1. [`Unpacking Collections`](#unpacking-collections)
+    1. [`Unpacking Into Variables`](#unpacking-into-variables)
+    1. [`Unpacking Multiple Values Into One Variable`](#unpacking-mutliple-values-into-one-variable)
+    1. [`Ignoring Unpacked Values`](#ignore-unpacked-values)
+1. [`List Comprehension`](#list-comprehension)
+    1. [`1D List Comprehensions`](#1d-list-comprehensions)
+    1. [`2D List Comprehensions`](#2d-list-comprehensions)
+1. [`List Iteration: Looping`](#list-iteration-looping)
+    1. [`Looping through the indexes of a list`](#looping-through-the-indexes-of-a-list)
+    1. [`Looping through the elements of a list`](#looping-through-the-elements-of-a-list)
+    1. [`Looping through the elements backwards`](#looping-through-the-elements-backwards)
+    1. [`Looping through the index and elements at the same time`](#looping-through-the-index-and-elements-at-the-same-time)
+    1. [`Combine values from multiple lists into a tuple`](#combine-values-from-multiple-lists-into-a-tuple)
 
 <br>
 
@@ -113,7 +113,7 @@ Specifically: `Lists` are a collection of data that is ordered, mutable, and all
 
 <br>
 
-List Example
+example
 ```python
 ["a","b","c","d","e"] #a list
 
@@ -184,16 +184,18 @@ Use `[]` to denote a list
 > * seperate elements of a list with commas
 > * The `list(iterable)` constructor builds a list
 
-Create and empty list with `[]`
+<br>
+
+### Create an empty list with `[]`
 ```python
 [] #creates an empty list
 
 list1d = [] 
 ```
 
-Enclose comma seperated elements with `[]`
+<br>
 
-
+### Enclose comma seperated elements with `[]`
 ```python
 #use [] and seperate each element with commas
 list1d = [1,2,3,4,5,6,7,8,9] 
@@ -201,7 +203,9 @@ list1d = [1,2,3,4,5,6,7,8,9]
 #length = 9
 ```
 
-Use the `list(iterable)` constructor call
+<br>
+
+### Use the `list(iterable)` constructor call
 
 syntax:
 
@@ -229,7 +233,7 @@ ___
 
 <br>
 
-Constructors are special methods defined by a class that are used to build instances of a class. 
+`Constructors` are special methods defined by a class that are used to build instances of a class. 
 > * ie. the `list(iterable)` constructor makes a list.
 
 
@@ -783,7 +787,7 @@ ___
 <br>
 
 # `Lists of Lists: Nested Lists`
-A `Nested List` or `Multidimensional List` is a 2D list is a list that contains other lists (a list of lists).  
+A `Nested List` or `Multidimensional List`  is a list that contains other lists (a list of lists).  
 > * called a nested list or multidimensional list  
 > * each list is accessed with its index and subscripting
 >

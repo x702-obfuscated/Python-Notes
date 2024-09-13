@@ -1,76 +1,109 @@
-# <table><th>Python Dictionaries</th></table>
-___
-    Covered in this file
-1. Defining a Dictionary: Key:Value Pairs
-2. Creating a Dictionary
-3. Converting to and from Dictionaries
-4. Accessing Dictionary Items 
-5. Changing Dictionary Items
-6. Dictionary Operations
-7. Built-in Dictionary Function Calls
-8. Built-in Dictionary Method Calls
-9. Nested Dictionaries
-10. Iterating through Dictionaries
-11. Unpacking Dictionaries
+# `Python Dictionaries`
 
-12. Dictionary Comprehension
+Covered in this file:
+1. [`Collection Types`](#collection-types)
+1. [`Defining a Dictionary: Key:Value Pairs`](#defining-a-dictionary-keyvalue-pairs)
+1. [`Creating a Dictionary`](#creating-a-dictionary)
+1. [`Converting to and from a Dictionary`](#convert-to-and-from-a-dictionary)
+1. [`Accessing Dictionary Items`](#accessing-dictionary-items)
+1. [`Changing Dictionary Items`](#changing-dictionary-items)
+1. [`Dictionary Operations`](#dictionary-operations)
+    1. [`Checking Dictionary Membership`](#checking-dictionary-membership)
+    1. [`Deleting key:value pairs`](#deleting-keyvalue-pairs)
+    1. [`Comparing Dictionary Contents`](#comparing-dictionary-contents)
+    1. [`Merging Dictionaries`](#merging-dictionaries)
+1. [`Built-in Dictionary Function Calls`](#built-in-dictionary-function-calls)
+1. [`Built-in Dictionary Method Calls`](#built-in-dictionary-method-calls)
+1. [`Nested Dictionaries`](#nested-dictionaries)
+1. [`Iterating Through Dictionaries`](#iterating-through-dictionaries)
+    1. [`Loop through dictionary keys`](#loop-through-dictionary-keys)
+    1. [`Loop through dictionary values`](#loop-through-dictionary-values)
+    1. [`Loop through key:value pairs`](#loop-through-keyvalue-pairs)
+1. [`Unpacking Dictionaries`](#unpacking-dictionaries)
+    1. [`Unpack into variables`](#unpack-into-variables)
+    1. [`Unpack Multiple Key:Value pairs`](#unpack-multiple-keyvalue-pairs)
+1. [`Dictioanry Comprehension`](#dictionary-comprehension)
+    1. [`Including a Filter Statement`](#including-a-filter-statement)
+
+
+<br>
+
+___
+
+<br>
+
+# `Collection Types`
 
 There are four major collection data types in the Python programming language:
 
-> **List:**   
-collection which is ordered(indexed), mutable, allows duplicate members, and uses [ ] to enclose members.
+A `List` is a collection which is ordered(indexed), mutable, allows duplicate members, and uses [ ] to enclose members.
 ```python
 list1d = [1,2,3]
 ```
 
-> **Tuple:**  
-collection which is ordered(indexed), immutable, allows duplicate members and uses ( ) to enclose members.
+<br>
+
+A `Tuple` is a collection which is ordered(indexed), immutable, allows duplicate members and uses ( ) to enclose members.
 ```python
 tuple1d = (1,2,3)
 ```
-> **Set:**   
-collection which is unordered(not indexed), mutable, does NOT allow duplicate members and uses { } to enclose members.
+
+<br>
+
+A `Set` is a collection which is unordered(not indexed), mutable, does NOT allow duplicate members and uses { } to enclose members.
 ```python
 set1d = {1,2,3}
 ```
-> **Dictionary:**   
-collection which is ordered(indexed with a key), mutable, does NOT allow duplicate members and uses { : } to enclose members.
+
+<br>
+
+A `Dictionary` is a collection which is ordered(indexed with a key), mutable, does NOT allow duplicate members and uses { : } to enclose members.
 ```python
 dict1d = {"a": 1, "b": 2,"c": 3}
 ```
-|**List**|**Tuple**|**Set**|**Dictionary**|
+
+<br>
+
+|`List`|`Tuple`|`Set`|`Dictionary`|
 |:-:|:-:|:-:|:-:|
 |ordered (numerically indexed)|ordered (numerically indexed)|unordered (not indexed)|ordered (indexed with a key)|
 |mutable|immutable|mutable|mutable|
 |duplicates|duplicates|NO duplicates|NO duplicates|
 |**[ ]**|**( )**|**{ }**|**{ : }**| 
 
-> * *Data Structure: a specialized format for organizing, processing, retrieving, and storing data.*
-> * *Collection: a data structure that holds multiple elements*
-> * *Member: an item stored within a collection*
-> * *Element: is a synonym for member*
-> * *Ordered: having a specific order 0,1,2,... (ie. indexed)*
-> * *Indexed:  elements are associated with a specific identifier (index), which can be used to directly locate and access the data*
-> * *Mutable: elements can change*
-> * *Immutable: elements cannot change*
+* *`Data Structure`: a specialized format for organizing, processing, retrieving, and storing data.*
+* *`Collection`: a data structure that holds multiple elements*
+* *`Member`: an item stored within a collection*
+* *`Element`: is a synonym for member*
+* *`Ordered`: having a specific order 0,1,2,... (ie. indexed)*
+* *`Indexed`:  elements are associated with a specific identifier (index), which can be used to directly locate and access the data*
+* *`Mutable`: elements can change*
+* *`Immutable`: elements cannot change*
 
-## <table><th>Defining a Dictionary: Key:Value Pairs</th></table>
+
+<br>
+
+
+[Back to Top](#python-dictionaries)
+
 ___
-**Dictionaries:**
-> * are basically a list with data pairs one that is a key and one that is the value. 
-> * collection which is ordered(indexed with a key), mutable, does NOT allow duplicate members and uses { : } to enclose members.
-> * in other programming languages are called: map, hashmap, or associative array
+
+<br>
+
+# `Defining a Dictionary: Key:Value Pairs`
+Basically: A `dictionary` is a list that maps two values together; a key and a value. 
+
+Specifically: A dictionary is a collection which is ordered(indexed with a key), mutable, does NOT allow duplicate members and uses { : } to enclose members.
+> * In other programming languages dictionaries are called: maps, hashmaps, or associative arrays
 
 Dictionary syntax:
 
     {key1:value1, key2:value2, ...}
 
-*Dictionary keys must be an immutable data type*
+`Dictionary keys must be an immutable data type`
 
 
-### Dictionary Example:
-
-
+example:
 ```python
 {"name": "John", "age" :22, "school" : "University of Louisville","good_standing" : True}
 # key  : value , 
@@ -110,11 +143,13 @@ lcase_alpha = {
 } 
 ```
 
-## Note on dictionaries
-> * While not always called dictionaries, dictionaries show up quite a bit in computer science.
+<br>
+
+## `Note on dictionaries`
+While not always called dictionaries, dictionaries show up quite a bit in computer science.
 > * Dictionaries are use to store configuration data, track state in applications, databases, form data, etc.
 
-> * Dictionaries are also knowns as:
+Dictionaries are also knowns as:
 >   * associative arrays  
 >   * hashmaps  
 >   * maps  
@@ -123,13 +158,34 @@ lcase_alpha = {
 >   * hash table  
 >   * symbol table  
 
-## <table><th>Creating a Dictionary</th></table>
+<br>
+
+
+[Back to Top](#python-dictionaries)
+
 ___
+
+<br>
+
+# `Creating a Dictionary`
+Use `{:}` to denote a dictionary.
+> * seperate key:value pairs with commas
+> * the `dict(iterable)` constructor builds a dictionary
+
 There are several ways to create a dictionary:
 
-> * Use a comma separated list of key:value pairs enclosed in curly braces
+<br>
 
+### Create an empty dictionary with `{}`
+```python
+{} #creates an empty dictionary
 
+dict1d = {}
+```
+
+<br>
+
+### Enclose comma separated key:value pairs with `{}`
 ```python
 dictionary = {
     "name": "John", 
@@ -139,17 +195,13 @@ dictionary = {
 }
 ```
 
-> * Use the ***dict(iterable)*** constructor to build dictionaries from sequences of key-value pairs
+<br>
 
-
-
+### Use the `dict(iterable)` constructor call to build dictionaries from sequences of key-value pairs
 ```python
 dict() # Returns: {}
 ```
-
 > * Using an iterable with data pairs
-
-
 ```python
 # Converting from a list of tuples
 list1d = [("a", 97),("b",98),("c",99)]
@@ -157,7 +209,10 @@ dict(list1d)
 # Returns: {'a': 97, 'b': 98, 'c': 99}
 ```
 
-> * Use keyword arguments
+<br>
+
+### Using keyword arguments
+
 syntax:
 
     dict(key=value,...)
@@ -168,13 +223,22 @@ dict(a=97, b=98, c=99)
 # Returns: {'a': 97, 'b': 98, 'c': 99}
 ```
 
-## <table><th>Convert to and from a Dictionary</th></table>
+<br>
+
+
+[Back to Top](#python-dictionaries)
+
 ___
 
-> * To convert to a dictionary use the ***dict()*** constructor as used above
+<br>
+
+# `Convert to and from a Dictionary`
+To convert to a dictionary use the `dict()` constructor as used above
 > * To convert a dictionary to another collection type use the ***list(), tuple(), or set()*** constructors
 
-*When converting to a list, tuple or set, only the keys of the dictionary are used*
+<br>
+
+`When converting to a list, tuple or set, only the keys of the dictionary are used`
 
 
 ```python
@@ -186,32 +250,49 @@ key_set = set(dictionary)       # Returns: ('a', 'b', 'c')
 # Note: remember that sets are unordered
 ```
 
-## <table><th>Accessing Dictionary Items</th></table>
-___
-There are several ways to access the items inside a dictionary
+<br>
 
-> * Use the dictionary and a key to retrieve the value
->   * with subscripting [ ]
-syntax
+
+[Back to Top](#python-dictionaries)
+
+___
+
+<br>
+
+# `Accessing Dictionary Items`
+There are several ways to access the items inside a dictionary
+> Use the dictionary and a key to retrieve the value
+
+<br>
+
+Subscripting `[]` syntax
 
     dict[key]
-
->   * with the ***get()*** method
-syntax
-
-    dict.get(key[,default])
-*Here [ ] indicates an optional parameter*
-
 
 ```python
 dictionary = {'a': 97, 'b': 98, 'c': 99}
 
 dictionary["a"]                 # Returns: 97
+```
+
+<br>
+
+`get()` method syntax
+> *Here [ ] indicates an optional parameter*
+
+    dict.get(key[,default])
+
+```python
+dictionary = {'a': 97, 'b': 98, 'c': 99}
+
 dictionary.get("b")             # Returns: 98
 dictionary.get("d","Not Found") # Returns: Not Found
 ```
 
-> * Returning a list of keys with ***dict.keys()***
+<br>
+
+
+Returning a list of keys with `dict.keys()`
 
 
 ```python
@@ -224,9 +305,9 @@ numerals.keys()
 # Returns: dict_keys(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
 ```
 
-> * Returning a list of values with ***dict.values()***
+<br>
 
-
+Returning a list of values with `dict.values()`
 ```python
 numerals = {
   '0': 48, '1': 49, '2': 50, '3': 51, '4': 52,
@@ -237,7 +318,9 @@ numerals.values()
 # Returns: dict_values([48, 49, 50, 51, 52, 53, 54, 55, 56, 57])
 ```
 
-> * Returning a list of tuples containing the key value pairs with ***dict.items()***
+<br>
+
+Returning a list of tuples containing the key value pairs with `dict.items()`
 
 
 ```python
@@ -250,18 +333,26 @@ numerals.items()
 # Returns: dict_items([('0', 48), ('1', 49), ('2', 50), ('3', 51), ('4', 52), ('5', 53), ('6', 54), ('7', 55), ('8', 56), ('9', 57)])
 ```
 
-## <table><th>Changing Dictionary Items</th></table>
+<br>
+
+
+[Back to Top](#python-dictionaries)
+
 ___
+
+<br>
+
+# `Changing Dictionary Items`
 There are several ways to change the values in a dictionary
 
 
-> * Use dict[key] = to assign a new value to the key  
+Use `dict[key] =` to assign a new value to the key  
 
 syntax
 
     dict[key] = new_value
 
-*If the key does not exist it is added to the dictionary along with its value*
+> *If the key does not exist it is added to the dictionary along with its value*
 
 
 ```python
@@ -280,14 +371,14 @@ print(upper_alpha)
 # Output: {'A': 41, 'B': 42, 'C': 43, 'D': 44, 'E': 45, 'F': 46}
 ```
 
-> * Add Values from another dictionary or iterable type with key:value pairs  
+<br>
+
+Add Values from another dictionary or iterable type with `key:value` pairs  
 
 syntax:
 
     dict.update(iterable)
     
-
-
 ```python
 weekdays = {"Mon": "Monday", "Tue":"Tuesday","Wed":"Wednesday","Thur":"Thursday","Fri":"Friday"}
 weekend = {"Sat":"Saturday","Sun":"Sunday"}
@@ -334,19 +425,31 @@ print(current_users)
 # }
 ```
 
-## <table><th>Dictionary Operations</th></table>
+<br>
+
+
+[Back to Top](#python-dictionaries)
+
 ___
+
+<br>
+
+
+# `Dictionary Operations`
+
 |Operator|Operation|
 |:-:|:-:|
-|in| Check if a key exists in the dictionary|
-|not in| Check if a key does NOT exist in the dictionary|
-|del| Delete a key:value pair in the dictionary|
-|==| compare the contents of two dictionaries regardless of order|
-|\|| merge two dictionaries; the values of the second dictionary take priority when keys are shared|
-|\|=| update one dictionary with the values of a second dictionary|
+|`in`| Check if a key exists in the dictionary|
+|`not in`| Check if a key does NOT exist in the dictionary|
+|`del`| Delete a key:value pair in the dictionary|
+|`==`| compare the contents of two dictionaries regardless of order|
+|`\|`| merge two dictionaries; the values of the second dictionary take priority when keys are shared|
+|`\|=`| update one dictionary with the values of a second dictionary|
 
+<br>
 
-> * Check if a key exists in the dictionary  
+## `Checking Dictionary Membership`
+Use `in` to check if a `key` is apart of a dictionary
   
 syntax:
 
@@ -365,7 +468,9 @@ bin_alpha = {
 
 ```
 
-> * Check if a key is NOT in the dictionary  
+<br>
+
+Use `not in` to check if a `key` is NOT in the dictionary  
 
 syntax:
 
@@ -383,7 +488,11 @@ bin_alpha = {
 "m" not in bin_alpha  # Returns: True
 ```
 
-> * Delete a key:value pair in the dictionary  
+<br>
+
+
+## `Deleting key:value pairs`
+Use `del` to delete a `key:value` pair in the dictionary  
 
 syntax:
 
@@ -404,7 +513,10 @@ print(bin_alpha)
 # {'a': '0b01100001', 'b': '0b01100010'}
 ```
 
-> * Compare the contents of two dictionaries regardless of order  
+<br>
+
+## `Comparing Dictionary Contents`
+Use `==` to compare the contents of two dictionaries regardless of order  
 
 syntax:
 
@@ -418,7 +530,11 @@ dict2 = {'d': 100, 'e': 101, 'f': 102,'a': 97, 'b': 98, 'c': 99 }
 dict1 == dict2 # Returns: True
 ```
 
-> * Merge two dictionaries 
+<br>
+
+## `Merging Dictionaries`
+
+Use `|` to merge teh contents of two
 >   * The values of the second dictionary take priority when keys are shared between the two dictionaries
 
 syntax:
@@ -448,16 +564,22 @@ alpha_bin1 |= alpha_bin2
 # } 
 ```
 
-## <table><th>Built-in Dictionary Function Calls</th></table>
+<br>
+
+
+[Back to Top](#python-dictionaries)
+
 ___
-**Functions:**
-* are blocks of reusable code, that perform a specific task.
-* must be defined before they are called
 
-* are typically called using their name followed by parenthesis with any required arguments inside.
+<br>
+
+# `Built-in Dictionary Function Calls`
+`Functions` are blocks of reusable code, that perform a specific task.
+> * must be defined before they are called
+> * are typically called using their name followed by parenthesis with any required arguments inside.
 
 
-Built-in Functions are pre-defined by the standard library
+`Built-in Functions are pre-defined by the Python standard library`
 
 
 ```python
@@ -471,27 +593,37 @@ iter(ucase_alpha)
 reversed(ucase_alpha)
 ```
 
-## <table><th>Built-in Dictionary Method Calls</th></table>
-___
-**Methods:**
-* are functions defined by a class
-* are typically called using an object or class and dot ( . ) syntax
+<br>
 
-syntax for methods which require objects:
+
+[Back to Top](#python-dictionaries)
+
+___
+
+<br>
+
+
+# `Built-in Dictionary Method Calls`
+`Methods` are functions defined by a class
+> * are typically called using an object or class and dot ( . ) syntax
+
+<br>
+
+> syntax for methods which require objects:
 
     object.method(arguments)
 
-syntax for methods which DO NOT require objects:
+> syntax for methods which DO NOT require objects:
 
     class.method(arguments)
 
-Built-in methods are pre-defined by classes pre-defined by the standard library
+`Built-in methods are pre-defined by classes pre-defined by the standard library`
 
-To see what methods you can call on an object use:  
+> To see what methods you can call on an object use:  
     
     dir(object)  
 
-To see more information on a specific method use:  
+> To see more information on a specific method use:  
     
     help(object.method)
 
@@ -518,9 +650,17 @@ ucase_alpha.setdefault("example", None)
 ucase_alpha.clear() # {}
 ```
 
-## <table><th>Nested Dictionaries</th></table>
+<br>
+
+
+[Back to Top](#python-dictionaries)
+
 ___
-Nested Dictionaries are dictionaries that contain other dictionaries.
+
+<br>
+
+# `Nested Dictionaries`
+`Nested Dictionaries` are dictionaries that contain other dictionaries.
 
 
 ```python
@@ -558,20 +698,35 @@ alphanumeric["symbols"]["!"] = 33
 
 ```
 
-## <table><th>Iterating through Dictionaries</th></table>
-___
-There are multiple ways to iterate through a dictionaries items
+<br>
 
-> * Loop through just the dictionary's keys
+
+[Back to Top](#python-dictionaries)
+
+___
+
+<br>
+
+# `Iterating through Dictionaries`
+It is often necessary to go through the contents of a dictionary item by item. This is called `iterating` through a dictionary.
+
+> There are multiple ways to iterate through a dictionaries items
+
+
+<br>
+
+## `Loop through dictionary keys`
 
 syntax:
-
-    for key in dict:
-        ...
-    OR
-    for key in dict.keys():
-        ...
-
+```
+for key in dict:
+    ...
+```  
+OR 
+```
+for key in dict.keys():
+    ...
+```
 
 
 ```python
@@ -586,7 +741,9 @@ for key in alpha_hex.keys():
 #Output: a b c d e f
 ```
 
-> * Loop through just the dictionary's values
+<br>
+
+## `Loop through dictionary values`
 
 syntax:
 
@@ -602,7 +759,9 @@ for value in alpha_hex.values():
 #Output: 0x61 0x62 0x63 0x64 0x65 0x66 
 ```
 
-> * Loop through the keys and values of a dictionary at the same time
+<br>
+
+## `Loop through key:value pairs`
 syntax:
 
     for key,value in dict.items():
@@ -617,16 +776,25 @@ for key, value in alpha_hex.items():
 #Output: a 0x61, b 0x62, c 0x63, d 0x64, e 0x65, f 0x66,
 ```
 
-## <table><th>Unpacking Dictionaries</th></table>
+<br>
+
+
+[Back to Top](#python-dictionaries)
+
 ___
-> * Unpacking refers to the process of extracting individual elements from a container (such as a list, tuple, dictionary)
+
+<br>
+
+# `Unpacking Dictionaries`
+`Unpacking` refers to the process of extracting individual elements from a container (such as a list, tuple, dictionary)
 > * Values in a collection can be automatically assigned to variables
-> * Use the \** symbol to unpack multiple key:value pairs into a single variable
+> * Use the `**` symbol to unpack multiple `key:value` pairs into a single variable
 >
-> * This used with *args and **kwargs, see variable length arguments 
+> * This used with `*args` and `**kwargs`, see variable length arguments 
 
-### Unpack into variables
+<br>
 
+## `Unpack into variables`
 
 ```python
 alpha = {'a': 97, 'b': 98, 'c': 99}
@@ -637,8 +805,10 @@ x, y, z = alpha.keys()
 
 ```
 
-### Unpack Multiple Key:Value pairs with \**
+<br>
 
+## `Unpack Multiple Key:Value pairs` 
+Unpack Multiple Key:Value pairs with `**`
 
 ```python
 alpha = {'a': 97, 'b': 98, 'c': 99}
@@ -660,9 +830,17 @@ def example(a,b,c):
 example(**alpha) # Output: 97 98 99
 ```
 
-## <table><th>Dictionary Comprehension</th></table>
+<br>
+
+
+[Back to Top](#python-dictionaries)
+
 ___
-A dictionary comprehension is a shorthand way to algorithmically create a dictionary
+
+<br>
+
+# `Dictionary Comprehension`
+A `dictionary comprehension` is a shorthand way to algorithmically create a dictionary
 
 syntax:
 
@@ -682,7 +860,9 @@ print(numerals)
 # Output: {'0': 48, '1': 49, '2': 50, '3': 51, '4': 52, '5': 53, '6': 54, '7': 55, '8': 56, '9': 57}
 ```
 
-### Include a filter statement
+<br>
+
+## `Including a filter statement`
 
 syntax:
 
@@ -694,3 +874,14 @@ syntax:
 even_squares = {num: num**2 for num in range(10) if num % 2 == 0}
 print(even_squares)  # Output: {0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
 ```
+
+<br>
+
+
+[Back to Top](#python-dictionaries)
+
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*  

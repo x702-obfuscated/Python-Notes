@@ -2,31 +2,31 @@
 # `Python Operators`
 
 Covered in this file:
-1. [Concatenation](#concatenation)
-1. [Duplication](#duplication)
-1. [Casting (changing data type)](#casting-changing-data-type)
-1. [Complete Operator Precedence](#complete-operator-precedence)
-1. [Arithmetic operators (math)](#arithmetic-operators-math)
-1. [Comparison operators (inequalities)](#comparision-operators-inequalities)
-1. [Membership operators](#membership-operators)
-1. [Identity operators](#identity-operators)
-1. [Assignment vs Equality Operator](#assignment-vs-equality-operators)
-1. [Compound Assignment Operators](#compound-assignment-operators)
-    1. [Incrementing a Value](#incrementing-a-value)
-    1. [Decrementing a Value](#decrementing-a-value)
-1. [Logical operators (not, and, or)](#logical-operators)
-    1. [NOT Truth table](#not-truth-table)
-    1. [AND Truth table](#and-truth-table)
-    1. [OR Truth table](#or-truth-table)
-1. [De Morgan's Laws](#de-morgans-laws)
-1. [Built-in Operation Function Calls](#built-in-operation-function-calls)
-    1. [Binary Data Representation: Two's complement notation](#binary-data-representation-twos-complement-notation)
-    1. [Bitwise NOT](#bitwise-not)
-    1. [Bitwise Shift <<|>>](#bitwise-shift)
-    1. [Bitwise AND](#bitwise-and)
-    1. [Bitwise XOR](#bitwise-xor)
-    1. [Bitwise OR](#bitwise-or)
-1. [Appendix](#appendix)
+1. [`Concatenation`](#concatenation)
+1. [`Duplication`](#duplication)
+1. [`Casting (changing data type)`](#casting-changing-data-type)
+1. [`Complete Operator Precedence`](#complete-operator-precedence)
+1. [`Arithmetic operators (math)`](#arithmetic-operators-math)
+1. [`Comparison aka Relational Operators`](#comparision-aka-relational-operators)
+1. [`Membership operators`](#membership-operators)
+1. [`Identity operators`](#identity-operators)
+1. [`Assignment vs Equality Operator`](#assignment-vs-equality-operators)
+1. [`Compound Assignment Operators`](#compound-assignment-operators)
+    1. [`Incrementing a Value`](#incrementing-a-value)
+    1. [`Decrementing a Value`](#decrementing-a-value)
+1. [`Logical operators (not, and, or)`](#logical-operators)
+    1. [`NOT Truth table`](#not-truth-table)
+    1. [`AND Truth table`](#and-truth-table)
+    1. [`OR Truth table`](#or-truth-table)
+1. [`De Morgan's Laws`](#de-morgans-laws)
+1. [`Built-in Operation Function Calls`](#built-in-operation-function-calls)
+    1. [`Binary Data Representation: Two's complement notation`](#binary-data-representation-twos-complement-notation)
+    1. [`Bitwise NOT`](#bitwise-not)
+    1. [`Bitwise Shift <<|>>`](#bitwise-shift)
+    1. [`Bitwise AND`](#bitwise-and)
+    1. [`Bitwise XOR`](#bitwise-xor)
+    1. [`Bitwise OR`](#bitwise-or)
+1. [`Appendix`](#appendix)
 
 
 <br>
@@ -364,7 +364,6 @@ Order of operations follows PEMDAS from Algebra (BODMAS for the EU)
 ## `Floor Division (Integer Division)` `\\`
 > * returns a `<class 'int'>`
 > * truncates (2.5 --> 2): cuts off the fractional part
-
 ```python
 5 // 2 # Returns: 2
 ```
@@ -402,19 +401,19 @@ ___
 
 <br>
 
-# `Comparision Operators (Inequalities)`
+# `Comparision aka Relational Operators`
 `Comparision operators` are used to compare two values.
 > * they evaluate to a boolean value (True/False)
 > * Order of Operations is Left to Right
 
 |Symbol| Inequality Operation      |
 |:----:|:-------------------------:|
-|   >  | greater than              |
-|   <  | less than                 |
-|  >=  | greater than or equal to  |
-|  <=  | less than or equal to     |
-|  ==  | equal to                  |
-|  !=  | not equal to              |
+|   `>`  | greater than              |
+|   `<`  | less than                 |
+|  `>=`  | greater than or equal to  |
+|  `<=`  | less than or equal to     |
+|  `==`  | equal to                  |
+|  `!=`  | not equal to              |
 
 <br>
 
@@ -469,7 +468,7 @@ ___
 <br>
 
 # `Identity Operators`
-Identity Operators check if the memory location of the two objects is identical
+`Identity Operators` check if the memory location of the two objects is identical
 
 |Symbol| Identity Operation |
 |:----:|:------------------:|
@@ -515,9 +514,9 @@ ___
 # `Assignment vs. Equality Operators`
 |Symbol| Operation    | Description |
 |:----:|:------------:|:------------|
-|=     | assignment   | assigns a value to a variable |
-|==    | equality     | compares the value of two objects |
-|!=    | not equal to | compares if two objects are not equal|
+|`=`     | assignment   | assigns a value to a variable |
+|`==`    | equality     | compares the value of two objects |
+|`!= `   | not equal to | compares if two objects are not equal|
 
 
 ```python

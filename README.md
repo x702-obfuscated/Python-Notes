@@ -1,6 +1,8 @@
 # Python_Notes
 
-This github repository contains detailed notes on the Python Programming Language, based on the current stable version (3.12.2)  
+This github repository contains detailed notes on the Python Programming Language, 
+Current stable version at time of writing: (3.12.6)  
+
 [Python Documentation](https://docs.python.org/3/)
 
 
@@ -32,6 +34,7 @@ This repository contains the following folders broken down in order to help faci
 
 ## 3. Conditionals
 ---
+1. Boolean-Expressions.md
 1. Conditionals.md
 
 ## 4. Iteration
@@ -62,3 +65,5 @@ This repository contains the following folders broken down in order to help faci
 
 
 *These notes are maintained and always a work in progress.*
+
+*Created and maintained by Mr. Merritt founder of Learning With Merritt*
