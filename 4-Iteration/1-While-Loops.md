@@ -3,6 +3,7 @@ ___
 
 Covered in this file:
 1. [`Note on symbols used in this file`](#note-on-symbols-used-in-this-file)
+1. [`Control Flow Statements`](#control-flow-statements)
 1. [`Iteration Defined`](#iteration-defined)
 1. [`Python Indentation and Code Blocks`](#python-indentation-and-code-blocks)
 1. [`While Loop Syntax`](#while-loop-syntax)
@@ -30,7 +31,7 @@ ___
 
 # `Note on symbols used in this file`:
 Symbols appearing in python blocks should be treated as Python syntax.  
-`...` is used a placeholder in Python. 
+`...` is used as a placeholder in Python. 
 ```python 
 ... 
 ```
@@ -58,6 +59,44 @@ Symbols appearing in python blocks should be treated as Python syntax.
 ```
   $ command flags arguments
 ```
+
+<br>
+
+[Back to Top](#python-while-loops)
+
+___
+
+<br>
+
+# `Control Flow Statements`
+`Control flow statements` are constructs in programming languages that control the order in which instructions or statements are executed.
+
+### `Control Flow Statements in Python`
+1. Conditional Statements: `if`, `elif`, `else`
+1. Looping: `for`, `while`
+1. Loop Control: `break`, `continue`, `pass`
+1. Function Control: `return`
+1. Exception Handling: `try`, `except`, `finally`, `raise`
+1. Context Management: `with`
+1. Assertions: `assert`
+
+| Control Flow Statement | Description                                                                 |
+|:-:|:-|
+| `if`                   | Executes a block of code if a specified condition is true.                   |
+| `elif`                 | Checks another condition if the previous `if` condition is false.            |
+| `else`                 | Executes a block of code if all preceding conditions are false.              |
+| `for`                  | Iterates over a sequence (like a list, tuple, string, etc.).                 |
+| `while`                | Repeats a block of code as long as a condition is true.                      |
+| `break`                | Exits the nearest enclosing loop immediately.                               |
+| `continue`             | Skips the current iteration of the loop and continues with the next one.     |
+| `pass`                 | Does nothing; used as a placeholder for future code.                        |
+| `return`               | Exits a function and optionally returns a value.                            |
+| `try`                  | Defines a block of code to test for errors during execution.                 |
+| `except`               | Catches and handles exceptions (errors) that occur in the `try` block.       |
+| `finally`              | Executes code whether or not an exception occurred in the `try` block.       |
+| `raise`                | Manually raises an exception.                                                |
+| `with`                 | Used to wrap the execution of a block of code within context management.     |
+| `assert`               | Tests a condition, and if it's false, raises an `AssertionError`.            |
 
 <br>
 
@@ -727,7 +766,13 @@ ___
 
 The `else` block runs only one time, after the condition is False.
 
-
+syntax:
+```
+for variable in iterable:
+    ...
+else:
+    ...
+```
 ```python
 #when the condition is no longer true run the else
 i = 1
@@ -749,13 +794,15 @@ ___
 <br>
 
 # `Nested While Loops`
-`Nested while loops` are one or more while loops placed inside of another.
+`Nesting` refers to the placement of one or more constructs with another construct of the same type. 
+
+Placing one or more while loops inside of another creates a `nested while loop`.
 
 > The inner while loop executes completely for every 1 iteration of the outer loop.
 
 <br>
 
-Placing one while loop into another while loop.
+Placing one while loop inside another while loop.
 
 syntax:
 ```

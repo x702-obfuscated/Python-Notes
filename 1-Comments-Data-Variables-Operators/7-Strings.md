@@ -70,7 +70,7 @@ Specifically: a binary value mapped to a specific symbol as defined by ASCII or 
 <br>
 
 `American Standard Code for Information Interchange (ASCII)`  
-ASCII is a character encoding standard used to represent text in computers and other devices that use text.
+ASCII is a character encoding standard used to represent text in computers and other devices that use text. ACSII defines a mapping of binary values to human readable characters. 
 > * defines a set of 128 characters, where each character is represented by a unique 7-bit binary number.
 > * forms the basis for more extensive character encoding schemes like Unicode.
 
@@ -86,6 +86,8 @@ Unicode is a universal character encoding standard designed to represent and han
 `Unicode Transformation Format (UTF)`  
 UTF is a family of character encoding schemes used to represent Unicode characters. 
 > * The most common encodings are UTF-8, UTF-16, and UTF-32. These encoding transform unicode code points into sequences of bytes.
+
+`.py files in Python3 are encoded with UTF-8 by default`
 
 <br>
 
