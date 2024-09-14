@@ -667,6 +667,8 @@ tuple2d = (
 ) #    column indexes
 ```
 
+<br>
+
 ## `Accessing Elements from a 2D List`
 syntax:
     

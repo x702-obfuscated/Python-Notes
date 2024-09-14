@@ -1,5 +1,6 @@
-*Use CTRL + F to search for keywords in this file*
+
 # <table><th>``For Loops (without lists)``<th></table>
+*Use CTRL + F to search for keywords in this file*
 ___
 
 Covered in this file:
