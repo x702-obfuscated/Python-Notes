@@ -348,6 +348,9 @@ for index in list1d:
 
 # Output: a b c d e 
 ```
+
+<br> 
+
 `looping through elements` syntax:
 ```
 for element in iterable:
@@ -443,7 +446,7 @@ for data in user_data:
 <br>
 
 ## `Forward Iteration: Beginning to End`
-> * Forward Iteration: looping from 0 to the length of the list
+`Forward Iteration`: looping from 0 to the length of the list
 
 ```python
 #        [-----------------elements------------------]
@@ -453,9 +456,12 @@ list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 #len(list1d) aka number of elements = 9 
 ```
 
-## For Loops: Forward Iteration
+<br>
+
+## `For Loops: Forward Iteration`
 ```python
 'simple and quick plus indexes'
+
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 
 for index in range(len(list1d)):    # 0 (default) to last index by 1s (default)
@@ -466,6 +472,7 @@ for index in range(len(list1d)):    # 0 (default) to last index by 1s (default)
 ```
 ```python
 'more control with range(start, stop, step)'
+
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 
 for index in range(0,len(list1d),1):    # 0 to last index by 1s
@@ -476,6 +483,7 @@ for index in range(0,len(list1d),1):    # 0 to last index by 1s
 ```
 ```python
 'forward only and elements only'
+
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 
 for element in list1d:
@@ -498,7 +506,7 @@ for index, element in enumerate(list1d):
 
 <br>
 
-## While Loops: Forward Iteration
+## `While Loops: Forward Iteration`
 
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
@@ -514,7 +522,7 @@ while(index < len(list1d)):
 
 <br>
 
-## Dictionary Iteration
+## `Dictionary Iteration`
 ```python
 user =  {
     "UID": 1000,
@@ -534,8 +542,8 @@ for key in user:
 
 <br> 
 
-## `Reverse Iteration: End to Beginning`q
-> * Reverse Iteration: looping from the last element to the beginning
+## `Reverse Iteration: End to Beginning`
+`Reverse Iteration`: looping from the last element to the beginning
 ```python
 #        [-----------------elements------------------]
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
@@ -544,9 +552,12 @@ list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 #len(list1d) aka number of elements = 9 
 ```
 
-## For Loops: Reverse Iteration
+<br>
+
+## `For Loops: Reverse Iteration`
 ```python
 'more control with range(start, stop, step)'
+
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 
 for index in range(len(list1d)-1,-1,-1):    # start a the last index, stop at 0, decrement by 1
@@ -558,6 +569,7 @@ for index in range(len(list1d)-1,-1,-1):    # start a the last index, stop at 0,
 
 ```python
 'simpler syntax, but only works for looping through all elements backwards'
+
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 
 for element in reversed(list1d):
@@ -566,7 +578,9 @@ for element in reversed(list1d):
 # Output: i h g f e d c b a
 ```
 
-## While Loops: Reverse Iteration
+<br>
+
+## `While Loops: Reverse Iteration`
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 
@@ -586,13 +600,13 @@ NOTE:
 
 <br>
 
-## `Run Time Errors: LookUp Errors`q
+# `Common Run Time Errors: Lookup Errors`
 
-## IndexError
-> * IndexErrors are a type of LookUp Error that occurs when an algorithm attempts to access an index that does not exist.
-> * error: Run Time
+## `IndexError`
+`IndexErrors` are a type of LookUp Error that occurs when an algorithm attempts to access an index that does not exist.
 
-real examples
+
+examples
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 
@@ -635,11 +649,13 @@ while (i <= 10):
 # IndexError: list index out of range
 ```
 
-## KeyError: 
-> * KeyErrors are a type of lookup error that occurs when attempting to access a dictionary key that does not exist.
-> * error: Run Time
+<br>
 
-real examples:
+## `KeyError` 
+`KeyErrors` are a type of lookup error that occurs when attempting to access a dictionary key that does not exist.
+
+
+examples:
 ```python
 dict1d = {"a": 97, "b":98,"c":99}
 
@@ -655,18 +671,20 @@ print(dict1d["d"])
 
 <br>
 
-## `Complex Iteration`q 
-> * Complex Iteration involves more complex algorithms for example
-    > * Looping through the first or last half of the list
-    > * Looping through every nth element
-    > * etc.
-
-## `Middle Index Calculation`q 
-> * Calculating the middle index of a list is necessary, in order to loop through half of the list.
+# `Complex Iteration`
+Complex Iteration involves more complex algorithms for example
+* Looping through the first or last half of the list
+* Looping through every nth element
+* etc.
 
 <br>
 
-## Even Length Lists
+# `Middle Index Calculation` 
+Calculating the middle index of a list is necessary, in order to loop through half of the list.
+
+<br>
+
+## `Even Length Lists`
 
 ```python
 #        [-----------------elements-------------]
@@ -687,7 +705,7 @@ mid_index = len(list1d)/2 # Returns: 4
 
 <br>
 
-## Odd Length Lists
+## `Odd Length Lists`
 ```python
 #        [-----------------elements------------------]
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'] 
