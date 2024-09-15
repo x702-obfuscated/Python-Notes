@@ -1,4 +1,7 @@
 # `Python: Basic Function Calls`
+*Use CTRL + F to search for keywords in this file*  
+*You are encouraged to copy and alter the code in this file to understand how it works*
+___
 
 Covered in this file:
 

@@ -1,4 +1,7 @@
 # `Python Dictionaries`
+*Use CTRL + F to search for keywords in this file*  
+*You are encouraged to copy and alter the code in this file to understand how it works*
+___
 
 Covered in this file:
 1. [`Collection Types`](#collection-types)
@@ -157,6 +160,10 @@ Dictionaries are also knowns as:
 >   * Tables  
 >   * hash table  
 >   * symbol table  
+
+Dictionary values are hashed, meaning that key values are mapped to the memory location of the values. 
+
+> *Hashing refers to the use of hash tables that utilize hash functions to convert data (usually text or binary) into a fixed-size string of characters, which is typically a hash value or hash code. This value is then mapped to unique identifiers or memory addresses, allowing for quick lookup, insertion, or deletion operations.*
 
 <br>
 

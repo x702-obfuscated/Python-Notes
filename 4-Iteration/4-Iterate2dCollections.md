@@ -1,91 +1,145 @@
+
+# `Python Iteration 2D Collections`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
-# <table><th>`Iterating Through 2D Collections`<th></table>
 ___
 
 Covered in this file:
-1. Multidimension Collections Review
-2. Mutidimension Collection Iteration Syntax
-3. Forward Iteration: Beginning to End
-4. Reverse Iteration: End to Beginning
-5. Complex Iteration
+1. [`Note on symbols used in this file`](#note-on-symbols-used-in-this-file)
+1. [`Multidimension Collections Review`](#multidimension-collections-review)
+    1. [`Indexing`](#indexing)
+    1. [`Length of a Multidimensional Collection`](#length-of-a-multidimensional-collection)
+    1. [`Element Access`](#element-access)
+    1. [`Changing Elements`](#changing-elements)
+    1. [`Methods to remember`](#methods-to-remember)
+1. [`Multidimensional Collections: Nested Iteration Syntax`](#multidimensional-collections-nested-iteration-syntax)
+    1. [`For Loops: Nested Iteration`](#for-each-loop-nested-iteration)
+    1. [`For Each Loop: Nested Iteration`](#for-each-loop-nested-iteration)
+    1. [`Using enumerate()`](#using-enumerate)
+    1. [`Dictionaries`](#dictionaries)
+    1. [`While Loops: Nested Iteration`](#while-loops-nested-iteration)
+1. [`Forward Iteration: Beginning to End`]()
+    1. [`For Loops: Forward`](#for-loop-forward)
+
+    1. [`While Loop: Forward`](#while-loop-forward)
+1. [`Reverse Iteration: End to Beginning`](#reverse)
+    1. [`For Loop: Reverse`](#for-loop-reverse)
+
+    1. [`While Loop: Reverse`](#while-loops-reverse)
+1. [`Complex Iteration`](#complex-iteration)
+
+
+
+
+
 
 <br>
 
-## Note on symbols used in this file:
-> Symbols appearing in python blocks should be treated as Python syntax.  
->... is used a placeholder in Python. 
+# `Note on symbols used in this file`:
+Symbols appearing in python blocks should be treated as Python syntax.  
+`...` is used as a placeholder in Python. 
 ```python 
 ... 
 ```
 
-### Variable Information
-> Text inside of <> should be treated as a place holder for variable information
+<br>
+
+### `Variable Information`
+> Text inside of `<>` should be treated as a place holder for variable information
 ```
   <text>    
 ```
 
-### CLI Commands
-> The > indicates commands to be executed in the Windows Powershell prompt
+<br>
+
+### `CLI Commands`
+> The `>` indicates commands to be executed in the Windows Powershell prompt
 ```
   > command flags arguments 
 ```
-> The $ indicates commands to be executed in the Linux or Mac command line interface
+
+<br>
+
+
+> The `$` indicates commands to be executed in the Linux or Mac command line interface
 ```
   $ command flags arguments
 ```
 
 <br>
 
-## <table><th>`Multidimension Collections Review`</th></table>
+[Back to Top](#python-iteration-1d-collections)
+
+___
+
+<br>
+
+# `Multidimension Collections Review`
 
 There are four major collection data types in the Python programming language:
 
-> **List:**   
-collection which is ordered(indexed), mutable, allows duplicate members, and uses [ ] to enclose members.
+A `List` is a collection which is ordered(indexed), mutable, allows duplicate members, and uses [ ] to enclose members.
 ```python
 list1d = [1,2,3]
 ```
 
-> **Tuple:**  
-collection which is ordered(indexed), immutable, allows duplicate members and uses ( ) to enclose members.
+<br>
+
+A `Tuple` is a collection which is ordered(indexed), immutable, allows duplicate members and uses ( ) to enclose members.
 ```python
 tuple1d = (1,2,3)
 ```
-> **Set:**   
-collection which is unordered(not indexed), mutable, does NOT allow duplicate members and uses { } to enclose members.
+
+<br>
+
+A `Set` is a collection which is unordered(not indexed), mutable, does NOT allow duplicate members and uses { } to enclose members.
 ```python
 set1d = {1,2,3}
 ```
-> **Dictionary:**   
-collection which is ordered(indexed with a key), mutable, does NOT allow duplicate members and uses { : } to enclose members.
+
+<br>
+
+A `Dictionary` is a collection which is ordered(indexed with a key), mutable, does NOT allow duplicate members and uses { : } to enclose members.
 ```python
 dict1d = {"a": 1, "b": 2,"c": 3}
 ```
-|**List**|**Tuple**|**Set**|**Dictionary**|
+
+<br>
+
+|`List`|`Tuple`|`Set`|`Dictionary`|
 |:-:|:-:|:-:|:-:|
 |ordered (numerically indexed)|ordered (numerically indexed)|unordered (not indexed)|ordered (indexed with a key)|
 |mutable|immutable|mutable|mutable|
 |duplicates|duplicates|NO duplicates|NO duplicates|
 |**[ ]**|**( )**|**{ }**|**{ : }**| 
 
-> * *Data Structure: a specialized format for organizing, processing, retrieving, and storing data.*
-> * *Collection: a data structure that holds multiple elements*
-> * *Member: an item stored within a collection*
-> * *Element: is a synonym for member*
-> * *Ordered: having a specific order 0,1,2,... (ie. indexed)*
-> * *Indexed:  elements are associated with a specific identifier (index), which can be used to directly locate and access the data*
-> * *Mutable: elements can change*
-> * *Immutable: elements cannot change*
+* *`Data Structure`: a specialized format for organizing, processing, retrieving, and storing data.*
+* *`Collection`: a data structure that holds multiple elements*
+* *`Member`: an item stored within a collection*
+* *`Element`: is a synonym for member*
+* *`Ordered`: having a specific order 0,1,2,... (ie. indexed)*
+* *`Indexed`:  elements are associated with a specific identifier (index), which can be used to directly locate and access the data*
+* *`Mutable`: elements can change*
+* *`Immutable`: elements cannot change*
 
-> # Note: 
-> From here we will focus on lists, as lists cover the widest range of possibilities, and the methods used for lists are identical in most cases to the other collections. 
+*Note*: 
+*`Strings can be iterated through similiarly to lists. But cannot be multidimensional.`*
 
-> Important differences will be noted.
+___
+
+### *In this file we will focus on lists. Lists cover the widest range of possibilities, and the methods used for lists are identical in most cases to the other collections. Any important differences will be noted.*
+
+___
 
 <br>
 
-## Indexing
+[Back to Top](#python-iteration-1d-collections)
+
+___
+
+<br>
+
+## `Indexing`
 ```python
 #a 2D list is a list of lists
 #        [------------------------------------------outer elements-----------------------------------------------]
@@ -98,7 +152,10 @@ list2d = [["a","b","c","d","e","f"],["g","h","i","j","k","l"],["m","n","o","p","
 #                
 # list2d is a list of 4 lists
 ```
-> * To simplify how we look at multi dimensional lists and tuples
+
+<br>
+
+To simplify how we look at multi dimensional lists and tuples, we can place each inner list on a new line. 
 ```python
 #simplify by formatting the code this way 
 list2d = [
@@ -119,12 +176,11 @@ list2d = [
 ] #    column indexes
 ```
 
-`tuples are identical`
-`sets cannot be multidimensional as they can only contain immutable types`
+`tuples are indexed the same way` `sets cannot be multidimensional as they can only contain immutable types`
+
+<br>
 
 `Nested Dictionaries use keys instead of indexes`  
-
-real example:
 > There are two user_info keys: jack_the_giant_slayer and jill_up_the_hill.  
 > Each contains thier own nested dictionary with 5 keys: UID, passwd_hash, name, email, birthdate
 ```python
@@ -148,7 +204,7 @@ user_info = {
 
 <br>
 
-## Length of a Multidimensional Collection
+## `Length of a Multidimensional Collection`
 ```python
 list2d = [
   ["a","b","c","d","e","f"], # 0
@@ -169,6 +225,8 @@ len(list2d[row])-1      # Returns: 5 last column index
 ```
 `tuples are identical`
 `sets cannot be nested`
+
+<br>
 
 `Nested dictionaries use keys instead of indexes`
 ```python
@@ -200,7 +258,13 @@ len(user_info["jack_the_giant_slayer"])         # Returns: 5
 
 <br>
 
-## Element Access
+## `Element Access`
+Elements are accessed using subscripting notation `[index][index]`
+
+syntax:
+```
+list_name[row][col]
+```
 
 ```python
 list2d = [
@@ -216,7 +280,9 @@ list2d[0][0] # Returns: a
 list2d[0][1] # Returns: b
 list2d[3][5] # Returns: z
 ```
+`tuples are accessed the same way` 
 
+Dictionaries use subscripting `[key]` or `.get(key)`
 ```python
 user_info = {
     "jack_the_giant_slayer": {
@@ -249,7 +315,8 @@ user_info.get("jack_the_giant_slayer").get("email") # Returns: jack@beanstalk.co
 
 <br>
 
-## Changing Elements
+## `Changing Elements`
+List elements can be changed using subscript notation `[index][index]`
 ```python
 list2d = [
   ["a","b","c","d","e","f"], # 0
@@ -276,7 +343,11 @@ list2d[3][5] = 120
 `tuples are immutable`
 `sets cannot be nested `
 
+<br>
+
 `Dictionaries use keys instead of indexes`
+
+Dictionaries use subscript notation `[key][key]` or `.get(key).get(key)`
 ```python
 user_info = {
     "jack_the_giant_slayer": {
@@ -313,46 +384,152 @@ user_info.get("jack_the_giant_slayer").get("email") = "jack@goldengoose.org"
 
 <br>
 
-## Methods to remember
-```python
-list2d.append()  # Adds a single element x to the end of the list.
-list2d.extend()  # Extends the list by appending elements from the iterable.
-list2d.insert()  # Inserts an element x at a given index i.
-list2d.remove()  # Removes the first occurrence of element x from the list.
-list2d.pop()     # Removes the element at the given index i and returns it. default is the last element
-list2d.clear()   # Removes all elements from the list.
-list2d.index()   # Returns the index of the first occurrence of element x 
-list2d.count()   # Returns the number of occurrences of element x in the list.
-list2d.sort()    # Sorts the list in ascending order. 
-list2d.reverse() # Reverses the elements of the list in place.
-list2d.copy()    # Returns a shallow copy (reference location) of the list.
-```
+## `Methods to remember`
+### List Methods
 
 ```python
-dict2d.copy()        # Returns a shallow copy of the dictionary.
-dict2d.fromkeys()    # Creates a new dictionary with keys from an iterable and values set to a specified value.
-dict2d.pop()         # Removes the specified key and returns the corresponding value.
-dict2d.popitem()     # Removes and returns the last inserted key-value pair as a tuple.
-dict2d.setdefault()  # Returns the value of a key if it is in the dictionary; if not, inserts the key with a specified value.
-dict2d.clear()       # Removes all items from the dictionary.
+list1d.extend(iterable)
 ```
+> *Extends the list by appending all elements from the iterable (e.g., another list).*
 
 <br>
 
 
-## <table><th>`Multidimensional Collection Iteration Syntax`</th></table>
-> * Nested loops are used to iterate through the contents of a collection
-> * for loops are typically best suited to this type of iteration
-> * However, while loops can also be used. 
+```python
+list1d.extend(iterable)
+```
+> *Extends the list by appending all elements from the iterable (e.g., another list).*
 
-## For Loops
+<br>
 
-### Lists and Tuples
-`r represents row indexes ` 
-`row represents row elements`
+```python
+list1d.insert(index, object)
+```
+> *Inserts an element object at the given index index.*
 
-`c represents column indexes`
-`col represents column elements`
+<br>
+
+```python
+list1d.remove(value)
+```
+> *Removes the first occurrence of the element value from the list.*
+
+<br>
+
+```python
+list1d.pop(index=-1)
+```
+> *Removes and returns the element at the index index (default is the last element).*
+
+<br>
+
+```python
+list1d.clear()
+```
+> *Removes all elements from the list, making it empty.*
+
+<br>
+
+```python
+list1d.index(value, start=0, stop=sys.maxsize)
+```
+> *Returns the index of the first occurrence of element value in the list from start to stop.*
+
+> *sys.maxsize is very large 2<sup>63</sup>-1: 9,223,372,036,854,775,807*
+
+<br>
+
+```python
+list1d.count(value)
+```
+> *Returns the number of occurrences of element value in the list.*
+
+<br>
+
+```python
+list1d.sort(*, key=None, reverse=False)
+```
+> *Sorts the list in ascending order (can be customized with a key function or reverse=True).*
+
+<br>
+
+```python
+list1d.reverse()
+```
+> *Reverses the elements of the list in place.*
+
+<br>
+
+```python
+list1d.copy()
+```
+> *Returns a shallow copy of the list (a new list with references to the original elements).*
+
+<br>
+
+### Dictionary Methods
+```python
+dict1d.copy()        
+```
+> *Returns a shallow copy of the dictionary.*
+
+<br>
+
+```python
+dict1d.fromkeys(iterable, value = None)
+```
+> *Creates a new dictionary with keys from an `iterable` and values set to a specified value.*
+
+<br>
+
+```python
+dict1d.pop(key, default)
+```
+> *Removes the specified `key` and returns the corresponding value. If the `key` is not found remove and return the `default`*
+
+<br>
+
+```python
+dict1d.popitem()     
+```
+> *Removes and returns the last inserted key-value pair as a tuple.*
+
+<br>
+
+```python
+dict1d.setdefault(key, default)  
+```
+
+> *Returns the value of a `key` if it is in the dictionary; if not, inserts the `key` with a specified value. If `key` is not found return or insert the default.*
+
+<br>
+
+```python
+dict1d.clear()
+```
+> *Removes all items from the dictionary.*
+
+
+<br>
+
+[Back to Top](#python-iteration-2d-collections)
+
+___
+
+<br>
+
+
+# `Multidimensional Collections: Nested Iteration Syntax`
+Loops are commonly used to access and operate on the elements of a collection. `for` loops are typically best suited to this type of iteration, however, `while` loops can also be used. 
+
+<br>
+
+*There are many possible operations that might be performed when iterating through a collection. We will keep things simple for now by just printing out the elements.*
+
+<br>
+
+## `For Loops: Nested Iteration`
+`r represents row indexes` `c represents column indexes`
 
 syntax:
 ```
@@ -361,30 +538,43 @@ for r in range(start,stop,step):
         ...
     ...
 ```
-abstract example:
 ```python
 #Outer Loop 
-#start a the first list, stop at the last list, increment by 1
-for row in range(0,len(list2d),1):
-    ...
+#start at the first list, stop at the last list, increment by 1
+for r in range(0,len(list2d),1): #-----#
+    ...                                #
+#--------------------------------------#
  
 
 #Inner Loop
 #start at the first item, stop at  the last item, increment by 1
-for col in range(0,len(list2d[row]),1):
-    ...
-
+for c in range(0,len(list2d[row]),1): #------#
+    ...                                      #
+#--------------------------------------------#
 
 'The inner loop goes inside of the outer loop'
-#Outer Loop-------------------------------------------------#
-for row in range(0,len(list2d),1):                          #
-    #Inner Loop----------------------------------#          #
-    for col in range(0,len(list2d[row]),1):      #          #
-        ...                                      #          #
-    #exit inner loop-----------------------------#          #
+
+for r in range(0,len(list2d),1): # Outer Loop --------------#
+                                                            #
+    for c in range(0,len(list2d[row]),1): #Inner Loop----#  #
+        ...                                              #  #
+    #exit inner loop-------------------------------------#  #
+    ...                                                     #
 #exit outer loop--------------------------------------------#
 ```
-For Each Loop
+example:
+```python
+for r in range(0,len(list2d),1):  
+    for c in range(0,len(list2d[row]),1):
+        print((r,c), end = " ")             #print index pairs
+        print(list2d[r][c], end = " ")      #print elements
+    print()                                 #print a "\n" character to format output
+```
+
+<br>
+
+## `For Each Loop: Nested Iteration`
+`row represents row elements` `col represents column elements`
 
 syntax:
 ```
@@ -393,16 +583,18 @@ for row in list2d:
         ...
     ...
 ```
-
-abstract example:
+example:
 ```python
 for row in list2d:
     for col in row:
         print(col, end = " ")
 ```
 
-***Using enumerate() is considered best practice***
-> * it allows access to both the index, and element.
+<br>
+
+## `Using enumerate()`
+Using `enumerate()` to access both the element and the index is considered best practice.
+
 
 syntax:
 ```
@@ -411,30 +603,43 @@ for r, row in enumerate(list2d):
         ...
     ...
 ```
-abstract example:
+example:
 ```python
 for r, row in enumerate(list2d):
-    for c, col in enumerat(row):
+    for c, col in enumerate(row):
         print((r,c,col), end = " ")
     print()
 ```
 
 <br>
 
-## Dictionaries
-> * Dictionaries are not numerically indexed
-> * This means that for-each loops are necessary to access all elements of a list
-NOTE:
-> Dictionaries are unordered, since key:value pairs are hashed order doesn't matter, values are simply accessed by thier key.
+## `Dictionaries`
+`Dictionaries` are not numerically indexed. This means that `for-each` loops are necessary to access all elements of a dictionary.
+
+Dictionaries are unordered, since `key:value` pairs are hashed order doesn't matter, values are simply accessed by thier key.
+
+> *Hashing refers to the use of hash tables that utilize hash functions to map data to unique identifiers or memory addresses, allowing for quick lookup, insertion, or deletion operations.*
 
 syntax: 
+```
+for dict_key in dict2d:
+    for inner_key in dict2d[dict_key]:
+        ...
+    ...
+```
 ```
 for dict_key in dict2d:
     for inner_key in dict2d.get(dict_key):
         ...
     ...
 ```
-abstract example:
+example:
+```python
+for dict_key in dict2d:
+    for inner_key in dict2d[dict_key]:
+        print((inner_key, dict2[dict_key][inner_key]), end = " ")
+    print()
+```
 ```python
 for dict_key in dict2d:
     for inner_key in dict2d.get(dict_key):
@@ -443,35 +648,36 @@ for dict_key in dict2d:
 ```
 <br>
 
-## While Loops
+## `While Loops: Nested Iteration`
 
 syntax:
 ```
 r = row_start
 while(r < len(list2d)):
+
     c = col_start
     while(c < len(list2d[r])):
         ...
         c += col_step
+
     ...
     r += row_step
 ```
-
-abstract example:
+example:
 ```python
 #Outer loop
-r = 0 #start at the first list 
-while( r < len(list2d) ): #OR r <= len(list2d)-1 ; stop at last list
+r = 0                       # start at the first list 
+while( r < len(list2d) ):   # OR r <= len(list2d)-1 ; stop at last list
     ...
-    r += 1 #increment by 1
+    r += 1                  # increment by 1
 #exit outer while
 
 
 #Inner Loop
-c = 0 #start at first item
-while( c < len(list2d[r]) ): #OR c <= len(list2d[r])-1 ; stop at last item
+c = 0                           # start at first item
+while( c < len(list2d[r]) ):    # OR c <= len(list2d[r])-1 ; stop at last item
     ...
-    c += 1 #increment by 1
+    c += 1                      # increment by 1
 #exit inner loop
 
 
@@ -491,11 +697,18 @@ while( r < len(list2d) ):                             #
 #exit outer while-------------------------------------#
 
 ```
+
 <br>
 
-## <table><th>`Forward Iteration: Beginning to End`</th></table>
+[Back to Top](#python-iteration-2d-collections)
 
-## For Loop: Forward
+___
+
+<br>
+
+# `Forward Iteration: Beginning to End`
+
+## `For Loop: Forward`
 ```python
 list2d = [
   ["a","b","c","d","e","f"], # 0
@@ -599,7 +812,7 @@ for user in user_info:
 
 <br>
 
-## While Loop: Forward
+## `While Loop: Forward`
 ```python
 list2d = [
   ["a","b","c","d","e","f"], # 0
@@ -627,7 +840,14 @@ while( r < len(list2d)):                            # stop at the last row
 
 <br>
 
-## <table><th>`Reverse Iteration: End to Beginning`</th></table> 
+[Back to Top](#python-iteration-2d-collections)
+
+___
+
+<br>
+
+# `Reverse Iteration: End to Beginning` 
+## `For Loop: Reverse`
 ```python
 list2d = [
   ["a","b","c","d","e","f"], # 0
@@ -676,7 +896,7 @@ for r in range(len(list2d)-1,-1,-1):            # start at the last row stop at 
 
 <br>
 
-## While Loop: Reverse
+## `While Loops: Reverse`
 ```python
 list2d = [
   ["a","b","c","d","e","f"], # 0
@@ -704,15 +924,15 @@ while( r > -1 ):                                    # stop at 0
 
 <br>
 
-## <table><th>`Complex Iteration`</th></table>
-> Nested collections can become quite complicated, but ultimately are extremely useful.
-> There are many different possiblities when it comes to complex iteration.
+## `Complex Iteration`
+`Nested collections` can become quite complicated, but ultimately are extremely useful. There are many different possiblities when it comes to complex iteration.
 
-## Below are examples to get you thinking
+### Below are examples to get you thinking
 
 *Working with large data sets*
 ```python
-# Count the number of 7s
+'''Count the number of 7s in this data set'''
+
 list2d = [
     [4, 2, 7, 2, 7, 2, 6, 5, 6, 6], [7, 7, 8, 5, 8, 1, 3, 7, 6, 5], [5, 1, 3, 8, 8, 0, 6, 3, 6, 6], [5, 8, 6, 0, 4, 4, 9, 9, 6, 8], 
     [4, 8, 3, 1, 7, 9, 3, 4, 7, 1], [4, 7, 4, 7, 7, 1, 7, 4, 7, 4], [6, 0, 6, 1, 2, 7, 8, 1, 7, 5], [9, 3, 6, 1, 4, 2, 0, 1, 3, 1], 
@@ -750,7 +970,7 @@ print(count) # Output: 101
 ```
 
 ```python
-#Change each consonant to a "C" and each vowel to a "V"
+'''Change each consonant to a "C" and each vowel to a "V" '''
 
 list2d = [                                      #For Loops with 2d Lists
   ["a","b","c","d","e","f"],# 0                 Keep these things in mind
@@ -774,7 +994,8 @@ print(list2d)
 ```
 
 ```python
-#Loop in a serpentine pattern
+''' Loop in a serpentine pattern '''
+
 list2d = [ 
   [0, 1, 2, 3, 4], #forward
   [0, 1, 2, 3, 4], #backward
@@ -791,3 +1012,13 @@ for row in range(len(list2d)):
         for col in range(len(list2d[row]-1,-1,-1)):
             print(list2d[row][col], end = " ")
 ```
+
+<br>
+
+[Back to Top](#python-iteration-2d-collections)
+
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*

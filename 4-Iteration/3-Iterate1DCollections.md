@@ -5,6 +5,37 @@
 ___
 
 Covered in this file:
+1. [`Note on symbols used in this file`](#note-on-symbols-used-in-this-file)
+1. [`Collections Review`](#collections-review)
+    1. [`Indexing`](#indexing)
+    1. [`Length of a Collection`](#length-of-a-collection)
+    1. [`Element Access`](#element-access)
+    1. [`Changing an Element`](#changing-an-element)
+    1. [`Slicing`](#slicing)
+    1. [`Methods to remember`](#methods-to-remember)
+1. [`Collection Iteration Syntax`](#collection-iteration-syntax)
+    1. [`For Loops List Iteration Syntax`](#for-loops-list-iteration-syntax)
+    1. [`While Loops List Iteration Syntax`](#while-loop-list-iteration-syntax)
+    1. [`Dictionary Iteration Syntax`](#dictionary-iteration-syntax)
+1. [`Forward Iteration: Beginning to End`](#forward-iteration-beginning-to-end)
+    1. [`For Loops: Forward Iteration`](#for-loops-forward-iteration)
+    1. [`While Loops: Forward Iteration`](#while-loops-forward-iteration)
+    1. [`Dictionary Iteration`](#dictionary-iteration)
+1. [`Reverse Iteration: End to Beginning`](#reverse-iteration-end-to-beginning)
+    1. [`For Loops: Reverse Iteration`](#for-loops-reverse-iteration)
+    1. [`While Loops: Reverse Iteration`](#while-loops-reverse-iteration)
+1. [`Common Run Time Errors: Lookup Errors`](#common-run-time-errors-lookup-errors)
+    1. [`IndexError`](#indexerror)
+    1. [`KeyError`](#keyerror)
+1. [`Complex Iteration`](#complex-iteration)
+1. [`Middle Index Calculation`](#middle-index-calculation)
+    1. [`Halves Iteration: Beginning to Middle`](#halves-iteration-beginning-to-middle)
+    1. [`Halves Iteration: Middle to Beginning`](#halves-iteration-middle-to-beginning)
+    1. [`Halves Iteration: Middle to End`](#halves-iteration-middle-to-end)
+    1. [`Halves Iteration: End to Middle`](#halves-iteration-end-to-middle)
+1. [`nth Element Iteration`](#nth-element-iteration)
+
+
 
 
 <br>
@@ -415,7 +446,7 @@ while(index < len(list1d)):
 <br>
 
 
-## `Dictionary Iteration`
+## `Dictionary Iteration Syntax`
 Dictionaries are unordered, since `key:value` pairs are hashed order doesn't matter, `values` are simply accessed by thier `key`.
 
 syntax:
@@ -445,7 +476,13 @@ for data in user_data:
 
 <br>
 
-## `Forward Iteration: Beginning to End`
+[Back to Top](#python-iteration-1d-collections)
+
+___
+
+<br>
+
+# `Forward Iteration: Beginning to End`
 `Forward Iteration`: looping from 0 to the length of the list
 
 ```python
@@ -542,7 +579,7 @@ for key in user:
 
 <br> 
 
-## `Reverse Iteration: End to Beginning`
+# `Reverse Iteration: End to Beginning`
 `Reverse Iteration`: looping from the last element to the beginning
 ```python
 #        [-----------------elements------------------]
@@ -595,8 +632,14 @@ while(index > -1):                      # stop at 0
 # Output: 8 i|7 h|6 g|5 f|4 e|3 d|2 c|1 b|0 a|
 ```
 
-NOTE:
-> Dictionaries are unordered, since key:value pairs are hashed order doesn't matter, values are simply accessed by thier key.
+*NOTE*:
+*`Dictionaries are unordered, since key:value pairs are hashed order doesn't matter, values are simply accessed by their key.`*
+
+<br>
+
+[Back to Top](#python-iteration-1d-collections)
+
+___
 
 <br>
 
@@ -671,6 +714,12 @@ print(dict1d["d"])
 
 <br>
 
+[Back to Top](#python-iteration-1d-collections)
+
+___
+
+<br>
+
 # `Complex Iteration`
 Complex Iteration involves more complex algorithms for example
 * Looping through the first or last half of the list
@@ -701,7 +750,7 @@ list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 mid_index = len(list1d)/2 # Returns: 4
 ```
-> This will work for even length lists, but not for odd length ones. We need a universal way.
+`len(list1d)/2` will work for even length lists, but not for odd length ones. We need a universal way.
 
 <br>
 
@@ -713,37 +762,46 @@ list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 #reverse [-9   -8   -7   -6   -5   -4   -3   -2   -1 ]
 #len(list1d) aka number of elements = 9 
 ```
-> Using simple division, this returns 4.5 but floats cannot be used as indexes.
+Using simple division below `len(list1d)/2` returns 4.5 but floats cannot be used as indexes.
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 mid_index = len(list1d)/2 # Returns: 4.5 <-- Floats cannot be indexes
 ```
-> Solution, use Floor division, or Cast to <class 'int'>
-### Floor division
+The solution is to use Floor division, or Cast to <class 'int'>
+### `Floor division`
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 mid_index = len(list1d)//2 # Returns: 4
 ```
 
-### Casting to <class 'int'> 
+### `Casting to <class 'int'>` 
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 mid_index = int(len(list1d)/2) # Returns: 4
 ```
-> In odd length lists this calculation results in the second half being 1 element more than the first half  
-> **The two methods above work for both even and odd length lists**
+In odd length lists this calculation results in the second half being 1 element more than the first half  
+*`The two methods above work for both even and odd length lists`*
 
-## Method for both
+<br>
+
+## `Method for both`
 syntax for calculating the middle index:
 ```python
 list1d = ...
 
 mid_index = len(list1d)//2
 ```
+*`The method above can be consitently used to determine the middle of a list, tuple, string, etc.`*
 
 <br>
 
-## `Halves Iteration: Beginning to Middle`q 
+[Back to Top](#python-iteration-1d-collections)
+
+___
+
+<br>
+
+# `Halves Iteration: Beginning to Middle` 
 
 ## For Loop: Beginning to Middle
 ```python
@@ -771,7 +829,13 @@ while(index < len(list1d)//2):          # stop at the middle
 
 <br>
 
-## `Halves Iteration: Middle to Beginning `q 
+[Back to Top](#python-iteration-1d-collections)
+
+___
+
+<br>
+
+# `Halves Iteration: Middle to Beginning `
 ## For Loop: Middle to Beginning
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
@@ -798,7 +862,7 @@ while(index > -1):                      # stop at 0
 
 <br>
 
-## `Halves Iteration: Middle to End `q
+# `Halves Iteration: Middle to End `
 ## For Loop: Middle to End
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
@@ -825,7 +889,7 @@ while(index < len(list1d)):             # stop at the end
 
 <br>
 
-## `Halves Iteration: End to Middle`q 
+# `Halves Iteration: End to Middle` 
 ## For Loop: End to Middle
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
@@ -850,8 +914,16 @@ while(index > len(list1d)//2 -1):       # stop at the middle
 # Output: 8 i|7 h|6 g|5 f|4 e|
 ```
 
-## `nth Element Iteration`q 
-> * nth element refers to iterating at a different increment than 1, where n represents any integer.
+<br>
+
+[Back to Top](#python-iteration-1d-collections)
+
+___
+
+<br>
+
+# `nth Element Iteration`
+`nth` element refers to iterating at a different increment than 1, where n represents any integer.
 
 ## For Loop: nth Element
 ```python
@@ -879,3 +951,13 @@ while(index > len(list1d)//2 -1):       # stop at the middle
 
 # Output: 0 a|2 c|4 e|6 g|8 i|
 ```
+
+<br>
+
+[Back to Top](#python-iteration-1d-collections)
+
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*
