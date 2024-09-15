@@ -1,99 +1,120 @@
+
+# `Python Iteration 1D Collections`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
-# <table><th>`Iterating Through 1D Collections`<th></table>
 ___
 
 Covered in this file:
-1. Collections Review
-2. Collection Iteration Syntax
-3. Forward Iteration: Beginning to End
-4. Reverse Iteration: End to Beginning
-5. Run Time Errors: LookUp Errors
-6. Complex Iteration 
->> 0. Middle Index Calculation 
->> 1. Halves Iteration: Beginning to Middle  
->> 2. Halves Iteration: Middle to Beginning  
->> 3. Halves Iteration: Middle to End  
->> 4. Halves Iteration: End to Middle 
->> 5. nth Element Iteration
+
 
 <br>
 
-## Note on symbols used in this file:
-> Symbols appearing in python blocks should be treated as Python syntax.  
->... is used a placeholder in Python. 
+# `Note on symbols used in this file`:
+Symbols appearing in python blocks should be treated as Python syntax.  
+`...` is used as a placeholder in Python. 
 ```python 
 ... 
 ```
 
-### Variable Information
-> Text inside of <> should be treated as a place holder for variable information
+<br>
+
+### `Variable Information`
+> Text inside of `<>` should be treated as a place holder for variable information
 ```
   <text>    
 ```
 
-### CLI Commands
-> The > indicates commands to be executed in the Windows Powershell prompt
+<br>
+
+### `CLI Commands`
+> The `>` indicates commands to be executed in the Windows Powershell prompt
 ```
   > command flags arguments 
 ```
-> The $ indicates commands to be executed in the Linux or Mac command line interface
+
+<br>
+
+
+> The `$` indicates commands to be executed in the Linux or Mac command line interface
 ```
   $ command flags arguments
 ```
 
 <br>
 
-## <table><th>`Collections Review`</th></table>
+[Back to Top](#python-iteration-1d-collections)
+
+___
+
+<br>
+
+# `Collections Review`
 
 There are four major collection data types in the Python programming language:
 
-> **List:**   
-collection which is ordered(indexed), mutable, allows duplicate members, and uses [ ] to enclose members.
+A `List` is a collection which is ordered(indexed), mutable, allows duplicate members, and uses [ ] to enclose members.
 ```python
 list1d = [1,2,3]
 ```
 
-> **Tuple:**  
-collection which is ordered(indexed), immutable, allows duplicate members and uses ( ) to enclose members.
+<br>
+
+A `Tuple` is a collection which is ordered(indexed), immutable, allows duplicate members and uses ( ) to enclose members.
 ```python
 tuple1d = (1,2,3)
 ```
-> **Set:**   
-collection which is unordered(not indexed), mutable, does NOT allow duplicate members and uses { } to enclose members.
+
+<br>
+
+A `Set` is a collection which is unordered(not indexed), mutable, does NOT allow duplicate members and uses { } to enclose members.
 ```python
 set1d = {1,2,3}
 ```
-> **Dictionary:**   
-collection which is ordered(indexed with a key), mutable, does NOT allow duplicate members and uses { : } to enclose members.
+
+<br>
+
+A `Dictionary` is a collection which is ordered(indexed with a key), mutable, does NOT allow duplicate members and uses { : } to enclose members.
 ```python
 dict1d = {"a": 1, "b": 2,"c": 3}
 ```
-|**List**|**Tuple**|**Set**|**Dictionary**|
+
+<br>
+
+|`List`|`Tuple`|`Set`|`Dictionary`|
 |:-:|:-:|:-:|:-:|
 |ordered (numerically indexed)|ordered (numerically indexed)|unordered (not indexed)|ordered (indexed with a key)|
 |mutable|immutable|mutable|mutable|
 |duplicates|duplicates|NO duplicates|NO duplicates|
 |**[ ]**|**( )**|**{ }**|**{ : }**| 
 
-> * *Data Structure: a specialized format for organizing, processing, retrieving, and storing data.*
-> * *Collection: a data structure that holds multiple elements*
-> * *Member: an item stored within a collection*
-> * *Element: is a synonym for member*
-> * *Ordered: having a specific order 0,1,2,... (ie. indexed)*
-> * *Indexed:  elements are associated with a specific identifier (index), which can be used to directly locate and access the data*
-> * *Mutable: elements can change*
-> * *Immutable: elements cannot change*
+* *`Data Structure`: a specialized format for organizing, processing, retrieving, and storing data.*
+* *`Collection`: a data structure that holds multiple elements*
+* *`Member`: an item stored within a collection*
+* *`Element`: is a synonym for member*
+* *`Ordered`: having a specific order 0,1,2,... (ie. indexed)*
+* *`Indexed`:  elements are associated with a specific identifier (index), which can be used to directly locate and access the data*
+* *`Mutable`: elements can change*
+* *`Immutable`: elements cannot change*
 
-> # Note: 
-> Strings can be iterated through similiarly to lists.  
-> From here we will focus on lists, as lists cover the widest range of possibilities, and the methods used for lists are identical in most cases to the other collections. 
+*Note*: 
+*`Strings can be iterated through similiarly to lists.`*
 
-> Import differences will be noted.
+___
+
+### *In this file we will focus on lists. Lists cover the widest range of possibilities, and the methods used for lists are identical in most cases to the other collections. Any important differences will be noted.*
+
+___
 
 <br>
 
-## Indexing
+[Back to Top](#python-iteration-1d-collections)
+
+___
+
+<br>
+
+
+## `Indexing`
 ```python
 #        [-----------------elements------------------]
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'] 
@@ -106,7 +127,7 @@ list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 
 <br>
 
-## Length of a Collection
+## `Length of a Collection`
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 number_of_elements = len(list1d)    # Returns: 9
@@ -118,7 +139,7 @@ last_index = len(list1d)-1          # Returns: 8
 
 <br>
 
-## Element Access
+## `Element Access`
 ```python
 list1d = ["a","b","c"]
 list1d[0] # Returns: a
@@ -134,21 +155,21 @@ dict1d.get("a")  # Returns: 1
 
 <br>
 
-## Changing an Element
+## `Changing an Element`
 ```python
 list1d = ["a","b","c"]
 list1d[0] = 1 
 
 # list1d = [1,"b","c"]
 ```
-`dictionaries are identical, but use keys instead of indexes`  
+`dictionaries are similiar, but use keys instead of indexes`  
 `individual elements of sets cannot be altered in this way and must be altered with a method`  
 `individual elements of a tuple or a string cannot be altered`
 
 
 <br>
 
-## Slicing
+## `Slicing`
 ```python
 #list[start_index:stop_index:step] 
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
@@ -167,50 +188,158 @@ print(list1d[1:6:2])    # Returns: ['b', 'd', 'f']
 
 
 
-## Methods to remember
-```python
-list1d.append()  # Adds a single element x to the end of the list.
-list1d.extend()  # Extends the list by appending elements from the iterable.
-list1d.insert()  # Inserts an element x at a given index i.
-list1d.remove()  # Removes the first occurrence of element x from the list.
-list1d.pop()     # Removes the element at the given index i and returns it. default is the last element
-list1d.clear()   # Removes all elements from the list.
-list1d.index()   # Returns the index of the first occurrence of element x 
-list1d.count()   # Returns the number of occurrences of element x in the list.
-list1d.sort()    # Sorts the list in ascending order. 
-list1d.reverse() # Reverses the elements of the list in place.
-list1d.copy()    # Returns a shallow copy (reference location) of the list.
-```
+## `Methods to remember`
+
+### List Methods
 
 ```python
-dict1d.copy()        # Returns a shallow copy of the dictionary.
-dict1d.fromkeys()    # Creates a new dictionary with keys from an iterable and values set to a specified value.
-dict1d.pop()         # Removes the specified key and returns the corresponding value.
-dict1d.popitem()     # Removes and returns the last inserted key-value pair as a tuple.
-dict1d.setdefault()  # Returns the value of a key if it is in the dictionary; if not, inserts the key with a specified value.
-dict1d.clear()       # Removes all items from the dictionary.
+list1d.extend(iterable)
 ```
-<br>
-
-## <table><th>`Collection Iteration Syntax`</th></table>
-> * Loops are commonly used to access and operate on the elements of a collection
-> * for loops are typically best suited to this type of iteration
-> * However, while loops can also be used. 
-
-> There are many possible operations that might be performed when iterating through a collection.  
-> We will keep things simple for now by just printing out the elements. 
-
+> *Extends the list by appending all elements from the iterable (e.g., another list).*
 
 <br>
 
-## For Loops List Iteration Syntax:
-syntax:
+
+```python
+list1d.extend(iterable)
+```
+> *Extends the list by appending all elements from the iterable (e.g., another list).*
+
+<br>
+
+```python
+list1d.insert(index, object)
+```
+> *Inserts an element object at the given index index.*
+
+<br>
+
+```python
+list1d.remove(value)
+```
+> *Removes the first occurrence of the element value from the list.*
+
+<br>
+
+```python
+list1d.pop(index=-1)
+```
+> *Removes and returns the element at the index index (default is the last element).*
+
+<br>
+
+```python
+list1d.clear()
+```
+> *Removes all elements from the list, making it empty.*
+
+<br>
+
+```python
+list1d.index(value, start=0, stop=sys.maxsize)
+```
+> *Returns the index of the first occurrence of element value in the list from start to stop.*
+
+> *sys.maxsize is very large 2<sup>63</sup>-1: 9,223,372,036,854,775,807*
+
+<br>
+
+```python
+list1d.count(value)
+```
+> *Returns the number of occurrences of element value in the list.*
+
+<br>
+
+```python
+list1d.sort(*, key=None, reverse=False)
+```
+> *Sorts the list in ascending order (can be customized with a key function or reverse=True).*
+
+<br>
+
+```python
+list1d.reverse()
+```
+> *Reverses the elements of the list in place.*
+
+<br>
+
+```python
+list1d.copy()
+```
+> *Returns a shallow copy of the list (a new list with references to the original elements).*
+
+<br>
+
+### Dictionary Methods
+```python
+dict1d.copy()        
+```
+> *Returns a shallow copy of the dictionary.*
+
+<br>
+
+```python
+dict1d.fromkeys(iterable, value = None)
+```
+> *Creates a new dictionary with keys from an `iterable` and values set to a specified value.*
+
+<br>
+
+```python
+dict1d.pop(key, default)
+```
+> *Removes the specified `key` and returns the corresponding value. If the `key` is not found remove and return the `default`*
+
+<br>
+
+```python
+dict1d.popitem()     
+```
+> *Removes and returns the last inserted key-value pair as a tuple.*
+
+<br>
+
+```python
+dict1d.setdefault(key, default)  
+```
+
+> *Returns the value of a `key` if it is in the dictionary; if not, inserts the `key` with a specified value. If `key` is not found return or insert the default.*
+
+<br>
+
+```python
+dict1d.clear()
+```
+> *Removes all items from the dictionary.*
+
+
+<br>
+
+[Back to Top](#python-iteration-1d-collections)
+
+___
+
+<br>
+
+# `Collection Iteration Syntax`
+Loops are commonly used to access and operate on the elements of a collection. `for` loops are typically best suited to this type of iteration, however, `while` loops can also be used. 
+
+<br>
+
+*There are many possible operations that might be performed when iterating through a collection. We will keep things simple for now by just printing out the elements.*
+
+<br>
+
+## `For Loops List Iteration Syntax`
+`looping through indexes` syntax:
 ```
 for index in range(start, stop, step):
     <Code Block To Execute>
     ...
 ```
-real example:
+example:
 ```python
 list1d = ["a","b","c","d","e"]
 
@@ -219,13 +348,13 @@ for index in list1d:
 
 # Output: a b c d e 
 ```
-syntax:
+`looping through elements` syntax:
 ```
 for element in iterable:
     <Code Block To Execute>
     ...
 ```
-real example:
+example:
 ```python
 list1d = ["a","b","c","d","e"]
 
@@ -237,8 +366,7 @@ for element in list1d:
 
 <br>
 
-### This syntax is considered best practice.
-> * it has the best of both worlds, offering the index and the element directly.
+The best practice is to use the `enumerate()` function. `enumerate()` has the best of both worlds, offering the index and the element directly.
 
 syntax:
 ```
@@ -247,7 +375,7 @@ for index, element in enumerate(iterable):
     ...
 ```
 
-real example:
+example:
 ```python
 list1d = ["a","b","c","d","e"]
 
@@ -259,8 +387,8 @@ for index, element in enumerate(list1d):
 
 <br>
 
-## While Loop List Iteration Syntax:
-syntax:
+## `While Loop List Iteration Syntax`
+`looping through indexes` syntax:
 ```
 index = 0
 
@@ -269,7 +397,7 @@ while(index < len(iterable)):
     index += 1
 ```
 
-real example:
+example:
 ```python
 list1d = ["a","b","c","d","e"]
 
@@ -281,19 +409,40 @@ while(index < len(list1d)):
 # Output: a b c d e 
 ```
 
+<br>
 
-## Dictionary Iteration
-> Dictionaries are unordered, since key:value pairs are hashed order doesn't matter, values are simply accessed by thier key.
+
+## `Dictionary Iteration`
+Dictionaries are unordered, since `key:value` pairs are hashed order doesn't matter, `values` are simply accessed by thier `key`.
 
 syntax:
 ```
 for key in dict1d:
     ...
 ```
+example:
+```python
+user_data = {
+    "name": "Alice",
+    "age": 30,
+    "city": "Little Rock",
+    "phone": "(479) 888 8888"
+}
+
+for data in user_data:
+    print(data, end = " ")
+
+# Output: name age city phone
+
+for data in user_data:
+    print(user_data[data], end = " ")
+
+# Output: Alice 30 Little Rock (479) 888 8888
+```
 
 <br>
 
-## <table><th>`Forward Iteration: Beginning to End`</th></table>
+## `Forward Iteration: Beginning to End`
 > * Forward Iteration: looping from 0 to the length of the list
 
 ```python
@@ -385,7 +534,7 @@ for key in user:
 
 <br> 
 
-## <table><th>`Reverse Iteration: End to Beginning`</th></table>
+## `Reverse Iteration: End to Beginning`q
 > * Reverse Iteration: looping from the last element to the beginning
 ```python
 #        [-----------------elements------------------]
@@ -437,7 +586,7 @@ NOTE:
 
 <br>
 
-## <table><th>`Run Time Errors: LookUp Errors`</th></table>
+## `Run Time Errors: LookUp Errors`q
 
 ## IndexError
 > * IndexErrors are a type of LookUp Error that occurs when an algorithm attempts to access an index that does not exist.
@@ -506,13 +655,13 @@ print(dict1d["d"])
 
 <br>
 
-## <table><th>`Complex Iteration`</th></table> 
+## `Complex Iteration`q 
 > * Complex Iteration involves more complex algorithms for example
     > * Looping through the first or last half of the list
     > * Looping through every nth element
     > * etc.
 
-## <table><th>`Middle Index Calculation`</th></table> 
+## `Middle Index Calculation`q 
 > * Calculating the middle index of a list is necessary, in order to loop through half of the list.
 
 <br>
@@ -576,7 +725,7 @@ mid_index = len(list1d)//2
 
 <br>
 
-## <table><th>`Halves Iteration: Beginning to Middle`</th></table> 
+## `Halves Iteration: Beginning to Middle`q 
 
 ## For Loop: Beginning to Middle
 ```python
@@ -604,7 +753,7 @@ while(index < len(list1d)//2):          # stop at the middle
 
 <br>
 
-## <table><th>`Halves Iteration: Middle to Beginning `</th></table> 
+## `Halves Iteration: Middle to Beginning `q 
 ## For Loop: Middle to Beginning
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
@@ -631,7 +780,7 @@ while(index > -1):                      # stop at 0
 
 <br>
 
-## <table><th>`Halves Iteration: Middle to End `</th></table>
+## `Halves Iteration: Middle to End `q
 ## For Loop: Middle to End
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
@@ -658,7 +807,7 @@ while(index < len(list1d)):             # stop at the end
 
 <br>
 
-## <table><th>`Halves Iteration: End to Middle`</th></table> 
+## `Halves Iteration: End to Middle`q 
 ## For Loop: End to Middle
 ```python
 list1d = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
@@ -683,7 +832,7 @@ while(index > len(list1d)//2 -1):       # stop at the middle
 # Output: 8 i|7 h|6 g|5 f|4 e|
 ```
 
-## <table><th>`nth Element Iteration`</th></table> 
+## `nth Element Iteration`q 
 > * nth element refers to iterating at a different increment than 1, where n represents any integer.
 
 ## For Loop: nth Element

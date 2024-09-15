@@ -92,7 +92,9 @@ dict1d = {"a": 1, "b": 2,"c": 3}
 * *`Mutable`: elements can change*
 * *`Immutable`: elements cannot change*
 
-
+*Note*: 
+*`Strings can be iterated through similiarly to lists.`*
+> Strings can be thought of as a list of characters. 
 <br>
 
 

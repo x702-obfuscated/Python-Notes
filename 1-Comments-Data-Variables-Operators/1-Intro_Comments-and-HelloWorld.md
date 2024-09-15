@@ -1,5 +1,6 @@
 # `Introduction to Python: Comments and Hello World!`
 ___
+
 Covered in this file:
 1. [`Introduction to the Python Programming Language`](#an-introduction-to-the-python-programming-language)
 1. [`Single/Multi Line Comments`](#singlemulti-line-comments)
@@ -28,7 +29,8 @@ ___
 <br>
 
 # `An Introduction to the Python Programming Language!`
-## -- `Script Kiddie's First Program:`
+*`Script Kiddie's First Program:`*
+
 ### ***Welcome Script Kiddies, to the Python Programming Language***
 *As a new programmer you might be refered to as a Script Kiddie.*   
 *This is a programmer joke to describe someone who does not know much about programming*  
@@ -98,13 +100,16 @@ $ python3 main.py
 
 <br>
 
-*NOTE: <> angle brackets indicate a variable part of the command. For example: \<filepath\> indicates any filepath*  
-*NOTE: For simplicity commands with a leading **>** should be understood as Windows Commands unless otherwise specified*  
-*NOTE: For simplicity commands with leading **$** should be understood to be Linux/MacOS commands unless otherwise specified*  
+*NOTE*: 
+> * <> angle brackets indicate a variable part of the command. For example: \<filepath> indicates any filepath  
+> * For simplicity commands with a leading `>` should be understood as Windows Commands unless otherwise specified 
+> * For simplicity commands with leading `$` should be understood to be Linux/MacOS commands unless otherwise specified  
 
-> * Now that you have the basics, create a new file that ends in .py, open it in your favorite text editor and let's begin learning about the Python Programming Language.
->
->    * If it is your first time programming I recommend VScode as a text editor you can get it here: [https://code.visualstudio.com/](https://code.visualstudio.com/)
+
+<br>
+
+Now that you have the basics, create a new file that ends in .py, open it in your favorite text editor and let's begin learning about the Python Programming Language.
+> * If it is your first time programming I recommend VScode as a text editor you can get it here: [https://code.visualstudio.com/](https://code.visualstudio.com/)
 
 *Current Stable Python Version at the time of writting: Python 3.12.5*
 
@@ -173,7 +178,7 @@ ___
 
 
 # `First Program: Console Output`
-To build your first program use the built-in ***print( )*** function call to send output to console (called standard output or stdout)
+To build your first program use the built-in `print()` function call to send output to console (called standard output or stdout)
 
 <br>
 
@@ -186,7 +191,7 @@ To build your first program use the built-in ***print( )*** function call to sen
 ```
 <br>
 
-> To print out this text we use the built-in function call ***print( )*** with the argument "Hello World"
+> To print out this text we use the built-in function call `print()` with the argument "Hello World"
 
 
 ```python
@@ -202,16 +207,16 @@ ___
 
 
 # `First Program: User Input`
-To handle input from a user (called standard input or stdin), use the built-in function call ***input( )***.***input( )*** stops the execution of the program, and waits for the user to type in some text, it then returns the text that was entered.
+To handle input from a user (called standard input or stdin), use the built-in function call `input()`.`input()` stops the execution of the program, and waits for the user to type in some text, it then returns the text that was entered.
 
 *Note:*  
-> When a function like ***input( )*** 'returns' it brings a value back to that point in the program in which the function was called.
-> * The caller "*input( )*" then represents the value it returns.
+> When a function like `input()` 'returns' it brings a value back to that point in the program in which the function was called.
+> * The caller `input()` then represents the value it returns.
 
 <br>
 
 Here we will print out whatever the user, in this case you, types when prompted for input.  
-> We will begin by calling the built-in ***input( )*** function call.
+> We will begin by calling the built-in `input()` function call.
 
 
 ```python
@@ -220,14 +225,14 @@ input()
 
 <br>
 
-> Placing a string argument inside of the ***input( )*** function call prints out a prompt to tell the user what input to provide.
+> Placing a string argument inside of the `input()` function call prints out a prompt to tell the user what input to provide.
 
 ```python
 input("Type your input: ")
 ```
 <br>
 
-> If you place the ***input()*** function call inside of the ***print()*** function call the user input will be output back to the console.
+> If you place the `input()` function call inside of the `print()` function call the user input will be output back to the console.
 
 ```python
 print(input("Type your input: "))
@@ -310,9 +315,9 @@ $ python3 main.py
 <br>
 
 *NOTE*: 
-> * '>' for Windows, and '$' for Linux/MacOS are used to represent the command prompt. 
+> * `>` for Windows, and `$` for Linux/MacOS are used to represent the command prompt. 
 >    * These symbols should be omitted when typing the command on your computer.
-> * If you are experiencing issues with using the 'python' or 'python3' commands, make sure that the executable has been added to the system path*
+> * If you are experiencing issues with using the `python` or `python3` commands, make sure that the executable has been added to the system path*
 
 
 <br>
@@ -384,7 +389,7 @@ ___
 Oh no... you have done something incorrect and are now experiencing an error. 
 Not to worry as a human you are prone to many errors, that we machines don't make.
 
-> To make it easier for you to correct your many PEBKAC and ID 10 T Errors, these errors can be categorized into 3 categories:
+> To make it easier for you to correct your many `PEBKAC` and `ID 10 T` Errors, these errors can be categorized into 3 categories:
 
 |Error|Description|
 |:-:|:-|
@@ -393,8 +398,8 @@ Not to worry as a human you are prone to many errors, that we machines don't mak
 |Logical Errors|occur when a program runs without crashing but produces incorrect results. These errors are caused by mistakes in the program's logic, meaning the code does not behave as intended.|
 
 *Note*:
-> * PEBKAC Errors are raised when the Problem Exists Between the Keyboard and Chair.
-> * ID 10 T Errors are raised when the issue is caused by the user. 
+> * `PEBKAC Errors` are raised when the Problem Exists Between the Keyboard and Chair.
+> * `ID 10 T Errors` are raised when the issue is caused by the user. 
 
 <br>
 
@@ -429,16 +434,15 @@ Print("Hello World")
 
 <br>
 
-# `
-[Back to Top](#introduction-to-python-comments-and-hello-world)Runtime Errors`
+[Back to Top](#introduction-to-python-comments-and-hello-world)
 ___
 
 <br>
 
+# `Runtime Errors`
+`Runtime Errors` are the second most common errors you humans make.  
 
-Runtime Errors are the second most common errors you humans make.  
-
-Runtime Errors occur when your code is syntatically correct, but you have performed and operation that cannot be performed.
+`Runtime Errors` occur when your code is syntatically correct, but you have performed and operation that cannot be performed.
 
 <br>
 
@@ -494,9 +498,9 @@ ___
 
 
 # `Logical Errors`
-Logical Errors tend to occur with lesser frequency than runtime or compile time errors, but are the hardest to track down.
+`Logical Errors` tend to occur with lesser frequency than runtime or compile time errors, but are the hardest to track down.
 
-Logical Errors occur when your code is syntatically correct and all operations are possible, but your code isn't doing what you expect it to do. 
+`Logical Errors` occur when your code is syntatically correct and all operations are possible, but your code isn't doing what you expect it to do. 
 
 <br>
 
@@ -631,15 +635,12 @@ area = length * width
 print(area) # Output: 12.5
 ```
 
+<br>
+
 [Back to Top](#introduction-to-python-comments-and-hello-world)
 ___
 
 <br>
 
-
-[Back to Top](#introduction-to-python-comments-and-hello-world)
-___
-
-<br>
 *Created and maintained by Mr. Merritt* 
     
