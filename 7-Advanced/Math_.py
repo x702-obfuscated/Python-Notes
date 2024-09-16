@@ -1,3 +1,6 @@
+Not an exhaustive list see: https://docs.python.org/3/library/math.html
+
+
 import math #importing the builtin math module.
 
 # Constants
