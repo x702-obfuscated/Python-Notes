@@ -1,7 +1,8 @@
+# `Python Functions`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
-# <table><th>`Python Functions`</th></table>
----
+
+___
 
 Covered in this file:
 1. Python Indentation and Code Blocks
@@ -26,121 +27,135 @@ Covered in this file:
 
 <br>
 
-## Note on symbols used in this file:
-> Symbols appearing in python blocks should be treated as Python syntax.  
->... is used a placeholder in Python. 
+___
+
+<br>
+
+
+# `Note on symbols used in this file`:
+Symbols appearing in python blocks should be treated as Python syntax.  
+`...` is used as a placeholder in Python. 
 ```python 
 ... 
 ```
 
-### Variable Information
-> Text inside of <> should be treated as a place holder for variable information
+<br>
+
+### `Variable Information`
+> Text inside of `<>` should be treated as a place holder for variable information
 ```
   <text>    
 ```
 
-### CLI Commands
-> The > indicates commands to be executed in the Windows Powershell prompt
+<br>
+
+### `CLI Commands`
+> The `>` indicates commands to be executed in the Windows Powershell prompt
 ```
   > command flags arguments 
 ```
-> The $ indicates commands to be executed in the Linux or Mac command line interface
+
+<br>
+
+
+> The `$` indicates commands to be executed in the Linux or Mac command line interface
 ```
   $ command flags arguments
 ```
 
-### Abstract vs. Real Examples
-> In this file there are two types of examples abstract, and real  
->* Abstract Examples are a generalized, simplified representation that highlights the core concept or principle without including unnecessary details or specific instances. 
->
-> *  Real Examples are specific instances that illustrate the concept, principle, or method by providing concrete details. 
+<br>
+
+### `Abstract vs. Real Examples`
+In this file there are two types of examples, `abstract` and `real`. 
+
+`Abstract` examples are a generalized, simplified representation that highlights the core concept or principle without including unnecessary details or specific instances. 
+
+`Real` Examples are specific instances that illustrate the concept, principle, or method by providing concrete details. 
+
 <br>
 
 
 
-## <table><th>`Python Indentation and Code Blocks`<th></table>
-___
+# `Python Indentation and Code Blocks`
+Python syntax uses `indentation` to define the scope of blocks of code.
 
-**Python syntax uses indentation to define the scope of blocks of code.**   
-**Code blocks are groups of statements that are executed together as a unit.**
-> * Each indentation level represents a higher level of code structure (conditionals, loops, functions, classes)
-> * All statements within the same block must have the same level of indentation.
-> * Indent 4 spaces to create a code block.  
-> * The end of a block is indicated by the decrease in indentation level. 
+`Code blocks` are groups of statements that are executed together as a unit.
+> Each indentation level represents a higher level of code structure (conditionals, loops, functions, classes)
 
-> *Note: Scope is the area of a program in which a block of code exists and executes.*  
+> All statements within the same block must have the same level of indentation.
+
+> Indent 4 spaces to create a code block.  
+
+> The end of a block is indicated by the decrease in indentation level. 
+
+*Note*:   
+`Scope/Context` is the area of a program in which a block of code exists and executes.
+
 <br>
 
-> *Notes:*  
-> * *Indentation is typically achieved using spaces or tabs.* 
-> * *Don't mix spaces and tabs, it can lead to syntax errors or inconsistent behavior.*   
-> * *Python 3 disallows mixing tabs and spaces for indentation in the same source file.*  
-> * *If you are using an editor like VScode using the tab key, and spaces is not a problem.*   
+*Notes:*  
+> *`Indentation` is typically achieved using spaces or tabs.* 
 
+> *Don't mix spaces and tabs, it can lead to syntax errors or inconsistent behavior.*  
 
+> *Python 3 disallows mixing tabs and spaces for indentation in the same source file.* 
 
-### Python Indentation Abstract Examples:
+> *If you are using an editor like VScode using the tab key, and spaces is not a problem.*
 
+<br>
 
+### `Python Indentation Examples:`
 ```python
 condition = True or False
 
 if(condition):
-    #start of the if code block (scope/context)
+    #--> start of the if code block (scope/context)
     print("Inside the if statement")                    
                                                         
-#end of the if code block (scope/context)
+#<-- end of the if code block (scope/context)
 ```
-
-
 ```python
 condition = True or False
 
 while(condition):
-    #start of the while code block (scope/context)
+    #--> start of the while code block (scope/context)
     print("Inside the while loop")
 
-#end of the while code block (scope/context)
+#<-- end of the while code block (scope/context)
 ```
-
-
 ```python
 for _ in range(10):
-    #start of the for code block (scope/context)
+    #--> start of the for code block (scope/context)
     print("Inside the for loop")
 
-#end of the for code block (scope/context)
+#<-- end of the for code block (scope/context)
 ```
-
-
 ```python
-def function_():
-    #start of the function definition code block (scope/context)
+def function():
+    #--> start of the function definition code block (scope/context)
     print("Inside of the function definition")
 
-#end of the function definition code block (scope/context)
+#<-- end of the function definition code block (scope/context)
 ```
-
-
 ```python
-class Class_():
-    #start of the Class definition code block (scope/context)
+class Example():
+    #--> start of the Class definition code block (scope/context)
 
     def __init__(self):
-        # start of the Class Constructor Definition code block (scope/context)
+        #--> start of the Class Constructor Definition code block (scope/context)
         print("Inside the Class, inside the constructor")
 
-    # end of the Class Constructor Definition code block (scope/context)
-# end of the Class Definition code block (scope/context)
+    #<-- end of the Class Constructor Definition code block (scope/context)
+#<-- end of the Class Definition code block (scope/context)
 ```
 
-### Nested Indentation: Blocks inside of Blocks
-> Indentation defines the level of the code block when nesting constructs
+<br>
 
-> Note:   
+## `Nested Indentation: Blocks inside of Blocks`
+`Indentation` defines the level of the code block when nesting constructs.
+
+*Note*: 
 > Most code editors like VS Code will provide a line to help you keep track of the beginning and end of your code blocks
-
-
 
 ```python
 class Example():
@@ -150,42 +165,49 @@ class Example():
                 if(condition):
                     print("So many indents!")
 ```
-
 ```python
-class Example():#start of class code block~~~~~~~~~~~~~~~~~~~~~~~~~~#
-    def example_():                                                 #
-        #start of function code block###########################    #
-        for _ in range(5):                                     #    #
-            #start of for code block++++++++++++++++++++++#    #    #
-            while(condition):                             #    #    #
-                #start of while code block============#   #    #    #      
-                if(condition):                        #   #    #    #
-                    #Start of if code block ------#   #   #    #    #
-                    print("So many indents!")     #   #   #    #    #
-                #end of if code block-------------#   #   #    #    #
-            #end of while code block==================#   #    #    #
-        #end of for code block++++++++++++++++++++++++++++#    #    #
-    #end of function code block#################################    #
-#start of class code block~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+class Example():
+    #--> start of class code block~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+    def function():                                                     #
+        #--> start of function code block###########################    #
+        for _ in range(5):                                         #    #
+            #--> start of for code block++++++++++++++++++++++#    #    #
+            while(condition):                                 #    #    #
+                #--> start of while code block============#   #    #    #      
+                if(condition):                            #   #    #    #
+                    #--> Start of if code block ------#   #   #    #    #
+                    print("So many indents!")         #   #   #    #    #
+                #<-- end of if code block-------------#   #   #    #    #
+            #<-- end of while code block==================#   #    #    #
+        #<-- end of for code block++++++++++++++++++++++++++++#    #    #
+    #<-- end of function code block#################################    #
+#<-- end of class code block~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ```
 
 <br>
 
-## <table><th>`Function Defined`</th></table>
+[Back to Top](#python-functions)
+
 ___
-## Function
-> * basically: a block of reusable code that performs a specific task
-> * specifically: a self contained block of code tha performs a specific task and can be reused throughout the program. They contribute to the abstraction, modularity, reusability, and organization of scource code.
+
+<br>
+
+# `Functions Defined`
+Basically: A `function` is a block of reusable code that performs a specific task
+
+Specifically: A `function` is a self contained block of code tha performs a specific task and can be reused throughout the program. They contribute to the abstraction, modularity, reusability, and organization of scource code.
 
 > *NOTE: Procedure, Function, Method, Subroutine are terms that are often used interchangeably*
-> Functions are essential to abstracting the complexity of programming.
-   
-## Defining a function
-> * Functions are created by *defining* what the function does.
-> * **Functions must be defined before they are called(used).**
-> * **Functions must be called to execute its code.** 
-> * Functions should be named after the task they are intended to perform   
 
+`Functions` are essential to abstracting the complexity of programming.
+   
+# `Defining a function`
+Functions are created by using the keyword `def` and then defining what the function needs and does.
+* Functions must be defined before they are called (used).
+* Functions must be called to execute its code.
+* Functions should be named after the task they are intended to perform  
+
+<br>
 
 basic syntax:
 ```
@@ -196,10 +218,10 @@ def function_name(parameter, ...):
 ```python
 #Function  Definition--------------------------------#
 def function_name(parameter1,parameter2, ... ):      #
-  # indent into the function definition              #
+  #--> indent into the function definition           #
   ... # What the function does                       #
   return # answer/result of the function             #
-#unindent to exit the function definition------------#
+#<--unindent to exit the function definition---------#
 ```
 
 real examples:
@@ -207,7 +229,7 @@ real examples:
 def say_hello():
    print("Hello World")
 
-# There is no output,because the function was defined but not called.
+# There is no output, because the function was defined but not called.
 ```
 ```python
 def count_to(number):
@@ -224,11 +246,13 @@ def sum_list(nums):
         sum += num
     return sum
 
-# There is no output, because the function was defined but not calleds. 
-# And the function returns, it does not print out.
+# There is no output, because the function was defined but not called. 
+# And the since the function returns, it does not print output.
 ```
 
-full abstract syntax (fully explained throughout this file):
+<br>
+
+full abstracted syntax (fully explained throughout this file):
 ```
 def function_name(pos1, pos2, ..., /, pos_or_kwd, *, kwd1, kwd2, ...):
     ...
@@ -237,20 +261,28 @@ def function_name(pos1, pos2, ..., *args, kwd1, kwd2, ..., **kwargs):
     ...
 ```
 
-NOTE:  
-Understanding the relationship between function definition and function calling is essential to using functions effectively. 
-> * Function definition is like teaching the computer how to do something.  
-> * Function calling is like asking the computer to do something it knows how to do.   
-> * Just because you know how to do something doesn't mean you automatically do it.   
+*NOTE*:  
+*Understanding the relationship between function definition and function calling is essential to using functions effectively.* 
+
+`Function definition` is like teaching the computer how to do something. 
+> * Just because you know how to do something doesn't mean you automatically do it.  
+
+`Function calling` is like asking the computer to do something it knows how to do.   
+  
 > * You cannot do something you do not know how to do. 
 
 <br>
 
-## <table><th>`Function Calling`</th></table>
-___
-> * Calling a function is asking the computer to perform a function was previously defined
-> * Functions must be defined before they are called.
-> * A function is called using the name of the function, and any arguments enclosed in parenthesis
+# `Function Calling`
+Basically: A `function call` is the process of asking the computer to perform a function that has already be defined. 
+
+Specifically: A `function call` is the process of transferring control from the main execution flow to a previously defined function or subroutine. This involves pushing the current state onto the call stack, passing any necessary arguments, executing the function's code, and then resuming execution after the function has completed.
+
+`Functions must be defined before they are called.`
+
+A function is called using the name of the function, and any arguments enclosed in parenthesis
+
+<br>
 
 basic caller syntax:
 ```
@@ -292,10 +324,20 @@ sum_list([1,2,3,4,5])       # Function Call, returns doesn't print
 # Hello World
 # 1 2 3 4 5 6 7 8 9 10
 ```
+```python
+def count_to(n):                # Function Definition
+    for x in range(1,n+1):
+        print(x, end = " ")
+
+
+num = 5
+count_to(num)               #Function Call
+# Output: 1 2 3 4 5
+```
 
 <br>
 
-## <table><th>`Returning a value: return`</th></table>
+## `Returning a value: return`
 ___
 ## return
 > * The *return* keyword is used to return the result of a function back to its caller
@@ -338,7 +380,7 @@ print(third)                                    # Outputs: c
 
 
 
-## <table><th>`Parameters: function variables`</th></table>
+## `Parameters: function variables`
 ___
 ## Parameters
 > * basically: named variables that only exist inside of the function
@@ -382,7 +424,7 @@ calc_product(4,3)               # Function Caller: parameters are passed argumen
 <br>
 
 
-## <table><th>`Default Parameter Values`</th></table>
+## `Default Parameter Values`
 ___
 > * parameters can be given default values using the = operator
 > * parameters with a default values can be provided an argument, but do not require one (optional)
@@ -457,7 +499,7 @@ print( add_to_list("list."))        # ['list.']
 
 <br>
 
-## <table><th>`Argument: parameter values`</th></table>
+## `Argument: parameter values`
 ___
 ## Arguments
 > * basically: the value given to a parameter when a function is called
@@ -519,7 +561,7 @@ increment(count, 2)     # No Error
 
 <br>
 
-## <table><th>`Positional Arguments vs Keyword Arguments`</th></table>
+## `Positional Arguments vs Keyword Arguments`
 ___
 ## Positional vs Keyword Arguments
 > * Positional argument values are assigned based on the order in which the parameters are defined
@@ -701,7 +743,7 @@ General Tips:
 
 <br>
 
-## <table><th>`Arbitrary Arguments Lists: (*args, **kwargs)`</th></table>
+## `Arbitrary Arguments Lists: (*args, **kwargs)`
 ___
 > * Using unpacking notation programmers can create variables that accept varying numbers of arguments for the same function
 > * Use \* for varying length positional arguments (tuple unpacking)
@@ -774,7 +816,7 @@ def function_name(*args, **kwargs):
 
 <br>
 
-## <table><th>`Function Scope`</th></table>
+## `Function Scope`
 ___
 > * Parameters are local to the function  
 > * Variables defined in the function are local to the function  
@@ -857,7 +899,7 @@ example()
 
 <br>
 
-## <table><th>`Builtin Function Calls`</th></table>
+## `Builtin Function Calls`
 ___
 > * Python has a built-in library of code called the Standard Library.
 > * The standard library has pre-defined (builtin) functions that you can automatically access in your programs.
@@ -959,7 +1001,7 @@ zip()           # Returns an iterator of tuples, where the i-th tuple contains t
 
 <br>
 
-## <table><th>`Lambda Expressions: Shorthand Functions`</th></table>
+## `Lambda Expressions: Shorthand Functions`
 ___
 ## Lambda Functions
 > * basically: shorthand functions
@@ -1011,7 +1053,7 @@ print(pairs)
 
 <br>
 
-## <table><th>`Documentation: doc strings`</th></table>
+## `Documentation: doc strings`
 ## docstrings
 > * (short for documentation strings) in Python are a type of comment used to explain the purpose and usage of a function, class, method, or module.
 
@@ -1115,7 +1157,7 @@ print(subtract.__doc__)
 
 <br>
 
-## <table><th>`Function Annotations`</th></table>
+## `Function Annotations`
 ## Function Annotations
 > * basically:  are a way to document/ provide type hints
 > * specifically: a way of attaching metadata to the parameters of a function and its return value. 
@@ -1157,7 +1199,7 @@ def sum_dict(dict1d: dict[str, int]) -> int:
 #expects a dictionary argument with str keys and int values, returns int
 ```
 
-## <table><th>`Function Examples Including Conditionals, While Loops, and For Loops`</th></table>
+## `Function Examples Including Conditionals, While Loops, and For Loops`
 > functions can include all kinds of different code
 > Conditionals, While Loops, and For loops can all be used inside of functions.
 
@@ -1269,6 +1311,18 @@ def count_vowels(alist):
 letters = ["a","b","c","d","e"]
 print(count_vowels(letters))
 ```
+
+<br>
+
+[Back to Top]()
+
+___
+
+*Created and maintained by Mr. Merritt*
+
+
+
+
 
 
 
