@@ -424,9 +424,9 @@ ___
 <br>
 
 # `Variable Scope/Context`
-Basically: the area within code in which a variable can be accessed and used 
+Basically: `Scope/Context` is the area within code in which a variable can be accessed and used 
 
-Specifically: refers to the visibility and accessibility of variables, functions, and other identifiers within a program.
+Specifically: `Scope/Context` refers to the visibility and accessibility of variables, functions, and other identifiers within a program.
 
 * Scope/Context can be `global`, `local`, or `nonlocal`
 * Python looks for variables by searching from the most local scope, to the least local scope. 
