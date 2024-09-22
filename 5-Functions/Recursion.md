@@ -19,54 +19,78 @@ Covered in this file:
 >   9. Depth-First Seach  
 >   10. Breadth-First Search  
 
+
+
 <br>
 
-## Note on symbols used in this file:
-> Symbols appearing in python blocks should be treated as Python syntax.  
->... is used a placeholder in Python. 
+___
+
+<br>
+
+
+# `Note on symbols used in this file`:
+Symbols appearing in python blocks should be treated as Python syntax.  
+`...` is used as a placeholder in Python. 
 ```python 
 ... 
 ```
 
-### Variable Information
-> Text inside of <> should be treated as a place holder for variable information
+<br>
+
+### `Variable Information`
+> Text inside of `<>` should be treated as a place holder for variable information
 ```
   <text>    
 ```
 
-### CLI Commands
-> The > indicates commands to be executed in the Windows Powershell prompt
+<br>
+
+### `CLI Commands`
+> The `>` indicates commands to be executed in the Windows Powershell prompt
 ```
   > command flags arguments 
 ```
-> The $ indicates commands to be executed in the Linux or Mac command line interface
-```
-  $ command flags arguments
-```
-
-### Abstract vs. Real Examples
-> In this file there are two types of examples abstract, and real  
->* Abstract Examples are a generalized, simplified representation that highlights the core concept or principle without including unnecessary details or specific instances. 
->
-> *  Real Examples are specific instances that illustrate the concept, principle, or method by providing concrete details. 
 
 <br>
 
 
-# `Recursion Defined`
-## Recursion
-> * Basically: calling a function inside of itself
-> * Specifically: a programming technique in which a function calls itself directly or indirectly in order to solve a problem
+> The `$` indicates commands to be executed in the Linux or Mac command line interface
+```
+  $ command flags arguments
+```
 
-Recursive algorithms are made of 3 parts
+<br>
+
+### `Abstract vs. Real Examples`
+In this file there are two types of examples, `abstract` and `real`. 
+
+`Abstract` examples are a generalized, simplified representation that highlights the core concept or principle without including unnecessary details or specific instances. 
+
+`Real` Examples are specific instances that illustrate the concept, principle, or method by providing concrete details. 
+
+<br>
+
+
+
+# `Recursion Defined`
+Basically: `Recursion` is the process of calling a function inside of itself
+
+Specifically: `Recursion` is a programming technique in which a function calls itself directly or indirectly in order to solve a problem
+
+<br>
+
+Recursive algorithms are made of 3 parts:
 * base case (aka the stop case)
 * function code
 * recursive call
 
-*When a function executes the program stops at that point and executes the function code. When a recursive function is called this process may occur many times, until the final call meets the base case and returns. This results in the previous call returning, then the next, and so on until the original call returns.*
+<br>
+
+*When a function executes the program stops at that point and executes the function code. When a recursive function is called this process may occur many times, until the final call meets the base case and returns. This results in the previous call returning, then the next, and so on until the original call returns. This is because each function call is placed on the stack along with its data, until it ends.*
+
 syntax:
 ```
-def recursive_function(paramters, ...):
+def recursive_function(parameters, ...):
     <base case>
     <function code>
     <recursive call>
@@ -93,14 +117,14 @@ recurse(5)
 # Base Case Executed: n = 1
 ```
 
-***NOTE: The best way to visualize how recursive algorithms work is to use a debugging tool to step through the code execution.***
+*NOTE: The best way to visualize how recursive algorithms work is to use a debugging tool to step through the code execution.*
 
 <br>
 
 # `Writing a base case`
-## The Base Case
-> * The base case is the case that stops the recursive calls and returns
-> * recursive algorithms need a condition upon which the recursive calls end, otherwise the recursion continues until a stack overflow error occurs. 
+The base case is the case that stops the recursive calls and returns
+
+Recursive algorithms need a condition upon which the recursive calls end, otherwise the recursion continues until a stack overflow error occurs. 
 
 
 
@@ -125,10 +149,9 @@ recurse(5)
 
 <br>
 
-# `RunTime Error: RecursionError: maximum recursion depth exceeded`
-## RecursionError: maximum recursion depth execeeded
-> * This type of error typically occurs when a recursive function is called indefinitely or simply when the number of recursive calls is too large.
-> * This error is often the result of a non-existant base case or a base case that is never met. 
+# `RecursionError: maximum recursion depth exceeded`
+`RecursionError: maximum recursion depth execeeded` is a type of error that  typically occurs when a recursive function is called indefinitely or simply when the number of recursive calls is too large.
+* This error is often the result of a non-existant base case or a base case that is never met. 
 
 When a recursive call occurs, the state of the function is held in memory as a new call occurs. This means that each time a function calls itself, a new stack frame is created on the call stack to store the state of that function call. 
 
