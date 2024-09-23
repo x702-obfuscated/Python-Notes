@@ -457,8 +457,8 @@ list1d = ["a","b","c"]
 
 "a" in txt      # Returns: False
 "a" in list1d   # Returns: True
-"d" not in txt      # Returns: True
-"d" not in list1d   # Returns: False
+"d" not in txt      # Returns: False
+"d" not in list1d   # Returns: True
 ```
 
 <br>
@@ -1081,7 +1081,7 @@ print( x << 3) #8 --> 0b1000
 
 
 ```python
-x = 255 #0b10000000
+x = 128 #0b10000000
 
 print( x >> 7) # 1 --> 0b1
 #                0b 1 0 0 0 0 0 0 0 --> 0b 1
