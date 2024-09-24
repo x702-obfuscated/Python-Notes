@@ -1041,16 +1041,16 @@ Be sure to pick the right stop_index
 txt = "Programming" 
 
 # Ascending
-print( txt[1:6:2] )  # Returns: rga
-print( txt[0:9:3] ) # Returns: Pgm
-print( txt[2:8:3] ) # Returns: oa
-print( txt[1:7:1] ) # Returns: rogram
+print( txt[1:6:2] )  # Outputs: rga
+print( txt[0:9:3] )  # Outputs: Pgm
+print( txt[2:8:3] )  # Outputs: oa
+print( txt[1:7:1] )  # Outputs: rogram
 
 # Descending
-print( txt[4:1:-1] )    # Returns: rgo
-print( txt[-1:-5:-1])   # Returns: gnim
-print( txt[7:0:-1])     # Returns: mmargor
-print( txt[8:0:-2] )    # Returns: imro
+print( txt[4:1:-1] )    # Outputs: rgo
+print( txt[-1:-5:-1])   # Outputs: gnim
+print( txt[7:0:-1])     # Outputs: mmargor
+print( txt[8:0:-2] )    # Outputs: imro
 ```
 
 ## `Ascending Slices`
@@ -1067,7 +1067,7 @@ txt = "Programming"
 txt[:5:1]   # Returns: Progr
 txt[:6:3]   # Returns: Pg
 
-#If a stop_index is not provided the default is len(list)
+#If a stop_index is not provided the default is len(string)
 txt[3:]     # Returns:  gramming
 txt[4::1]   # Returns:  ramming
 txt[::2]    # Returns:  Pormig
@@ -1089,12 +1089,12 @@ txt[6::]    # Returns: mming
 
 
 ```python
-#If a start_index is not provided the default is len(list)
+#If a start_index is not provided the default is len(string)
 txt[:4:-1]     # Returns: gnimma
 txt[:-6:-1]    # Returns: gnimm
 txt[::-1]      # Returns: gnimmargorP
 
-#If a stop_index is not provided the default is len(list)
+#If a stop_index is not provided the default is len(string)
 txt[5::-1]     # Returns: argorP
 txt[-3::-1]    # Returns: immargorP
 txt[::-3]      # Returns: gmrr

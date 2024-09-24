@@ -70,7 +70,7 @@ Data types can be classified into two groups: Mutable Data, and Immutable Data
 
 |**Mutable Data:**| **Immutable Data:**|
 |:-:|:-:|
-|can changed|cannot be changed|
+|can change|cannot be changed|
 |Lists, Sets, Dictionaries, etc.|number types, booleans, strings, tuples, etc.|
 
     
@@ -193,7 +193,7 @@ ___
 
 > For large numbers you can use underscores( _ ) to make them more readable
 ```python
-1_000_000_000 #Returns: 1000000000 --> Notice it doesn't return with the underscores
+1_000_000_000 # Returns: 1000000000 --> Notice it doesn't return with the underscores
 ```
 
 > Scientific notation is also available, use E to represent (x 10^)
