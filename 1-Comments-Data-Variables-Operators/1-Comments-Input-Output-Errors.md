@@ -1,4 +1,4 @@
-# `Introduction to Python: Comments and Hello World!`
+# `Introduction to Python: Comments Input Output and Errors`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
 ___
@@ -117,7 +117,7 @@ Now that you have the basics, create a new file that ends in .py, open it in you
 
 <br>
 
-[Back to Top](#introduction-to-python-comments-and-hello-world)
+[Back to Top](#introduction-to-python-comments-input-output-and-errors)
 ___
 
 <br>
@@ -173,7 +173,7 @@ Use Ctrl + / in editors like VScode to make a quick multi-line comment, or to co
 
 <br>
 
-[Back to Top](#introduction-to-python-comments-and-hello-world)
+[Back to Top](#introduction-to-python-comments-input-output-and-errors)
 ___
 
 <br>
@@ -202,7 +202,7 @@ print("Hello World")
 
 <br>
 
-[Back to Top](#introduction-to-python-comments-and-hello-world)
+[Back to Top](#introduction-to-python-comments-input-output-and-errors)
 ___
 
 <br>
@@ -242,7 +242,7 @@ print(input("Type your input: "))
 
 <br>
 
-[Back to Top](#introduction-to-python-comments-and-hello-world)
+[Back to Top](#introduction-to-python-comments-input-output-and-errors)
 ___
 
 <br>
@@ -325,7 +325,7 @@ $ python3 main.py
 <br>
 
 
-[Back to Top](#introduction-to-python-comments-and-hello-world)
+[Back to Top](#introduction-to-python-comments-input-output-and-errors)
 ___
 
 <br>
@@ -382,7 +382,7 @@ To execute .py files on linux and Mac type the following on the command line int
 
 <br>
 
-[Back to Top](#introduction-to-python-comments-and-hello-world)
+[Back to Top](#introduction-to-python-comments-input-output-and-errors)
 ___
 
 <br>
@@ -436,7 +436,7 @@ Print("Hello World")
 
 <br>
 
-[Back to Top](#introduction-to-python-comments-and-hello-world)
+[Back to Top](#introduction-to-python-comments-input-output-and-errors)
 ___
 
 <br>
@@ -492,7 +492,7 @@ print(my_list[3])
 
 <br>
 
-[Back to Top](#introduction-to-python-comments-and-hello-world)
+[Back to Top](#introduction-to-python-comments-input-output-and-errors)
 ___
 
 <br>
@@ -639,7 +639,7 @@ print(area) # Output: 12.5
 
 <br>
 
-[Back to Top](#introduction-to-python-comments-and-hello-world)
+[Back to Top](#introduction-to-python-comments-input-output-and-errors)
 ___
 
 <br>

@@ -17,7 +17,7 @@ This repository contains the following folders broken down in order to help faci
 
 ## 1. Comments, Data, Variables, and Operators
 ---
-1. Intro_Comments-and-HelloWorld.md
+1. Comments-Input-Output-Errors.md
 1. Syntax.md
 1. Data.md
 1. Variables.md
