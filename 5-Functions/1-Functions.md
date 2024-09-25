@@ -88,6 +88,12 @@ In this file there are two types of examples, `abstract` and `real`.
 
 <br>
 
+[Back to Top](#python-functions)
+
+___
+
+<br>
+
 
 
 # `Python Indentation and Code Blocks`

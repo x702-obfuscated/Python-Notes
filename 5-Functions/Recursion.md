@@ -1,7 +1,9 @@
+# `Python Recursion`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
 
-# `Recursion`
+
+___
 
 Covered in this file:
 1. Recursion Defined
@@ -70,6 +72,12 @@ In this file there are two types of examples, `abstract` and `real`.
 
 <br>
 
+[Back to Top](#python-recursion)
+
+___
+
+<br>
+
 
 
 # `Recursion Defined`
@@ -88,6 +96,8 @@ Recursive algorithms are made of 3 parts:
 
 *When a function executes the program stops at that point and executes the function code. When a recursive function is called this process may occur many times, until the final call meets the base case and returns. This results in the previous call returning, then the next, and so on until the original call returns. This is because each function call is placed on the stack along with its data, until it ends.*
 
+<br>
+
 syntax:
 ```
 def recursive_function(parameters, ...):
@@ -97,11 +107,12 @@ def recursive_function(parameters, ...):
     ...
 ```
 
+<br>
+
 abstract example:
 ```python
-
 def recurse(n):
-    if (n >= 1):
+    if (n <= 1):
         print("Base Case Executed...")
         return
 
@@ -117,7 +128,13 @@ recurse(5)
 # Base Case Executed: n = 1
 ```
 
-*NOTE: The best way to visualize how recursive algorithms work is to use a debugging tool to step through the code execution.*
+*The best way to visualize how recursive algorithms work is to use a debugging tool to step through the code execution.*
+
+<br>
+
+[Back to Top](#python-recursion)
+
+___
 
 <br>
 
@@ -146,6 +163,12 @@ recurse(5)
 # Recursive Call: n = 2    
 # Base Case Executed: n = 1
 ```
+
+<br>
+
+[Back to Top](#python-recursion)
+
+___
 
 <br>
 
@@ -194,6 +217,12 @@ recurse(5)
 #   [Previous line repeated 996 more times]
 # RecursionError: maximum recursion depth exceeded
 ```
+
+<br>
+
+[Back to Top](#python-recursion)
+
+___
 
 <br>
 
