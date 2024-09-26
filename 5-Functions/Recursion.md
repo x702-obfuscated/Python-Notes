@@ -139,7 +139,7 @@ ___
 <br>
 
 # `Writing a base case`
-The base case is the case that stops the recursive calls and returns
+The `base case` is the case that stops the recursive calls and returns.
 
 Recursive algorithms need a condition upon which the recursive calls end, otherwise the recursion continues until a stack overflow error occurs. 
 
@@ -164,6 +164,18 @@ recurse(5)
 # Base Case Executed: n = 1
 ```
 
+real example:
+```python
+
+def factorial(n):
+    '''calculates and returns the factorial of a number, n '''
+    if n < 1:
+        return 1
+    
+    return n * factorial(n-1)
+
+print(factorial(5)) # Output: 120
+```
 <br>
 
 [Back to Top](#python-recursion)
@@ -174,7 +186,8 @@ ___
 
 # `RecursionError: maximum recursion depth exceeded`
 `RecursionError: maximum recursion depth execeeded` is a type of error that  typically occurs when a recursive function is called indefinitely or simply when the number of recursive calls is too large.
-* This error is often the result of a non-existant base case or a base case that is never met. 
+
+`This error is often the result of a non-existant base case or a base case that is never met. `
 
 When a recursive call occurs, the state of the function is held in memory as a new call occurs. This means that each time a function calls itself, a new stack frame is created on the call stack to store the state of that function call. 
 
