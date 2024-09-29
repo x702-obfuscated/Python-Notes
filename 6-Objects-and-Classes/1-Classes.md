@@ -8,13 +8,35 @@
 
 
 Covered in this file:
-1. Classes and Objects Defined 
-1. Constructors: __init__(self) 
-1. Instance Variables   
-1. Instance Methods
-1. Class Variables
-1. Access Modifiers
-1. Concrete Examples of Simple Classes
+1. [`Note on symbols used in this file`](#note-on-symbols-used-in-this-file)
+1. [`Object Oriented Programming`](#object-oriented-programming)
+1. [`A Zero Programming Definition of Classes and Objects`](#a-zero-programming-definition-of-classes-and-objects)
+1. [`Classes Defined`](#classes-defined)
+1. [`Instances of a Class (Objects) Defined`](#instances-of-a-class-objects-defined)
+1. [`Class Definition`](#class-definition)
+1. [`Class Constructors __init__(self)`](#class-constructors-__init__self)
+1. [`Instantiation`](#instantiation)
+1. [`Dot Syntax`](#dot-syntax)
+1. [`self`](#self)
+1. [`Attributes`](#attributes)
+1. [`Instance Variables`](#instance-variables)
+    1. [`Defining Instance Variables`](#defining-instance-variables)
+    1. [`Accessing Instance Variables`](#accessing-instance-variables)
+1. [`Constructors Initialize Instance Variables`](#constructors-initialize-instance-variables)
+    1. [`Constructors with parameters other than self`](#constructors-with-parameters-other-than-self)
+    1. [`Constructor parameters can be given default values`](#constructor-parameters-can-be-given-default-values)
+1. [`Defining Class Variables`](#defining-class-variables)
+1. [`Class Variable Access`](#class-variable-access)
+1. [`Putting it all together: Class Variables`](#putting-it-all-together-class-variables)
+1. [`Methods`](#methods)
+    1. [`Defining a Method`](#defining-a-method)
+    1. [`Calling a Method`](#calling-a-method)
+1. [`Access Modifiers`](#access-modifiers)
+    1. [`Public`](#public)
+    1. [`Protected`](#protected)
+    1. [`Private`](#private)
+1. [`Concrete Examples with Simple Classes`](#concrete-examples-with-simple-classes)
+
 
 
 <br>
@@ -65,7 +87,61 @@ ___
 
 # `Object Oriented Programming `
 
+`Object-Oriented Programming (OOP)` is a programming paradigm that is based on the concept of `objects`, which are instances of classes. In OOP, software is organized around objects, which can represent real-world entities, concepts, or abstract data types. These objects contain both data and behavior, which allows for more modular, reusable, and scalable code.
+
+Key Concepts in Object-Oriented Programming:
+| Concept| Definition |
+|:-:|:-|
+| `Classes`      | A blueprint or template for creating objects. It defines the attributes (data) and methods (functions) that the objects created from the class will have.  |
+| `Objects`     | An instance of a class that contains actual data and behaviors as defined by the class. It is a specific realization of a class.                          |
+| `Abstraction`| The concept of hiding the complex implementation details and showing only the essential features of an object, simplifying interaction with it.           |
+| `Encapsulation`| The bundling of data and methods into a single unit (an object) and restricting direct access to some components, often using private/protected fields.|
+| `Inheritance`| A mechanism by which one class (child or subclass) can derive or inherit attributes and methods from another class (parent or superclass), promoting reusability.|
+| `Polymorphism`| The ability of different objects to respond to the same method or function in different ways, typically achieved through method overriding or overloading.  |
+
+<br>
+
+[Back to Top](#python-classes)
+
+___
+
+<br>
+
 # `A Zero Programming Definition of Classes and Objects`
+
+An object can represent anything in the real world, for example a car or a house. When it comes to objects the characteristics of an object can be simplified into `what a thing is` --> `data` and `what a thing does` --> `behaviour`. Now each object can have different data and different behaviour.
+
+A class is a blueprint that contains the related data and behaviour of a certain type of object. For instance, every car has certain data in common. Cars have color, make, model, wheels, etc. Every car has certain functions like: drive, reverse, park, neutral. A class defines these data and behaviours. 
+
+Many cars with different colors, makes, and models can be created from a single blueprint. Some may even drive, reverse, park, and neutral differently, but they all perform those functions. 
+
+Classes serve as a blueprint to define the data and behaviours that makeup a thing.
+
+Objects are created using the blueprint and store specifics of a given thing. Color is blue, Make is Ford, Model is Model T. 
+
+Example:
+```
+Class --> Car
+
+Data:
+    Color
+    Make
+    Model
+
+Behaviors:
+    Drive
+    Reverse
+    Park
+    Reverse
+```
+
+<br>
+
+[Back to Top](#python-classes)
+
+___
+
+<br>
 
 # `Classes Defined`
 
@@ -188,6 +264,8 @@ Specifically: A `Constructor` is a special `method` used to initialize the state
 
 * Constructors are defined using the dunder keyword `__init__` keyword.
 * Constructors are called using the name of the class. 
+
+<br>
 
 ### *`The function of a constructor is to initialize instance variables and call any default methods.`* 
 
@@ -537,7 +615,7 @@ ___
 <br>
 
 ## `Accessing Instance Variables`
-Instance variables are accessed using dot syntax.  
+Instance variables are accessed using dot `.` syntax.  
 
 <br>
 
@@ -545,19 +623,27 @@ Inside the class definition, use:
 ```
 self.variable_name
 ```
+```python
+self.name
+self.hp
+self.mp
+self.stamina
+```
+
+<br>
 
 Outside the class definition, use:
 ```
 object_name.variable_name
 ```
-
-example:
 ```python
 player1.name
 player1.hp
 player1.mp
 player1.stamina
 ```
+
+<br>
 
 real example:
 ```python
@@ -592,125 +678,139 @@ ___
 
 <br>
 
-## `Constructors Initialize Instance Variables`
-The function of a constructor is to initialize instance variables and call any default methods.
+# `Constructors Initialize Instance Variables`
+The function of a `constructor` is to initialize instance variables and call any default methods. Initializing instance variables involves defining and assigning values to variables that are associated with a specific instance of a class (object).  
 
-
-Initializing instance variables involves defining and assigning values to variables that are associated with a specific instance of a class (object).  
-
-real example:
 ```python
-class Player():                         # Class Header
-
-    def __init__(self):                 # Defining Player constructor
-
-        self.name = "default_player"    # instance variable
-        self.hp = 100                   # instance variable
-        self.mp = 50                    # instance variable
-        self.stamina = 75               # instance variable
-
-
-    # Method for displaying the variables in a Player object
-    def display_attributes(self):
-        attributes = vars(self)
-        for var in attributes:
-            print(f"{var}: {attributes[var]}")
-
-# end of class definition
-
-# Constructing a Player instance with the name player1
-player1 = Player()                      
-
-# Displaying instance variables and thier values
-player1.display_attributes()          
-# Output:
-# name: default_player
-# hp: 100
-# mp: 50
-# stamina: 75
+def __init__(self): 
+    self.name = "Hero"              # Instance Variable
+    self.hp = 100                   # Instance Variable
+    self.mp = 50                    # Instance Variable
+    self.stamina = 75               # Instance Variable
+    self.display_data()             # Default Method
 ```
 
-Constructors can also accept parameters other than ***self***
-* There is a difference between self.name and name, etc.  
-> * self.name is a reference to the instance variable  
-> * name is a reference to the parameter  
-> * this is one reason that ***self*** is necessary when writing classes
+real example:
+```python
+class Player():
+
+    def __init__(self): 
+        '''Player Constructor'''
+        self.name = "Hero"              # Instance Variable
+        self.hp = 100                   # Instance Variable
+        self.mp = 50                    # Instance Variable
+        self.stamina = 75               # Instance Variable
+        self.display_data()             # Default Method
+
+
+    def display_data(self):
+        '''Displays each field and its value for a given object'''
+        for key, value in vars(self).items():
+            print(f"{key} : {value}", end = " | ")
+        print()
+
+#<-- End of class definition
+
+# Constructing a Player instance with the name player1 
+# and calling player1.display_data() by default.
+player1 = Player()  
+# Output: name : Hero | hp : 100 | mp : 50 | stamina : 75 |   
+```
+
+<br>
+
+## `Constructors with parameters other than self`
+
+```python
+def __init__(self, name):
+    self.name = name
+```
+There is a difference between self.name and name, etc.  
+* `self.name` is a reference to the instance variable  
+* `name` is a reference to the parameter `name`   
+
+*This is one reason that `self` is necessary when writing classes. It differentiates between parameter names and instance variable names*
+
+<br>
 
 real example:
 ```python
-class Player():                                 # Class Header
+class Player():
 
-    # Defining Player constructor with parameters
-    def __init__(self, name, hp, mp, stamina):  
-        self.name = name                        # instance variable
-        self.hp = hp                            # instance variable
-        self.mp = mp                            # instance variable
-        self.stamina = stamina                  # instance variable
+    def __init__(self, name, hp, mp, stamina):
+        '''Player Constructor with parameters'''  
+        self.name = name                        # Instance Variable
+        self.hp = hp                            # Instance Variable
+        self.mp = mp                            # Instance Variable
+        self.stamina = stamina                  # Instance Variable
 
-    # Method for displaying the variables in a Player object
-    def display_attributes(self):
-        attributes = vars(self)
-        for var in attributes:
-            print(f"{var}: {attributes[var]}")
-# end of class definition           
+    def display_data(self):
+        '''Displays each field and its value for a given object'''
+        for key, value in vars(self).items():
+            print(f"{key} : {value}", end = " | ")
+        print()
+
+#<-- End of class definition        
 
 # Constructing a Player instance with the name player1 and passing arguments 
 player1 = Player("Hero", 1000, 500, 750)
 
 # Displaying instance variables and thier values
-player1.display_attributes()
-# Output:
-# name: Hero
-# hp: 1000
-# mp: 500
-# stamina: 750
+player1.display_data()
+# Output: name : Hero | hp : 100 | mp : 50 | stamina : 75 | 
 ```
 
 <br>
 
-Putting it all together
-```python
-class Player():                                 # Class Header
+## `Constructor parameters can be given default values.`
 
-    # Defining Player constructor with parameters and defaults
-    #   here the parameters are indented for readability
-    def __init__(
+```python
+def __init__(self, name = "Hero"):
+    self.name = name
+```
+
+
+real example
+```python
+class Player():
+
+    def __init__(               # The parameters are indented for readability
             self, 
-            name = "default_name",
+            name = "Hero",
             hp = 100,
             mp = 50, 
             stamina = 75
-        ):  
-        self.name = name                        # instance variable
-        self.hp = hp                            # instance variable
-        self.mp = mp                            # instance variable
-        self.stamina = stamina                  # instance variable
+        ): 
+        '''Player Constructor with parameters and defaults'''  
+        self.name = name                        # Instance Variable
+        self.hp = hp                            # Instance Variable
+        self.mp = mp                            # Instance Variable
+        self.stamina = stamina                  # Instance Variable
 
-    # Method for displaying the variables in a Player object
-    def display_attributes(self):
-        attributes = vars(self)
-        for var in attributes:
-            print(f"{var}: {attributes[var]}", end = " | ")
+
+    def display_data(self):
+        '''Displays each field and its value for a given object'''
+        for key, value in vars(self).items():
+            print(f"{key} : {value}", end = " | ")
         print()
-# end of class definition  
 
-# Constructing a Player instance with the name player1 using default constructor 
+#<-- End of class definition        
+
+# Constructing a Player instance with the default data
 player1 = Player()
 
-# Displaying instance variables and thier values
-player1.display_attributes()
-# Output: name: default_name | hp: 100 | mp: 50 | stamina: 75 | 
-
-        
-# Constructing a Player instance with the name player2 and arguments
-player2 = Player("Hero", 1000, 500, 750)
+player1.display_data()
+# Output: name : Hero | hp : 100 | mp : 50 | stamina : 75 |
 
 
-# Displaying instance variables and thier values
-player2.display_attributes()
-# Output: name: Hero | hp: 1000 | mp: 500 | stamina: 750 | 
+# Constructing a Player instance and providing arguments 
+player2 = Player("Eldrin the Brave", 150, 70, 85)
+
+player2.display_data()
+# Output: name : Eldrin the Brave | hp : 150 | mp : 70 | stamina : 85 |
 ```
 
+*Calling a constructor without passing arguments is called `Calling the Default Constructor`*
 
 <br>
 
@@ -720,41 +820,34 @@ ___
 
 <br>
 
-# `Class Variables`
-syntax for assigning variables associated with a class:
 
-    variable_name = ...
+# `Defining Class Variables`
+Basically: A `Class Variable` is a variable shared among all instances of a class.  
 
-syntax for accessing variables associated with the class:
+Specifically `Class Variables` are variables that are associated with a class and shared among all instances of a class. They have the same value for all instances of that class. 
 
-    ClassName.variable_name
+<br>
 
-> * basically: variables shared among all instances of a class.  
-> * specifically: variables that are associated with a class and shared among all instances of a class. They have the same value for all instances of that class.   
-
-<br> 
-
-## Class Variable Creation
-> * class variables are created by defining a variable inside of the class definition, and outside of any class methods
+`Class variables` are created by defining a variable inside of the class definition, but outside of any class methods.
 
 abstract example:
 ```
 class ClassName():
 
-    class_variable = ...
+    class_variable = <value>
 ```
 
 real example:
 ```python
 class Player():             # Class Definition Header
 
-    number_of_players = 0  # <-- CLASS VARIABLE
+    num_of_players = 0      # Class Variable
 ```
 
 <br>
 
-## Class Variable Access
-> * class variables can be accessed using dot syntax in two ways
+# `Class Variable Access`
+`Class variables` can be accessed using the class itself or an object of the class and  dot `.` syntax.
 
 syntax
 ```
@@ -766,17 +859,17 @@ object_name.class_variable
 
 real example:
 ```python
-class Player():                 # Class Definition Header
+class Player():                 
 
-    number_of_players = 0       # <-- CLASS VARIABLE
+    number_of_players = 0       # Class Variable
 
     def __init__(self):         # Class Constructor
         Player.number_of_players += 1
 
-# End of Class Definition    
+#<-- End of Class Definition    
 
 
-player1 = Player()              # Object Instantiation and Assignment
+player1 = Player()              # Instantiation and Assignment
 
 # Accessing 'number_of_players'
 Player.number_of_players        # Returns: 1
@@ -786,7 +879,7 @@ player1.number_of_players       # Returns: 1
 
 <br>
 
-## Putting it all together: Creation and Access
+# `Putting it all together: Class Variables`
 real example: 
 ```python
 class Player():                 # Class Definition Header
@@ -826,11 +919,20 @@ ___
 <br>
 
 # `Methods`
-> * are functions defined by a class
-> * are typically called using an object or class and dot ( . ) syntax
+Basically: `Methods` are functions defined by a class.
 
-### Defining a Method
-> to define a method, define a function inside of the class definition
+Specifically: `Methods` are functions that are associated with an object or class. They define behaviors or actions that an object can perform and usually operate on the data contained within that object. Methods are often used to encapsulate functionality and data within an object-oriented programming (OOP) paradigm. 
+
+<br>
+
+### *`Methods use the same syntax as functions.`*
+
+<br>
+
+## `Defining a Method`
+To define a method, define a function inside of a class definition
+
+*`Aside from being inside of a class definition, methods are defined just like functions.`*
 
 syntax:
 ```
@@ -838,6 +940,27 @@ class ClassName():
 
     def method_name():
         ...
+```
+
+real example:
+```python
+class Player():
+
+    def __init__(self):
+        self.name = "Hero"
+        self.hp = 100
+        self.mp = 50
+        self.stamina = 75
+        self.atk = 10
+
+    def attack(self):
+        '''Method that performs an attack, dealing self.atk damage'''
+        if(self.stamina - 5 > 0):
+            self.stamina -= 5
+            print(f"{self.name} does {self.atk} damage.")
+            return self.atk
+        else:
+            return 0
 ```
 
 <br>
@@ -848,42 +971,49 @@ ___
 
 <br>
 
-### Calling a Method
-calling methods associated with an instance  
+## `Calling a Method`
+Methods are called using an object or class and dot `.` syntax
+
+*`Aside from using dot syntax, methods are called the same way as functions. `*
+
+calling instance methods: 
 syntax :  
+```
+object_name.method_name(arguments, ...)
+```
 
-    object_name.method_name(arguments, ...)
-
-calling methods associated with the class  
+calling class methods: 
 syntax :  
-
-    ClassName.method_name(arguments, ...)
-
+```
+ClassName.method_name(arguments, ...)
+```
 real method example:
 ```python
-class Player():                         # Class Header
+class Player():
 
-    def __init__(self):                 # Constructor Header
-        self.name = "default_player"    # instance variable
-        self.hp = 100                   # instance variable
-        self.mp = 50                    # instance variable
-        self.stamina = 75               # instance variable
+    def __init__(self):
+        self.name = "Hero"
+        self.hp = 100
+        self.mp = 50
+        self.stamina = 75
+        self.atk = 10
 
-    def display_attributes(self):
-        '''Instance Method for displaying the variable in a Player object'''
-        attributes = vars(self)
-        for var in attributes:
-            print(f"{var}: {attributes[var]}", end = " | ")
+    def attack(self):
+        '''Method that performs an attack, dealing self.atk damage'''
+        if(self.stamina - 5 > 0):
+            self.stamina -= 5
+            print(f"{self.name} does {self.atk} damage.")
+            return self.atk
+        else:
+            return 0
 
-# end of class definition
+#<-- End of class definition
 
 # Constructing a Player instance with the name player1
-player1 = Player()                      
+player1 = Player()  
 
-# Displaying instance variables and thier values
-player1.display_attributes() 
-# Output: name: default_player | hp: 100 | mp: 50 | stamina: 75 |         
-
+player1.attack() # Returns 10
+# Outputs: Hero does 10 damage.
 ```
 
 <br>
@@ -895,12 +1025,14 @@ ___
 <br>
 
 # `Access Modifiers`
-> Access modifiers in Python determine the accessibility and visibility of class attributes and methods from outside the class, using naming conventions (e.g., public, protected, private) instead of explicit keywords like in other languages.
+`Access modifiers` in Python determine the accessibility and visibility of class attributes from outside the class, using naming conventions instead of explicit keywords (e.g., public, protected, private) like in other languages.
 
-Access Modifier Conventions:  
+ 
+<br>
 
-## Public
-> * Accessible from anywhere. No prefixing.     
+## `Public`
+Public Attributes are accessible from anywhere. 
+Attributes with no prefixing are considered public.     
 
 syntax : 
 ```
@@ -918,8 +1050,8 @@ class Player:
 
 <br>
 
-## Protected
-> * Indicated by a single underscore (_) prefix, suggesting that it should not be accessed directly outside of the class and its subclasses.
+## `Protected`
+Protected Attributes are indicated by a single underscore `_` prefix, suggesting that it should not be accessed directly outside of the class and its subclasses.
 
 syntax:
 ```
@@ -937,12 +1069,15 @@ class Player:
 
 <br>
 
-## Private
-> * Indicated by a double underscore (__) prefix, suggesting that it should not be accessed from outside of the class.  
-> * Trying to access the private method or attribute directly will result in an AttributeError 
+## `Private`
+Private Attributes are indicated by a double underscore `__` prefix, suggesting that it should not be accessed from outside of the class.  
+* Trying to access the private method or attribute directly will result in an AttributeError 
 
-Name Mangling
-> * When you define a method or attribute with a name that starts with double underscores, Python internally changes the name by prefixing it with _ClassName
+<br>
+
+`Name Mangling`
+* When you define an attribute with a name that starts with double underscores, Python internally changes the name by prefixing it with _ClassName . This is called Name Mangling.
+* Name Mangling makes the variable more difficult to access outside of the class, but not impossible.
 
 syntax:
 ```
@@ -964,6 +1099,14 @@ player1 = Player("Eldrin the Brave", 50, 70, 85)
 #Access by prefixing with _ClassName, this is not recommended
 print(player1._Player__name)        # Output: Eldrin the Brave
 ```
+
+*While it is still possible to access these Private Attributes outside the class, in general it should not be done*
+
+<br>
+
+[Back to Top](#python-classes)
+
+___
 
 <br>
 
@@ -1041,3 +1184,14 @@ dog2 = Dog("Luna", "Labrador", 2)
 print(dog1.bark())  # Output: Buddy says woof!
 print(dog2.bark())  # Output: Luna says woof!
 ```
+
+<br>
+
+[Back to Top](#python-classes)
+
+___
+
+<br>
+
+
+*Created and maintained by Mr. Merritt*
