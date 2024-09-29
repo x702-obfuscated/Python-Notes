@@ -1,8 +1,11 @@
+
+***SPECIAL NOTE: The best way to understand classes is to start trying to write a class. Try writing a Player class like we do here to get stared.***
+
+# `Python Classes`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
 
-# `Classes`
-***SPECIAL NOTE: The best way to understand classes is to start trying to write a class. Try writing a Player class like we do here to get stared.***
+
 
 Covered in this file:
 1. Classes and Objects Defined 
@@ -16,35 +19,60 @@ Covered in this file:
 
 <br>
 
-## Note on symbols used in this file:
-> Symbols appearing in python blocks should be treated as Python syntax.  
->... is used a placeholder in Python. 
+___
+
+<br>
+
+
+# `Note on symbols used in this file`:
+Symbols appearing in python blocks should be treated as Python syntax.  
+`...` is used as a placeholder in Python. 
 ```python 
 ... 
 ```
 
-### Variable Information
-> Text inside of <> should be treated as a place holder for variable information
+<br>
+
+### `Variable Information`
+> Text inside of `<>` should be treated as a place holder for variable information
 ```
   <text>    
 ```
 
-### Abstract vs. Real Examples
-> In this file there are two types of examples abstract, and real  
->* Abstract Examples are a generalized, simplified representation that highlights the core concept or principle without including unnecessary details or specific instances. 
->
-> *  Real Examples are specific instances that illustrate the concept, principle, or method by providing concrete details. 
+<br>
+
+### `CLI Commands`
+> The `>` indicates commands to be executed in the Windows Powershell prompt
+```
+  > command flags arguments 
+```
 
 <br>
 
-# `Classes and Objects Defined`
-## Classes
-Define attributes and behaviours
-> * basically: a blueprint for creating objects.
-> * specifically: a blueprint for creating objects (instances) that encapsulates data (attributes) and behaviors (methods) that define the properties and actions of the objects created from the class. 
 
-> * Classes can also be thought of as custom data types
-> * Classes use UpperCamelCase for class names.
+> The `$` indicates commands to be executed in the Linux or Mac command line interface
+```
+  $ command flags arguments
+```
+
+<br>
+
+[Back to Top](#python-classes)
+
+___
+
+<br>
+
+# `Classes Defined`
+
+Basically: A `Class` is a blueprint for creating objects. Classes define the attributes and behaviours of objects.
+
+Specifically: A `Class` is a blueprint that defines the properties and actions of the objects created from the class.  for creating `objects` (`instances`) that encapsulate data (`attributes`) and behaviors (`methods`) 
+
+* Classes can also be thought of as custom data types
+* Classes use `UpperCamelCase` for class names.
+
+<br>
 
 syntax for defining a class:
 ```
@@ -55,27 +83,70 @@ class ClassName():
 
 <br>
 
-## Objects
-Are built from the Class blueprint
-> * basically: an instance of a class that contains data and the methods that operate on that data.  
-> * specifically: an instance of a class with its own unique state and behaviour as defined by the class.   
+[Back to Top](#python-classes)
 
-> * Objects follow variable naming conventions (lower_snake_case)  
-> * Constructing an object is called Object Instantiation    
-
-***NOTE: An instance of a class and an object are the same thing.***
+___
 
 <br>
 
-syntax for object instantiation:
+# `Instances of a Class (Objects) Defined`
+Basically: `Objects` are an `instance of a class` that contains `attributes` (data) and the `methods` (functions) that operate on that data. 
+
+
+Specifically: `Objects` are an `instance of a class` that contains `attributes` (data) and the `methods` (functions) that operate on that data. `Objects` are created by using the class constructor, which uses the class 'blueprint' to build the `object`.  
+
+* Objects follow variable naming conventions (`lower_snake_case`)  
+* Constructing an object is called `Instantiation`   
+
+<br>
+
+`An instance of a class and an object are the same thing.`
+
+<br>
+
+syntax for instantiation:
 ```
 ClassName(arguments, ...)
 ```
-syntax for object instantiation and assignment:
+
+<br>
+
+syntax for instantiation and assignment:
 ```
 object_name = ClassName(arguments, ...)
 ```
 
+<br>
+
+
+# `Class Definition`
+
+Classes are defined using the `class` keyword.
+
+Parts of a class definition:
+1. Class Header
+1. Class Constructor
+1. Attributes (`Data`)
+1. Behaviours (`Methods`)
+
+<br>
+
+class definition example:
+```python
+class Player():
+
+    def __init__(self):
+        self.name = "Hero"
+```
+
+```python
+class Player():                             # Class Header
+'''Defines a Player for a video game.'''    # docstring
+    
+    def __init__(self):                     # Constructor Header
+        '''Class Constructor'''             # docstring
+        self.name = "Hero"                  # Attribute
+```
 abstract example:
 ```python
 # Start Class Definition 
@@ -112,6 +183,12 @@ To illustrate the concepts of creating class a concrete real example is often mo
 
 <br>
 
+[Back to Top](#python-classes)
+
+___
+
+<br>
+
 ## Dot Syntax
 > dot syntax is used to access the attributes and methods of classes and objects.  
 
@@ -124,6 +201,12 @@ ClassName.method_name()
 object_name.attribute_name
 object_name.method_name()
 ```
+
+<br>
+
+[Back to Top](#python-classes)
+
+___
 
 <br>
 
