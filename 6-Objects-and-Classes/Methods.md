@@ -1380,3 +1380,18 @@ with player1 as p:  # __enter__ called
 ```
 
 <br>
+
+
+
+## Built-in Methods
+Built-in methods are pre-defined by classes pre-defined by the standard library
+
+To see what methods you can call on an object use:  
+    
+    dir(object_name)  
+
+To see more information on a specific method use:  
+    
+    help(object_name.method_name)
+
+<br>
