@@ -1,7 +1,8 @@
-*Use CTRL + F to search for keywords in this file*  
-*You are encouraged to copy and alter the code in this file to understand how it works*
 
-# `Objects`
+# `Python Objects`
+*Use CTRL + F to search for keywords in this file*  
+*You are encouraged to copy and alter the code in this file to understand how it works.*
+
 
 Covered in this file:
 1. Importing a Class
@@ -11,64 +12,113 @@ Covered in this file:
 1. Instance Variables : Attributes 
 1. Instance Methods : Functions
 
-***Assume the class written below is defined in a file called Classes.py that exists in the same directory as this file. We will not rewrite this code repeatedly to save space.***
+*Assume the class written below is defined in a file called my_module.py that exists in the same directory as this file. This is so we can focus on the objects themselves and not the class that defines them.*
 
 ```python
 class Player():
 
-    def __init__(self):
-        ...
+    def __init__(
+        self, 
+        name = "Hero", 
+        hp = 100, 
+        mp = 50, 
+        stamina = 75
+    ):
+       self.name = name
+       self.hp = hp
+       self.mp = mp
+       self.stamina = stamina
 
 ```
+
+<br>
+
+[Back to Top](#python-objects)
+
+___
 
 <br>
 
 # `Importing a Class`
-> * To use a class that is not defined in the same file, you must import the class from another file.
+To use a `class` that is not defined in the current file (module), you must import the `class` from another file (`module`).
 
 syntax:
 
-    from Module import Class
+    from <module> import <Class>
 
 real example:
 ```python
-from Classes import Player
+from my_module import Player
 ```
 
-> * Modules are files
-> * If the module with the class definition is not in the same folder, you will need to better understand importing --> See 7-Advanced/Importing-Code
+<br>
+
+`Modules are files`
+
+*If the module with the class definition is not in the same folder, you will need to better understand importing --> See 7-Advanced/Importing-Code*
 
 
 <br>
 
-# `Objects Defined`
-In Python everything is an object 
-> You have already been using objects  
-> When we say "everything is an object", we mean that every piece of data (variables, functions, classes, modules, etc.) in Python is represented by an object in memory.
+[Back to Top](#python-objects)
 
-The type() function show what class each object belongs too:
+___
+
+<br>
+
+
+# `Objects Defined`
+`In Python everything is an object` 
+
+Basically: `Objects` are an `instances of a class` that contain `data` and `methods` (functions) that operate on that data. 
+
+
+Specifically: `Objects` are an `instances of a class` that encapsulate `data` and `methods` (functions) that operate on that data. `Objects` are created by using the class `constructor`, which uses the class 'blueprint' to build the `object`.  
+
+<br>
+
+* Objects follow variable naming conventions (`lower_snake_case`)  
+* `Objects` are built using `Constructors`, and constructing an object is called `Instantiation` 
+* Every instance of a class has the same attributes, but the values for those attributes may be different.  
+
+<br>
+
+### *`'Instance of a class' and  'object' mean the same thing.`*
+
+*When we say "everything is an object", we mean that every piece of data (variables, functions, classes, modules, etc.) in Python are represented by an object in memory.*
+
+<br>
+
+The `type()` function shows what class each object belongs too:
 ```python
-type(10)              #<class 'int'>
-type(3.14)            #<class 'float'>
-type(True)            #<class 'bool'>
-type("Hello")         #<class 'str'>
-type(["a","b","c"])   #<class 'list'>
-type(("a","b","c"))   #<class 'tuple'>
-type({"a","b","c"})   #<class 'set'>
-type({"a":1,"b":2})   #<class 'dict'>
-type(range(10))       #<class 'range'>
-type(bytes(b"hello")) #<class 'bytes'>
+type(10)              # Returns: <class 'int'>
+type(3.14)            # Returns: <class 'float'>
+type(True)            # Returns: <class 'bool'>
+type("Hello")         # Returns: <class 'str'>
+type(["a","b","c"])   # Returns: <class 'list'>
+type(("a","b","c"))   # Returns: <class 'tuple'>
+type({"a","b","c"})   # Returns: <class 'set'>
+type({"a":1,"b":2})   # Returns: <class 'dict'>
+type(range(10))       # Returns: <class 'range'>
+type(bytes(b"hello")) # Returns: <class 'bytes'>
 ```
 
-## Objects
-Are built from the Class blueprint
-> * basically: an instance of a class that contains data and the methods that operate on that data.  
-> * specifically: an instance of a class with its own unique state and behaviour as defined by the class.   
+```python
+from my_module import Player
+player1 = Player()
 
-> * Objects follow variable naming conventions (lower_snake_case)  
-> * Constructing an object is called Object Instantiation    
+type(player1)       # Returns: <class 'my_module.Player'>
+```
 
-***NOTE: An instance of a class and an object are the same thing.***
+<br>
+
+
+
+<br>
+
+[Back to Top](#python-objects)
+
+___
 
 <br>
 
@@ -84,7 +134,7 @@ object_name = ClassName(arguments, ...)
 ```
 
 abstract example:
-```python
+```pythonswawd
 from Classes import Player 
 ''' 
 This hides the class definition in another location 
@@ -120,6 +170,12 @@ player1 = Player()
 
 <br>
 
+[Back to Top](#python-objects)
+
+___
+
+<br>
+
 # `Built-in Constructors`
 > * You have most likely already used some built-in constructors without knowing it.
 > * These are constructors for classes defined by the Standard Library
@@ -144,6 +200,15 @@ map()            # Constructs an iterator that applies a function to every item 
 zip()            # Constructs an iterator that aggregates elements from multiple iterables into tuples.
 super(None)      # Constructs a super object, typically used for delegating method calls to a superclass.
 ```
+
+<br>
+
+[Back to Top](#python-objects)
+
+___
+
+<br>
+
 # `Attributes: Variables  `
 > * Instance Variable: This is a variable that is defined inside a class and is specific to an instance of the class.
 > * Attribute: This is a more general term that refers to any property or method associated with an object.  
@@ -163,6 +228,12 @@ syntax for accessing variables associated with an instance:
 
 <br>
 
+[Back to Top](#python-objects)
+
+___
+
+<br>
+
 ### Class Variables
 syntax for assigning variables associated with a class:
 
@@ -171,6 +242,12 @@ syntax for assigning variables associated with a class:
 syntax for accessing variables associated with the class:
 
     ClassName.variable_name
+
+<br>
+
+[Back to Top](#python-objects)
+
+___
 
 <br>
 
@@ -197,6 +274,12 @@ class Player:
         '''Method'''
         print(f"The player does {self.atk}pt(s) of damage")
 ```
+
+<br>
+
+[Back to Top](#python-objects)
+
+___
 
 <br>
 
@@ -238,17 +321,25 @@ player1.display_attributes()
 
 ```
 
-## Built-in Methods
+<br>
 
-Built-in methods are pre-defined by classes pre-defined by the standard library
+[Back to Top](#python-objects)
 
-To see what methods you can call on an object use:  
-    
-    dir(object_name)  
+___
 
-To see more information on a specific method use:  
-    
-    help(object_name.method_name)
+<br>
+
+## `Built-in functions for Objects`
+
+
+
+
 
 
 <br>
+
+[Back to Top](#python-objects)
+
+___
+
+<br>w
