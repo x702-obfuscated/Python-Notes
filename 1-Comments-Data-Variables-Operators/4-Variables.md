@@ -25,6 +25,8 @@ Covered in this file:
     1. [`global keyword`](#global-keyword)
     1. [`nonlocal keyword`](#nonlocal-keyword)
     1. [`Special Scoping Errors`](#special-scoping-errors)
+    1. [`locals() Returns the local scope`](#locals-returns-local-scope)
+    1. [`globals() Returns the global scope`](#globals-returns-global-scope)
 
 <br>
 
@@ -710,6 +712,52 @@ def example():
 
 #Python assumes that since you created a local 'x' you ment to print the local 'x' and not the global 'x'
 example()  
+```
+
+<br>
+
+
+## `locals() Returns local scope`
+`locals()` Returns a dictionary representing the current local symbol table (i.e., all locally defined variables within a function or a scope).
+
+```
+locals()
+```
+```python
+x = 10
+
+def example():
+    a = 5
+    b = 10
+    print(locals())  
+
+example() # Output: {'a': 5, 'b': 10}
+```
+
+<br>
+
+
+## `globals() Returns global scope`
+`globals()` Returns a dictionary representing the current global symbol table (i.e., all globally defined variables).
+
+```
+globals()
+```
+```python
+x = 10
+
+def example():
+    a = 5
+    b = 10
+    print(globals())  # Output: {'a': 5, 'b': 10}
+
+example()
+# Output Example, includes x : 10
+{'__name__': '__main__', '__doc__': None, '__package__': None, 
+'__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x000002B182B1BBC0>, 
+'__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 
+'__file__': '<filepath>', '__cached__': None, 'x': 10, 
+'example': <function example at 0x000002B182B0A340>}
 ```
 
 <br>

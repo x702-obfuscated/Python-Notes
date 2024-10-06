@@ -87,12 +87,16 @@ ___
 
 # `Object Oriented Programming `
 
-`Object-Oriented Programming (OOP)` is a programming paradigm that is based on the concept of `objects`, which are instances of classes. In OOP, software is organized around objects, which can represent real-world entities, concepts, or abstract data types. These objects contain both data and behavior, which allows for more modular, reusable, and scalable code.
+Basically: `Object-Oriented Programming (OOP)` groups data and functions together into a class that allows for the construction of an object that has access to its own unique data values and shared functions. 
+
+Specifically: `Object-Oriented Programming (OOP)` is a programming paradigm that is based on the concept of `objects`, which are instances of classes. In OOP, software is organized around objects, which can represent real-world entities, concepts, or abstract data types. These objects contain both data and behavior, which allows for more modular, reusable, and scalable code.
+
+
 
 Key Concepts in Object-Oriented Programming:
 | Concept| Definition |
 |:-:|:-|
-| `Classes`      | A blueprint or template for creating objects. It defines the attributes (data) and methods (functions) that the objects created from the class will have.  |
+| `Classes`      | A blueprint or template for creating objects. It defines the data (fields) and methods (functions) that the objects created from the class will have.  |
 | `Objects`     | An instance of a class that contains actual data and behaviors as defined by the class. It is a specific realization of a class.                          |
 | `Abstraction`| The concept of hiding the complex implementation details and showing only the essential features of an object, simplifying interaction with it.           |
 | `Encapsulation`| The bundling of data and methods into a single unit (an object) and restricting direct access to some components, often using private/protected fields.|
@@ -145,6 +149,8 @@ ___
 
 # `Classes Defined`
 
+`Class -> Blueprint`
+
 Basically: A `Class` is a blueprint for creating objects that defines what an object is (`data`) and what an object does (`methods`). 
 
 Specifically: A `Class` is a blueprint for an object that encapsulates the `data` and `methods` that operate on that `data`.  
@@ -173,6 +179,9 @@ ___
 <br>
 
 # `Instances of a Class (Objects) Defined`
+
+`Object -> built from the blueprint`
+
 Basically: `Objects` are an `instances of a class` that contain `data` and `methods` (functions) that operate on that data. 
 
 
@@ -184,7 +193,7 @@ Specifically: `Objects` are an `instances of a class` that encapsulate `data` an
 
 <br>
 
-### *`'Instance of a class' and  'object' mean the same thing.`*
+### *`'Instance of a class' and 'object' mean the same thing.`*
 
 <br>
 
