@@ -1,3 +1,6 @@
+# `Python File Handling`
+
+```python
 'File Handling'
 
 
@@ -33,3 +36,4 @@ with open("file.txt","r") as file:
 
 
 
+```

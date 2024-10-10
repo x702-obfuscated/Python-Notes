@@ -1,104 +1,443 @@
+# `Python Methods`
+
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
 
-# `Methods`
+<br>
+
+___
+
+<br>
 
 Covered in this file:
-1. Methods Defined  
-1. Access Modifiers 
-1. Instance Methods  
-1. Static and Class Methods  
-1. Getters, Setters, Deleters and the Property Function  
-1. Special Methods
+1. [`Methods Defined`](#methods-defined)
+1. [`Instance Methods`](#instance-methods)
+    1. [`Defining Instance Methods`](#defining-instance-methods)
+    1. [`Calling Instance Methods`](#calling-instance-methods)
+1. [`Class Methods`](#class-methods)
+    1. [`Defining Class Methods`](#defining-class-methods)
+    1. [`Calling Class Methods`](#calling-class-methods)
+1. [`Static Methods`](#static-methods)
+    1. [`Defining Static Methods`](#defining-static-methods)
+    1. [`Calling Statice Methods`](#calling-static-methods)
+1. [`Access Modifiers`](#access-modifiers)
+    1. [`Public`](#public)
+    1. [`Protected`](#protected)
+    1. [`Private`](#private)
+1. [`Getters`](#getters)
+1. [`Setters`](#setters)
+1. [`Deleters`](#deleters)
+1. [`property()`](#property)
+1. [`Using the @property decorator`](#using-the-property-decorator)
+1. [`Special Methods to Define`](#special-methods-to-define)
+
+[`__init__`](#__init__) [`__str__`](#__str__) [`__repr__`](#__repr__) [`__len__`](#__len__) [`__getitem__`](#__getitem__) [`__setitem__`](#__setattr__) [`__delitem__`](#__delitem__) [`__iter__`](#__iter__) [`__next__`](#__next__) [`__contains__`](#__contains__) [`__eq__`](__eq__) [`__lt__`](__lt__) [`__le__`](#__le__) [`__gt__`](#__gt__) [`__ge__`](#__ge__) [`__add__`](#__add__) [`__sub__`](#__sub__) [`__mul__`](#__mul__) [`__truediv__`](#__truediv__) [`__call__`](#__call__) [`__getattr__`](#__getattr__) [`__setattr__`](#__setattr__) [`__delattr__`](#__delattr__) [`__hash__`](#__hash__) [`__enter__`](#__enter__) [`__exit__`](#__exit__)
+
+<br>
+
+___
 
 <br>
 
 # `Methods Defined`
-## Methods
-> * basically: functions that are defined by a class
-> * specifically: functions defined within a class that operate on instances of that class and can access and modify their state
+Basically: `Methods` are functions defined by a class.
 
-## Defining Methods:
+Specifically: `Methods` are functions that are associated with an object or class. They define behaviors or actions that an object can perform and usually operate on the data contained within that object. Methods are often used to encapsulate functionality and data within an object-oriented programming (OOP) paradigm. 
+
+<br>
+
+### *`Methods use the same syntax as functions.`*
+
+<br>
+
+There are three types of methods defined by a class: 
+|`instance methods`|`class methods`|`static methods`|
+|:-:|:-:|:-:|
+
+<br>
+
+___
+
+<br>
+
+# `Instance Methods`
+
+`What an object does (its behaviour)`
+
+Basically: An `Instance Method` is a function defined in a class that operates on an instance of a class(object) 
+
+Specifically: `Instance Methods` are functions defined within a class that operate on a specific instance, taking self as their first parameter to access and modify the instance's attributes and define behaviors unique to that object.
+
+<br>
+
+## `Defining Instance Methods`
+
+`Instance Methods` are defined within the class and require `self` as the first parameter.
+
+syntax:
 ```
 class ClassName():
 
-    def method_name():
+    def instance_method(self, parameters, ...):
+        ...
+```
+
+real example:
+```python
+class Player():                                 # Class Header
+    '''
+    Player class that defines what a Player is (data), 
+    and what a player does (methods)
+    '''
+
+    def __init__(self, name, hp, mp, stamina):  # Constructor Header
+        '''Player constructor with parameters''' 
+        self.name = name                        # instance variable
+        self.hp = hp                            # instance variable
+        self.mp = mp                            # instance variable
+        self.stamina = stamina                  # instance variable
+
+ 
+    def take_damage(self, amount):              # Method Header
+        '''Instance method to reduce HP by a specified amount.'''
+        self.hp -= amount
+        if(self.hp < 0):
+            self.hp = 0
+        
+  
+    def display_attributes(self):               # Method Header
+        '''Instance Method for displaying the attributes of a Player object'''
+        attributes = vars(self)
+        for var in attributes:
+            print(f"{var}: {attributes[var]}", end = " | ")
+        print()
+
+#end of class definition
+```
+
+<br>
+
+
+## `Calling Instance Methods`
+`Instance Methods` require an object in order to be called.
+
+Instance Methods are called using an instance of a class, dot syntax, and the method name. 
+
+syntax:  
+```
+object.method(arguments, ...)
+```
+
+real example:
+```python
+class Player():                                 # Class Header
+    '''
+    Player Class that defines what a Player is (data), 
+    and what a player does (methods)
+    '''
+
+    def __init__(self, name, hp, mp, stamina): 
+        '''Player constructor with parameters''' 
+        self.name = name                        # instance variable
+        self.hp = hp                            # instance variable
+        self.mp = mp                            # instance variable
+        self.stamina = stamina                  # instance variable
+
+    
+    def take_damage(self, amount):
+        '''Instance method to reduce HP by a specified amount.'''
+        self.hp -= amount
+        if(self.hp < 0):
+            self.hp = 0
+        
+
+    def display_attributes(self):
+        '''Instance Method for displaying the attributes of a Player object'''
+        attributes = vars(self)
+        for var in attributes:
+            print(f"{var}: {attributes[var]}", end = " | ")
+        print()
+
+#<-- end of class definition
+
+# Construct a Player instance with the name player1 and arguments
+player1 = Player("Eldrin the Brave", 150, 70, 85)
+
+#Calling an instance Method
+player1.display_attributes()      
+# Output: name: Eldrin the Brave | hp: 150 | mp: 70 | stamina: 85 |
+#                                  ^^^^^^^
+
+# Calling an Instance Method
+player1.take_damage(15)            # Returns : None; This just modifies hp
+
+# Calling an Instance Method 
+player1.display_attributes()
+# Output: name: Eldrin the Brave | hp: 135 | mp: 70 | stamina: 85 |
+#                                  ^^^^^^^
+```
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+# `Class Methods`
+
+Basically: A `class method` is defined by a class and associated with the class, not an instance of the class. 
+
+Specifically: A `class method` in Python is a method that is bound to the class and not the instance of the class. This means that it can modify class state that applies across all instances of the class. 
+
+<br>
+
+* `Class Methods` can access class variables, but not instance variables
+* `Class Methods` use the `@classmethod` decorator
+
+* `cls` is always the first parameter in Class methods. This parameter represents the Class, and is automatically passed when using dot syntax.    
+
+<br>
+
+## `Defining Class Methods`
+
+To define a class method, you use the `@classmethod decorator`, and the first argument of the method must be `cls` (which refers to the class itself).
+
+
+
+syntax:
+```
+class Class_Name():
+
+    @classmethod
+    def class_method(cls, parameters,  ... ):
+        ...
+```
+
+real example:
+```python
+class Player():                         # Class Header
+    
+    @classmethod                        # Decorator
+    def from_dict(cls, player_data):    # Class Method Definition
+        """Class method to create a Player instance from a dictionary."""
+        name = player_data.get("name", "Unknown")
+        score = player_data.get("score", 0)
+        return cls(name, score)
+
+    # Class Constructor
+    def __init__(self, name, score = 0): 
+        self.name = name
+        self.score = score
+
+    # Instance Method
+    def display(self):
+        print(f"Player: {self.name}, Score: {self.score}")
+
+#<-- end of class definition
+
+```
+
+<br>
+
+
+## `Calling Class Methods`
+
+Class methods can be called in two ways.
+1. Using the ClassName, dot syntax, and the method name
+1. Using the object_name, dot syntax, and the method name
+
+
+`The class is passed as an argument by default. `
+<br>
+ 
+syntax:
+```
+ClassName.class_method(cls, arguments, ... )
+```
+```
+object_name.class_method(cls, arguments, ... )
+```
+
+real example:
+```python
+class Player():                         # Class Header
+    
+    @classmethod                        # Decorator
+    def from_dict(cls, player_data):    # Class Method Definition
+        """Class method to create a Player instance from a dictionary."""
+        name = player_data.get("name", "Unknown")
+        score = player_data.get("score", 0)
+        return cls(name, score)
+
+    # Class Constructor
+    def __init__(self, name, score = 0): 
+        self.name = name
+        self.score = score
+
+    # Instance Method
+    def display(self):
+        print(f"Player: {self.name}, Score: {self.score}")
+
+#<-- end of class definition
+
+
+data = {"name":"Vector","score": 75}
+
+#          Class.class_method()
+player1 = Player.from_dict(data)        # Returns a Player object
+
+player1.display()
+# Output: Player: Vector, Score: 75
+
+
+
+info = {"name":"Stewart","score": 50}
+
+#          object.class_method()          Player is passed to cls
+player2 = player1.from_dict(info)       # Returns a Player object
+
+player2.display()
+# Output: Player: Stewart, Score: 50
+```
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+# `Static Methods`
+
+Basically: A `static method` is defined by a class but is not associated with either the class or an instance of the class.
+
+Specifically: A `static method` is a method that belongs to a class but does not require access to the class or its instances. It behaves like a regular function that resides in the class’s namespace. It cannot modify class state or instance state and is mainly used when functionality is logically related to the class but doesn't need access to class or instance data. You define a static method using the `@staticmethod` decorator.
+
+<br>
+
+* `Static Methods` logically belong to the class but do not require access to the class or its instances
+
+* `Static Methods` are typically utility functions
+
+*NOTE: the `@staticmethod` decorator we use here is not required for static methods, but is a good practice for clarity, design, and readability.*
+
+<br>
+
+## `Defining Static Methods`
+Define a static method using the `@staticmethod` decorator. 
+
+syntax:
+```
+class ClassName():
+
+    @staticmethod
+    def method_name(parameters, ... ):
         ...
 ```
 real example:
 ```python
-class Player:
-    def __init__(self):
-        self.atk = 10
+class Player():                 # Class Definition Header
 
+    # Static Method Definition
+    @staticmethod               # Decorator
+    def is_valid_score(score):  
+        """Static method to check if the given score is valid."""
+        return(isinstance(score, int) and score >= 0)
 
-    def fight(self):
-        '''Method'''
-        print(f"The player does {self.atk}pt(s) of damage")
+#<-- end class definition
 ```
 
 <br>
 
-## Calling Methods
-calling methods associated with an instance  
-syntax :  
+## `Calling Static Methods`
 
-    object_name.method_name(arguments, ...)
+Static methods can be called in two ways.
+1. Using the ClassName, dot syntax, and the method name
+1. Using the object_name, dot syntax, and the method name
 
-calling methods associated with the class  
-syntax :  
+*Note: Using an object to call a static method without the `@staticmethod` decorator will raise a syntax/compile time `TypeError`*
 
-    ClassName.method_name(arguments, ...)
 
-real method example:
-```python
-class Player():                         # Class Header
-
-    def __init__(self):                 # Constructor Header
-        self.name = "default_player"    # instance variable
-        self.hp = 100                   # instance variable
-        self.mp = 50                    # instance variable
-        self.stamina = 75               # instance variable
-
-    def display_attributes(self):
-        '''Instance Method for displaying the variable in a Player object'''
-        attributes = vars(self)
-        for var in attributes:
-            print(f"{var}: {attributes[var]}", end = " | ")
-
-# end of class definition
-
-# Constructing a Player instance with the name player1
-player1 = Player()                      
-
-# Displaying instance variables and thier values
-player1.display_attributes() 
-# Output: name: default_player | hp: 100 | mp: 50 | stamina: 75 |         
-
+syntax:
+```
+ClassName.static_method(arguments, ... )
+```
+```
+object_name.static_method(arguments, ... )
 ```
 
-## Built-in Methods
+real example:
+```python
+class Player():                 # Class Definition Header
 
-Built-in methods are pre-defined by classes pre-defined by the standard library
+    # Static Method Definition
+    @staticmethod               # Decorator
+    def is_valid_score(score):  
+        """Static method to check if the given score is valid."""
+        return(isinstance(score, int) and score >= 0)
 
-To see what methods you can call on an object use:  
-    
-    dir(object_name)  
+#<-- end class definition
 
-To see more information on a specific method use:  
-    
-    help(object_name.method_name)
 
+player1 = Player()              # Object Instantiation
+
+Player.is_valid_score(1)        # ClassName.static_method()
+# Returns: True
+
+player1.is_valid_score(1)       # object_name.static_method()
+# Returns: True
+```
+
+<br>
+
+Using an object to call a static method without the `@staticmethod` decorator will raise a syntax/compile time `TypeError`  
+
+real example:
+```python
+class Player():                 # Class Definition Header
+
+    # Static Method Definition
+    #                           <-- NO DECORATOR
+    def is_valid_score(score):  
+        """Static method to check if the given score is valid."""
+        return(isinstance(score, int) and score >= 0)
+
+#<-- end class definition
+
+
+player1 = Player()              # Object Instantiation
+
+Player.is_valid_score(1)        # ClassName.static_method()
+# Returns: True
+
+player1.is_valid_score(1)       # object_name.static_method()
+# Output:
+# Traceback (most recent call last):
+#   File "<filepath>", line 17, in <module>
+#     player1.is_valid_score(1)       # object_name.static_method()
+#     ^^^^^^^^^^^^^^^^^^^^^^^^^
+# TypeError: Player.is_valid_score() takes 1 positional argument but 2 were given
+```
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
 
 <br>
 
 # `Access Modifiers`
-> Access modifiers in Python determine the accessibility and visibility of class attributes and methods from outside the class, using naming conventions (e.g., public, protected, private) instead of explicit keywords like in other languages.
 
-Access Modifier Conventions:  
+`Access modifiers` in Python determine the accessibility and visibility of class attributes and methods from outside the class, using naming conventions (e.g., `public`, `protected`, `private`) instead of explicit keywords like in other languages.
 
-## Public
-> * Accessible from anywhere. No prefixing.     
+<br>
+
+## `Public`
+Public variables and methods are accessible from anywhere. No prefixing.     
 
 syntax : 
 ```
@@ -118,9 +457,10 @@ class Player:
 
 <br>
 
-## Protected
-> * Indicated by a single underscore (_) prefix, suggesting that it should not be accessed directly outside of the class and its subclasses.  
-> * This is just a convention and is not enforced by the Python interpreter
+## `Protected`
+Protected variables and methods are indicated by a single underscore `_` prefix, suggesting that it should not be accessed directly outside of the class and its subclasses.
+
+*This is just a convention and is not actually enforced by the Python interpreter*
 
 syntax:
 ```
@@ -160,12 +500,16 @@ print(player1.hp)               # Output: 70
 
 <br>
 
-## Private
-> * Indicated by a double underscore (__) prefix, suggesting that it should not be accessed from outside of the class.  
-> * Trying to access the private method or attribute directly will result in an AttributeError 
+## `Private`
+Indicated by a double underscore `__` prefix, suggesting that it should not be accessed from outside of the class. 
 
-Name Mangling
-> * When you define a method or attribute with a name that starts with double underscores, Python internally changes the name by prefixing it with _ClassName
+* Trying to access the private method or attribute directly will result in an `AttributeError` 
+
+<br>
+ 
+When you define a method or attribute with a name that starts with double underscores, Python internally changes the name by prefixing it with _ClassName, this is called `name mangling`. 
+
+<br>
 
 syntax:
 ```
@@ -202,274 +546,20 @@ player1._Player__update_secret_score(5)  # Output: Secret score updated to: 15
 
 <br>
 
+[Back to Top](#python-methods)
 
-# `Instance Methods`
-## Instance Methods
-What an object does (its behaviour)
-> * basically: a function defined in a class that operates on an instance of a class(object)  
-> * specifically: functions defined within a class that operate on a specific instance, taking self as their first parameter to access and modify the instance's attributes and define behaviors unique to that object.
-
-## Defining Instance Methods
-> * instance methods are defined within the class and require ***self*** as the first parameter.
-
-syntax:
-```
-class ClassName():
-
-    def instance_method(self, parameters, ...):
-        <Method Body>
-        ...
-```
-
-real example:
-```python
-class Player():                                 # Class Header
-    '''
-    Player class that defines what a Player is (attributes), 
-    and what a player does (methods)
-    '''
-
-    def __init__(self, name, hp, mp, stamina):  # Constructor Header
-        '''Player constructor with parameters''' 
-        self.name = name                        # instance variable
-        self.hp = hp                            # instance variable
-        self.mp = mp                            # instance variable
-        self.stamina = stamina                  # instance variable
-
- 
-    def take_damage(self, amount):              # Method Header
-        '''Instance method to reduce HP by a specified amount.'''
-        self.hp -= amount
-        if(self.hp < 0):
-            self.hp = 0
-        
-  
-    def display_attributes(self):               # Method Header
-        '''Instance Method for displaying the attributes of a Player object'''
-        attributes = vars(self)
-        for var in attributes:
-            print(f"{var}: {attributes[var]}", end = " | ")
-        print()
-
-#end of class definition
-```
-
-## Calling Instance Methods
-> * instance methods require an object in order to be called
-> * instance methods are called using dot syntax
-
-syntax:  
-```
-object.method(arguments, ...)
-```
-
-real example:
-```python
-class Player():                                 # Class Header
-    '''
-    Player Class that defines what a Player is (attributes), 
-    and what a player does (methods)
-    '''
-
-    def __init__(self, name, hp, mp, stamina): 
-        '''Player constructor with parameters''' 
-        self.name = name                        # instance variable
-        self.hp = hp                            # instance variable
-        self.mp = mp                            # instance variable
-        self.stamina = stamina                  # instance variable
-
-    
-    def take_damage(self, amount):
-        '''Instance method to reduce HP by a specified amount.'''
-        self.hp -= amount
-        if(self.hp < 0):
-            self.hp = 0
-        
-
-    def display_attributes(self):
-        '''Instance Method for displaying the attributes of a Player object'''
-        attributes = vars(self)
-        for var in attributes:
-            print(f"{var}: {attributes[var]}", end = " | ")
-        print()
-
-#end of class definition
-
-# Construct a Player instance with the name player1 and arguments
-player1 = Player("Eldrin the Brave", 150, 70, 85)
-
-#Calling an instance Method
-player1.display_attributes()      
-# Output: name: Eldrin the Brave | hp: 150 | mp: 70 | stamina: 85 |
-#                                  ^^^^^^^
-
-# Calling an Instance Method
-player1.take_damage(15)            # Returns : None; This just modifies hp
-
-# Calling an Instance Method 
-player1.display_attributes()
-# Output: name: Eldrin the Brave | hp: 135 | mp: 70 | stamina: 85 |
-#                                  ^^^^^^^
-```
+___
 
 <br>
 
-# `Static and Class Methods`
-## Static Methods
-> * are methods that logically belong to the class but do not require access to the class or its instances
-> * these are typically utility functions
-
-***NOTE: the @staticmethod decorator we use here is not required for static methods, but is a good practice for clarity, design, and readability.***
-
-syntax:
-```
-class ClassName():
-
-    @staticmethod
-    def method_name(parameters, ... ):
-        ...
-```
-
-Static Methods work just like other functions, but are called using dot syntax.  
-syntax:
-```
-ClassName.static_method(arguments, ... )
-```
-```
-object_name.static_method(arguments, ... )
-```
-
-real example:
-```python
-class Player():                 # Class Definition Header
-
-    # Static Method Definition
-    @staticmethod               # Decorator
-    def is_valid_score(score):  
-        """Static method to check if the given score is valid."""
-        return(isinstance(score, int) and score >= 0)
-
-# end class definition
-
-
-player1 = Player()              # Object Instantiation
-
-Player.is_valid_score(1)        # ClassName.static_method()
-# Returns: True
-
-player1.is_valid_score(1)       # object_name.static_method()
-# Returns: True
-```
-
-Using an object to call a static method without the @staticmethod decorator will result in a compile time *TypeError*  
-real example:
-```python
-class Player():                 # Class Definition Header
-
-    # Static Method Definition
-    #                           <-- NO DECORATOR
-    def is_valid_score(score):  
-        """Static method to check if the given score is valid."""
-        return(isinstance(score, int) and score >= 0)
-
-# end class definition
-
-
-player1 = Player()              # Object Instantiation
-
-Player.is_valid_score(1)        # ClassName.static_method()
-# Returns: True
-
-player1.is_valid_score(1)       # object_name.static_method()
-# Output:
-# Traceback (most recent call last):
-#   File "<filepath>", line 17, in <module>
-#     player1.is_valid_score(1)       # object_name.static_method()
-#     ^^^^^^^^^^^^^^^^^^^^^^^^^
-# TypeError: Player.is_valid_score() takes 1 positional argument but 2 were given
-```
+# `Getters`
+`Getters` are methods used to control how data is retrieved  
+* Getter are typically prefixed with "get"  
+* Getters require a return value
 
 <br>
 
-## Class Methods
-> * are methods that are associated with the class, and can modify the state of the class that applies to all instances.      
-> * can access class variables, but not instance variables
-> * use the @classmethod decorator    
-  
-> * ***cls*** is always the first parameter in Class methods. This parameter represents the Class, and is automatically passed when using dot syntax.  
-
 syntax:
-```
-class Class_Name():
-
-    @classmethod
-    def class_method(cls, parameters,  ... ):
-        ...
-```
-Class Methods work just like other functions, but are called using dot syntax.  
-syntax:
-```
-ClassName.class_method(cls, arguments, ... )
-```
-When using an object to call a class method, the class of the object is passed to the ***cls*** parameter. 
-```
-object_name.class_method(cls, arguments, ... )
-```
-
-real example:
-```python
-class Player():                         # Class Header
-    
-    @classmethod                        # Decorator
-    def from_dict(cls, player_data):    # Class Method Definition
-        """Class method to create a Player instance from a dictionary."""
-        name = player_data.get("name", "Unknown")
-        score = player_data.get("score", 0)
-        return cls(name, score)
-
-    # Class Constructor
-    def __init__(self, name, score = 0): 
-        self.name = name
-        self.score = score
-
-    # Instance Method
-    def display(self):
-        print(f"Player: {self.name}, Score: {self.score}")
-
-#end of class definition
-
-data = {
-    "name":"Vector",
-    "score": 75
-}
-
-#          Class.class_method()
-player1 = Player.from_dict(data)        # Returns a Player object
-
-player1.display()
-# Output: Player: Vector, Score: 75
-
-
-
-info = {
-    "name":"Stewart",
-    "score": 50
-}
-
-#          object.class_method()          Player is passed to cls
-player2 = player1.from_dict(info)       # Returns a Player object
-
-player2.display()
-# Output: Player: Stewart, Score: 50
-```
-
-<br>
-
-# `Getters, Setters, Deleters and the Property Function`
-## Getters
-> * methods used to control how data is retrieved  
-> * typically prefixed with "get"  
-> * need to return a value
 ```
 def get_variable():
     return ...
@@ -477,10 +567,6 @@ def get_variable():
 real example:
 ```python
 class Player():                                 # Class Header
-    '''
-    Player Class that defines what a Player is (attributes), 
-    and what a player does (methods)
-    '''
 
     def __init__(self, name, hp, mp, stamina):
         '''Player class constructor with parameters'''
@@ -493,20 +579,28 @@ class Player():                                 # Class Header
         '''self.name getter'''
         return self.name
 ```
-## Setters
-> * methods used to control how data is changed
-> * typically prefixed with "set"
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `Setters`
+Setters are methods used to control how data is changed
+* Setters are typically prefixed with "set"
+* Setters typically have parameters and accept arguments.
+
+syntax:
 ```
 def set_variable():
     ...
 ```
 real example:
 ```python
-class Player():                                 # Class Header
-    '''
-    Player Class that defines what a Player is (attributes), 
-    and what a player does (methods)
-    '''
+class Player():     # Class Header
 
     def __init__(self, name, hp, mp, stamina):
         '''Player class constructor with parameters'''
@@ -523,20 +617,26 @@ class Player():                                 # Class Header
         self.hp = value
 ```
 
-## Deleters
-> * methods used to control how data is deleted
-> * typically prefixed with "del"
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `Deleters`
+Deleters are methods used to control how data is deleted
+* Deleters are typically prefixed with "del"
+
+syntax:
 ``` 
 def del_variable():
     ...
 ```
 real example:
 ```python
-class Player():                                 # Class Header
-    '''
-    Player Class that defines what a Player is (attributes), 
-    and what a player does (methods)
-    '''
+class Player():       # Class Header
 
     def __init__(self, name, hp, mp, stamina):
         '''Player class constructor with parameters'''
@@ -551,21 +651,30 @@ class Player():                                 # Class Header
         raise AttributeError("Cannot delete 'hp' attribute")
 ```
 
-## property()
-> * function that maps getters, setters, and deleters to a variable, so that they are automatically called when the variable is accessed.   
-> * it is considered best practice to use the @property decoratar instead. Take a look at decorators to learn more.
-> * private or protected values must be used to prevent RecursionError: maximum recursion depth exceeded
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `property()`
+`property()` is a function that maps getters, setters, and deleters to a variable, so that they are automatically called when the variable is accessed.
+
+* It is considered best practice to use the `@property` decorator instead. Take a look at decorators to learn more.
+
+* Private or Protected values must be used to prevent raising a `RecursionError: maximum recursion depth exceeded`
+
+<br>
+
 syntax:
 ```
 property(fget = None, fset = None, fdel = None, doc = None)
 ```
 real example:
 ```python
-class Player():                                 # Class Header
-    '''
-    Player Class that defines what a Player is (attributes), 
-    and what a player does (methods)
-    '''
+class Player():        # Class Header
 
     def __init__(self, name, hp, mp, stamina):
         '''Player class constructor with parameters'''
@@ -592,11 +701,11 @@ class Player():                                 # Class Header
     # Mapping these functions to self.mp
     mp = property(get_mp, set_mp, del_mp, "Magic Points value for casting spells.")
 
-# end of class definition
+#<-- end of class definition
+
 
 # Constructing a Player instance
 player1 = Player("Eldrin the Brave", 150, 70, 85)
-
 
 print(player1.mp)              # Calls player1.get_mp()     
 # Output: 70    
@@ -608,22 +717,27 @@ del player1.mp                 # Calls player1.del_mp()
 # Raises: AttributeError: Cannot delete 'mp' attribute
 ```
 
-example using the @property decorator
+<br>
+
+## `Using the @property decorator`
+
 syntax:
+```
+@property
+def name(self):
+    ...
 
-    @property
+@<property_name>.setter
+def name(self, value):
+    ...
 
-    @<property_name>.setter
-    @<property_name>.deleter
-
-
+@<property_name>.deleter
+def name(self, value):
+    ...
+```
 real example:
 ```python
-class Player():                                 # Class Header
-    '''
-    Player Class that defines what a Player is (attributes), 
-    and what a player does (methods)
-    '''
+class Player():    # Class Header
 
     def __init__(self, name, hp, mp, stamina):
         '''Player class constructor with parameters'''
@@ -650,7 +764,7 @@ class Player():                                 # Class Header
         raise AttributeError("Cannot delete 'mp' attribute")
     
 
-# end of class definition
+#<-- end of class definition
 
 # Constructing a Player instance
 player1 = Player("Eldrin the Brave", 150, 70, 85)
@@ -668,15 +782,58 @@ del player1.mp                 # Calls the deleter
 
 <br>
 
-# `Special Methods to define:`
-There are several special 'dunder' methods that can be defined in a class and perform special functions when defined. 
+[Back to Top](#python-methods)
 
-*dunder is short for double underscore*
+___
+
+<br>
+
+# `Special Methods to Define:`
+There are several special `dunder` (double underscore `__`) methods that can be defined in a class and perform special functions when defined. 
+
+
 special dunder methods:
 
-> \_\_str\_\_, \_\_repr\_\_, \_\_len\_\_, \_\_getitem\_\_ , \_\_setitem\_\_, \_\_delitem\_\_, \_\_iter\_\_ , \_\_next\_\_, \_\_contains\_\_, \_\_eq\_\_, \_\_lt\_\_, \_\_le\_\_, \_\_gt\_\_, \_\_ge\_\_, \_\_add\_\_, \_\_sub\_\_, \_\_mul\_\_, \_\_truediv\_\_, \_\_call\_\_, \_\_getattr\_\_, \_\_setattr\_\_, \_\_delattr\_\_, \_\_hash\_\_, \_\_enter\_\_, \_\_exit\_\_
+`__init__`, `__str__`, `__repr__`, `__len__`, `__getitem__ `, `__setitem__`, `__delitem__`, `__iter__ `, `__next__`, `__contains__`, `__eq__`, `__lt__`, `__le__`, `__gt__`, `__ge__`, `__add__`, `__sub__`, `__mul__`, `__truediv__`, `__call__`, `__getattr__`, `__setattr__`, `__delattr__`, `__hash__`, `__enter__`, `__exit__`
 
-## \_\_init__
+| Dunder Method| Purpose| Example|
+|:-:|:-|:-|
+| `__str__`| Defines the human-readable (informal) string representation of an object (used by `print()`). | `print(obj)` → `obj.__str__()` |
+| `__repr__` | Defines the official (formal) string representation of an object (used by `repr()`, meant for developers). | `repr(obj)` → `obj.__repr__()` |
+| `__len__`| Defines behavior for the `len()` function, returning the length of the object. | `len(obj)` → `obj.__len__()` |
+| `__getitem__`| Enables indexing and key access for objects.| `obj[key]` → `obj.__getitem__(key)`|
+| `__setitem__`| Defines behavior for assigning a value to a specific key or index. | `obj[key] = value` → `obj.__setitem__(key, value)` |
+| `__delitem__`| Defines behavior for deleting a key or index from an object. | `del obj[key]` → `obj.__delitem__(key)`|
+| `__iter__` | Defines behavior for making an object iterable (returns an iterator object). | `for item in obj:` → `obj.__iter__()` |
+| `__next__` | Defines behavior for the next item in an iterator (used by `next()`).| `next(iterator)` → `iterator.__next__()` |
+| `__contains__` | Defines behavior for membership testing (e.g., `in` operator). | `x in obj` → `obj.__contains__(x)` |
+| `__eq__` | Defines behavior for equality comparison. | `obj1 == obj2` → `obj1.__eq__(obj2)` |
+| `__lt__` | Defines behavior for less-than comparison.| `obj1 < obj2` → `obj1.__lt__(obj2)`|
+| `__le__` | Defines behavior for less-than-or-equal comparison. | `obj1 <= obj2` → `obj1.__le__(obj2)` |
+| `__gt__` | Defines behavior for greater-than comparison. | `obj1 > obj2` → `obj1.__gt__(obj2)`|
+| `__ge__` | Defines behavior for greater-than-or-equal comparison.| `obj1 >= obj2` → `obj1.__ge__(obj2)` |
+| `__add__`| Defines behavior for the addition operator. | `obj1 + obj2` → `obj1.__add__(obj2)` |
+| `__sub__`| Defines behavior for the subtraction operator.| `obj1 - obj2` → `obj1.__sub__(obj2)` |
+| `__mul__`| Defines behavior for the multiplication operator. | `obj1 * obj2` → `obj1.__mul__(obj2)` |
+| `__truediv__`| Defines behavior for the true division operator.| `obj1 / obj2` → `obj1.__truediv__(obj2)` |
+| `__call__` | Makes an object callable like a function. | `obj()` → `obj.__call__()` |
+| `__getattr__`| Defines behavior for accessing an attribute that doesn't exist.| `obj.non_existent` → `obj.__getattr__('non_existent')` |
+| `__setattr__`| Defines behavior for setting an attribute value.| `obj.attr = value` → `obj.__setattr__('attr', value)` |
+| `__delattr__`| Defines behavior for deleting an attribute. | `del obj.attr` → `obj.__delattr__('attr')` |
+| `__hash__` | Defines behavior for obtaining the hash value of an object. | `hash(obj)` → `obj.__hash__()` |
+| `__enter__`| Defines behavior for entering a context (used with the `with` statement). | `with obj:` → `obj.__enter__()` |
+| `__exit__` | Defines behavior for exiting a context (used with the `with` statement). | `with obj:` → `obj.__exit__()`|
+
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__init__`
 ```
 def __init__(self, parameters, ... ):
     '''
@@ -697,7 +854,16 @@ class Player():
 
 player1 = Player()      # Calls the __init__ method
 ```
-## \_\_str__
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__str__`
 ```
 def __str__(self):
     '''
@@ -724,7 +890,16 @@ str(player1)        # Returns: default_name
 print(player1)      # Output: default_name      
 
 ```
-## \_\_repr__
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__repr__`
 ```
 def __repr__(self):
     '''
@@ -732,7 +907,8 @@ def __repr__(self):
     Returns a detailed string representation of the object for debugging.
     '''
 ```
-***NOTE: the !r in a formatted string (using f-strings) is a conversion flag that specifies that the repr() function should be used to format the value.***  
+*NOTE: the `!r` in a formatted string (using f-strings) is a conversion flag that specifies that the repr() function should be used to format the value.*
+
 real example:
 ```python
 class Player():
@@ -756,7 +932,16 @@ player1 = Player("Eldrin the Brave", 150, 70, 85)
 print(repr(player1))
 # Output: Player(name='Eldrin the Brave', hp=150, mp=70, stamina=85)
 ```
-## \_\_len__
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__len__`
 ```
 def __len__(self):
     '''
@@ -785,7 +970,16 @@ player1 = Player("Eldrin the Brave", 150, 70, 85)
 # Calling the __len__ method
 len(player1)  # Returns: 4
 ```
-## \_\_getitem__
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__getitem__`
 ```
 def __getitem__(self, key):
     '''
@@ -821,7 +1015,16 @@ player1['sword']         # Returns: sharp and does 10pts of damage
 player1['shield']        # Returns: sturdy and increases defense by 20pts
 player1['helmet']        # Raises: KeyError: 'Invalid key: helmet'
 ```
-## \_\_setitem__
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__setitem__`
 ```
 def __setitem__(self, key, value):
     '''
@@ -862,9 +1065,17 @@ player1['helmet']        # Raises: KeyError: 'Invalid key: helmet'
 player1['helmet'] = "protects one's head from unwanted boops"
 
 player1['helmet']       # Returns: protects one's head from unwanted boops
-
 ```
-## \_\_delitem__
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__delitem__`
 ```
 def __delitem__(self, key):
     '''
@@ -909,7 +1120,16 @@ del player1['potion']
 
 player1['potion']        # Raises: KeyError: 'Invalid key: potion'
 ```
-## \_\_iter__
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__iter__`
 ```
 def __iter__(self):
     '''
@@ -946,7 +1166,16 @@ for item in player1:
 # sword
 # shield
 ```
-## \_\_next__
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__next__`
 ```
 def __next__(self):
     '''
@@ -993,7 +1222,16 @@ print(next(player_items))           # Output: sword
 print(next(player_items))           # Output: shield
 print(next(player_items))           # Raises: StopIteration
 ```
-## \_\_contains__
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__contains__`
 ```
 def __contains__(self, item):
     '''
@@ -1026,7 +1264,16 @@ print("potion" in player1)      # Output: True
 
 print("boots" in player1)       # Output: False
 ```
-## \_\_eq__
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__eq__`
 ```
 def __eq__(self, other):
     '''
@@ -1034,7 +1281,10 @@ def __eq__(self, other):
     Defines how to check if the object is equal to 'other'.
     '''
 ```
-## \_\_lt__
+
+<br> 
+
+## `__lt__`
 ```
 def __lt__(self, other):
     '''
@@ -1042,7 +1292,9 @@ def __lt__(self, other):
     Defines how to check if the object is less than 'other'.
     '''
 ```
-## \_\_le__
+<br> 
+
+## `__le__`
 ```
 def __le__(self, other):
     '''
@@ -1050,7 +1302,10 @@ def __le__(self, other):
     Defines how to check if the object is less than or equal to 'other'.
     '''   
 ```
-## \_\_gt__
+
+<br> 
+
+## `__gt__`
 ```
 def __gt__(self, other):
     '''
@@ -1058,7 +1313,10 @@ def __gt__(self, other):
     Defines how to check if the object is greater than 'other'.
     '''
 ```
-## \_\_ge__
+
+<br> 
+
+## `__ge__`
 ```
 def __ge__(self, other):
     '''
@@ -1123,7 +1381,16 @@ print(player1 > player2)   # Output: True
 # Using '>=' calls the __ge__ method
 print(player1 >= player2)  # Output: True
 ```
-## \_\_add__
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__add__`
 ```
 def __add__(self, other):
     '''
@@ -1131,7 +1398,10 @@ def __add__(self, other):
     Defines how to add 'self' and 'other'.
     '''
 ```
-## \_\_sub__
+
+<br>
+
+## `__sub__`
 ```
 def __sub__(self, other):
     '''
@@ -1139,7 +1409,10 @@ def __sub__(self, other):
     Defines how to subtract 'other' from 'self'.
     '''
 ```
-## \_\_mul__
+
+<br>
+
+## `__mul__`
 ```
 def __mul__(self, other):
     '''
@@ -1147,7 +1420,10 @@ def __mul__(self, other):
     Defines how to multiply 'self' by 'other'.
     '''
 ```
-## \_\_truediv__
+
+<br>
+
+## `__truediv__`
 ```
 def __truediv__(self, other):
     '''
@@ -1216,7 +1492,15 @@ print(player1 / player2)
 
 ```
 
-## \_\_getattr__
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__getattr__`
 ```
 def __getattr__(self, name):
     '''
@@ -1225,7 +1509,10 @@ def __getattr__(self, name):
     otherwise, raises AttributeError.
     '''
 ```
-## \_\_setattr__
+
+<br>
+
+## `__setattr__`
 ```
 def __setattr__(self, name, value):
     '''
@@ -1233,7 +1520,10 @@ def __setattr__(self, name, value):
     Defines how to set the attribute 'name' to 'value'.
     '''
 ```
-## \_\_delattr__
+
+<br>
+
+## `__delattr__`
 ```
 def __delattr__(self, name):
     '''
@@ -1241,7 +1531,7 @@ def __delattr__(self, name):
     Defines how to delete the attribute named 'name'.
     '''
 ```
-Unlike getters, setters, and deleters, which are specific to individual attributes, \_\_getattr\_\_, \_\_setattr\_\_, and \_\_delattr\_\_ apply to all attributes. 
+Unlike getters, setters, and deleters, which are specific to individual attributes, __getattr__, __setattr__, and __delattr__ apply to all attributes. 
 
 real example:
 ```python
@@ -1281,7 +1571,16 @@ class Player():                                 # Class Header
 # Constructing a Player instance
 player1 = Player("Eldrin the Brave", 150, 70, 85)
 ```
-## \_\_hash__
+
+<br>
+
+[Back to Top](#python-methods)
+
+___
+
+<br>
+
+## `__hash__`
 ```
 def __hash__(self):
     '''
@@ -1290,7 +1589,7 @@ def __hash__(self):
     as a key in dictionaries.
     '''
 ```
-> To implement the \_\_hash__ method in a class, you'll also need to make sure the class is immutable, or at least ensure that the attributes used in the hash computation are immutable. This is because hash values need to remain constant for the lifetime of the object.
+To implement the __hash__ method in a class, you'll also need to make sure the class is immutable, or at least ensure that the attributes used in the hash computation are immutable. This is because hash values need to remain constant for the lifetime of the object.
 
 real example:
 ```python
@@ -1320,7 +1619,9 @@ hash(player1)
 # Returns: it varies based on the object, but usually a large integer value
 ```
 
-## \_\_enter__
+<br>
+
+## `__enter__`
 ```
 def __enter__(self):
     '''
@@ -1328,7 +1629,10 @@ def __enter__(self):
     Defines what happens when entering the runtime context.
     '''
 ```
-## \_\_exit__
+
+<br>
+
+## `__exit__`
 ```
 def __exit__(self, exc_type, exc_value, traceback):
     '''
@@ -1336,6 +1640,8 @@ def __exit__(self, exc_type, exc_value, traceback):
     Defines what happens when exiting the runtime context.
     '''
 ```
+
+<br>
 
 real example:
 ```python
@@ -1381,17 +1687,14 @@ with player1 as p:  # __enter__ called
 
 <br>
 
+[Back to Top](#python-methods)
 
-
-## Built-in Methods
-Built-in methods are pre-defined by classes pre-defined by the standard library
-
-To see what methods you can call on an object use:  
-    
-    dir(object_name)  
-
-To see more information on a specific method use:  
-    
-    help(object_name.method_name)
+___
 
 <br>
+
+*Created and maintained by Mr. Merritt*
+
+
+
+

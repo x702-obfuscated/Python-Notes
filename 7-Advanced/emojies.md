@@ -1,3 +1,6 @@
+# `Python Emojies`
+
+```python
 # grinning face
 print("\U0001f600")
  
@@ -993,3 +996,4 @@ print(emojies)
  '🧍': '0x1f9cd',
  '🧎': '0x1f9ce',
  '🧏': '0x1f9cf'}
+ ```

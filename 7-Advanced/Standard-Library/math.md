@@ -1,6 +1,8 @@
+# `Python Math Module`
+
 Not an exhaustive list see: https://docs.python.org/3/library/math.html
 
-
+```python
 import math #importing the builtin math module.
 
 # Constants
@@ -47,14 +49,4 @@ math.erf(0.5)            # Error function at x
 math.erfc(0.5)           # Complementary error function at x
 math.gamma(5)            # Gamma function at x
 math.lgamma(5)           # Natural logarithm of the absolute value of the gamma function at x
-
-
-
-
-
-
-
-
-
-
-
+```

@@ -1,3 +1,6 @@
+# `Python Decorators`
+
+```python
 import time;
 
 
@@ -27,5 +30,4 @@ linear_search(list1d,"z")
 
 
 # property decorators
-
-
+```
