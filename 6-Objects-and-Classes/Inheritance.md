@@ -118,4 +118,4 @@ Inhertence is yet another way to reuse code. It allows for the creation of hiera
 | `Child Class` <br> `Subclass` <br> `Derived Class` | The class that inherits from the parent class. |
 | `Method Overriding`  | A child class can override or redefine methods from the parent class to provide its own implementation. |
 | `Single Inheritance` | A child class inherits from one parent class. |
-| `Multiple Inheritance` | A child class inherits from more than one parent class (Python supports this). |e
+| `Multiple Inheritance` | A child class inherits from more than one parent class (Python supports this). |
