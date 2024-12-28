@@ -1,7 +1,12 @@
 *WORK IN PROGRESS, CHECK BACK LATER FOR UPDATES*
-# `Python json Module`
+# `Python Standard Library`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
+
+Python Standard Library Documentation
+[https://docs.python.org/3/library/](https://docs.python.org/3/library/)
+
+https://docs.python.org/3/library/index.html
 ___
 
 Covered in this file:
@@ -16,9 +21,10 @@ ___
 
 # ``
 
+
 <br>
 
-[Back To Top](#python-json-module)
+[Back To Top](#python-standard-library)
 
 ___
 
@@ -26,10 +32,3 @@ ___
 
 *Created and maintained by Mr. Merritt*
 
-
-```python
-#Parse a JSON dictionary
-import json
-jsonstring = '{"name": "erik", "age": 38,"married": true}'
-print(json.loads(jsonstring))
-```

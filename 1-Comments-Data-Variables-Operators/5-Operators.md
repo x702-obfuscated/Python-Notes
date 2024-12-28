@@ -13,6 +13,7 @@ Covered in this file:
 1. [`Membership operators`](#membership-operators)
 1. [`Identity operators`](#identity-operators)
 1. [`Assignment vs Equality Operator`](#assignment-vs-equality-operators)
+    1. [`Walrus Operator`](#walrus-operator)
 1. [`Compound Assignment Operators`](#compound-assignment-operators)
     1. [`Incrementing a Value`](#incrementing-a-value)
     1. [`Decrementing a Value`](#decrementing-a-value)
@@ -22,6 +23,7 @@ Covered in this file:
     1. [`OR Truth table`](#or-truth-table)
 1. [`De Morgan's Laws`](#de-morgans-laws)
 1. [`Built-in Operation Function Calls`](#built-in-operation-function-calls)
+1. [`Bitwise Operations`](#bitwise-operations)
     1. [`Binary Data Representation: Two's complement notation`](#binary-data-representation-twos-complement-notation)
     1. [`Bitwise NOT`](#bitwise-not)
     1. [`Bitwise Shift <<|>>`](#bitwise-shift)
@@ -519,14 +521,38 @@ ___
 |`=`     | assignment   | assigns a value to a variable |
 |`==`    | equality     | compares the value of two objects |
 |`!= `   | not equal to | compares if two objects are not equal|
+|`:=`	 | intra-expression assignment | (called the walrus operator) assigns a value as part of an expression |
 
 
 ```python
 a = 1 #assigns the variable 'a' to 1
-
+```
+```python
 a == 1 # compares if the value of 'a' is equal to 1
 # Returns: True
 ```
+```python
+a != 1 # compares if the value of 'a' is NOT equal to 1
+# Returns: False
+```
+
+## `Walrus Operator`
+The walrus operator is used to assign a value to a variable and use that value in the same expression.
+* This operator is best utilized when working with tenary operators, lambdas, and comprehensions.
+
+Syntax
+```
+(variable := value) expression
+```
+```python
+numbers = [1, 2, 3, 4, 5]
+squares = [square for num in numbers if (square := num ** 2) > 10]
+
+# squares = [16, 25]
+```
+
+
+
 
 <br>
 
