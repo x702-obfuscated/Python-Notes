@@ -1,5 +1,8 @@
-# `Imports: Using code from other files`
----
+# `Python import `
+*Use CTRL + F to search for keywords in this file*  
+*You are encouraged to copy and alter the code in this file to understand how it works*
+___
+
 
 Covered in this file:
 
@@ -16,7 +19,10 @@ Covered in this file:
 
 <br>
 
----
+___
+
+<br>
+
 # `Defining Modules, Packages, Libraries, and Frameworks`
 
 `Module`: a single Python file (.py file) that contains functions, classes, and variables. It can be imported and reused in other Python scripts.  
@@ -66,7 +72,12 @@ Examples:
 
 <br>
 
----
+[Back To Top](#python-import)
+
+___
+
+<br>
+
 # `Basic Module Importing`
 The code in packages and modules can be included in your current module by using the `import` keyword. 
 > * The classes, functions, and attributes of the module can then be accessed using the name of the module and dot (.) syntax.
@@ -97,7 +108,12 @@ os.name             # os attribute
 
 <br>
 
----
+[Back To Top](#python-import)
+
+___
+
+<br>
+
 # `Import Specific Classes, Functions, and Attributes`
 *This method of importing can make your code cleaner and easier to read, but it requires careful management of your namespace to prevent unintended overrides or conflicts.*
 
@@ -154,7 +170,12 @@ result = sqrt(4)  # This will use math.sqrt, not the locally defined sqrt.
 
 <br>
 
----
+[Back To Top](#python-import)
+
+___
+
+<br>
+
 # `Import an Entire Module`
 *This method of importing includes the entire module; it can make your code cleaner and easier to read. However, it requires careful management of your namespace to prevent unintended overrides or conflicts.*
 
@@ -186,7 +207,12 @@ result = sqrt(4)  # This will use math.sqrt, not the locally defined sqrt.
 
 <br>
 
----
+[Back To Top](#python-import)
+
+___
+
+<br>
+
 # `Module Aliasing`
 When importing, modules can be given an alias to shorten the name. 
 > * Aliasing a module to a name that is already used elsewhere in your code can lead to conflicts. This can cause unexpected behavior if the alias shadows or overrides existing names.
@@ -241,7 +267,12 @@ data = js.loads('{"age": 30}')  # Returns: AttributeError: 'dict' object has no 
 
 <br>
 
----
+[Back To Top](#python-import)
+
+___
+
+<br>
+
 # `Import Classes, Functions, Attributes with an Alias`
 Multiple Classes, Functions, and/or Attributes can be imported and given an alias.
 
@@ -259,7 +290,12 @@ print(pie)
 
 <br>
 
----
+[Back To Top](#python-import)
+
+___
+
+<br>
+
 # `Absolute and Relative Imports in a Package`
 This project structure will be used to illustrate the concepts of absolute and relative importing in python. 
 ```
@@ -285,20 +321,24 @@ root_package/
         └── module8.py
 ```
 
-## *SEE ./import_lab for a complete list of all imports for this package structure, and to test different import combinations.*
+## *SEE [import_lab](./import_lab/README.md) for a complete list of all imports for this package structure, and to test different import combinations.*
 
 <br>
 
-When designing a project structure is it necessary to define an entrypoint for your code. 
+When designing a project structure is it necessary to define an `entrypoint` for your code. 
 An `entry point` in the context of software development is a specific point in a program where execution begins. 
 > * It serves as the initial place where the program starts running or where control is passed when the program is invoked. 
 > * The concept of an entry point can vary slightly depending on the context, such as in programming languages, containers, or executable files
 
-*Here main.py will be used as the entrypoint for our example project*
+<br>
 
-*\_\_init__.py is used by Python to mark the directory as a Python package. It can be empty or contain package initialization code.*
+`Here main.py will be used as the entrypoint for our example project`
+
+`__init__.py is used by Python to mark the directory as a Python package. It can be empty or contain package initialization code.`
+
+<br>
  
-Syntax for exectuing basic scripts and small projects:
+Syntax for executing basic scripts and small projects:
 ```
 > python <file>.py
 ```
@@ -314,23 +354,29 @@ $ python3 main.py
 ```
 <br> 
 
-In order for Python to recognize the package containing the entrypoint,and for relative imports to work correctly we must revise our method of executing our scripts.
-> * If you execute the entrypoint without specifying its containing package Python will not recoginize the entrypoint's containing directory as a package. This will cause relative import errors. 
+In order for Python to recognize the package containing the entrypoint, and for relative imports to work correctly in all cases we must revise our method of executing our scripts.
 
-Syntax for executing more complex projects:
+*`If you execute the entrypoint without specifying its containing package Python will not recoginize the entrypoint's parent directory as a package. This will cause relative import errors.`*
+
+<br>
+
+Syntax for specifying a Top Level Package with the `-m` flag
 ```
 > python -m <root_package>.<subpackage>.<...>.<entrypoint>
 ```
 ```
 $ python3 -m <root_package>.<subpackage>.<...>.<entrypoint>
 ```
+
+<br>
+
 Example:
 > Executed from the directory containing 'root_package'  
-> from ..\root_package
+> ie. in Windows from ..\root_package
 ```
 > python -m root_package.main
 ```
-> from ../root_package
+> ie. Unix like (MacOs, Linux, etc.) from ../root_package
 ```
 $ python3 -m root_package.main
 ```
@@ -341,6 +387,12 @@ Note:
 > * Root Package: Refers to the top-level package (in this case, root_package).
 > * Sub-Packages: Refer to nested directories within the root package that also contain an __init__.py file, making them packages (e.g., package1, package2, package3).
 > * Modules: Python files (with the .py extension) that contain functions, classes, or variables.
+
+<br>
+
+[Back To Top](#python-import)
+
+___
 
 <br>
 
@@ -369,15 +421,28 @@ from root_package.package2.package3.module8 import function
 
 <br>
 
-## `Relative Imports`
-Relative imports in Python allow you to import modules relative to the position of the current module within the package hierarchy. 
-> They are particularly useful in large projects with complex directory structures, as they make it easier to manage imports within a package without specifying the full path from the top-level directory.
+[Back To Top](#python-import)
+
+___
 
 <br>
 
-* Single dot (.): Refers to the current package. Used to import a module from the same package.
-* Double dots (..): Refers to the parent package. Used to import from a higher-level package.
-* Triple dots (...): Refers to the grandparent package, and so on.
+## `Relative Imports`
+Relative imports in Python allow you to import modules relative to the position of the current module within the package hierarchy. 
+* *`These are dependant upon the Top Level Package visible to the module.`* 
+
+<br>
+
+Relative imports are particularly useful in large projects with complex directory structures, as they make it easier to manage imports within a package without specifying the full path from the top-level directory.
+
+<br>
+
+| Syntax         | Meaning                                | Usage                                  |
+|----------------|----------------------------------------|----------------------------------------|
+| **Single dot** (`.`) | Refers to the current package          | Used to import a module from the same package |
+| **Double dots** (`..`) | Refers to the parent package           | Used to import from a higher-level package    |
+| **Triple dots** (`...`) | Refers to the grandparent package, and so on | Used to import from even higher-level packages |
+
 
 <br>
 
@@ -389,11 +454,29 @@ from <dots><package> import <module>
 
 from <dots><package>.<module> import <class, function, attribute>
 ```
+
+___
+
 Example:
-> Entrypoint: root_package/main.py  
-> Current Module Path: root_package/package2/package3/module8.py  
-> * from ..\\root_package > `python -m root_package.main` 
-> * from ../root_package $ `python3 -m root_package.main`   
+| Context                        | Details                           |
+|--------------------------------|-----------------------------------|
+| **Entrypoint**                 | `root_package/main.py`           |
+| **Current Module Path**        | `root_package/package2/package3/module8.py` |
+
+<br>
+
+
+Windows from ..\\root_package          
+```
+> python -m root_package.main
+```
+
+Unix Like (Linux, MacOS, etc.) from ../root_package
+```
+$ python3 -m root_package.main
+```
+
+Contents of module8.py
 ```python
 from ... import module1
 from ... import module2
@@ -406,11 +489,81 @@ from . import module7
 
 <br>
 
+Relative Imports can work when executing a script using:
+```
+> python main.py
+```
+```
+$ python3 main.py
+```
 
-## *SEE ./import_lab for a complete list of all imports for this package structure, and to test different import combinations.*
+*`It is imparitive to understand that Python will not recognize the parent directory of main.py (ie. root_package) as a package even with __init__.py present. This will lead to errors when using relative imports if you do not understand how Python handles this situation.`*
 
----
+It is recommended that you play around with this understanding in [import_lab](./import_lab/README.md)
+
+| Module                     | `__main__.__name__` | `__name__`                  | `__package__`       | `__file__`                                   |
+|----------------------------|---------------------|-----------------------------|---------------------|---------------------------------------------|
+| **main.py**    | `__main__`          | `__main__`                 | `None`              | `...\root_package\main.py`                 |
+| **module1.py** | `__main__`          | `module1`                  |                     | `...\root_package\module1.py`              |
+| **module2.py** | `__main__`          | `module2`                  |                     | `...\root_package\module2.py`              |
+| **module3.py** | `__main__`          | `package1.module3`         | `package1`          | `...\root_package\package1\module3.py`     |
+| **module4.py** | `__main__`          | `package1.module4`         | `package1`          | `...\root_package\package1\module4.py`     |
+| **module5.py** | `__main__`          | `package2.module5`         | `package2`          | `...\root_package\package2\module5.py`     |
+| **module6.py** | `__main__`          | `package2.module6`         | `package2`          | `...\root_package\package2\module6.py`     |
+| **module7.py** | `__main__`          | `package2.package3.module7`| `package2.package3` | `...\root_package\package2\package3\module7.py` |
+| **module8.py** | `__main__`          | `package2.package3.module8`| `package2.package3` | `...\root_package\package2\package3\module8.py` |
+
+Trying to relatively import without a specified top level package will result in:
+
+`ImportError: attempted relative import with no known parent package`
+
+In this example using relative imports with `main.py`, `module1.py`, or `module1.py` will raise this error. 
+
+<br>
+
+Trying to relatively import beyond the top level package will result in:
+
+`ImportError: attempted relative import beyond top-level package`
+
+In this example this error will raise in the following scenarios:
+1. relative imports above `package1` for `module3.py` or `module4.py` 
+1. relative imports above `package2` for `module5.py`, `module6.py`, `module7.py`, or `module8.py`
+
+<br>
+
+
+
+
+
+
+<br>
+
+
+## *SEE [import_lab](./import_lab/README.md) for a complete list of all imports for this package structure, and to test different import combinations.*
+
+<br>
+
+[Back To Top](#python-import)
+
+___
+
+<br>
+
 # `Import Errors`
+The majority of import errors come from a misunderstanding of the underlying way that python handles imports.
+
+The script below can be added to the beginning of any python script to display the context of its import. Which should help you understand what python actually "sees" as it works through your imports. 
+```python
+from os import sep #IGNORE --> imports the correct filepath seperator based on the operating system. 
+
+'''Display the import context'''
+import __main__  # Imports __main__ (the currently executed script)
+print(f"Successful import of {__file__.split(sep)[-1]}")
+print(f"__main___.__name__ : {__main__.__name__}")
+print(f"__name__    : {__name__}")
+print(f"__package__ : {__package__}")
+print(f"__file__    : {__file__}\n")
+```
 
 ### `ModuleNotFoundError`
 This error occurs when Python cannot find the module or package you are trying to import. It might be due to a typo in the module name, an incorrect path, or the module not being installed or available in the environment.
@@ -418,9 +571,19 @@ This error occurs when Python cannot find the module or package you are trying t
 <br>
 
 ### `ImportError: attempted relative import beyond top-level package`
-This error occurs when you attempt to use a relative import that tries to go above the top-level package in your project's directory structure.   
-Python uses the current module's location to determine the package hierarchy, and relative imports are meant to navigate within this hierarchy.   
+This error occurs when you attempt to use a relative import that tries to go above the top-level package in your project's directory structure.
+
+Python uses the current module's location to determine the package hierarchy, and relative imports are meant to navigate within this hierarchy. 
+
 If you try to move "upwards" beyond the root package using multiple dots (e.g., from ... import something), Python will raise this error because it's not allowed to go beyond the top-level package.
+
+<br>
+
+### `ValueError: Attempted relative import beyond top-level package`
+*Old Version of ImportError: attempted relative import beyond top-level package*
+
+This error occurs when you use relative imports that attempt to go beyond the top level of the package hierarchy. Relative imports are only valid within packages.
+
 
 <br>
 
@@ -439,17 +602,19 @@ This error occurs when you try to import an attribute (such as a function or cla
 
 <br>
 
-### `ValueError: Attempted relative import beyond top-level package`
-This error occurs when you use relative imports that attempt to go beyond the top level of the package hierarchy. Relative imports are only valid within packages.
 
-<br>
 
 ### `Circular Imports`
 Circular imports happen when two or more modules attempt to import each other. This can lead to an infinite loop or partial imports where the module has not finished being defined when it's needed.
 
 <br>
 
----
+[Back To Top](#python-import)
+
+___
+
+<br>
+
 # `Conditional Imports`
 Imports can be made conditionally by combining conditional statements and import statements.
 
@@ -462,11 +627,20 @@ if need_math:
 ```
 
 
----
+<br>
+
+[Back To Top](#python-import)
+
+___
+
+<br>
+
 # `The pip Package Manager`
 
 `Package Manager`: a tool that automates the process of installing, upgrading, configuring, and removing software packages from a computer system or a development environment. 
+
 > * In the context of programming languages, a package manager handles the downloading, installation, and management of libraries, modules, or frameworks that a project might depend on.
+
 Examples:
 * Operating Systems:
 >   * apt (Advanced Package Tool) for Debian-based Linux distributions like Ubuntu.
@@ -485,7 +659,12 @@ Applications:
 
 <br>
 
----
+[Back To Top](#python-import)
+
+___
+
+<br>
+
 `Pip Installs Packages (pip)`: is the default package manager for Python. 
 > * It allows you to install, manage, and uninstall Python packages and libraries from the Python Package Index (PyPI) and other repositories.
 
@@ -535,6 +714,12 @@ pip uninstall matplotlib
 
 <br>
 
+[Back To Top](#python-import)
+
+___
+
+<br>
+
 
 ## `Dependency Management`
 pip automatically installs dependencies required by the packages you are installing.
@@ -554,6 +739,13 @@ pip install -r requirements.txt
 
 <br>
 
+[Back To Top](#python-import)
+
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*
 
 
 

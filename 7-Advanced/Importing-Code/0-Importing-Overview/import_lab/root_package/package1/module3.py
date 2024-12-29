@@ -1,4 +1,13 @@
-print("success m3")
+from os import sep #IGNORE --> imports the correct filepath seperator based on the operating system. 
+
+'''Display the import context'''
+import __main__  # Imports __main__ (the currently executed script)
+print(f"Successful import of {__file__.split(sep)[-1]}")
+print(f"__main___.__name__ : {__main__.__name__}")
+print(f"__name__    : {__name__}")
+print(f"__package__ : {__package__}")
+print(f"__file__    : {__file__}\n")
+
 
 ''' Absolute Imports
 from .\\root_package > python main.py 

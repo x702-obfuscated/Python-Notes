@@ -514,8 +514,10 @@ ___
 <br>
 
 ## `Closing Files`
+
 `FILES MUST BE CLOSED`
-*Always close files after use, or better, use the with statement.*
+
+*Always close files after use, or better, use a context manager (the with statement.)*
 
 <br>
 
@@ -561,12 +563,14 @@ with open("file.txt", "r") as file:
   print(file.read())
 ```
 
-<br>
 
-`__enter__()` and `__exit__()` are methods implemented within a class that define the behaviour of and object when entering and exiting a `with` block.
 
 <br>
 
+
+`__enter__()` and `__exit__()` are methods implemented within a class that define the behaviour of an object when entering and exiting a `with` block.
+
+<br>
 
 ```python
 def __enter__(self):
@@ -576,8 +580,16 @@ def __enter__(self):
 ```python
 def __exit__(self, exc_type, exc_value, traceback):
   '''Called when exiting the context of a with block'''
+  ...
 ```
+
 <br>
+
+```python
+with open("file.txt", "r") as file: # __enter__() is called here
+    file.read()
+# __exit__() is called here
+```
 
 `__exit__() handles proper cleanup after the use of the file to ensure resoures are properly released, etc. `
 
@@ -598,16 +610,17 @@ See the built-in `os` module for more on working with the filesystem:
 
 Files can and will be created if they do not already exist when using the `open()`function in certain modes.
 
-<br>
+### `open() modes that can create a file`
 
-| Mode  | Creates File? (If Not Exists) | Overwrites Existing?  |
-|-------|-------------------------------|------------------------|
-| `w`   | Yes                           | Yes                    |
-| `a`   | Yes                           | No (appends)           |
-| `x`   | Yes                           | No (raises error)      |
-| `wb`  | Yes                           | Yes                    |
-| `ab`  | Yes                           | No (appends)           |
-| `xb`  | Yes                           | No (raises error)      |
+| Mode  | Creates File? (If it doesn't exist) | Overwrites Existing?  |Example|
+|-------|-------------------------------|------------------------|--|
+| `w` | Yes | Yes|`open("/path/to/file.txt","w")`|
+| `a` | Yes | No (appends) |`open("/path/to/file.txt","a")`|
+| `x` | Yes | No (raises error)|`open("/path/to/file.txt","x")`|
+| `wb`| Yes | Yes|`open("/path/to/file.txt","wb")`|
+| `ab`| Yes | No (appends) |`open("/path/to/file.txt","ab")`|
+| `xb`| Yes | No (raises error)|`open("/path/to/file.txt","xb")`|
+
 
 ## `Exclusive Creation`
 Exclusive creation creates a file for writing if it does not already exist, otherwise it raises an error. 
@@ -630,26 +643,25 @@ ___
 
 <br>
 
-
-
-
 # `Reading From Files`
 When opening files with `open()` file contents can be read using the following modes:
+* `r`,`rb`,`r+`,`rb+`
+
+| Mode | Description | Notes|Example|
+|---|--|--|--|
+| `r`| Opens the file for reading (default mode). | File must exist, or an error is raised. |`open("/path/to/file.txt","r")`|
+| `rb` | Opens the file for reading in binary mode. | Returns binary data (`bytes`).|`open("/path/to/file.txt","rb")`|
+| `r+` | Opens the file for both reading and writing. | File must exist, or an FileNotFoundError is raised. |`open("/path/to/file.txt","r+")`|
+| `rb+`| Opens the file for both reading and writing in binary mode.| File must exist or FileNotFoundError is raised; returns binary data. |`open("/path/to/file.txt","rb+")`|
 
 <br>
 
-| Mode | Description | Notes|
-|---|--|--|
-| `r`| Opens the file for reading (default mode). | File must exist, or an error is raised. |
-| `rb` | Opens the file for reading in binary mode. | Returns binary data (`bytes`).|
-| `r+` | Opens the file for both reading and writing. | File must exist, or an error is raised. |
-| `rb+`| Opens the file for both reading and writing in binary mode.| File must exist; returns binary data. |
+File objects returned from `open()` can be read using the followindg methods:
+* `.read()`,`.readline()`,`.readlines()`
 
 <br>
 
-The file object returned by `open()` has several methods useful for reading the contents of files. 
-
-<br>
+---
 
 `.read()` reads the entire content of a file, or up to a number of characters/bytes specified by `size` (default=-1 aka read the entire file).
 * in text mode `size` refers to characters
@@ -668,6 +680,8 @@ with open("/path/to/file.txt", "r") as file:
 with open("/path/to/file.txt", "r") as file:
   file.read(size=4192)
 ```
+
+---
 
 <br>
 
@@ -691,6 +705,8 @@ with open("/path/to/file.txt", "r") as file:
 with open("/path/to/file.txt", "r") as file:
   file.readline()
 ```
+
+---
 
 <br>
 
@@ -722,36 +738,222 @@ ___
 <br>
 
 # `Writing To Files`
-Be cautious when using 'w' mode as it overwrites existing files.
-write 
-appendqeqe
+*Be cautious when using `w`,`wb`, or `wb+` modes as they overwrite existing file content*
 
-methods
-write()
-writelines()
+When opening files with `open()` file contents can be written to using the following modes:
+* `w`,`a`,`x`
+* add `b` to write using bytes
+* add a `+` to read and write
 
+| Mode   | Creates File? (If it doesn't exist) | Overwrites Existing?  | Allows Reading? | Example                           |
+|--------|--------------------------------------|------------------------|-----------------|-----------------------------------|
+| `w`    | Yes                                  | Yes                    | No              | `open("/path/to/file.txt", "w")`   |
+| `a`    | Yes                                  | No (appends)           | No              | `open("/path/to/file.txt", "a")`   |
+| `x`    | Yes                                  | No (raises error)      | No              | `open("/path/to/file.txt", "x")`   |
+| `w+`   | Yes                                  | Yes                    | Yes             | `open("/path/to/file.txt", "w+")`  |
+| `a+`   | Yes                                  | No (appends)           | Yes             | `open("/path/to/file.txt", "a+")`  |
+| `x+`   | Yes                                  | No (raises error)      | Yes             | `open("/path/to/file.txt", "x+")`  |
+
+<br>
+
+| Mode   | Creates File? (If it doesn't exist) | Overwrites Existing?  | Allows Reading? | Example                           |
+|--------|--------------------------------------|------------------------|-----------------|-----------------------------------|
+| `wb`   | Yes                                  | Yes                    | No              | `open("/path/to/file.txt", "wb")`  |
+| `ab`   | Yes                                  | No (appends)           | No              | `open("/path/to/file.txt", "ab")`  |
+| `xb`   | Yes                                  | No (raises error)      | No              | `open("/path/to/file.txt", "xb")`  |
+| `wb+`  | Yes                                  | Yes                    | Yes             | `open("/path/to/file.txt", "wb+")` |
+| `ab+`  | Yes                                  | No (appends)           | Yes             | `open("/path/to/file.txt", "ab+")` |
+| `xb+`  | Yes                                  | No (raises error)      | Yes             | `open("/path/to/file.txt", "xb+")` |
+
+
+<br>
+
+File objects returned from `open()` can be written to using the following methods:
+* `.write()`, `.writelines()`
+
+---
+
+`.write()` writes a single string  specified by the `s` parameter to the file. 
+* The function of `.write()` is dependant upon the mode specified with `open()`.
+    * with `w` mode `.write()` trucates the file contents and write the new content.(ie. overwrite the file with new content)
+    * with `a` mode `.write()` appends the new content to the end of the file.
+
+Syntax:
+```
+file.write(s)
+```
 ```python
-file = open("file.txt",'w') #write
-file.write("New Content ") #Overwrites file with new content
-file.writelines(["line1","line2","line3"]) #Overwrites file lines using a list of string
-file.close()
+with open("file.txt", "w") as file:
+    file.write("Hello World, but inside a file!")
 
-open("file.txt", 'a') #append
-file.write("New content added to the end of the file")
-file.close()
-#close files after working with them
+with open("file.txt", "a") as file:
+    file.write("This is added to the end of the file")
+```
+---
+
+<br>
+
+`.writelines()` write a sequence of strings (list, tuple, generators, sets, custom iterables) specificed by the `lines` parameter to a file
+* The function of `.writelines()` is dependant upon the mode specified with `open()`.
+    * with `w` mode `.writelines()` trucates the file contents and write the new content.(ie. overwrite the file with new content)
+    * with `a` mode `.writelines()` appends the new content to the end of the file.
+
+Syntax:
+```
+file.writelines(lines)
+```
+```python
+write_lines = [
+    "This is the first line written with 'w' mode.\n",
+    "This overwrites the existing content.\n"
+] 
+
+append_lines = [
+    "This line is appended using 'a' mode.\n",
+    "More content added to the existing file.\n"
+]
+
+with open("file.txt", "w") as file:
+    file.writelines(write_lines)
+
+with open("file.txt", "a") as file:
+    file.writelines(append_lines)
 ```
 
+<br>
+
+[Back to Top](#python-file-handling)
+
+___
+
+<br>
+
 # `Read and Write`
-+
+`+` can be used in conjuntion with other modes to read and write a file at the same time. 
+
+| Mode   | File Creation | File Truncation | Writing Start Position | Special Notes                              |
+|--------|---------------|-----------------|-------------------------|-------------------------------------------|
+| `r+`,`rb+`   | No| No              | Current Position (Default is the Beginning)| Overwrites existing content from the start. |
+| `w+`,`wb+`   | Yes| Yes             | Beginning               | File is cleared before writing.            |
+| `a+`,`ab+`   | Yes| No              | End                     | Always appends to the end.                 |
+| `x+`,`xb+`   | Yes| N/A             | Beginning               | Creates a new file, raises error if exists.|
+
+
+`r+` or `rb+` modes do not delete the content of the file. These overwrite the content from the current pointer position in the file. 
+*This means that if the size of the new data is less than the old, parts of the old data will remain*
+
+Example
+```python
+with open("example.txt", "w") as file:
+    file.write("Original Content")
+
+# r+ mode (overwrite from start, no truncation)
+with open("example.txt", "r+") as file:
+    file.write("Updated")                # Overwrites 'Original' with 'Updated'
+    print(file.read())                   # Output: l Content
+
+with open("example.txt", "r") as file:
+    print(file.read())                   # Output: Updatedl Content
+```
+
+<br>
+
+`w+` or `wb+` modes truncate the contents of the file, place the pointer at position 0 and then overwrite.
+```python
+with open("example.txt", "w") as file:
+    file.write("Original Content")
+
+# w+ mode (truncate and overwrite)
+with open("example.txt", "w+") as file: # Truncates and moves pointer to position 0
+    file.read()                         # Output: 
+    file.write("New Data")              # Writes 'New Data'
+
+with open("example.txt", "r") as file:
+    print(file.read())                  # Output: New Data
+```
+
+<br>
+
+`a+` or `ab+` modes append contents to the end of the file.
+* pointer is at the end of the file (aka the last byte of the file)
+
+```python
+with open("example.txt", "w") as file:
+    file.write("Original Content")
+
+# a+ mode (append without truncation)
+with open("example.txt", "a+") as file:
+    file.write(" - Appended")           # Appends at the end of the file
+
+with open("example.txt", "r") as file:
+    print(file.read())                  # Output: Original Content - Appended
+```
+
+
+<br>
+
+[Back to Top](#python-file-handling)
+
+___
+
+<br>
+
 
 # `File Pointers`
-Method	Description
-seek(offset, whence=0)	Moves the file pointer to a specific position. offset is the position, and whence determines the reference point:
-0 (default): Beginning of file
-1: Current position
-2: End of file
-tell()	Returns the current position of the file pointer.
+
+Basically: A `file pointer` is the spot where you are reading or writing to a file.
+
+Specifically: A `file pointer` is a marker or indicator that keeps track of the current position (in bytes) in a file while it is being read from or written to. It determines where the next read or write operation will occur in the file.
+
+<br>
+
+To change the file pointer position using the file object returned by `open()`
+| Method         | Description                                                                                       |
+|----------------|---------------------------------------------------------------------------------------------------|
+| `file.seek(offset, whence=0)`   | Moves the file pointer to a specified position. `offset` is in bytes, and `whence` determines the reference point: |
+|                               | - `0`: Start of the file (default)                                                               |
+|                               | - `1`: Current pointer position                                                                  |
+|                               | - `2`: End of the file                                                                           |
+| `file.tell()`                 | Returns the current position of the file pointer in bytes.                                       |
+
+
+Syntax
+```
+file.seek(offset, whence=0)
+```
+```python
+with open("example.txt", "w") as file:
+    file.write("abcdefghijklmnopqrstuvwxyz")
+    file.seek(4)                        # Move to byte 4 ('d')
+    file.write("5")                     # Write the next byte with "5"
+
+with open("example.txt", "r") as file:
+    print(file.read())                  # Output: abcde5ghijklmnopqrstuvwxyz
+```
+
+<br>
+
+Syntax
+```
+file.tell()
+```
+```python
+with open("example.txt", "w") as file:
+    print(file.tell())      # Output: 0
+    file.write("abcdefghijklmnopqrstuvwxyz")
+    print(file.tell())      # Output: 26
+    file.seek(4)
+    print(file.tell())      # Output: 4
+
+```
+
+<br>
+
+[Back to Top](#python-file-handling)
+
+___
+
+<br>
 
 # `File Buffering and Flushing`
 flush()
@@ -779,5 +981,37 @@ ___
 
 <br>
 
+# `File Objects Overview`
+
+| Attribute/Method      | Description                                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------------------|
+| **Attributes**        |                                                                                               |
+| `file.closed`         | Returns `True` if the file is closed, `False` otherwise.                                      |
+| `file.encoding`       | Returns the encoding used to decode or encode the file (e.g., `'UTF-8'`).                     |
+| `file.mode`           | Returns the mode in which the file was opened (e.g., `'r'`, `'w'`, `'rb'`).                   |
+| `file.name`           | Returns the name of the file.                                                                |
+| `file.newlines`       | Returns the newline convention used (`None`, `\n`, `\r\n`, etc.).                            |
+| `file.buffer`         | Returns the underlying binary buffer for the file.                                           |
+| `file.line_buffering` | Returns `True` if line buffering is enabled (applies to text files only).                     |
+| **Methods**           |                                                                                               |
+| `file.close()`        | Closes the file. Further operations on the file will raise a `ValueError`.                   |
+| `file.flush()`        | Flushes the write buffer to the disk.                                                        |
+| `file.read(size=-1)`  | Reads up to `size` bytes (or the entire file if `size` is not specified or is `-1`).          |
+| `file.readline(size=-1)` | Reads a single line from the file, up to `size` characters if specified.                  |
+| `file.readlines(hint=-1)` | Reads all lines from the file and returns them as a list. The optional `hint` limits the total bytes read. |
+| `file.seek(offset, whence=0)` | Moves the file pointer to a specific position: `offset` bytes from `whence`. `whence` can be: |
+|                        | `0` (start of the file, default), `1` (current position), or `2` (end of the file).          |
+| `file.tell()`         | Returns the current file pointer position in bytes.                                          |
+| `file.truncate(size=None)` | Truncates the file to the specified size (default is the current file pointer position). |
+| `file.write(string)`  | Writes a string to the file.                                                                 |
+| `file.writelines(iterable)` | Writes a sequence of strings to the file.                                              |
+| `file.readable()`     | Returns `True` if the file supports reading.                                                 |
+| `file.writable()`     | Returns `True` if the file supports writing.                                                 |
+| `file.seekable()`     | Returns `True` if the file supports random access (seeking).                                 |
+| `file.detach()`       | Detaches the underlying buffer from the file. Only for binary files.                         |
+| `file.fileno()`       | Returns the file descriptor (an integer) associated with the file.                           |
+| `file.isatty()`       | Returns `True` if the file is connected to a terminal device.                                |
+| `file.__iter__()`     | Returns an iterator over the file lines.                                                     |
+| `file.__next__()`     | Returns the next line in the file when used with an iterator (`for line in file`).            |
 
 
