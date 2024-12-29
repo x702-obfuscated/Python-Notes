@@ -6,16 +6,19 @@ ___
 
 Covered in this file:
 
-1. Defining Modules, Packages, Libraries, and Frameworks
-1. Basic Module Import
-1. Import Specific Classes, Functions, and Attributes
-1. Import and Entire Module
-1. Module Aliasing
-1. Import Classes, Functions, and Attributes with an Alias
-1. Absolute and Relative Imports in a Package
-1. Import Errors
-1. Conditional Imports
-1. The pip Package Manager
+1. [`Defining Modules, Packages, Libraries, and Frameworks`](#defining-modules-packages-libraries-and-frameworks)
+1. [`Basic Module Importing`](#basic-module-importing)
+1. [`Import Specific Classes, Functions, and Attributes`](#import-specific-classes-functions-and-attributes)
+1. [`Import an Entire Module`](#import-an-entire-module)
+1. [`Module Aliasing`](#module-aliasing)
+1. [`Import Classes, Functions, and Attributes with an Alias`](#import-classes-functions-attributes-with-an-alias)
+1. [`Absolute and Relative Imports in a Package`](#absolute-and-relative-imports-in-a-package)
+    1. [`Absolute Imports`](#absolute-imports)
+    1. [`Relative Imports`](#relative-imports)
+1. [`Import Errors`](#import-errors)
+1. [`Conditional Imports`](#conditional-imports)
+1. [`The pip Package Manager`](#dependency-management)
+
 
 <br>
 

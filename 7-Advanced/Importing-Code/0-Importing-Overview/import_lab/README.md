@@ -1,3 +1,4 @@
+# `importlab`
 The importlab is here to help you understand how to import.
 > Use the packages and models to discover how to properly import, and errors that may occur.
 
@@ -27,7 +28,13 @@ root_package/
 
 \_\_init__.py: Marks the directory as a Python package. It can be empty or contain package initialization code.
 
+<br>
 
+[Back To Top](#importlab)
+
+___
+
+<br>
 
 # `Absolute Imports Executing main.py as a script`
 from .\root_package 
@@ -39,8 +46,8 @@ from ./root_package
 $ python3 main.py   
 ```
 
-This is the same for each of these files.
-Keep in mind that you should not import the current module within itself  
+The import code is the same for each of these files. It is relative to the main script.
+Keep in mind that you should not import the current module within itself.  
 `main.py`
 `module1.py`
 `module2.py`
@@ -62,6 +69,14 @@ from package2.package3 import module7
 from package2.package3 import module8
 ```
 
+<br>
+
+[Back To Top](#importlab)
+
+___
+
+<br>
+
 # `Absolute Imports Executing main.py with package context`
 from ..\root_package 
 ```
@@ -72,7 +87,7 @@ from ../root_package
 $ python3 -m root_package.main     
 ```
 
-This is the same for each of these files.
+The import code is the same for each of these files. It is relative to the top level package.
 Keep in mind that you should not import the current module within itself  
 `main.py`
 `module1.py`
@@ -94,13 +109,26 @@ from root_package.package2.package3 import module7
 from root_package.package2.package3 import module8
 ```
 
+<br>
 
-# `Relative imports relative to the current module.`
+[Back To Top](#importlab)
+
+___
+
+<br>
+
+
+# `Relative imports relative to the top level package.`
 from ..\root_package 
 ```
 > python -m root_package.main 
 ```
 from ../root_package 
+```
+$ python3 -m root_package.main
+```
+
+<br>
 
 `main.py`
 ```python
@@ -201,4 +229,161 @@ from .. import module5
 from .. import module6
 from . import module7
 ```
+
+<br>
+
+[Back To Top](#importlab)
+
+___
+
+<br>
+
+
+# `Relative imports relative to the top level module.`
+from root_package 
+```
+> python main.py
+```
+from root_package 
+```
+$ python3 main.py
+```
+
+<br>
+
+`main.py`
+```python
+# ALL OF THESE RESULT IN ImportError: attempted relative import with no known parent package
+from . import module1
+from . import module2
+from .package1 import module3
+from .package1 import module4
+from .package2 import module5
+from .package2 import module6
+from .package2.package3 import module7
+from .package2.package3 import module8
+```
+
+`module1.py`
+```python
+# ALL OF THESE RESULT IN ImportError: attempted relative import with no known parent package
+from . import module2
+from .package1 import module3
+from .package1 import module4
+from .package2 import module5
+from .package2 import module6
+from .package2.package3 import module7
+from .package2.package3 import module8
+```
+
+`module2.py`
+```python
+# ALL OF THESE RESULT IN ImportError: attempted relative import with no known parent package
+from . import module1
+from .package1 import module3
+from .package1 import module4
+from .package2 import module5
+from .package2 import module6
+from .package2.package3 import module7
+from .package2.package3 import module8
+```
+
+`module3.py`
+```python
+# This will work without error
+from . import module4
+
+# THESE RESULT IN ImportError: attempted relative import beyond top-level package
+from .. import module1
+from .. import module2
+from ..package2 import module5
+from ..package2 import module6
+from ..package2.package3 import module7
+from ..package2.package3 import module8
+```
+
+`module4.py`
+```python
+# This will work without error
+from . import module3
+
+# THESE RESULT IN ImportError: attempted relative import beyond top-level package
+from .. import module1
+from .. import module2
+from ..package2 import module5
+from ..package2 import module6
+from ..package2.package3 import module7
+from ..package2.package3 import module8
+```
+
+`module5.py`
+```python
+# THESE will work without error:
+from .import module6
+from .package3 import module7
+from .package3 import module8
+
+# THESE RESULT IN ImportError: attempted relative import beyond top-level package
+from .. import module1
+from .. import module2
+from ..package1 import module3
+from ..package1 import module4
+
+```
+
+`module6.py`
+```python
+# THESE will work without error:
+from .import module5
+from .package3 import module7
+from .package3 import module8
+
+# THESE RESULT IN ImportError: attempted relative import beyond top-level package
+from .. import module1
+from .. import module2
+from ..package1 import module3
+from ..package1 import module4
+
+```
+
+`module7.py`
+```python
+# THESE will work without error:
+from .. import module5
+from .. import module6
+from . import module8
+
+
+# THESE RESULT IN ImportError: attempted relative import beyond top-level package
+from ... import module1
+from ... import module2
+from ...package1 import module3
+from ...package1 import module4
+
+```
+
+`module8.py`
+```python
+# THESE will work without error:
+from .. import module5
+from .. import module6
+from . import module7
+
+# THESE RESULT IN ImportError: attempted relative import beyond top-level package
+from ... import module1
+from ... import module2
+from ...package1 import module3
+from ...package1 import module4
+
+```
+
+<br>
+
+[Back To Top](#importlab)
+
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*
 

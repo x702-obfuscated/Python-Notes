@@ -9,7 +9,6 @@ print(f"__package__ : {__package__}")
 print(f"__file__    : {__file__}\n")
 
 
-
 ''' Absolute Imports
 from .\\root_package > python main.py 
 from ./root_package $ python3 main.py   
@@ -44,6 +43,23 @@ from ../root_package $ python3 -m root_package.main
 # from ... import module2
 # from ...package1 import module3
 # from ...package1 import module4
+# from .. import module5
+# from .. import module6
+# from . import module8
+
+
+''' Relative imports (relative to this module)
+from .\\root_package > python main.py 
+from ./root_package $ python3 main.py
+'''
+'''These imports will result in: 
+ImportError: attempted relative import beyond top-level package'''
+# from ... import module1
+# from ... import module2
+# from ...package1 import module3
+# from ...package1 import module4
+
+'''The relative imports below will work without error'''
 # from .. import module5
 # from .. import module6
 # from . import module8
