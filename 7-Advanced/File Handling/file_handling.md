@@ -10,22 +10,28 @@ ___
 <br>
 
 Covered in this file:
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
+1. [`File Extensions`](#file-extensions)
+1. [`File Paths`](#file paths)
+1. [`Working with the Filesystem`](#working-with-the-filesystem)
+1. [`Opening and Closing Files`](#opening-and-closing-files)
+    1. [`mode`](#mode)
+        1. [`Text Mode vs. Binary Mode`](#text-mode-vs-binary-mode)
+    1. [`Encoding and Error Handling`](#encoding-and-error-handling)
+    1. [`Common Encoding Formats Supported in Python`](#common-encoding-formats-supported-in-python)
+    1. [`Buffering`](#buffering)
+    1. [`Newline`](#newline)
+    1. [`closefd`](#closefd)
+    1. [`opener`](#opener)
+    1. [`Closing Files`](#closing-files)
+1. [`Context Management`](#context-management)
+1. [`Creating Files`](#creating-files)
+1. [`File Object Attributes`](#file-object-attributes)
+1. [`Reading From Files`](#reading-from-files)
+1. [`Writing To Files`](#writing-to-files)
+1. [`Read and Write`](#read-and-write)
+1. [`File Pointers`](#file-pointers)
+1. [`File Buffering and Flushing`](#file-buffering-and-flushing)
+1. [`Error Handling`](#error-handling)
 
 
 <br>
@@ -235,7 +241,9 @@ ___
 
 
 # `Opening and Closing Files`
-Working with files is an essential skill for programmers because it allows for reading, writing, and managing persistant data from on execution to the next. 
+Working with files is an essential skill for programmers because it allows for reading, writing, and managing persistant data from on execution to the next.
+
+<br>
 
 In Python, opening files is accomplished using the `open()` function. 
 * `open()` opens a file, and returns a file object
@@ -243,7 +251,9 @@ In Python, opening files is accomplished using the `open()` function.
 *`It is best practice to use a context manager when working with files in python`*  
 See >>> [Context Management](#context-management)
 
-The actual `open()` function is defined in C, however below is a representation of its header if it was written in Python. 
+<br>
+
+The actual `open()` function is defined in the C language, however below is a representation of its header if it was written in Python. 
 ```python
 def open(
   file, mode='r', buffering=-1, 
@@ -301,6 +311,9 @@ ___
 <br>
 
 ## `mode`
+`mode` indicates how the file will be opened.
+
+The following are the possible values for the `mode` parameter.
 
 | **Mode**  | **Description**| **Example**|
 |---|--|---|
@@ -349,15 +362,22 @@ ___
 `encoding` specifies the character encoding used when reading from or writing to a file.
 
 ```python
-with open('example.txt', 'w', encoding='ascii', errors='replace') as f:
-    f.write("Hello, world! Привет мир!")
+with open('example.txt', 'w', encoding='ascii', errors='replace') as file:
+    file.write("Hello, world! Привет мир!")
+
+with open("example.txt", "r") as file:
+    print(file.read())
+    # Output: Hello, world! ?????? ???!
 ```
 
 *In this example, the non-ASCII characters "Привет мир!" would be replaced with '�' because they cannot be represented in ASCII.*
 
+<br>
 
 
 When working in binary mode and converting from text to binary or vice versa the `.encode()` and `.decode()` string methods are useful. 
+
+<br>
 
 
 `.decode()` converts binary to its text representation
@@ -535,9 +555,7 @@ Syntax:
 ```
 file.close()
 ```
-```python
-file.close()
-```
+
 
 <br>
 
@@ -634,6 +652,57 @@ try:
 except FileExistsError:
   print("File Already Exists")
 ```
+
+<br>
+
+[Back to Top](#python-file-handling)
+
+___
+
+<br>
+
+# `File Object Attributes`
+
+| Attribute | Description |
+|--|--|
+| **Instance Variables**| |
+| `file.closed` | Returns `True` if the file is closed, `False` otherwise.|
+| `file.encoding` | Returns the encoding used to decode or encode the file (e.g., `'UTF-8'`). |
+| `file.mode` | Returns the mode in which the file was opened (e.g., `'r'`, `'w'`, `'rb'`). |
+| `file.name` | Returns the name of the file.|
+| `file.newlines` | Returns the newline convention used (`None`, `\n`, `\r\n`, etc.).|
+| `file.buffer` | Returns the underlying binary buffer for the file. |
+| `file.line_buffering` | Returns `True` if line buffering is enabled (applies to text files only). |
+
+<br>
+
+| Attribute | Description |
+|--|--|
+| **Methods**                   |                                                                                                               |
+| `file.fileno()`               | Returns the file descriptor (an integer) associated with the file.                                            |
+| `file.isatty()`               | Returns `True` if the file is connected to a terminal device.                                                 |
+|||e
+| `file.readable()`             | Returns `True` if the file supports reading.                                                                  |
+| `file.read(size=-1)`          | Reads up to `size` bytes (or the entire file if `size` is not specified or is `-1`).                          |
+| `file.readline(size=-1)`      | Reads a single line from the file, up to `size` characters if specified.                                      |
+| `file.readlines(hint=-1)`     | Reads all lines from the file and returns them as a list. The optional `hint` limits the total bytes read.    |
+|||
+| `file.writable()`             | Returns `True` if the file supports writing.                                                                  |
+| `file.write(string)`          | Writes a string to the file.                                                                                  |
+| `file.writelines(iterable)`   | Writes a sequence of strings to the file.                                                                     |
+|||
+| `file.seekable()`             | Returns `True` if the file supports random access (seeking).                                                  |
+| `file.seek(offset, whence=0)` | Moves the file pointer to a specific position: `offset` bytes from `whence`. `whence` can be:                 |
+|                               | `0` (start of the file, default), `1` (current position), or `2` (end of the file).                           |
+| `file.tell()`                 | Returns the current file pointer position in bytes.                                                           |
+| `file.truncate(size=None)`    | Truncates the file to the specified size (default is the current file pointer position).                      |
+| `file.flush()`                | Flushes the write buffer to the disk.                                                                         |
+| `file.close()`                | Closes the file. Further operations on the file will raise a `ValueError`.                                    |
+|||
+| `file.detach()`               | Detaches the underlying buffer from the file. Only for binary files.                                          |
+|||
+| `file.__iter__()`             | Returns an iterator over the file lines.                                                                      |
+| `file.__next__()`             | Returns the next line in the file when used with an iterator (`for line in file`).                            |
 
 <br>
 
@@ -775,7 +844,7 @@ File objects returned from `open()` can be written to using the following method
 
 `.write()` writes a single string  specified by the `s` parameter to the file. 
 * The function of `.write()` is dependant upon the mode specified with `open()`.
-    * with `w` mode `.write()` trucates the file contents and write the new content.(ie. overwrite the file with new content)
+    * with `w` mode `.write()` truncates the file contents and write the new content.(ie. overwrite the file with new content)
     * with `a` mode `.write()` appends the new content to the end of the file.
 
 Syntax:
@@ -956,22 +1025,55 @@ ___
 <br>
 
 # `File Buffering and Flushing`
-flush()
-fileno()
-isatty()
+When working with files in Python, data is temporarily stored in a buffer (a region of memory) before being written to disk (storage).
+* This approach improves performance by reducing the number of disk input/output (I/O) operations, which are relatively slow.
 
-# `Error Handling`
-try-except
-Handle file exceptions using try...except blocks.
+<br>
 
-# `Checking File Status`
-Method	Description
-closed	Returns True if the file is closed, otherwise False.
-mode	Returns the mode in which the file was opened (e.g., 'r', 'w', 'rb').
-name	Returns the name of the file.
-encoding	Returns the encoding of the file (text files only).
-errors	Returns the error-handling scheme used when encoding/decoding (e.g., 'strict', 'ignore').
-newlines	Returns the newline character(s) found in the file (None, '\n', '\r', or '\r\n').
+Data in the buffer is flushed to disk under specific conditions:
+1. When the buffer is full.
+1. When the file is explicitly flushed using the `file.flush()` method.
+1. When the file is closed using `file.close()` or by the `with` statement, which automatically closes the file.
+
+<br>
+
+To ensure that data is written to the disk before performing another operation, use the `.flush()` method.
+
+Syntax
+```
+file.flush()
+```
+
+Without `.flush()` changes are not written to disk, and reading the file will not reflect any changes. 
+```python
+with open("example.txt", "w+") as file:
+    file.write("Use .flush() to write the buffer to disk!")
+    print(f"Without flush() : {file.read()}")
+
+    # Output: Without flush() : 
+```
+
+With `.flush()` changes are written to disk, but the file pointer has not changed its location. Therefore, changes are not read, because they are behind the pointer. 
+```python
+with open("example.txt", "w+") as file:
+    file.write("Use .flush() to write the buffer to disk!")
+    file.flush()
+    print(f"With flush() : {file.read()}")
+
+    # Output: Without flush() : 
+```
+
+With `.flush()` changes are written to disk and `.seek(0)` moves the pointer to the beginning of the file. Changes can then be read. 
+
+```python
+with open("example.txt", "w+") as file:
+    file.write("Use .flush() to write the buffer to disk!")
+    file.flush()
+    file.seek(0)
+    print(f"With flush() and seek(0) : {file.read()}")
+
+    #Output: With flush() and seek(0) : Use .flush() to write the buffer to disk!
+```
 
 <br>
 
@@ -981,37 +1083,54 @@ ___
 
 <br>
 
-# `File Objects Overview`
 
-| Attribute/Method      | Description                                                                                   |
-|-----------------------|-----------------------------------------------------------------------------------------------|
-| **Attributes**        |                                                                                               |
-| `file.closed`         | Returns `True` if the file is closed, `False` otherwise.                                      |
-| `file.encoding`       | Returns the encoding used to decode or encode the file (e.g., `'UTF-8'`).                     |
-| `file.mode`           | Returns the mode in which the file was opened (e.g., `'r'`, `'w'`, `'rb'`).                   |
-| `file.name`           | Returns the name of the file.                                                                |
-| `file.newlines`       | Returns the newline convention used (`None`, `\n`, `\r\n`, etc.).                            |
-| `file.buffer`         | Returns the underlying binary buffer for the file.                                           |
-| `file.line_buffering` | Returns `True` if line buffering is enabled (applies to text files only).                     |
-| **Methods**           |                                                                                               |
-| `file.close()`        | Closes the file. Further operations on the file will raise a `ValueError`.                   |
-| `file.flush()`        | Flushes the write buffer to the disk.                                                        |
-| `file.read(size=-1)`  | Reads up to `size` bytes (or the entire file if `size` is not specified or is `-1`).          |
-| `file.readline(size=-1)` | Reads a single line from the file, up to `size` characters if specified.                  |
-| `file.readlines(hint=-1)` | Reads all lines from the file and returns them as a list. The optional `hint` limits the total bytes read. |
-| `file.seek(offset, whence=0)` | Moves the file pointer to a specific position: `offset` bytes from `whence`. `whence` can be: |
-|                        | `0` (start of the file, default), `1` (current position), or `2` (end of the file).          |
-| `file.tell()`         | Returns the current file pointer position in bytes.                                          |
-| `file.truncate(size=None)` | Truncates the file to the specified size (default is the current file pointer position). |
-| `file.write(string)`  | Writes a string to the file.                                                                 |
-| `file.writelines(iterable)` | Writes a sequence of strings to the file.                                              |
-| `file.readable()`     | Returns `True` if the file supports reading.                                                 |
-| `file.writable()`     | Returns `True` if the file supports writing.                                                 |
-| `file.seekable()`     | Returns `True` if the file supports random access (seeking).                                 |
-| `file.detach()`       | Detaches the underlying buffer from the file. Only for binary files.                         |
-| `file.fileno()`       | Returns the file descriptor (an integer) associated with the file.                           |
-| `file.isatty()`       | Returns `True` if the file is connected to a terminal device.                                |
-| `file.__iter__()`     | Returns an iterator over the file lines.                                                     |
-| `file.__next__()`     | Returns the next line in the file when used with an iterator (`for line in file`).            |
+
+# `Error Handling`
+File handling is prone to code breaking errors. It is important to handle any potential errors to keep everything running smoothly. 
+
+```python
+def do_file_stuff(filepath, mode):
+    try:
+        with open(filepath, mode) as file:
+            ...
+
+    except FileNotFoundError:
+        print("FileNotFoundError: Raised when trying to acces a file that does not exist.")
+
+    except PermissionError:
+        print("PermissionError: Raised when trying to access a file without the correct access permission.")
+
+    except IsADirectoryError:
+        print("IsADirectoryError: Raised when trying to open a directory as a file.")
+
+    except NotADirectoryError:
+        print("NotADirectoryError: Raised when part of the path is not a directory.")
+    
+    except ValueError:
+        print("ValueError: Raised for invalide parameters to file related functions.")
+    except OSError:
+        print("OSError: This is a general system related error.")
+
+    except IOError:
+        print("IOError: Raised for input/output operation failures.")
+
+```
+
+<br>
+
+[Back to Top](#python-file-handling)
+
+___
+
+<br>
+
+
+
+*Created and maintained by Mr. Merritt*
+
+
+
+
+
 
 
