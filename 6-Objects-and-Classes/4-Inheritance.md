@@ -146,6 +146,9 @@ s
 
  inheritance extends a class's capabilities by adding new components and modifying existing ones; in other words, the complete recipe is contained inside the class itself and all its ancestors; the object takes all the class's belongings and makes use of them;
 
+# `Multilevel Inheritence`
+
+
 # `Multiple Inheritence` 
 bottom to top overriding
 
@@ -246,3 +249,4 @@ object.m_bottom()
 object.m_middle()
 object.m_top()
 ```
+
