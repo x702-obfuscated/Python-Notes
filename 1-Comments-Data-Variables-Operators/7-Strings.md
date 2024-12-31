@@ -76,6 +76,7 @@ Specifically: a binary value mapped to a specific symbol as defined by ASCII or 
 ASCII is a character encoding standard used to represent text in computers and other devices that use text. ACSII defines a mapping of binary values to human readable characters. 
 > * defines a set of 128 characters, where each character is represented by a unique 7-bit binary number.
 > * forms the basis for more extensive character encoding schemes like Unicode.
+> * includes both the uppercase and lowercase latin alphabet a-z,A-Z
 
 <br>
 
@@ -84,6 +85,7 @@ Unicode is a universal character encoding standard designed to represent and han
 > * The Unicode standard assigns a unique code point to every character, regardless of platform, program, or language
 > * These code points are hexadeximal values prefixed with 'U+'
 
+*A `code point` is a number that represents a character*
 <br>
 
 `Unicode Transformation Format (UTF)`  
@@ -93,6 +95,11 @@ UTF is a family of character encoding schemes used to represent Unicode characte
 `.py files in Python3 are encoded with UTF-8 by default`
 
 <br>
+
+`Internationalization (I18N)`
+The symbols defined by ASCII and insuffient for the entire world, so much software focuses on internationalization.
+* I18N is a shorthand for the word internationalization. (Why? --> I 18Letters N)
+
 
 *NOTE*: 
 > * 1 byte equals 8 bits
@@ -634,6 +641,8 @@ chr(0x61)       # Returns: "a" hex to character
 
 ## `Convert from a Character to an Integer ord()`
 `ord()` converts a character `c` to its Unicode code point (a base 10 integer) representing the given character.
+
+*ord() stands for ordinal. An ordinal is a data type where values can be counted and put in a one-to-one correspondence with positive integers. For example, characters are ordinal because you can assign "A" as the first character, "B" as the second, and so on.*
 
 syntax:
 ```
