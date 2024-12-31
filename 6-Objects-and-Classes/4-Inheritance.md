@@ -156,7 +156,7 @@ class Sub(Super1,Super2) inherits left to right, overrides left to right.
 
 # `Method Overriding`
 
-# `Abstract Methods`
+# `Abstract Classes and Methods`
 
 # `Composition`
 composition projects a class as a container able to store and use other objects (derived from other classes) where each of the objects implements a part of a desired class's behavior.
