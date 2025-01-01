@@ -35,8 +35,13 @@ Covered in this file:
 1. [`Lambda Expressions: Shorthand Functions`](#lambda-expressions-shorthand-functions)
     1. [`Lambdas as function templates`](#lambdas-as-function-templates)
     1. [`Lambdas can be used to pass a small function as an argument`](#lambdas-can-be-used-to-pass-a-small-function-as-an-argument)
+    1. [`Lambdas and map()`](#lambdas-and-map)
+    1. [`Lambdas and filter()`](#lambdas-and-map)
 1. [`Documentation: doc strings`](#documentation-doc-strings)
 1. [`Function Annotations`](#function-annotations)
+1. [`Nested Functions`](#nested-functions)
+    1. [`Functions as Arguments`](#functions-as-arguments)
+1. [`Functions as Objects`](#functions-as-objects)
 1. [`Some Function Examples`](#some-function-examples)
 
 <br>
@@ -1479,6 +1484,18 @@ lambda_function = lambda a,b,c : a + b + c
 lambda_function(1,2,3)      # Returns: 6
 ```
 
+*The PEP 8 style guide for Python states that lambdas should not be assigned to variables, rather they should be defined as functions*
+```python
+'''Instead of This'''
+function = lambda name :  "Hello " + name
+
+'''Do this'''
+def function(x): 
+    return "Hello " + name
+```
+This is because defining functions using `lambdas` and then binding them to a variable duplicates the functionality of the `def` statement. 
+* This is also ok, because it is not generally, how programmers will use `lambdas`.
+
 <br>
 
 ## `Lambdas as function templates`
@@ -1518,6 +1535,86 @@ pairs.sort(key=lambda pair: pair[1])
 print(pairs)
 # Output: [(4, 'four'), (1, 'one'), (3, 'three'), (2, 'two')]
 ```
+
+## `Lambdas and map()`
+`map()` is a built-in function of Python that applies a function to each item of an iterable, and returns a map iterator object (see [iterators.md](../4-Iteration/5-Iterators.md))
+
+Syntax
+```
+map(func, iter1, ...)
+```
+```python
+numbers = [1, 2, 3, 4, 5]
+result = map(lambda x : x * 2, numbers)   # result references the iterator object returned by map()
+
+# Converted to list
+print(list(result)) # Output: [2, 4, 6, 8, 10]
+```
+```python
+numbers = [1,2,3,4,5]
+
+#looping through results items
+for e in map(lambda x : x * 2, numbers):
+    print(e, end = " ")
+```
+
+Remember, that `iterators`:
+* generate one element at a time
+* once an item is returned it cannot be returned again
+* once the iterator has returned all values it is 'empty' (ie. cannot be iterated again.)
+---
+
+<br>
+
+## `Lambdas and filter()`
+`filter()` is a built-in function that filters items of an iterable based on conditions defined in a function, and returns a filter iterable object.
+
+
+Syntax
+```
+filter(function, iterable)
+```
+```python
+numbers = [1, 2, 3, 4, 5, 6]
+result = filter(lambda x: x % 2 == 0, numbers)
+
+# Convert to a list
+print(list(result))  # Output: [2, 4, 6]
+```
+
+Remember, that `iterators`:
+* generate one element at a time
+* once an item is returned it cannot be returned again
+* once the iterator has returned all values it is 'empty' (ie. cannot be iterated again.)
+---
+
+`Removing Falsey values with filter(None, iterable)`
+```python
+values = [0, 1, None, 2, "", 3, False, 4]
+result = filter(None, values)
+
+print(list(result))  # Output: [1, 2, 3, 4]
+```
+
+Remember:  
+`Truthiness` refers to the evaluation of an object's value in a boolean context, ie. determining whether it is considered true or false.*
+* Truthy values are `True`
+* Falsey values are `False`
+
+|Data Type| Truthiness|
+|:-:|:-:|
+|`Integers`, `Floats`|Any non-zero number (integer, float) is evaluated as True|
+|`Strings`, `Lists`, `Tuples`, `Sets`, `Dictionaries`|Any non-empty string, list, tuple, set, or dictionary, is evaluated as True|
+|`Functions`, `Methods`, `Lambdas`, `Classes`|Any function, method, lambda or class is evaluated as True|
+|`Objects`|By default objects are evaluated True, but how an object is evaluated can be changed|
+
+---
+
+<br>
+
+[Back to Top](#python-functions)
+
+___
 
 <br>
 
@@ -1684,6 +1781,196 @@ ___
 
 <br>
 
+# `Nested Functions`
+`Nested functions` are functions defined inside of other functions. 
+
+Syntax
+```
+def outer_function(params, ...):
+    
+    def inner_function(params, ...):
+        ...
+
+    ...
+
+```
+
+`The inner_function only exists within the context of the outer_function. (ie. inner_function is locally scoped.)`
+
+*This can be used in many ways, one simple technique to to create a template function.*
+
+<br>
+
+
+### `Closures` 
+Closures are a feature in Python that allows inner functions can "remember" values from their enclosing scope, even if the enclosing scope is no longer active. 
+* This allows storing values persistently without using global variables. 
+
+abstract example
+```python
+def outer():
+    var = "var is local to outer, 1 scope up from inner"
+
+    def inner():
+        return var
+
+    return inner
+
+example = outer()
+
+print(example())
+# Output: var is local to outer, 1 scope up from inner
+```
+
+<br>
+
+example use case:
+```python
+def multiplier(factor):
+    def multiply(number):
+        return number * factor  # `factor` is remembered from the outer scope
+    return multiply
+
+
+double = multiplier(2)
+triple = multiplier(3)
+
+print(double(5))  # Output: 10
+print(triple(5))  # Output: 15
+```
+
+<br>
+
+[Back to Top](#python-functions)
+
+___
+
+<br>
+
+## `Functions as Arguments`
+Functions can be passed as an argument to another function. 
+ * Built-in functions like `map()` and `filter()` utilize this functionality. 
+ * `Lambdas` are often passed as arguments.
+
+example:
+```python
+'''This is similiar to what map() does, however here we return an iterable, not an iterator'''
+
+def action(action, *args):
+    result = []
+    for item in args:
+        result.append(action(item)) # action is called here
+    
+    return result
+
+
+def square(num):
+    return num ** 2
+
+def cube(num):
+    return num ** 3
+
+list1d = [1,2,3,4,5]
+print(action(square,list1d)) # Output: [1, 4, 9, 16, 25]
+print(action(cube, list1d))  # Output: [1, 8, 27, 64, 125]
+
+```
+
+<br>
+
+[Back to Top](#python-functions)
+
+___
+
+<br>
+
+# `Functions as Objects`
+Functions in Python are, first-class objects, meaning it can be treated just like other objects.
+* A function is an instance of the function class in Python, and it can have attributes like `__name__`, `__doc__`, `__module__`, and others that describe the function
+
+`If you print the name of a function, without calling it you will see the string representation of a function object.`
+```python
+def example(param:str="DEFAULT VALUE") -> str:
+    return param
+
+print(example)
+# Output: <function example at 0x00000245295D1440>
+```
+*0x00000245295D1440 is the memory address where the function object is stored. This is unique to the instance of the function in the current program execution.*
+
+<br>
+
+*The dir function can be used to return a list of the accessible attributes of an object*
+```python
+def example(param:str="DEFAULT VALUE") -> str:
+    return param
+
+print(dir(example))
+
+#Output: 
+# [
+#     '__annotations__', '__builtins__', '__call__', '__class__', '__closure__', '__code__', 
+#     '__defaults__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', 
+#     '__ge__', '__get__', '__getattribute__', '__getstate__', '__globals__', '__gt__', '__hash__', 
+#     '__init__', '__init_subclass__', '__kwdefaults__', '__le__', '__lt__', '__module__', '__name__', 
+#     '__ne__', '__new__', '__qualname__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', 
+#     '__sizeof__', '__str__', '__subclasshook__', '__type_params__'
+# ]
+```
+
+Common Function attributes:
+
+| **Attribute**          | **Description**                                                                                                                                    |
+|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| `__annotations__`      | A dictionary containing any annotations of the function parameters and return value.                                                               |
+| `__builtins__`         | A reference to the built-in namespace, which contains all built-in functions and exceptions.                                                       |
+| `__call__`             | The method that allows the function to be called (invoked) as a callable object.                                                                   |
+| `__class__`            | The class that defines the function (i.e., `type(func)`), which is typically `<class 'function'>` for normal functions.                            |
+| `__closure__`          | A tuple containing any free variables (variables that are referenced but not bound in the function itself) in the function’s closure.              |
+| `__code__`             | The code object that represents the compiled bytecode for the function. Contains information about the function's arguments, source code, etc.     |
+| `__defaults__`         | A tuple containing the default values for the function’s arguments (if any).                                                                       |
+| `__delattr__`          | A method that allows you to delete an attribute from the function.                                                                                 |
+| `__dict__`             | A dictionary containing the function’s attributes (e.g., function name, docstring, etc.).                                                          |
+| `__dir__`              | Returns a list of attributes and methods of the function, typically used for introspection.                                                        |
+| `__doc__`              | The documentation string (docstring) for the function, which describes its purpose and usage.                                                      |
+| `__eq__`               | Method used for equality comparison (`==`). Defines how to compare the function to other objects.                                                  |
+| `__format__`           | A method that returns a string representation of the function in a specified format.                                                               |
+| `__ge__`               | Method for greater-than or equal comparison (`>=`).                                                                                                |
+| `__get__`              | The method used for descriptor protocol, which allows a function to be accessed as a descriptor (e.g., when used as a class method).               |
+| `__getattribute__`     | A method used to retrieve an attribute of the function. It is called when an attribute is accessed via dot notation.                               |
+| `__getstate__`         | A method used to retrieve the state of the function (used in pickling for serialization).                                                          |
+| `__globals__`          | A reference to the global namespace in which the function was defined (essentially the global scope).                                              |
+| `__gt__`               | Method for greater-than comparison (`>`).                                                                                                          |
+| `__hash__`             | A method that returns a hash value for the function (though functions are typically not hashable unless they are specifically designed to be).     |
+| `__init__`             | The method used for initializing a function (usually for a callable object). This method is called when the function is created.                   |
+| `__init_subclass__`    | A method called when a class is subclassed. Not usually used with regular functions.                                                               |
+| `__kwdefaults__`       | A dictionary containing any keyword-only default arguments for the function.                                                                       |
+| `__le__`               | Method for less-than or equal comparison (`<=`).                                                                                                   |
+| `__lt__`               | Method for less-than comparison (`<`).                                                                                                             |
+| `__module__`           | The name of the module in which the function is defined (useful for importing and introspection).                                                  |
+| `__name__`             | The name of the function (as a string).                                                                                                            |
+| `__ne__`               | Method for inequality comparison (`!=`).                                                                                                           |
+| `__new__`              | A method used to create a new function object (usually used by classes).                                                                           |
+| `__qualname__`         | A string representing the qualified name of the function, showing its location in the module or class.                                             |
+| `__reduce__`           | A method used by Python's pickle module to allow a function to be serialized.                                                                      |
+| `__reduce_ex__`        | A method used by Python’s pickle module to allow for an extended version of serialization.                                                         |
+| `__repr__`             | A method that returns a string representation of the function, typically used for debugging or printing.                                           |
+| `__setattr__`          | A method used to set an attribute on the function.                                                                                                 |
+| `__sizeof__`           | Returns the size of the function object in memory (useful for memory profiling).                                                                   |
+| `__str__`              | A method that returns a human-readable string representation of the function (typically used for printing).                                        |
+| `__subclasshook__`     | A method used for custom subclassing behavior, particularly when creating a custom class hierarchy.                                                |
+| `__type_params__`      | The type parameters for the function, useful in generic or parameterized code.                                                                     |
+
+
+<br>
+
+[Back to Top](#python-functions)
+
+___
+
+<br>
+
+
 # `Some Function Examples`
 Functions can include all kinds of different code including other functions.
 Conditionals, While Loops, For loops, etc. can all be used inside of functions.
@@ -1825,9 +2112,11 @@ def binary_search(arr, target):
 
 <br>
 
-[Back to Top]()
+[Back to Top](#python-functions)
 
 ___
+
+<br>
 
 *Created and maintained by Mr. Merritt*
 
