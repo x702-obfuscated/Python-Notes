@@ -1,6 +1,41 @@
-#===============================================================================================================================#
+*WORK IN PROGRESS, CHECK BACK LATER FOR UPDATES*
+# `Python Modules`
+*Use CTRL + F to search for keywords in this file*  
+*You are encouraged to copy and alter the code in this file to understand how it works*
+___
+
+Covered in this file:
+1. [``]()
+
+
+<br>
+
+___
+
+<br>
+
+# ``
+
+<br>
+
+[Back To Top](#python-decorators)
+
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*
+
+
+
+
+
+
+
+
+
 '''Python Modules'''
-#===============================================================================================================================#
+
 
 '''
   Covered in this file:
@@ -29,3 +64,9 @@ Here’s a detailed explanation of __main__:
 Every Python module (i.e., a Python file) has a special built-in variable called __name__.
 When a Python script is run, the Python interpreter assigns the value '__main__' to the __name__ variable in that script.
 If the script is imported as a module into another script, the __name__ variable is set to the module’s name (i.e., the filename without the .py extension).
+
+
+# `Modules as Objects`
+
+
+#
