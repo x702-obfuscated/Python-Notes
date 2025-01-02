@@ -161,38 +161,101 @@ s
 
 # `Single Inheritence`
 Single Inheritence refers to once class inheriting from a single parent class.
-* The child class extends the capabilites of the parent class.  
-* The child class is able to modify the behavior inherited fromt the parent class. (polymorphism)
+
+A child class:
+* inherits attributes (variables and methods) from a parent class
+* extends (adds to) the inherited attributes
+* can modify the behaviour (methods) inherited from the parent class. (polymorphism)
+
 
 <br>
 
-To inherit from another class, pass the identifier of the parent class as an argument to the child class.
+## `Inherit`
+A child class inherits the attributes (variables and methods) of its parent 
+* To inherit from another class, pass the identifier of the parent class as an argument to the child class.
 
 Syntax
 ```
+class Parent:
+    ...
+
 class Child(Parent):
     ...
 ```
+
 ```python
 class Parent():
-    ...
+    def __init__(self):
+        self.variable = "This variable comes from Parent"
+
+    def method(self):
+        print("This method comes from Parent")
+
 
 class Child(Parent):
-    '''Child Inherits from Parent'''
-    ...
+    def __init__(self):
+        super().__init__()
+
+
+
+obj = Child()       # Constructing a Child object
+print(obj.variable) # Output: This variable comes from Parent
+obj.method()        # Output: This method comes from Parent
 ```
+
+<br>
+
+## `Extend`
+A child class extends the functionality of the parent class from which it inherits attributes. 
+* This means a child class adds its own attributes
+
+
+The child class can add new variables and methods while also having access the parent class attributes. 
+* The parent class will not have access to child class attributes. 
 ```python
-class Entity():
-    ...
+class Parent():
+    def __init__(self):
+        self.variable = "This variable comes from Parent"
 
-class Player(Entity):
-    '''Player Inherits from Entity'''
-    ...
+    def method(self):
+        print("This method comes from Parent")
 
-class Enemy(Entity):
-    '''Enemy Inherits from Entity'''
-    ...
 
+class Child(Parent):
+    def __init__(self):
+        super().__init__()
+        self.new_variable = "This variable comes from Child"
+
+    def new_method(self):
+        print("This method comes from Child")
+
+
+parent = Parent()           # Construct and assign a Parent object
+print(
+    parent.variable,        # Output: This variable comes from Parent
+    parent.new_varaible     # Output: AttributeError: 'Parent' object has no attribute 'new_varaible'
+)
+
+parent.method()             # Output: This method comes from Parent
+parent.new_method()         # Output: AttributeError: 'Parent' object has no attribute 'new_method's
+
+
+child = Child()             # Construct and assign a Child object
+
+print(
+    child.variable,         # Output: This variable comes from Parent
+    child.new_variable,     # Output: This variable comes from Child
+)
+
+child.method()              # Output: This method comes from Parent
+child.new_method()          # Output: This method comes from Child
+```
+
+<br>
+
+## `Modify`
+A child class can modify the functionality of the methods inherited from a parent class.
+* This is a form of polymorphism in programming.
 
 # `Constructor Inheritence`
 
