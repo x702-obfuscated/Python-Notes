@@ -35,6 +35,7 @@ Covered in this file:
     1. [`Public`](#public)
     1. [`Protected`](#protected)
     1. [`Private`](#private)
+1. [`Classes as Objects`]()
 1. [`Concrete Examples with Simple Classes`](#concrete-examples-with-simple-classes)
 
 
@@ -1119,6 +1120,169 @@ ___
 
 <br>
 
+# `Classes as Objects`
+Like everything in Python Classes are also objects. 
+* Classes are objects of class `type`
+* Every class automatically inherits from class `object`
+
+To see this with a class:
+```python
+class MyClass():
+    pass
+
+# Checking Type
+print(type(MyClass))                # Output: <class 'type'>
+print(MyClass.__class__)            # Output: <class 'type'>
+
+# Checking Base Classes (aka Parent or Super Class)
+print(MyClass.__bases__)            # Output: (<class 'object'>,)
+print(issubclass(MyClass,object))   # Output: True
+```
+
+Class object Attributess
+
+| Attribute | Description |
+|-------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| `__abstractmethods__`| A set of abstract methods in the class (used in abstract base classes). |
+| `__annotations__`| A dictionary holding the class variable annotations (used for type hinting).|
+| `__base__` | The immediate parent class of the class (for single inheritance). |
+| `__bases__`| A tuple containing the base classes of the class (for multiple inheritance). |
+| `__basicsize__`| The basic size of the class in memory (not including inheritance and dynamically added attributes). |
+| `__call__` | Defines behavior when the object is called like a function. |
+| `__class__`| A reference to the class that defines the current instance. Used to access the metaclass. |
+| `__delattr__`| Defines behavior when an attribute is deleted (using `del` keyword).|
+| `__dict__` | A dictionary containing the class's or instance’s namespace, including all its attributes. |
+| `__dictoffset__` | The offset for the dictionary in the object. This is typically used for the implementation of attributes.|
+| `__dir__`| Used to customize the list of attributes returned by `dir()` when inspecting the object or class. |
+| `__doc__`| The docstring associated with the class or function.|
+| `__eq__` | Defines behavior for the equality operator `==`.|
+| `__firstlineno__`| The first line number of the class definition in the source code (if available).|
+| `__flags__`| Flags that define specific properties or behaviors of the class (related to type).|
+| `__format__` | Defines how the object is formatted when used with `format()` or f-strings.|
+| `__ge__` | Defines behavior for the greater than or equal operator `>=`. |
+| `__getattribute__` | Called when any attribute is accessed (overrides normal attribute access behavior). |
+| `__getstate__` | Used to customize object serialization (e.g., for `pickle` or `copy`). |
+| `__gt__` | Defines behavior for the greater than operator `>`.|
+| `__hash__` | Defines the hash value of the object, used in hash-based collections like `set` and `dict`. |
+| `__init__` | The initializer method for a class, automatically called when an instance is created. |
+| `__init_subclass__`| Called when a class is subclassed, allowing customization of class behavior during subclass creation.|
+| `__instancecheck__`| Used in `isinstance()` to check whether an object is an instance of the class. |
+| `__itemsize__` | The size of each item in an instance (used in low-level implementations).|
+| `__le__` | Defines behavior for the less than or equal operator `<=`. |
+| `__lt__` | Defines behavior for the less than operator `<`.|
+| `__module__` | The name of the module where the class was defined.|
+| `__mro__`| The Method Resolution Order, a tuple of classes that defines the order in which attributes are looked up.|
+| `__name__` | The name of the class. |
+| `__ne__` | Defines behavior for the inequality operator `!=`.|
+| `__new__`| Responsible for creating and returning a new instance of the class. Invoked before `__init__`. |
+| `__or__` | Defines behavior for the bitwise OR operator `|`. |
+| `__prepare__`| Used in custom metaclasses to initialize the class namespace before the class is created.|
+| `__qualname__` | The qualified name of the class, especially useful for nested or dynamically created classes.|
+| `__reduce__` | Used by `pickle` for serializing the object. It defines how to convert an object into a reduced form for storage.|
+| `__reduce_ex__`| An extended version of `__reduce__`, used for more complex serialization cases (in `pickle`). |
+| `__repr__` | Defines the string representation of the class, often used for debugging. |
+| `__ror__`| Defines behavior for the reverse bitwise OR operator `|`. |
+| `__setattr__`| Called when an attribute is set on the object. This allows control over how attributes are assigned.|
+| `__sizeof__` | Returns the size of the object in memory, in bytes. |
+| `__static_attributes__`| Holds static attributes of the class (typically used in some frameworks or implementation-specific cases). |
+| `__str__`| Defines the string representation of the object, used by `str()` and `print()`. |
+| `__subclasscheck__`| Used in `issubclass()` to check whether a class is a subclass of another. |
+| `__subclasses__`| Returns a list of subclasses for a class.|
+| `__subclasshook__` | Determines whether a class is considered a subclass of another in `issubclass()` checks. |
+| `__text_signature__` | Defines the text signature of the function or method (used in function introspection).|
+| `__type_params__`| The type parameters used for generic classes (available in Python 3.9+).|
+| `__weakref__`| A weak reference to the object, preventing it from being strongly referenced and allowing garbage collection. |
+| `__weakrefoffset__`| The offset for the weak reference in the object (internal implementation).|
+| `mro`| An alias for `__mro__`, showing the method resolution order in a class hierarchy.|
+
+<br>
+
+
+
+To see all attributes of a object including inherited, dynamically added, or hidden ones it is necessary to combine different inspection techniques.
+
+| Feature| `dir()`| `__dict__`| `inspect.getmembers()` |
+|----|----|--|--|
+| **Returns**| Names of attributes (strings).| Direct namespace as a dictionary. | Names and values as a list of tuples.|
+| **Includes Inherited** | Yes | No| Yes|
+| **Includes Values**| No| Yes | Yes|
+| **Includes Special Methods** | Yes | No| Yes|
+| **Use Case** | Quick overview of available attributes.| Access explicitly stored attributes.| Comprehensive inspection of all attributes. |
+
+<br>
+
+```python
+class Parent():
+    pass
+
+class Child(Parent):
+    pass
+
+def list_all_attributes(obj):
+    attributes = set(dir(obj))  # Start with dir()
+    
+    # Add attributes from __dict__
+    if hasattr(obj, '__dict__'):
+        attributes.update(obj.__dict__.keys())
+    
+    # Add attributes from bases and MRO
+    if hasattr(obj, '__class__'):
+        for cls in obj.__class__.__mro__:
+            attributes.update(cls.__dict__.keys())
+    
+    # Use inspect.getmembers for anything else
+    import inspect
+    attributes.update(name for name, _ in inspect.getmembers(obj))
+    
+    return sorted(attributes)
+
+print(list_all_attributes(Child))
+# Output:
+# [
+#     '__abstractmethods__', '__annotations__', '__base__', '__bases__', '__basicsize__', '__call__', 
+#     '__class__', '__delattr__', '__dict__', '__dictoffset__', '__dir__', '__doc__', '__eq__', '__firstlineno__', 
+#     '__flags__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', 
+#     '__init_subclass__', '__instancecheck__', '__itemsize__', '__le__', '__lt__', '__module__', '__mro__', '__name__', 
+#     '__ne__', '__new__', '__or__', '__prepare__', '__qualname__', '__reduce__', '__reduce_ex__', '__repr__', '__ror__', 
+#     '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasscheck__', '__subclasses__', 
+#     '__subclasshook__', '__text_signature__', '__type_params__', '__weakref__', '__weakrefoffset__', 'mro'
+# ]
+```
+
+<br>
+
+As an object the reference to a class can be passed around. 
+```python
+class Example():
+
+    def __init__(self):
+        print("Example Object Created")
+
+
+
+# Passed to a new variable name
+Name = Example
+
+Name() #Creates an object from the Example class
+# Output: Example Object Created
+
+
+
+def create_object(cls):
+    return cls()
+    
+# Passed as an argument
+create_object(Example)  #Creates an object from the Example class
+# Output: Example Object Created
+```
+
+<br>
+
+[Back to Top](#python-classes)
+
+___
+
+<br>
 
 # `Concrete Examples with Simple Classes`
 

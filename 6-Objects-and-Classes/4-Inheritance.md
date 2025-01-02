@@ -97,19 +97,19 @@ Key Concepts in Object-Oriented Programming:
 <br>
 
 [Back to Top](#python-inheritence)
-
+w
 ___
 
 <br>
 
 # `Inheritence Defined`
-Basically: `Inheritence` allows for one class (aka: subclass, child class, derived class) to  inherit the data and methods from an existing class (super class, parent class, base class) 
+Basically: `Inheritence` allows for one class (aka: subclass, child class, derived class) to  inherit the data and methods from an existing class (aka: super class, parent class, base class) 
 
-Specifically: `Inheritance` is a mechanism where a new class (called a child class or subclass) derives data and methods from an existing class (called a parent class, super class, or base class). 
+Specifically: `Inheritance` is a mechanism where a new class (aka: subclass, child class, derived class) derives data and methods from an existing class (aka: super class, parent class, base class). 
 
 <br>
 
-Inhertence is yet another way to reuse code. It allows for the creation of hierarchical relationships between classes, where child classes can inherit, extend, or modify the behavior of parent classes.
+Inhertence is another way to reuse code without duplication. It allows for the creation of hierarchical relationships between classes, where child classes can inherit, extend, or modify the behavior of parent classes.
 
 | **Term** | **Description**|
 |-|-|
@@ -119,6 +119,26 @@ Inhertence is yet another way to reuse code. It allows for the creation of hiera
 | `Method Overriding`  | A child class can override or redefine methods from the parent class to provide its own implementation. |
 | `Single Inheritance` | A child class inherits from one parent class. |
 | `Multiple Inheritance` | A child class inherits from more than one parent class (Python supports this). |
+
+<br>
+
+By default all classes in Python inherit from a built-in base class called `object`.
+* Therefore every class is a child class of `object`
+* Every class is also an object of class `type`
+
+You can check the parent class of any class by accessing the `__bases__` attribute.
+
+```python
+class MyClass():
+    pass
+
+
+print(MyClass.__bases__)            # Output: (<class 'object'>,)
+print(issubclass(MyClass,object))   # Output: True
+
+print(type(MyClass)) # Output: <class 'type'>
+```
+
 
 
 <br>
@@ -139,12 +159,50 @@ Supre.__init__(self, ...)
 super().__init__(...)
 s
 
-
 # `Single Inheritence`
+Single Inheritence refers to once class inheriting from a single parent class.
+* The child class extends the capabilites of the parent class.  
+* The child class is able to modify the behavior inherited fromt the parent class. (polymorphism)
 
- the subclass is able to modify its superclass behavior (just like in the example) is called polymorphism.
+<br>
 
- inheritance extends a class's capabilities by adding new components and modifying existing ones; in other words, the complete recipe is contained inside the class itself and all its ancestors; the object takes all the class's belongings and makes use of them;
+To inherit from another class, pass the identifier of the parent class as an argument to the child class.
+
+Syntax
+```
+class Child(Parent):
+    ...
+```
+```python
+class Parent():
+    ...
+
+class Child(Parent):
+    '''Child Inherits from Parent'''
+    ...
+```
+```python
+class Entity():
+    ...
+
+class Player(Entity):
+    '''Player Inherits from Entity'''
+    ...
+
+class Enemy(Entity):
+    '''Enemy Inherits from Entity'''
+    ...
+
+
+# `Constructor Inheritence`
+
+## `super()`
+
+# `Access Modifiers`
+_
+__
+
+# `Method Resolution Order`
 
 # `Multilevel Inheritence`
 
@@ -155,6 +213,7 @@ bottom to top overriding
 class Sub(Super1,Super2) inherits left to right, overrides left to right.
 
 # `Method Overriding`
+polymorphism
 
 # `Abstract Classes and Methods`
 
