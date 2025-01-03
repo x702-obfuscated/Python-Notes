@@ -167,6 +167,72 @@ A child class:
 * extends (adds to) the inherited attributes
 * can modify the behaviour (methods) inherited from the parent class. (polymorphism)
 
+<br>
+
+When learning about inheritence it can be difficult to keep all of the ducks in a row. 
+The function below can be used to help you understand the relationships for any class you encounter. 
+```python
+def show_info(name:str=None,ignore_special:bool=True)-> None:
+    '''
+    Displays and returns detailed info about a given object
+
+    Parameters:
+    name (str) : The variable identifier associated with the object
+    ignore_special (bool, optional) : If True ignores dunder '__' attributes
+    '''
+
+    import os
+    
+    if name in locals():
+        obj = locals.get(name)
+    elif name in globals():
+        obj = globals().get(name)
+    else:
+        print(f"'{name}' Object Could Not Be Found")
+        return 
+
+
+    attributes = dir(obj)
+
+    if ignore_special:
+        attributes = list(filter(lambda atr : "__" not in atr, attributes))
+
+    module = obj.__class__.__module__
+
+    if module == "__main__":
+        module = __file__.split(os.sep)[-1].replace(".py","")
+
+    s = (
+        f"Identifier: {name}",
+        f"Class Module: {module}",
+        f"Class: {obj.__class__}",
+        f"Inherits From: {obj.__class__.__bases__}",
+        f"Attributes: {attributes}"
+    )
+
+    print(*s,sep = "\n",end="\n\n")
+```
+```python
+class Example():
+    def __init__(self):
+        self.x = 1
+        self.y = 2
+        self.z = 3
+
+
+    def do_stuff(self):
+        print("Doing stuff...")
+
+
+obj = Example()
+show_info("obj")
+# Output:
+# Identifier: obj
+# Class Module: main
+# Class: <class '__main__.Example'>
+# Inherits From: (<class 'object'>,)
+# Attributes: ['do_stuff', 'x', 'y', 'z']
+```
 
 <br>
 
@@ -179,7 +245,7 @@ Syntax
 class Parent:
     ...
 
-class Child(Parent):
+class C hild(Parent):
     ...
 ```
 
@@ -255,7 +321,28 @@ child.new_method()          # Output: This method comes from Child
 
 ## `Modify`
 A child class can modify the functionality of the methods inherited from a parent class.
-* This is a form of polymorphism in programming.
+* This is a form of polymorphism.
+
+```python
+class Parent():
+    def __init__(self, name):
+        self.name = name
+
+    def action(self):
+        print(f"{self.name} performs an action")
+
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__()
+
+    def action(self,act=None):
+        if act is None:
+            super().action()
+        else:
+            print(f"{self.name} {act}")
+
+
 
 # `Constructor Inheritence`
 
