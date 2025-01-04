@@ -329,19 +329,32 @@ class Parent():
         self.name = name
 
     def action(self):
-        print(f"{self.name} performs an action")
+        print(f"{self.name} acts like a Parent.")
 
 
 class Child(Parent):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,name):
+        super().__init__(name)
 
     def action(self,act=None):
+        '''Overrides action() with new functionality'''
         if act is None:
-            super().action()
+            super().action() # Calls the Parent version of action()
         else:
             print(f"{self.name} {act}")
 
+
+
+parent = Parent("parent")
+child = Child("child")
+
+parent.action()                     # Output: parent acts like a Parent
+
+child.action()                      # Output: child acts like a Parent
+child.action("acts like a Child.")  # Output: child acts like a Child
+```
+
+Here the Child class overrides the function of its inherited method 'action'
 
 
 # `Constructor Inheritence`
