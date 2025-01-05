@@ -686,6 +686,7 @@ ___
 | `file.read(size=-1)`          | Reads up to `size` bytes (or the entire file if `size` is not specified or is `-1`).                          |
 | `file.readline(size=-1)`      | Reads a single line from the file, up to `size` characters if specified.                                      |
 | `file.readlines(hint=-1)`     | Reads all lines from the file and returns them as a list. The optional `hint` limits the total bytes read.    |
+| `file.readinto(buffer)`       | Reads bytes directly into a pre-allocated writable buffer and returns the number of bytes read.|
 |||
 | `file.writable()`             | Returns `True` if the file supports writing.                                                                  |
 | `file.write(string)`          | Writes a string to the file.                                                                                  |
@@ -726,7 +727,7 @@ When opening files with `open()` file contents can be read using the following m
 <br>
 
 File objects returned from `open()` can be read using the followindg methods:
-* `.read()`,`.readline()`,`.readlines()`
+* `.read()`,`.readline()`,`.readlines()`, `.readinto()`
 
 <br>
 
@@ -796,6 +797,22 @@ with open("/path/to/file.txt", "r") as file:
 ```python
 with open("/path/to/file.txt", "r") as file:
   file.readlines(sizehint=4192)
+```
+
+<br>
+
+`.readinto()` reads bytes from the file directly into a pre-allocated writable buffer.  
+* The `buffer` must support the writable buffer protocol (e.g., `bytearray`, `memoryview`).  
+* Returns the number of bytes read into the buffer.  
+* Does not create a new object; writes directly to the existing buffer, optimizing memory usage.  
+
+
+```python
+with open('example.bin', 'rb') as f:
+    buffer = bytearray(16)              # Create a pre-allocated buffer
+    num_bytes = f.readinto(buffer)      # Read data into the buffer
+    print(f"Read {num_bytes} bytes")    # Output: Read 16 bytes                               
+    print(buffer)                       # Output will vary.
 ```
 
 <br>

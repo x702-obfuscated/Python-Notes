@@ -157,7 +157,6 @@ is not
 
 Supre.__init__(self, ...)
 super().__init__(...)
-s
 
 # `Single Inheritence`
 Single Inheritence refers to once class inheriting from a single parent class.
@@ -323,6 +322,8 @@ child.new_method()          # Output: This method comes from Child
 A child class can modify the functionality of the methods inherited from a parent class.
 * This is a form of polymorphism.
 
+This is called `method overriding`. 
+
 ```python
 class Parent():
     def __init__(self, name):
@@ -354,12 +355,118 @@ child.action()                      # Output: child acts like a Parent
 child.action("acts like a Child.")  # Output: child acts like a Child
 ```
 
-Here the Child class overrides the function of its inherited method 'action'
+Here the Child class overrides the function of its inherited method 'action'.
 
 
 # `Constructor Inheritence`
+A child class by default inherits the constructor (`__init__`) method of its parent. 
+
+```python
+class Parent():
+    def __init__(self, name="Parent"):
+        self.name = name
+
+class Child(Parent):
+    pass
+
+child = Child("Bob")
+print(child.name)       # Output: Bob
+```
+
+<br>
+
+The child class can override the constructor (`__init__`) of its parent class to add new functionality.
+1. To intialize the inherited parent attributes call `super().__init__()`
+
+*`The parent constuctor should be called at the beginning of the child constructor to ensure all parent attributes are intialized before an specific child class attributes.`*
+
+*`To properly inherit the parent class attributes super().__init__() must be called`*
+
+```python
+class Parent():
+    def __init__(self, name="Parent"):
+        self.name = name
+
+
+class Child(Parent):
+
+    def __init__(self, 
+        name="Child",
+        age=0
+    ):
+        super().__init__(name)     #Calling the Parent Constructor and passing name
+        self.age = age
+
+
+child = Child("Bob",30)
+print(child.name)                  # Output: Bob
+print(child.age)                   # Output: 30
+```
 
 ## `super()`
+The `super()` function in Python is used to access attributes (methods/variables) of a parent class.
+* super() is the constructor for a special `super` builtin class.
+* super() returns a proxy object that acts as a intermediary between the current object, and the parent class. 
+* essentially it is a reference to the parent class attributes
+
+
+```python
+class Parent():
+
+    def __init__(self):
+        pass
+
+class Child(Parent):
+    
+    def return_super(self):
+        return super()
+
+sup = Child().return_super()
+
+show_info("sup") # Using the show_info() function provided in these notes
+# Identifier: sup
+# Class Module: builtins
+# Class: <class 'super'>
+# Inherits From: (<class 'object'>,)
+# Attributes: []
+```
+
+<br>
+
+Use `super()` to call the methods of the parent class.
+
+```python
+class Parent():
+    def __init__(self, name):
+        self.name = name
+
+    def action(self):
+        print(f"{self.name} acts like a Parent.")
+
+
+class Child(Parent):
+    def __init__(self,name):
+        super().__init__(name)  # Calls the Parent constructor passing `name` as an argument
+
+    def action(self,act=None):
+        '''Overrides action() with new functionality'''
+        if act is None:
+            super().action()    # Calls the Parent version of action()
+        else:
+            print(f"{self.name} {act}")
+
+
+
+parent = Parent("parent")
+child = Child("child")
+
+parent.action()                     # Output: parent acts like a Parent
+
+child.action()                      # Output: child acts like a Parent
+child.action("acts like a Child.")  # Output: child acts like a Child
+```
+
+
 
 # `Access Modifiers`
 _
@@ -377,6 +484,8 @@ class Sub(Super1,Super2) inherits left to right, overrides left to right.
 
 # `Method Overriding`
 polymorphism
+Method overriding occurs when a child class provides a specific implementation of a method that is already defined in its parent class, replacing or extending the parent’s behavior.
+
 
 # `Abstract Classes and Methods`
 
