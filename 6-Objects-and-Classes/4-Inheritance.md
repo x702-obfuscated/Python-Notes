@@ -97,7 +97,7 @@ Key Concepts in Object-Oriented Programming:
 <br>
 
 [Back to Top](#python-inheritence)
-w
+
 ___
 
 <br>
@@ -357,6 +357,13 @@ child.action("acts like a Child.")  # Output: child acts like a Child
 
 Here the Child class overrides the function of its inherited method 'action'.
 
+<br>
+
+[Back to Top](#python-inheritence)
+
+___
+
+<br>
 
 # `Constructor Inheritence`
 A child class by default inherits the constructor (`__init__`) method of its parent. 
@@ -402,6 +409,8 @@ child = Child("Bob",30)
 print(child.name)                  # Output: Bob
 print(child.age)                   # Output: 30
 ```
+
+<br>
 
 ## `super()`
 The `super()` function in Python is used to access attributes (methods/variables) of a parent class.
@@ -466,31 +475,388 @@ child.action()                      # Output: child acts like a Parent
 child.action("acts like a Child.")  # Output: child acts like a Child
 ```
 
+<br>
 
+[Back to Top](#python-inheritence)
+
+___
+
+<br>
+
+# `Method Overriding`
+`Method overriding` occurs when a child class provides a specific implementation of a method that is already defined in its parent class, replacing or extending the parent’s behavior.
+1. Methods must have the same name. 
+1. The child version of the method can use `super()` to call the parent version.
+
+```python
+class Parent():
+    def __init__(self, name):
+        self.name = name
+
+    def action(self):
+        print("Parent version of action()")
+
+
+class Child(Parent):
+    def __init__(self, name):
+        super().__init__(name)
+
+    
+    def action(self):
+        '''Overriding action()'''
+        print("Child version of action()")  
+        super().action()                    # Calling Parent version
+
+
+
+child = Child("Alice")
+child.action()
+# Output:
+# Child version of action()
+# Parent version of action()
+```
+
+<br>
+
+[Back to Top](#python-inheritence)
+
+___
+
+<br>
 
 # `Access Modifiers`
-_
-__
+`Access modifiers` in Python determine the accessibility and visibility of class attributes and methods from outside the class, using naming conventions (e.g., `public`, `protected`, `private`) instead of explicit keywords like in other languages.
+
+<br>
+
+## `Public`
+Public variables and methods are accessible from anywhere. No prefixing.
+1. This includes classes that inherit from this base class.     
+
+syntax : 
+```
+def method_name():
+    ...
+```
+real example:
+```python
+class Player:
+    def __init__(self):
+        self.atk = 10
+
+    #Public Method
+    def fight(self):
+        print(f"The player does {self.atk}pt(s) of damage")
+```
+
+<br>
+
+## `Protected`
+Protected variables and methods are indicated by a single underscore `_` prefix, suggesting that it should not be accessed directly outside of the class and its subclasses.
+1. These attributes are not intended for use outside of the class hierarchy.
+
+*This is just a convention and is not actually enforced by the Python interpreter*
+
+syntax:
+```
+def _method_name():
+    ...
+```
+real example:
+```python
+class Player:
+    def __init__(self, name, hp, mp, stamina):
+        self.name = name
+        self.hp = hp
+        self.mp = mp
+        self.stamina = stamina
+
+    def regenerate_health(self, amount):
+        '''Public method to regenerate health.'''
+        self._calculate_regen_rate()
+        self.hp += amount
+        if self.hp > 100:  # Assuming 100 is the maximum health
+            self.hp = 100
+
+    #Protected Method
+    def _calculate_regen_rate(self):
+        '''
+        Protected method to calculate regeneration rate based on stamina.
+        '''
+        regen_rate = self.stamina * 0.1  # Example calculation
+        print(f"Regeneration rate is: {regen_rate}")
+
+
+player1 = Player("Eldrin the Brave", 50, 70, 85)
+
+player1.regenerate_health(20)   # Output: Regeneration rate is: 8.5
+print(player1.hp)               # Output: 70
+```
+
+<br>
+
+## `Private`
+Indicated by a double underscore `__` prefix, suggesting that it should not be accessed from outside of the class. 
+1. Trying to access the private method or attribute directly will result in an `AttributeError` 
+1. private attributes are not directly accessible by derived classes. 
+
+
+<br>
+ 
+When you define a method or attribute with a name that starts with double underscores, Python internally changes the name by prefixing it with _ClassName, this is called `name mangling`. 
+
+<br>
+
+syntax:
+```
+def __method_name():
+    ...
+```
+real example:
+```python
+class Player:
+    def __init__(self, name, hp, mp, stamina):
+        self.name = name
+        self.hp = hp
+        self.mp = mp
+        self.stamina = stamina
+        self.__secret_score = 0
+
+    def perform_action(self, action_value):
+        '''Public method that performs an action and updates the secret score.'''
+        self.hp -= action_value  # Example action affecting health
+        self.__update_secret_score(action_value)
+
+    def __update_secret_score(self, value):
+        '''Private method to update the secret score.'''
+        self.__secret_score += value
+        print(f"Secret score updated to: {self.__secret_score}")
+
+
+player1.__update_secret_score(5)  # Raises: AttributeError
+
+
+# Name mangling allows access, but it's not recommended
+player1._Player__update_secret_score(5)  # Output: Secret score updated to: 15
+``` 
+
+
+<br>
+
+`Private attributes are not directly accessible by derived classes.`
+1. Name mangling provides access, but is not recommended.
+
+```python
+class Parent():
+    def __init__(self, name):
+        self.name = name
+
+    def __action(self):
+        print("Parent version of action()")
+
+
+class Child(Parent):
+    def __init__(self, name):
+        super().__init__(name)
+
+        super().__action() # AttributeError: 'super' object has no attribute '_Child__action'
+```
+```python
+class Parent():
+    def __init__(self, name):
+        self.name = name
+
+    def __action(self):
+        print("Parent version of action()")
+
+
+class Child(Parent):
+    def __init__(self, name):
+        super().__init__(name)
+
+child = Child("Alice")
+
+child.__action() # AttributeError: 'Child' object has no attribute '__action'
+```
+
+`Name Mangling to provide access, NOT RECOMMENDED.`
+
+```python
+class Parent():
+    def __init__(self, name):
+        self.name = name
+
+    def __action(self):
+        print("Parent version of action()")
+
+
+class Child(Parent):
+    def __init__(self, name):
+        super().__init__(name)
+
+        super()._Parent__action() # Output: Perent version of action()
+        
+
+child = Child("Alice")
+
+child._Parent__action()     # Output: Parent version of action()
+```
+
+<br>
+
+[Back to Top](#python-inheritence)
+
+___
+
+<br>
+
+
+# `Multilevel Inheritence`
+Multilevel Inheritence involves a child class that inherits from a parent class which in turn inherits from its own parent class. 
+
+
+```python
+class GrandParent:
+    def __init__(self,family_name):
+        print("GrandParent() called.")
+        self.family_name = family_name
+
+
+class Parent(GrandParent):
+    def __init__(self,family_name):
+        print("Parent() called.")
+        super().__init__(family_name) # Calls the GrandParent() constructor
+        
+
+class Child(Parent):
+    def __init__(self, family_name):
+        print("Child() called.")
+        super().__init__(family_name) # Calls the Parent() constructor
+
+
+
+
+child = Child("Smith")
+
+print(child.family_name)  
+# Output: 
+# Child() called.
+# Parent() called.
+# GrandParent() called.
+# Smith
+```
+
+<br>
+
+It is not possible to directly access attributes from a GrandParent class using `super()`. If it is necessary to access a GrandParent attribute directly you will need to  us the name of the class. 
+1. When accessing attributes this way, you must pass `self` to the method.
+1. Generally this is not recommended as it breaks the inheritence chain (MRO)
+1. Composition may make more sense in your use case.
+
+```python
+class GrandParent:
+    def __init__(self,family_name):
+        self.family_name = family_name
+
+
+    def action(self):
+        print("GrandParent action")
+
+class Parent(GrandParent):
+    def __init__(self,family_name):
+        super().__init__(family_name) 
+
+    def action(self):
+        print("Parent action")
+        
+
+class Child(Parent):
+    def __init__(self, family_name):
+        super().__init__(family_name) 
+
+    def action(self):
+        GrandParent.action(self)      # Directly access the GrandParent action()
+
+
+child = Child("Smith")
+
+child.action()                        # Output: GrandParent action
+```
+
+
+<br>
+
+[Back to Top](#python-inheritence)
+
+___
+
+<br>
+
 
 # `Method Resolution Order`
 
-# `Multilevel Inheritence`
+Method Resolution Order
+MRO, in general, is a way (you can call it a strategy) in which a particular programming language scans through the upper part of a class’s hierarchy in order to find the method it currently needs. It's worth emphasizing that different languages use slightly (or even completely) different MROs. Python is a unique creature in this respect, however, and its customs are a bit specific.
 
+We're going to show you how Python's MRO works in two peculiar cases that are clear-cut examples of problems which may occur when you try to use multiple inheritance too recklessly.
+
+
+
+
+<br>
+
+[Back to Top](#python-inheritence)
+
+___
+
+<br>
 
 # `Multiple Inheritence` 
 bottom to top overriding
 
 class Sub(Super1,Super2) inherits left to right, overrides left to right.
 
-# `Method Overriding`
-polymorphism
-Method overriding occurs when a child class provides a specific implementation of a method that is already defined in its parent class, replacing or extending the parent’s behavior.
 
+<br>
+
+[Back to Top](#python-inheritence)
+
+___
+
+<br>
+
+# `Composition`
+Composition projects a class as a container able to store and use other objects (derived from other classes) where each of the objects implements a part of a desired class's behavior.
+
+
+
+<br>
+
+[Back to Top](#python-inheritence)
+
+___
+
+<br>
 
 # `Abstract Classes and Methods`
 
-# `Composition`
-composition projects a class as a container able to store and use other objects (derived from other classes) where each of the objects implements a part of a desired class's behavior.
+
+<br>
+
+[Back to Top](#python-inheritence)
+
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*
+
+
+
+
+
+
+
 
 ```python
 import time
@@ -546,10 +912,6 @@ object.m_middle()
 object.m_top()
 
 ```
-Method Resolution Order
-MRO, in general, is a way (you can call it a strategy) in which a particular programming language scans through the upper part of a class’s hierarchy in order to find the method it currently needs. It's worth emphasizing that different languages use slightly (or even completely) different MROs. Python is a unique creature in this respect, however, and its customs are a bit specific.
-
-We're going to show you how Python's MRO works in two peculiar cases that are clear-cut examples of problems which may occur when you try to use multiple inheritance too recklessly.
 
 
 
