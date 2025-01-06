@@ -794,11 +794,48 @@ ___
 
 
 # `Method Resolution Order`
+`Method Resolution Order (MRO)` is the name given to how Python resolves methods through scanning each part of a class' hierarchy to find the method to execute. 
+1. Different languages tend to use different MROs
+1. Understanding MRO is necessary for working with Multilevel and Multiple Inheritence.
 
-Method Resolution Order
-MRO, in general, is a way (you can call it a strategy) in which a particular programming language scans through the upper part of a class’s hierarchy in order to find the method it currently needs. It's worth emphasizing that different languages use slightly (or even completely) different MROs. Python is a unique creature in this respect, however, and its customs are a bit specific.
+There are two ways to see the MRO of a particular class:
+1. `__mro__` returns a list
+2. `mro()`  returns a tuple
 
-We're going to show you how Python's MRO works in two peculiar cases that are clear-cut examples of problems which may occur when you try to use multiple inheritance too recklessly.
+`For hierarchies Python resolves in a bottom to top manner C --> B --> A`
+
+```python
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(B):
+    pass
+
+print(C.mro()) # Output: [<class '__main__.C'>, <class '__main__.B'>, <class '__main__.A'>, <class 'object'>]
+print(C.__mro__) # Output: (<class '__main__.C'>, <class '__main__.B'>, <class '__main__.A'>, <class 'object'>)
+```
+
+`When Inheriting from multiple classes Python resolves from left to right.`
+
+```python
+class A:
+    pass
+
+class B():
+    pass
+
+class C(A,B): # A comes before B
+    pass
+
+
+
+print(C.mro())      # Output: [<class '__main__.C'>, <class '__main__.A'>, <class '__main__.B'>, <class 'object'>]
+print(C.__mro__)    # Output: (<class '__main__.C'>, <class '__main__.A'>, <class '__main__.B'>, <class 'object'>)
+
+```
 
 
 
@@ -811,10 +848,91 @@ ___
 
 <br>
 
-# `Multiple Inheritence` 
-bottom to top overriding
+# `Multiple Inheritence`
+`Multiple inheritance` is a feature in object-oriented programming where a class can inherit attributes and methods from more than one parent class. 
+1. Pay special attention to MRO when using multiple inheritence
+1. Classes are inherited from left to right
 
-class Sub(Super1,Super2) inherits left to right, overrides left to right.
+`Attributes are inherited from the first class in the MRO (Method Resolution Order) that defines the attribute.`
+
+```python
+class Parent1:
+    pass
+
+class Parent2:
+    pass
+```
+`Here Child will look to Parent1 first, then to Parent1`
+```python
+class Child(Parent1,Parent2):
+    """Inherits from Parent1 First"""
+    pass
+
+print(Child.mro())  # Output: [<class '__main__.Child'>, <class '__main__.Parent1'>, <class '__main__.Parent2'>, <class 'object'>]    
+```
+`Here Child will look to Parent2 first, then to Parent1`
+```python
+class Child(Parent2,Parent1):
+    """Inherits from Parent2 First"""
+    pass
+
+print(Child.mro()) # Output: [<class '__main__.Child'>, <class '__main__.Parent2'>, <class '__main__.Parent1'>, <class 'object'>]   
+```
+
+<br>
+
+## `Common Problems with Multiple Inheritence`
+
+### `The Diamond Problem`
+```
+     Top
+    /   \
+ Middle  Middle
+    \   /
+    Bottom
+```
+The `diamond problem` occurs in multiple inheritance when a class inherits from two classes that share a common parent, creating ambiguity in the attribute resolution order.
+
+Consider the classes below:
+```python
+class Top:
+    pass
+
+class Middle(Top):
+    pass
+
+class Bottom(Top, Middle):
+    pass
+
+# Traceback (most recent call last):
+#   File "/path/to/file.py", line 60, in <module>
+#     class Bottom(Top, Middle):
+#         pass
+# TypeError: Cannot create a consistent method resolution order (MRO) for bases Top, Middle
+```
+This occurs because both Bottom, and Middle inherit from Top.
+
+*`The MRO would look like this Bottom --> Top --> Middle --> Top. This order is an issue for resolving attributes.`*
+
+<br>
+
+Now consider these classes:
+```python
+class Top:
+    pass
+
+class Middle(Top):
+    pass
+
+class Bottom(Middle, Top):
+    pass
+
+print(Bottom.mro())  # Output: [<class '__main__.Bottom'>, <class '__main__.Middle'>, <class '__main__.Top'>, <class 'object'>]   
+```
+
+
+
+
 
 
 <br>
@@ -892,18 +1010,13 @@ tracked.turn(False)
 Error:
 ```python
 class Top:
-    def m_top(self):
-        print("top")
-
+    pass
 
 class Middle(Top):
-    def m_middle(self):
-        print("middle")
-
+    pass
 
 class Bottom(Top, Middle):
-    def m_bottom(self):
-        print("bottom")
+    pass
 
 
 object = Bottom()qwa
