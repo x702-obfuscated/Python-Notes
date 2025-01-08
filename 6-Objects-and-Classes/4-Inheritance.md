@@ -1,3 +1,4 @@
+*WORK IN PROGRESS, CHECK BACK LATER FOR UPDATES*
 # `Python Inheritence`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
@@ -9,9 +10,9 @@ ___
 <br>
 
 Covered in this file:
-1. [``]()
-1. [``]()
-1. [``]()
+1. [`Note on symbols used in this file`](#note-on-symbols-used-in-this-file)
+1. [`Object Oriented Programming`](#object-oriented-programming)
+1. [`Inheritence Defined`](#inheritence-defined)
 1. [``]()
 1. [``]()
 1. [``]()
@@ -149,15 +150,6 @@ ___
 
 <br>
 
-.issubclass()
-isinstance()
-
-is
-is not
-
-Supre.__init__(self, ...)
-super().__init__(...)
-
 # `Single Inheritence`
 Single Inheritence refers to once class inheriting from a single parent class.
 
@@ -165,6 +157,7 @@ A child class:
 * inherits attributes (variables and methods) from a parent class
 * extends (adds to) the inherited attributes
 * can modify the behaviour (methods) inherited from the parent class. (polymorphism)
+* estabilshes a "is-a" relationship (Subclass is a Super class)
 
 <br>
 
@@ -244,7 +237,7 @@ Syntax
 class Parent:
     ...
 
-class C hild(Parent):
+class Child(Parent):
     ...
 ```
 
@@ -930,11 +923,6 @@ class Bottom(Middle, Top):
 print(Bottom.mro())  # Output: [<class '__main__.Bottom'>, <class '__main__.Middle'>, <class '__main__.Top'>, <class 'object'>]   
 ```
 
-
-
-
-
-
 <br>
 
 [Back to Top](#python-inheritence)
@@ -944,8 +932,133 @@ ___
 <br>
 
 # `Composition`
-Composition projects a class as a container able to store and use other objects (derived from other classes) where each of the objects implements a part of a desired class's behavior.
+`Composition` is a design principle where a class is built using instances of other classes as components.
+1. This is different than inheritence
+1. Establishes a "has-a" relationship (Class has a Component)
 
+Example: A Computer is made of components: CPU, Memory, Storage, Motherboard, PowerSupply.
+```python
+class CPU:
+    def process(self, process):
+        print(f"CPU PROCESS: {process}")
+
+    def execute_bootloader(self,storage, memory):
+        self.process("executing bootloader...")
+        storage.load(f"operating system kernal")
+        self.initialize(storage)
+
+    def initialize(self,storage=None):
+        if storage:
+            self.process(f"Kernel initializing hardware...")
+            self.process(f"Kernel mounting the root filesystem from {storage.name}...")
+            self.process(f"Kernal starting background processes and services...")
+            self.process(f"Loading Command Line/Graphical User Interface...")
+            
+class Memory:
+    def load(self, data):
+        print(f"MEMORY LOADING: {data}...")
+        return True
+
+class Storage:
+    def __init__(self, name=None):
+        self.name = name
+
+    def store(self,data):
+        print(f"Storage saving {data}")
+
+    def load(self, data):
+        print(f"STORAGE LOADING:  {data}")
+        return data
+
+
+
+class Motherboard:
+    def activate_uefi(self):
+        print("Motherboard activating UEFI/BIOS...")
+
+    def post(self):
+        print("UEFI/BIOS performing Power on Self Test...")
+        self.activate_uefi()
+
+    def check_bootable_storage(self, storage_devices=None, memory=None, cpu=None):
+        if storage_devices and memory and cpu:
+            self.post()
+            self.load(storage_devices[0],memory, cpu)
+        elif not storage:
+            print("No bootable storage...")
+        elif not memory:
+            print("No useable memory...")
+        elif not cpu:
+            print("No CPU...")
+        else:
+            print("An Error Occurred...")
+
+    def load(self, storage=None, memory=None, cpu=None):
+        failed = True
+        if storage and memory:
+            loaded_bootloader = memory.load(storage.load(f"bootloader of MBR/GPT from {storage.name}"))
+
+            if loaded_bootloader: 
+                cpu.execute_bootloader(storage, memory)
+
+                failed = False
+
+       
+        if failed:
+            print("Failed to boot..")
+
+
+class PowerSupply:
+    def __init__(self):
+        self.switch = False
+
+    def power(self,motherboard, storage_devices, memory, cpu):
+        if self.switch:
+            self.switch = False
+        else:
+            self.switch = True
+            self.post(motherboard,storage_devices, memory, cpu)
+
+    def post(self, motherboard, storage_devices, memory, cpu):
+        print("PSU Performing Power On Self Test...")
+        motherboard.check_bootable_storage(storage_devices, memory, cpu)
+        
+
+
+class Computer:
+    def __init__(self, cpu, memory, storage, motherboard, power_supply):
+        self.cpu = cpu                      # Computer has-a CPU component
+        self.memory = memory                # Computer has-a Memory component
+        self.storage = storage              # Computer has-a Storage component
+        self.motherboard = motherboard      # Computer has-a Motherboard component
+        self.power_supply = power_supply    # Computer has-a PowerSupply component
+
+        self.storage_devices = []
+        self.storage_devices.append(self.storage)
+
+    def power_on(self):
+        self.power_supply.power(self.motherboard,self.storage_devices, self.memory, self.cpu)
+```
+```python
+# Instantiating a Computer with Components
+computer = Computer(CPU(), Memory(), Storage("NVME_SSD1"), Motherboard(), PowerSupply())
+
+computer.power_on()
+# Output:
+# PSU Performing Power On Self Test...
+# UEFI/BIOS performing Power on Self Test...
+# Motherboard activating UEFI/BIOS...
+# STORAGE LOADING:  bootloader of MBR/GPT from NVME_SSD1
+# MEMORY LOADING: bootloader of MBR/GPT from NVME_SSD1...
+# CPU PROCESS: executing bootloader...
+# STORAGE LOADING:  operating system kernal
+# CPU PROCESS: Kernel initializing hardware...
+# CPU PROCESS: Kernel mounting the root filesystem from NVME_SSD1...
+# CPU PROCESS: Kernal starting background processes and services...
+# CPU PROCESS: Loading Command Line/Graphical User Interface...
+```
+
+*Each Computer object is made up of component objects from other classes: CPU, Memory, Storage, and PowerSupply*
 
 
 <br>
@@ -957,7 +1070,67 @@ ___
 <br>
 
 # `Abstract Classes and Methods`
+An `abstract class` is a class that serves as a blueprint for other classes.
+1. can include abstract methods
+1. can include concrete methods
+1. inherits from the ABC class in the abc (Abstract Base Class) module
 
+<br>
+
+An `abstract method` is a method declared in an abstract class without an implementation.
+1. declared with the @abstractmethod decorator from the abc module.
+1. must be implemented by the non-abstract subclass
+
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    '''Abstract Shape Class'''
+
+    @abstractmethod 
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+class Rectangle(Shape):
+    '''Inherits from Shape and implements area, perimeter'''
+    def __init__(self, width, height):
+        self.name = "Rectangle"
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+class Circle(Shape):
+    '''Inherits from Shape and implements area, perimeter'''
+    def __init__(self, radius):
+        self.name = "Circle"
+        self.radius = radius
+
+    def area(self):
+        return 3.14159 * self.radius ** 2
+
+    def perimeter(self):
+        return 2 * 3.14159 * self.radius
+
+
+
+shapes = [Rectangle(3, 4), Circle(5)]
+
+for shape in shapes:
+    print(f"{shape.name} --> Area: {shape.area()}, Perimeter: {shape.perimeter()}")
+
+#Output:
+# Rectangle --> Area: 12, Perimeter: 14
+# Circle --> Area: 78.53975, Perimeter: 31.4159
+```
 
 <br>
 
@@ -976,83 +1149,8 @@ ___
 
 
 
-```python
-import time
-
-class Tracks:
-    def change_direction(self, left, on):
-        print("tracks: ", left, on)
-
-
-class Wheels:
-    def change_direction(self, left, on):
-        print("wheels: ", left, on)
-
-
-class Vehicle:
-    def __init__(self, controller):
-        self.controller = controller
-
-    def turn(self, left):
-        self.controller.change_direction(left, True)
-        time.sleep(0.25)
-        self.controller.change_direction(left, False)
-
-
-wheeled = Vehicle(Wheels())
-tracked = Vehicle(Tracks())
-
-wheeled.turn(True)
-tracked.turn(False)
-```
-
-
-Error:
-```python
-class Top:
-    pass
-
-class Middle(Top):
-    pass
-
-class Bottom(Top, Middle):
-    pass
-
-
-object = Bottom()qwa
-object.m_bottom()
-object.m_middle()
-object.m_top()
-
-```
 
 
 
-Diamond problem
-```python
-class Top:
-    def m_top(self):
-        print("top")
 
-
-class Middle_Left(Top):
-    def m_middle(self):
-        print("middle_left")
-
-
-class Middle_Right(Top):
-    def m_middle(self):
-        print("middle_right")
-
-
-class Bottom(Middle_Left, Middle_Right):
-    def m_bottom(self):
-        print("bottom")
-
-
-object = Bottom()
-object.m_bottom()
-object.m_middle()
-object.m_top()
-```
 
