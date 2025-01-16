@@ -22,7 +22,7 @@ Covered in this file:
 # `Common Built-in Functions for Beginners`
 * `print(*values, sep=" ", end="\n", file=None, flush=False)`
 * `input(prompt="")`
-* `int(), float(), complex()`
+* `int(), float(), complex(), str(o),...`
 * `len(obj)`
 
 * `type()`
