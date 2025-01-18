@@ -1,12 +1,15 @@
-*WORK IN PROGRESS, CHECK BACK LATER FOR UPDATES*
 # `Python Modules`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
 ___
 
 Covered in this file:
-1. [``]()
-
+1. [`Modules Defined`](#modules-defined)
+1. [`Modules as Objects`](#modules-as-objects)
+1. [`Importing Modules`](#importing-modules)
+1. [`The Path`](#the-path)
+1. [`if __name__ == "__main__":`](#if-__name__--__main__)
+1. [`Built-in Modules`](#built-in-modules)
 
 <br>
 
@@ -24,8 +27,12 @@ Specifically: A `Module` is a Python (.py) file that contains attributes includi
 <module_name>.py
 ```
 
+<br>
+
 `Modules can contain classes, functions, and variables that can be accessed when importing the module to other files`
 ```python
+#in module (file) --> code.py
+
 class Example_Class():
     pass
 
@@ -185,7 +192,7 @@ The Path is a list of directories where Python wil looke for modules when the `i
 
 <br>
 
-### `To See the PYTHONPATH environment variable
+### `To See the PYTHONPATH environment variable`
 ```
 Windows CMD
 > echo %PYTHONPATH%
@@ -220,6 +227,58 @@ ___
 <br>
 
 # `if __name__ == "__main__":`
+```python
+if __name__ == "__main__":
+    ...
+```
+is a commonly used conditional when working with models. 
+1. When a module is imported the code within that module is executed exactly once. 
+1. If there is code not contained within a Class, function, or variable, then it will executed as if the module was ran as a script. 
+1. `if __name__ == "__main__":` is used to prevent executing unwanted code when importing.
+
+<br>
+
+`__name__` is a special dunder attribute of a module object.
+* When a module is executed as a script `__name__` is assigned the value `"__main__"`
+* When a module is imported `__name__` is assigned the name of the file without the .py extension
+
+
+```python
+print(__name__) #Output: __main__
+```
+
+```python
+import code
+
+print(code.__name__) #Output: code
+```
+
+
+<br>
+
+```python
+class Class_Example():
+    pass
+
+def function_example():
+    pass
+
+variable_example = None
+
+print("When this module is imported the code inside is executed exactly once.")
+```
+```python
+class Class_Example():
+    pass
+
+def function_example():
+    pass
+
+variable_example = None
+
+if __name__ == "__main__":
+    print("When this module is imported this code will not execute.")
+```
 
 <br>
 
@@ -236,6 +295,8 @@ To list the available modules use the `help()` function
 print(help("modules"))
 #Output will vary
 ```
+
+The output will include modules from the Python Standard Library, Third Party Modules, and even installed user created modules. 
 
 <br>
 
@@ -255,24 +316,5 @@ ___
 
 
 
-
-
-#https://docs.python.org/3/py-modindex.html
-
-'> dir()'
-
-dir() #lists the currently defined names ie (variables, modules, functions)
-
-dir(__builtins__) #lists the builtin names
-
-
-__main__ in Python is a special namespace or module name that refers to the scope in which top-level code is executed. It plays an important role when Python files are run as scripts or modules.
-
-Here’s a detailed explanation of __main__:
-
-1. __name__ and __main__
-Every Python module (i.e., a Python file) has a special built-in variable called __name__.
-When a Python script is run, the Python interpreter assigns the value '__main__' to the __name__ variable in that script.
-If the script is imported as a module into another script, the __name__ variable is set to the module’s name (i.e., the filename without the .py extension).
 
 
