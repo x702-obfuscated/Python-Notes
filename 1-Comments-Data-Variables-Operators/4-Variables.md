@@ -37,7 +37,7 @@ ___
 # `Defining a Variable`
 Basically: `variables` are like containers that store literal data 
 
-Specifically: `variables` are pointers that reference a location in memory where the literal data is stored
+Specifically: `variables` are pointers that reference a location in memory where the literal data is physically stored
 > * The data a variable points to can change
 
 <br>

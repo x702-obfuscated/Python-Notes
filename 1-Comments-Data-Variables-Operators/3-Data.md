@@ -29,7 +29,7 @@ Data Literals
 
 # Data Types
 To work with data it must by classified into types, we will begin with literal data
-> * **Literal Data**: actual values that do not represent anything else
+> * **Literal Data**: actual data values that do not represent any other data.
 
 <br>
 
