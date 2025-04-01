@@ -1,5 +1,5 @@
 *WORK IN PROGRESS, CHECK BACK LATER FOR UPDATES*
-# `Python __init__`
+# `Python __init__.py`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
 ___

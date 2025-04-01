@@ -15,6 +15,7 @@ Covered in this file:
 1. [`Absolute and Relative Imports in a Package`](#absolute-and-relative-imports-in-a-package)
     1. [`Absolute Imports`](#absolute-imports)
     1. [`Relative Imports`](#relative-imports)
+1. [`Importing from a package`](#importing-from-a-package)
 1. [`Import Errors`](#import-errors)
 1. [`Conditional Imports`](#conditional-imports)
 1. [`The pip Package Manager`](#dependency-management)
@@ -543,6 +544,108 @@ In this example this error will raise in the following scenarios:
 
 
 ## *SEE [import_lab](./import_lab/README.md) for a complete list of all imports for this package structure, and to test different import combinations.*
+
+<br>
+
+[Back To Top](#python-import)
+
+___
+
+<br>
+
+# `Importing from a package`
+Packages are directories(folders) that include Python source code (.py files) and an `__init__.py` file.
+
+<br>
+
+Package is a term that is often used to refer to different things below are some of the different meanings and their context.
+
+A `package` in computing generally refers to a collection of related files bundled together. The term is used in various contexts:
+
+| `Type`            | `Description` |
+|---------------------|----------------|
+| `Software Package` | A compressed file (e.g., `.deb`, `.rpm`, `.zip`) containing software and its dependencies. |
+| `Library Package`  | A collection of reusable code distributed through package managers like `pip` (Python), `npm` (JavaScript), etc. |
+| `Python Package`   | A collection of Python modules organized in a directory that contains a special `__init__.py` file. This allows the directory to be treated as a single importable unit in Python. |
+
+
+## `__init__.py`
+`__init__.py` is a python file used to mark a directory as a Python package, and initialize the package when it is imported.
+
+To create a package:
+1. Create a directory with a name that follows Pythons variable naming practices
+2. Add an `__init__.py` file to this directory
+3. Include any modules (.py files) that should be apart of the package.
+4. Add any initialization code to the `__init__.py` file.
+
+<br>
+
+Uses of `__init__.py`
+| Feature            | Purpose |
+|------------------------|------------|
+| Empty `__init__.py` | Defines the directory as a Python package. |
+| Initialization Code | Runs when the package is imported. |
+| Shortening Imports  | Allows importing functions/classes directly from the package. |
+| `__all__`           | Controls what gets imported with `import *`. |
+| Subpackages        | Enables hierarchical package structures. |
+
+<br>
+
+Project Structure for Reference:
+```
+root_package/
+├── __init__.py
+├── main.py
+├── module1.py
+├── module2.py
+
+├── package1/
+    ├── __init__.py
+    ├── module3.py
+    └── module4.py
+
+└── package2/
+    ├── __init__.py
+    ├── module5.py
+    ├── module6.py
+
+    └── package3/
+        ├── __init__.py
+        ├── module7.py
+        └── module8.py
+```
+
+### `Initialization Code`
+Initialization code is executed when the package is imported. 
+
+Initialization code can be widely varied and depends on the context of the project. 
+
+<br>
+
+### `Shortening Imports`
+`__init__.py` can be used to shorten imports from packages, and even combine multiple imports into one.
+
+instead of:
+```python
+# main.py
+from package1.module3 import *
+from package1.module4 import *
+```
+
+<br>
+
+try this:
+```python
+# package1/__init__.py
+from .module3 import *
+from .module4 import *
+```
+```python
+# main.py
+from package1 import *
+
+
+
 
 <br>
 
