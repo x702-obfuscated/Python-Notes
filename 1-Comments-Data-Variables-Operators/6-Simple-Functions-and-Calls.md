@@ -168,7 +168,7 @@ print(num_vowels) #Output: 5
 
 <br>
 
-[Back to Top](#python-basic-function-calls)
+[Back to Top](#python-simple-functions-and-calls)
 
 ___
 
@@ -348,7 +348,7 @@ Instead, it stores the output in this buffer until certain conditions are met.
 
 <br>
 
-[Back to Top](#python-basic-function-calls)
+[Back to Top](#python-simple-functions-and-calls)
 
 ___
 
@@ -461,7 +461,7 @@ print(x + y) # Outputs the sum of x and y
 
 <br>
 
-[Back to Top](#python-basic-function-calls)
+[Back to Top](#python-simple-functions-and-calls)
 
 ___
 
@@ -508,7 +508,7 @@ len(nested_list)  # Returns 3, because there are three sublists
 
 <br>
 
-[Back to Top](#python-basic-function-calls)
+[Back to Top](#python-simple-functions-and-calls)
 
 ___
 
@@ -538,7 +538,7 @@ type(len)                    # Returns: <class 'builtin_function_or_method'>
 
 <br>
 
-[Back to Top](#python-basic-function-calls)
+[Back to Top](#python-simple-functions-and-calls)
 
 ___
 
@@ -623,7 +623,7 @@ print(                                ) #This is executed last, and uses the res
 
 ___
 
-[Back to Top](#python-basic-function-calls)
+[Back to Top](#python-simple-functions-and-calls)
 
 ___
 
