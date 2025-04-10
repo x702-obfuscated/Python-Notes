@@ -24,7 +24,7 @@ This repository contains the following folders broken down in order to help faci
 1. Data.md
 1. Variables.md
 1. Operators.md
-1. Basic-FunctionCalls.md
+1. Simple-Functions-and-Calls.md
 1. Strings.md
 * builtins.md
 * keywords.md
@@ -64,6 +64,7 @@ This repository contains the following folders broken down in order to help faci
 ---
 1. Functions.md
 1. Recursion.md 
+1. Lambdas.md
 1. Decorators.md
 
 <br>
