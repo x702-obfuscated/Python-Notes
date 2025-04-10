@@ -1,4 +1,4 @@
-# `Python: Basic Function Calls`
+# `Python: Simple Functions and Calls`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
 ___
@@ -29,20 +29,30 @@ Covered in this file:
 
 <br>
 
-[Back to Top](#python-basic-function-calls)
+[Back to Top](#python-simple-functions-and-calls)
 
 ___
 
 <br>
 
 # `Quickstart Guide to Functions`
+Basically: A `function` is a block of reusable code that performs a specific task
+
+Specifically: A `function` is a self contained block of code that performs a specific task and can be reused throughout the program. They contribute to the abstraction, modularity, reusability, and organization of scource code.
+
+`NOTE: Procedure, Function, Method, Subroutine are terms that are often used interchangeably`
+
+<br>
+
+### Quick Guide to Function Terms
+
 |Term| |Definition|
 |:-:|:-|:-|
-|Function Definition|explains how to perform a task| block of code that specifies a sequence of statements to perform a specific task.<br> It includes the function's name, parameters (if any), and the body of the function which contains the executable code.|
+|Function Definition| defines how to perform a task | block of code that specifies a sequence of statements to perform a specific task.<br> It includes the function's name, parameters (if any), and the body of the function which contains the executable code.|
 |Function Call|executes the function and returns result| the process of invoking or executing a function that has been defined earlier.|
-|Parameters|optional variables| variables inside the parenthesis that are used to pass information into functions or methods|
-|Arguments|depends on the number of parameters| the actual values or data you pass to a function's parameters when you call the function|
-|Return| optional| returns the result of a function to the caller(Function Call)|
+|Parameters| variables needed to perform function (optional)| variables inside the parenthesis that are used to pass information into functions or methods|
+|Arguments|values given to parameters| the actual values or data you pass to a function's parameters when you call the function|
+|Return| result of a function (optional)| returns the result of a function to the caller (Function Call)|
 
 <br>
 
@@ -59,7 +69,7 @@ General Function Call Syntax:
 
 <br> 
 
-## Function Definition and Call Example:
+## Function Definition and Call Examples:
 
 ```python
 # Function Definition
@@ -82,6 +92,79 @@ print(add(2,2))    # Outputs: 4
 print(add(5,4))    # Outputs: 9
 print(add(2,10))   # Outputs: 12
 ```
+<br>
+
+Another Example:<br>
+`Note:` This function does not specify a return value. However, all Python functions return `None` by default if a return value is not specified.<br>
+Because this function returns `None` assigning its return value to a variable, or printing the function call does not make sense usually. 
+```python
+def count(start,stop,step):
+    for n in range(start, stop+1, step):
+        print(n, end = " ")
+# Returns: None
+
+count(1,5,1)        # Output: 1 2 3 4 5 
+count(10,100,10)    # Output: 10 20 30 40 50 60 70 80 90 100
+count(0,10,2)       # Output: 0 2 4 6 8 10
+
+result = count(1,5,1)  # result --> None
+# result stores the value None here
+
+print(result) # Output: None
+```
+
+Another Example:
+```python
+# Definition
+def combine(a,b,c):
+    return a + b + c
+
+# Call
+combine("Tying ", "Strings ", "Together.")
+
+# Printing the return value with a nested call
+print(combine("Tying ", "Strings ", "Together."))
+
+# Assign return value to a variable
+joined = combine("Tying ", "Strings ", "Together.")
+
+# Printing the return value using a variable
+print(joined)
+```
+
+More Advanced Example:
+```python
+# Function Definition
+def count_vowels(text):
+    count = 0
+    for character in text:
+        if character.lower() in "aeiou":
+            count += 1
+    print("Number of vowels: ", count)
+    return count
+
+
+
+# Function Call
+count_vowels("Hello World!") #Returns: 3  Output: Number of vowels: 3
+
+
+# print the return value of count_vowels using a nested function call
+print(count_vowels("The problem is between the keyboard and the chair."))  
+# Output: 
+# Number of vowels: 15
+# 15
+
+
+# Assign return value to a variable
+num_vowels = count_vowels("abcdefghijklmnopqrstuvwxyz") #Returns: 5  Output: Number of vowels: 5
+# num_vowels --> 5
+
+
+# print the value referenced by num_vowels
+print(num_vowels) #Output: 5
+```
+
 
 <br>
 

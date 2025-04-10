@@ -1,4 +1,4 @@
-# `Python Functions`
+# `Python: Functions`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
 
@@ -32,11 +32,6 @@ Covered in this file:
 1. [`Variable Scope and Functions`](#variable-scope-and-functions)
 1. [`Builtin Function Calls`](#builtin-function-calls)
     1. [`The built-in help() function`](#the-built-in-help-function)
-1. [`Lambda Expressions: Shorthand Functions`](#lambda-expressions-shorthand-functions)
-    1. [`Lambdas as function templates`](#lambdas-as-function-templates)
-    1. [`Lambdas can be used to pass a small function as an argument`](#lambdas-can-be-used-to-pass-a-small-function-as-an-argument)
-    1. [`Lambdas and map()`](#lambdas-and-map)
-    1. [`Lambdas and filter()`](#lambdas-and-map)
 1. [`Documentation: doc strings`](#documentation-doc-strings)
 1. [`Function Annotations`](#function-annotations)
 1. [`Nested Functions`](#nested-functions)
@@ -220,9 +215,11 @@ ___
 # `Functions Defined`
 Basically: A `function` is a block of reusable code that performs a specific task
 
-Specifically: A `function` is a self contained block of code tha performs a specific task and can be reused throughout the program. They contribute to the abstraction, modularity, reusability, and organization of scource code.
+Specifically: A `function` is a self contained block of code that performs a specific task and can be reused throughout the program. They contribute to the abstraction, modularity, reusability, and organization of scource code.
 
-> *NOTE: Procedure, Function, Method, Subroutine are terms that are often used interchangeably*
+`NOTE: Procedure, Function, Method, Subroutine are terms that are often used interchangeably`
+
+<br>
 
 `Functions` are essential to abstracting the complexity of programming.
 
@@ -1456,159 +1453,6 @@ help(complex)
 
 
 
-
-<br>
-
-[Back to Top](#python-functions)
-
-___
-
-<br>
-
-# `Lambda Expressions: Shorthand Functions`
-Basically: `Lambdas` are shorthand functions
-
-Specifically: `Lambdas` are small, anonymous functions defined with a single expression used for creating functions on the fly without needing to formally define them using the def keyword.
-
-`Lambda's take any number of arguments, but can only have one expression`
-
-`The result of a lambda expression is automatically returned.`
-
-syntax
-```
-lambda argument, ... : expression
-```
-abstract example:
-```python
-lambda_function = lambda a,b,c : a + b + c 
-lambda_function(1,2,3)      # Returns: 6
-```
-
-*The PEP 8 style guide for Python states that lambdas should not be assigned to variables, rather they should be defined as functions*
-```python
-'''Instead of This'''
-function = lambda name :  "Hello " + name
-
-'''Do this'''
-def function(x): 
-    return "Hello " + name
-```
-This is because defining functions using `lambdas` and then binding them to a variable duplicates the functionality of the `def` statement. 
-* This is also ok, because it is not generally, how programmers will use `lambdas`.
-
-<br>
-
-## `Lambdas as function templates`
-Lambdas can be used to create function templates with variables that can be applied later. 
-
- 
-```python
-def returns_lambda(n):
-    return lambda a : a ** n        # This function returns a lamda
-
-# Variables are then assigned the lambda by calling the function and passing arguments
-squared = returns_lambda(2)         # Returns and Assigns:  lambda a : a ** 2
-cubed = returns_lambda(3)           # Returns and Assigns:  lambda a : a ** 3
-pow_4 = returns_lambda(4)           # Returns and Assigns:  lambda a : a ** 4
-
-# The variables are now called like any function:
-squared(2)                          # Returns: 4
-cubed(2)                            # Returns: 8
-pow_4(2)                            # Returns: 16
-```
-
-<br>
-
-
-## `Lambdas can be used to pass a small function as an argument`
-Lambdas can be use to pass a small function that determines and returns the value to be passed as an argument. 
-
-```python
-pairs = [(1, 'one'), (2, 'two'), (4, 'four'), (3, 'three') ]
-
-# list.sort(key=None, reverse=False)
-pairs.sort(key=lambda pair: pair[1]) 
-# The lambda returns the 2nd element, in this case the words not the numbers.
-# This means that 'pairs' will be sorted based on the words
-
-
-print(pairs)
-# Output: [(4, 'four'), (1, 'one'), (3, 'three'), (2, 'two')]
-```
-
-## `Lambdas and map()`
-`map()` is a built-in function of Python that applies a function to each item of an iterable, and returns a map iterator object (see [iterators.md](../4-Iteration/5-Iterators.md))
-
-Syntax
-```
-map(func, iter1, ...)
-```
-```python
-numbers = [1, 2, 3, 4, 5]
-result = map(lambda x : x * 2, numbers)   # result references the iterator object returned by map()
-
-# Converted to list
-print(list(result)) # Output: [2, 4, 6, 8, 10]
-```
-```python
-numbers = [1,2,3,4,5]
-
-#looping through results items
-for e in map(lambda x : x * 2, numbers):
-    print(e, end = " ")
-```
-
-Remember, that `iterators`:
-* generate one element at a time
-* once an item is returned it cannot be returned again
-* once the iterator has returned all values it is 'empty' (ie. cannot be iterated again.)
----
-
-<br>
-
-## `Lambdas and filter()`
-`filter()` is a built-in function that filters items of an iterable based on conditions defined in a function, and returns a filter iterable object.
-
-
-Syntax
-```
-filter(function, iterable)
-```
-```python
-numbers = [1, 2, 3, 4, 5, 6]
-result = filter(lambda x: x % 2 == 0, numbers)
-
-# Convert to a list
-print(list(result))  # Output: [2, 4, 6]
-```
-
-Remember, that `iterators`:
-* generate one element at a time
-* once an item is returned it cannot be returned again
-* once the iterator has returned all values it is 'empty' (ie. cannot be iterated again.)
----
-
-`Removing Falsey values with filter(None, iterable)`
-```python
-values = [0, 1, None, 2, "", 3, False, 4]
-result = filter(None, values)
-
-print(list(result))  # Output: [1, 2, 3, 4]
-```
-
-Remember:  
-`Truthiness` refers to the evaluation of an object's value in a boolean context, ie. determining whether it is considered true or false.*
-* Truthy values are `True`
-* Falsey values are `False`
-
-|Data Type| Truthiness|
-|:-:|:-:|
-|`Integers`, `Floats`|Any non-zero number (integer, float) is evaluated as True|
-|`Strings`, `Lists`, `Tuples`, `Sets`, `Dictionaries`|Any non-empty string, list, tuple, set, or dictionary, is evaluated as True|
-|`Functions`, `Methods`, `Lambdas`, `Classes`|Any function, method, lambda or class is evaluated as True|
-|`Objects`|By default objects are evaluated True, but how an object is evaluated can be changed|
-
----
 
 <br>
 
