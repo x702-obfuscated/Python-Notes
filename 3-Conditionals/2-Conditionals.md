@@ -274,7 +274,7 @@ ___
 <br>
 
 # `Control Flow Statements`
-`Control flow statements` are constructs in programming languages that control the order in which instructions or statements are executed.
+`Control flow statements` are constructs in programming languages that control which instructions execute and/or the order in which instructions or statements are executed.
 
 ### `Control Flow Statements in Python`
 1. Conditional Statements: `if`, `elif`, `else`
