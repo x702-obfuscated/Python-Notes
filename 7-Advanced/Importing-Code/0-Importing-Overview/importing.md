@@ -554,7 +554,7 @@ ___
 <br>
 
 # `Importing from a package`
-Packages are directories(folders) that include Python source code (.py files) and an `__init__.py` file.
+Packages are directories(folders) that include Python source code (.py files) and an optional `__init__.py` file.
 
 <br>
 
@@ -566,15 +566,27 @@ A `package` in computing generally refers to a collection of related files bundl
 |---------------------|----------------|
 | `Software Package` | A compressed file (e.g., `.deb`, `.rpm`, `.zip`) containing software and its dependencies. |
 | `Library Package`  | A collection of reusable code distributed through package managers like `pip` (Python), `npm` (JavaScript), etc. |
-| `Python Package`   | A collection of Python modules organized in a directory that contains a special `__init__.py` file. This allows the directory to be treated as a single importable unit in Python. |
+| `Python Package`   | A collection of Python modules organized in a directory that optionally contains a special `__init__.py` file. <br> This file can allow the directory to be treated as a single importable unit in Python. |
+
+<br>
 
 
 ## `__init__.py`
 `__init__.py` is a python file used to mark a directory as a Python package, and initialize the package when it is imported.
 
+<br>
+
+```
+NOTE: 
+After the introduction of implicit namespace packages in Python version 3.3  
+__init__.py is no longer required to define a package.
+```
+
+<br>
+
 To create a package:
 1. Create a directory with a name that follows Pythons variable naming practices
-2. Add an `__init__.py` file to this directory
+2. Add an `__init__.py` file to this directory `(optional)`
 3. Include any modules (.py files) that should be apart of the package.
 4. Add any initialization code to the `__init__.py` file.
 
@@ -643,7 +655,7 @@ from .module4 import *
 ```python
 # main.py
 from package1 import *
-
+```
 
 
 
