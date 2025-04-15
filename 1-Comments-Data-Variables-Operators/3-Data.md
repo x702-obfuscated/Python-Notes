@@ -259,6 +259,7 @@ ___
 # `Character Literals <class 'str'>`
 Characters are single units of text, such as a letter, digit, punctuation mark, symbol, or whitespace
 > * Characters in python are single length strings
+> * Characters are surrounded by single `''` or double quotes `""`
 
 
 ```python
@@ -283,7 +284,8 @@ ___
 <br>
 
 # `String Literals <class 'str'>`
-Strings are a collection of characters
+Strings are a collection of characters.
+> * Strings are surronded by single `''` or double quotes `""`
 
 ```python
 "Python"                                         # String Literal

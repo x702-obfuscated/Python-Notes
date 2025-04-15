@@ -125,19 +125,16 @@ ___
 # `Single/Multi-Line Comments`
 
 Comments are a way for programmers to make notes about thier code.
-> * comments are not interpreted as code and are simply ignored by the interpreter.
-> * the best programmers write easy to read and well documented (commented) code.
->
-> * comments can be used to prevent code from being executed without deleting that code. 
+1. Comments are not interpreted as code and are simply ignored by the interpreter.
+1. The best programmers write easy to read and well documented (commented) code.
+1. Comments can be used to prevent code from being executed without deleting that code. 
 
-> * use the **#** symbol to make a single line comment
->
-> * use a pair of triple single quotes **'''** or triple double quotes **"""** to make a multiline comment called a docstring.
 
 <br>
 
-### `Single-line comments`
-
+## `Single-line comments`
+* use the `#` symbol to make a single line comment
+* everything to the right of the `#` is apart of the comment
 
 ```python
 # this is a single line comment
@@ -146,9 +143,11 @@ Comments are a way for programmers to make notes about thier code.
 
 <br>
 
-### `Multi-line comments (docstrings)`
-> * Everything between the pair of triple quotes is apart of the comment
+## `Multi-line comments (docstrings)`
+* use a pair of triple single quotes `'''` or triple double quotes `"""` to make a multiline comment called a docstring.SS
+* Everything between the pair of triple quotes is apart of the comment
 
+NOTE: single quotes (`'''`) are **NOT** dots or periods (`...`) 
 
 ```python
 '''
@@ -169,7 +168,9 @@ You
 """
 ```
 
-Use Ctrl + / in editors like VScode to make a quick multi-line comment, or to comment out a single line easily
+<br>
+
+Use the  `Ctrl + /` keyboard shortcut in editors like VScode to make a quick multi-line comment, or to comment out a single line easily
 
 <br>
 
@@ -209,11 +210,15 @@ ___
 
 
 # `First Program: User Input`
-To handle input from a user (called standard input or stdin), use the built-in function call `input()`.`input()` stops the execution of the program, and waits for the user to type in some text, it then returns the text that was entered.
+To handle input from a user (called standard input or stdin), use the built-in function call `input()`.
 
-*Note:*  
-> When a function like `input()` 'returns' it brings a value back to that point in the program in which the function was called.
-> * The caller `input()` then represents the value it returns.
+`input()` stops the execution of the program, and waits for the user to type in some text, it then returns the text that was entered.
+
+<br>
+
+`NOTE:` <br>
+When a function like `input()` `returns` it brings a value back to that point in the program in which the function was called.
+* The caller `input()` then represents the value it returns.
 
 <br>
 
@@ -253,25 +258,31 @@ ___
 
 Congrats you have written your first python program! Now, how do you get the computer to run this 'code'?
 
+<br>
+
 ## `How Python Source Code is executed`
-> * What you have just written is called scource code. Scource code refers to the human-readable set of instructions and statements written by a programmer using a programming language.  
-> * While it may not seem like it the code that you have just written is not actually readable by the computer.   
-> * We will need another program to translate this high-level scource code into another form of code that the computer can understand.   
-> 
-> * For python this program is the python interpreter.  
->   * Windows: python.exe
->   * Mac/Linux: python3 
+What you have just written is called `source code`. <br>
+
+`Source code` refers to the human-readable set of instructions and statements written by a programmer using a programming language.  <br>
+
+While it may not seem like it, the code that you have just written is not actually readable by the computer.<br>
+
+We will need another program to translate this `high-level source code` into another form of code that the computer can understand.   
+
+For Python this program is the `Python interpreter`.  
+* on Windows: python.exe
+* on Mac/Linux: python3 
 
 <br>
 
-![Scource Code Execution](../img/code-execution.svg)
+![Source Code Execution](../img/code-execution.svg)
 
 *Having trouble viewing on Github? Try Right-Clicking on the image and selecting "Open image in a new tab"*
 
 
 ||||||||
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|Scource Code|-->|Byte Code|-->|Machine Code|-->|Result|
+|Source Code|-->|Byte Code|-->|Machine Code|-->|Result|
 ||||||||  
 |text|Python Interpreter|Bytes|Python Virtual Machine|Binary|CPU|
 ||||||||  
@@ -282,11 +293,11 @@ Congrats you have written your first python program! Now, how do you get the com
 
 <br>
 
-> * Scource code like this is compiled into byte code by the python interpreter.  
->   * Windows: python.exe
->   * Linux/MacOS: python3
+* Source code like this is compiled into byte code by the python interpreter.  
+  * Windows: python.exe
+  * Linux/MacOS: python3
 
-> * Then the python virtual machine PVM converts the bytecode into machinecode and the CPU  executes the instructions one by one.
+* Then the python virtual machine PVM converts the bytecode into machinecode and the CPU  executes the instructions one by one.
 
 <br>
 
@@ -316,10 +327,11 @@ $ python3 main.py
 
 <br>
 
-*NOTE*: 
-> * `>` for Windows, and `$` for Linux/MacOS are used to represent the command prompt. 
->    * These symbols should be omitted when typing the command on your computer.
-> * If you are experiencing issues with using the `python` or `python3` commands, make sure that the executable has been added to the system path*
+`NOTE:` 
+* `>` for Windows, and `$` for Linux/MacOS are used to represent the command prompt. 
+   * These symbols should be omitted when typing the command on your computer.
+
+* If you are experiencing issues with using the `python` or `python3` commands, make sure that the executable has been added to the system path*
 
 
 <br>
