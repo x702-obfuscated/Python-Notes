@@ -23,7 +23,7 @@ Covered in this file:
     1. [`Convert From Character to Binary`](#convert-from-a-character-to-binary)
     1. [`Convert to Hexadecimal hex()`](#convert-to-hexadecimal-hex)
     1. [`Convert from a Character to Hexadecimal`](#convert-from-a-character-to-hexadecimal)
-    1. [`Convert to a String`](#convert-to-a-string)
+    1. [`Convert to a String str()`](#convert-to-a-string)
     1. [`Convert from a Character to an Integer ord()`](#convert-from-an-integer-to-a-character-chr)
 1. [`Defining a String`](#defining-a-string)
 1. [`Multiline Strings`](#multiline-strings)
@@ -70,33 +70,43 @@ Basically: a basic unit of information that represents a letter, number, symbol,
 
 Specifically: a binary value mapped to a specific symbol as defined by ASCII or UTF
 
-<br>
+<br><br>
 
-`American Standard Code for Information Interchange (ASCII)`  
+### `American Standard Code for Information Interchange (ASCII)`  
 ASCII is a character encoding standard used to represent text in computers and other devices that use text. ACSII defines a mapping of binary values to human readable characters. 
 > * defines a set of 128 characters, where each character is represented by a unique 7-bit binary number.
 > * forms the basis for more extensive character encoding schemes like Unicode.
 > * includes both the uppercase and lowercase latin alphabet a-z,A-Z
 
-<br>
+<br><br>
 
-`Unicode`   
+### `Unicode`   
 Unicode is a universal character encoding standard designed to represent and handle text in most of the world's writing systems.
 > * The Unicode standard assigns a unique code point to every character, regardless of platform, program, or language
 > * These code points are hexadeximal values prefixed with 'U+'
 
-*A `code point` is a number that represents a character*
 <br>
 
-`Unicode Transformation Format (UTF)`  
+*A `code point` is a number that represents a character*
+
+* `Unicode Code Points` are integer values assigned to characters, typically written in hexadecimal format and prefixed with `U+`
+
+For Example:
+|Code Point|U+ Format|Character|
+|:-:|:-:|:-:|
+|97|U+0061|"a"|
+
+<br><br>
+
+### `Unicode Transformation Format (UTF)`  
 UTF is a family of character encoding schemes used to represent Unicode characters. 
 > * The most common encodings are UTF-8, UTF-16, and UTF-32. These encoding transform unicode code points into sequences of bytes.
 
 `.py files in Python3 are encoded with UTF-8 by default`
 
-<br>
+<br><br>
 
-`Internationalization (I18N)`
+### `Internationalization (I18N)`
 The symbols defined by ASCII and insuffient for the entire world, so much software focuses on internationalization.
 * I18N is a shorthand for the word internationalization. (Why? --> I 18Letters N)
 
@@ -106,7 +116,7 @@ The symbols defined by ASCII and insuffient for the entire world, so much softwa
 > * The prefix 0b indicates a binary value
 > * The prefix 0x indicates a hexadecimal value
 
-<br>
+<br><br>
 
 |Encoding Scheme|Size|Range|Character|Encoding|Unicode Code Point|
 |:-:|:-:|:-:|:-:|:-:|:-:|
@@ -485,27 +495,37 @@ ___
 <br>
 
 # `Converting Between Character Encodings`
-Characters can be represented in multiple ways called encodings.
-> * There are builtin function calls to convert between these encodings
+Characters can be represented in multiple ways called `encodings`.
 
-> * `int()`, `bin()`, `hex()`, `oct()`, `str()`, `chr()`, `ord()`
+<br>
+
+There are builtin function calls to convert between these encodings
+
+* `int()`, `bin()`, `hex()`, `oct()`, `str()`, `chr()`, `ord()`
+
+<br>
 
 ## `Convert to an Integer int()`
+`int()` converts a number or string into an integer object
+* accepts `string` or `integer` arguments
+* integers with base prefixes `0b`, `0o`, and `0x` are allowed
+* returns an `integer`
+
+<br>
+
+`int()` can be used to convert between bases (>= 2 and <=36) 
+* base 2  (binary) (prefix: 0b)
+* base 8  (octal) (prefix: 0o)
+* base 16 (hexadecimal) (prefix: 0x)
+
+`NOTE: Floats are truncated to Integers. Truncating means to cut off at the floating point, NOT round.`
+
+
 syntax:
 ```
 int(object, base=10)
 ```
-
-> * `int()` converts a number or string into an integer object
-> * can be used to convert between bases (>= 2 and <=36) 
->    * base 2  (binary) (prefix: 0b)
->    * base 8  (octal) (prefix: 0o)
->    * base 16 (hexadecimal) (prefix: 0x)
-
-*NOTE*: 
-> Floats are truncated to Integers. Truncating means to cut off at the floating point, NOT round.
-
-
+examples:
 ```python
 int(2.17)         # 2  float to int   truncates, does not round (cuts off at the floating point)
 int("97")         # 97 str to int
@@ -514,21 +534,39 @@ int("1100001",2)  # 97 binary to int
 int(0x61)         # 97 hexadecimal to int 
 int("61",16)      # 97 hexadecimal to int
 ```
+```python
+flo = 2.17
+int(flo)            # Returns: 2  float to int   truncates, does not round (cuts off at the floating point)
 
+txt_num = "97"
+int(txt_num)        # Returns: 97 str to int
+
+str_bin = "1100001"
+int(str_bin,2)      # Returns: 97 binary to int
+```
 <br>
 
 ## `Convert to Binary bin()`
+`bin()` converts a decimal to base 2 (binary)
+* only accepts `integer` arguments 
+* integers with base prefixes `0b`, `0o`, and `0x` are allowed
+* returns a `string`
+
+`Note: 0b is used to indicate binary values in Python`
+
 syntax:
 ```
-bin(number)
+bin(integer)
 ```
-> * bin() converts decimal to base 2 (binary)
-> * coverts from a number to binary
-> * 0b is used to indicate binary values in Python
-
+examples:
 ```python
-bin(97)     #Returns: 0b1100001  decimal to binary
-bin(0x61)   #Returns: 0b1100001 hex to binary
+bin(97)     # Returns: 0b1100001  decimal to binary
+bin(0x61)   # Returns: 0b1100001  hex to binary
+bin(0o141)  # Returns: 0b1100001  octal to binary
+```
+```python
+num = 97
+bin(num)    # Returns: 0b1100001  decimal to binary
 ```
 
 <br>
@@ -536,51 +574,67 @@ bin(0x61)   #Returns: 0b1100001 hex to binary
 ## `Convert From a Character to Binary`
 `bin()` cannot directly convert characters to binary
 
-Use the `ord(str)` call to convert to decimal value first
-
-
 ```python
-bin("a")      # Output: TypeError: 'str' object cannot be interpreted as an integer
-bin(ord("a")) # Returns: 0b1100001 
+bin("a")        # Output: TypeError: 'str' object cannot be interpreted as an integer
+```
+Use the `ord(str)` call to convert to decimal value first
+```python
+bin(ord("a"))   # Returns: 0b1100001 
+```
+```python
+char = "a"
+bin(ord(char))  # Returns: 0b1100001
 ```
 
 <br>
 
 ## `Convert to Hexadecimal hex()`
-`hex()` converts decimal to base 16 (hexadecimal)
-> * 0x is used to indicate hex values in Python
+`hex()` converts decimal integer to base 16 (hexadecimal)
+* only accepts `integer` arguments 
+* integers with base prefixes `0b`, `0o`, and `0x` are allowed
+* returns a `string`
+
+`NOTE: 0x is used to indicate hexadecimal values in Python`
+
+`NOTE: In other areas of computing hexadecimal is also indicated using 0x, #, and h.`
 
 syntax:
 ```
-hex(number)
+hex(integer)
 ```
-
-*NOTE*: 
-> In other areas of computing hexadecimal is also indicated using 0x, #, and h .
-
-
+examples
 ```python
 hex(97)         # Returns: 0x61 decimal to hex
 hex(0b1100001)  # Returns: 0x61 binary to hex
+hex(0o141)      # Returns: 0x61 octal to hex
+```
+```python
+num = 97
+hex(num)        # Returns: 0x61 decimal to hex
 ```
 
 <br>
 
 ## `Convert From a Character to Hexadecimal`
-`hex()` cannot directly convert characters to hexadecimal
-Use the `ord(str)` call to convert to decimal first
-
+`hex()` cannot directly convert characters to hexadecimal.
 ```python
-hex("a")      # Output: TypeError: 'str' object cannot be interpreted as an integer
-hex(ord("a")) # Returns: 0x61
+hex("a")        # Output: TypeError: 'str' object cannot be interpreted as an integer
+```
+Use the `ord(str)` call to convert to decimal first.
+```python
+hex(ord("a"))   # Returns: 0x61
+```
+```python
+char = "a"
+hex(ord(char))  # Returns: 0x61
 ```
 
 <br>
 
 ## `Convert to a String`
 `str()` creates a new string object from another object type
-> * ie. converts to a string
-> * works on custom classes with the \_\_str\_\_ method defined
+* ie. converts to a string
+* works on custom classes with the \_\_str\_\_ method defined
 
 syntax:
 ```
@@ -626,40 +680,57 @@ type(str(len))  # Returns: <class 'str'>
 
 ## `Convert from an Integer to a Character chr()`
 `chr()` converts an integer `i` to its character representation
+* only accepts `integer` arguments 
+* integers with base prefixes `0b`, `0o`, and `0x` are allowed
+* returns a `string`
 
 syntax:
 ```
 chr(i)
 ```
+examples:
 ```python
 chr(97)         # Returns: "a" decimal to character
 chr(0b1100001)  # Returns: "a" binary to character
+chr(0o141)      # Returns: "a" octal to character
 chr(0x61)       # Returns: "a" hex to character
+```
+```python
+num = 97
+chr(num)        # Returns: "a" decimal to character
 ```
 
 <br>
 
 ## `Convert from a Character to an Integer ord()`
 `ord()` converts a character `c` to its Unicode code point (a base 10 integer) representing the given character.
+* accepts a `single character string` argument.
+* returns an `integer`
 
-*ord() stands for ordinal. An ordinal is a data type where values can be counted and put in a one-to-one correspondence with positive integers. For example, characters are ordinal because you can assign "A" as the first character, "B" as the second, and so on.*
+`NOTE: Base 10 is also known as the decimal number system.`
+
+<br>
 
 syntax:
 ```
 ord(c)
 ```
- 
-
 ```python
-ord('a') #Returns: 97
-ord('b') #Returns: 98
-ord('c') #Returns: 99
-ord('d') #Returns: 100
-ord('e') #Returns: 101
-ord('f') #Returns: 102
-ord('g') #Returns: 103
-ord('h') #Returns: 104
+ord('a') # Returns: 97
+ord('b') # Returns: 98
+ord('c') # Returns: 99
+ord('d') # Returns: 100
+ord('e') # Returns: 101
+ord('f') # Returns: 102
+ord('g') # Returns: 103
+ord('h') # Returns: 104
 ```
+```python
+char = "a"
+ord(char)   # Returns: 97
+```
+
+*ord() stands for ordinal. An ordinal is a data type where values can be counted and put in a one-to-one correspondence with positive integers. For example, characters are ordinal because you can assign "A" as the first character, "B" as the second, and so on.*
 
 <br>
 

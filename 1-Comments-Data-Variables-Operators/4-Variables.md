@@ -64,7 +64,7 @@ To define a variable write the name of the variable followed by a single equal s
 
 Variable Creation Syntax:
 
-    variable = value
+    variable_name = value
 
 examples:
 
