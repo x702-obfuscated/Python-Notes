@@ -111,7 +111,7 @@ ___
 Basically: `Lists` are a collection of  comma seperated elements
 
 Specifically: `Lists` are a collection of data that is ordered, mutable, and allows duplicate members.
-> * use [ ] to enclose elements
+* lists use `[]` to enclose its elements
 
 *Note*: 
 > Python lists are similiar to arrays in other programming languages. Unlike lists, arrays have a fixed size meaning values cannot be added to the array. Lists in python are most closely related to ArrayLists in other languages.*
@@ -158,14 +158,13 @@ ucase_alpha = [
 <br>
 
 A `list` contains multiple items called `elements` or `members`
-|elements|"a"|"b"|"c"|"d"|"e"|
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|indexes|0|1|2|3|4|
-|Length|||||5|
+||||||||
+|-:|:-:|:-:|:-:|:-:|:-:|:-|
+|`elements`|"a"|"b"|"c"|"d"|"e"|An `element` is a single value stored inside the list|
+|`indexes`|0|1|2|3|4|An `index` indicates the spot at which an `element` is located. <br> `Indexes` can be used to access each `element` in the list. |
+|`Length`|||||5|The `length` of a list is the total number of elements contained in the list|
 
-> - An `index` indicates the spot at which an `element` is located.   
-> - `Indexes` can be used to access each `element` in the list.   
-> - The length of a list is the total number of elements contained in the list   
+ 
 
 ```python
 #         [------------------elements---------------------]
@@ -186,12 +185,14 @@ ___
 
 # `Creating a list`
 Use `[]` to denote a list
-> * seperate elements of a list with commas
-> * The `list(iterable)` constructor builds a list
+* seperate elements of a list with commas
+* The `list(iterable)` constructor builds a list
 
 <br>
 
 ### Create an empty list with `[]`
+Use empty square brackets `[]` to make an empty list.
+
 ```python
 [] #creates an empty list
 
@@ -201,6 +202,7 @@ list1d = []
 <br>
 
 ### Enclose comma seperated elements with `[]`
+List elements should be separated with commas `,` and enclosed in square brackets `[]`.
 ```python
 #use [] and seperate each element with commas
 list1d = [1,2,3,4,5,6,7,8,9] 
@@ -211,6 +213,11 @@ list1d = [1,2,3,4,5,6,7,8,9]
 <br>
 
 ### Use the `list(iterable)` constructor call
+The `list()` constructor call can be used to create a list from other data types.<br>
+
+* including: strings, tuples, sets, dictionaries, and other iterables.
+
+<br>
 
 syntax:
 
@@ -231,37 +238,48 @@ ___
 
 <br>
 
-# `Converting from Tuples and Sets`
-* The `list(iterable)` constructor builds a list
-* The `tuple(iterable)` constructor builds a tuple
-* The `set(iterable)` constructor builds a set
+# `Converting from Iterables`
+| Constructor       | Purpose                        | Input Type       | Example                             |
+|-------------------|--------------------------------|------------------|--------------------------------------|
+| `str(object)`     | Converts an object to a string | Any object       | `str(123)`                           |
+| `list(iterable)`  | Creates a list                 | Iterable         | `list("abc")`                        |
+| `tuple(iterable)` | Creates a tuple                | Iterable         | `tuple([1, 2, 3])`                   |
+| `set(iterable)`   | Creates a set (unique values)  | Iterable         | `set([1, 2, 2, 3])`                  |
+| `dict(iterable)`  | Creates a dictionary           | Iterable of pairs| `dict([('a', 1), ('b', 2)])`         |
 
 <br>
 
 `Constructors` are special methods defined by a class that are used to build instances of a class. 
-> * ie. the `list(iterable)` constructor makes a list.
+* ie. the `list(iterable)` constructor makes a list.
+
 
 
 ```python
+# String to List 
+
 list("abcdef") #Returns: ['a', 'b', 'c', 'd', 'e', 'f']
 ```
-
-
 ```python
+# Tuple to List
 tuple1d = (1,2,3,4,5)
 
 list(tuple1d) #Returns: [1, 2, 3, 4, 5]
 ```
-
-
 ```python
+# Set to List
 set1d = {"dog","cat","horse"}
 
 list(set1d) # Returns: ['cat', 'dog', 'horse']
 ```
-
-
 ```python
+# Dictionary to List
+dict1d = {"a":97,"b":98,"c":99}
+
+list(dict1d)        # Returns: ['a', 'b', 'c']
+list(dict1d.values()) # Returns: [97, 98, 99]
+```
+```python
+# List to Tuple, Set, Dictionary
 list1d = [1,2,3,4,5]
 
 #From list to tuple use tuple(iterable)
@@ -269,6 +287,12 @@ tuple1d = tuple(list1d) #Returns: (1,2,3,4,5)
 
 #From list to set use set(iterable)
 set1d = set(list1d) #Returns: {1,2,3,4,5}
+```
+```python
+listofpairs = [("A",65),("B",66),("C",67)]
+
+#From list of pairs to dictionary use dict(iterable)
+dict1d = dict(listofpairs)  # Returns: {'A': 65, 'B': 66, 'C': 67}
 ```
 
 <br>
