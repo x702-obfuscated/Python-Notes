@@ -7,7 +7,7 @@ Covered in this file:
 1. [`Collection Types`](#collection-types)
 1. [`Defining a List`](#defining-a-list)
 1. [`Creating a List `](#creating-a-list)
-1. [`Converting from Tuples and Sets`](#converting-from-tuples-and-sets)
+1. [`Converting Iterables`](#converting-from-tuples-and-sets)
 1. [`List Operations`](#list-operations)
     1. [`Assigning Multiple Variables with Lists`](#assigning-multiple-varibles-with-lists)
     1. [`Checking List Membership`](#checking-list-membership)
@@ -84,7 +84,7 @@ dict1d = {"a": 1, "b": 2,"c": 3}
 |ordered (numerically indexed)|ordered (numerically indexed)|unordered (not indexed)|ordered (indexed with a key)|
 |mutable|immutable|mutable|mutable|
 |duplicates|duplicates|NO duplicates|NO duplicates|
-|**[ ]**|**( )**|**{ }**|**{ : }**| 
+|`[ ]`|`( )`|`{ }`|`{ : }`| 
 
 * *`Data Structure`: a specialized format for organizing, processing, retrieving, and storing data.*
 * *`Collection`: a data structure that holds multiple elements*
@@ -94,6 +94,7 @@ dict1d = {"a": 1, "b": 2,"c": 3}
 * *`Indexed`:  elements are associated with a specific identifier (index), which can be used to directly locate and access the data*
 * *`Mutable`: elements can change*
 * *`Immutable`: elements cannot change*
+* *`Iterable`: an object that can return its elements one at a time.*
 
 *Note*: 
 *`Strings can be iterated through similiarly to lists.`*
@@ -238,7 +239,8 @@ ___
 
 <br>
 
-# `Converting from Iterables`
+# `Converting Iterables`
+Iterables, values that return their elements one at a time, 
 | Constructor       | Purpose                        | Input Type       | Example                             |
 |-------------------|--------------------------------|------------------|--------------------------------------|
 | `str(object)`     | Converts an object to a string | Any object       | `str(123)`                           |

@@ -72,7 +72,7 @@ dict1d = {"a": 1, "b": 2,"c": 3}
 |ordered (numerically indexed)|ordered (numerically indexed)|unordered (not indexed)|ordered (indexed with a key)|
 |mutable|immutable|mutable|mutable|
 |duplicates|duplicates|NO duplicates|NO duplicates|
-|**[ ]**|**( )**|**{ }**|**{ : }**| 
+|`[ ]`|`( )`|`{ }`|`{ : }`|  
 
 * *`Data Structure`: a specialized format for organizing, processing, retrieving, and storing data.*
 * *`Collection`: a data structure that holds multiple elements*
@@ -82,7 +82,7 @@ dict1d = {"a": 1, "b": 2,"c": 3}
 * *`Indexed`:  elements are associated with a specific identifier (index), which can be used to directly locate and access the data*
 * *`Mutable`: elements can change*
 * *`Immutable`: elements cannot change*
-
+* *`Iterable`: an object that can return its elements one at a time.*
 
 <br>
 
