@@ -40,6 +40,10 @@ Python code is executed from top to bottom, left to right, and line by line.
 17                                                               >  
 18 Bottom,Left >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Bottom,Right> 
 ``` 
+
+
+
+
 <br>
 
 [Back to Top](#python-syntax)

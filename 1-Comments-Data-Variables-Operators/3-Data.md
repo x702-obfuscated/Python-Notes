@@ -28,8 +28,8 @@ Data Literals
 <br>
 
 # Data Types
-To work with data it must by classified into types, we will begin with literal data
-> * **Literal Data**: actual data values that do not represent any other data.
+To work with data it must by classified into types, we will begin with `literal` data
+* `Literal Data`: actual fixed data values that do not represent any other data and written directly into code.
 
 <br>
 
