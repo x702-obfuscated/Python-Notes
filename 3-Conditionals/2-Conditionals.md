@@ -48,12 +48,16 @@ ___
 
 
 # `Review: Booleans, Relational, Membership, Identity, and Logical Operators`
-Conditionals often utilize Booleans, Relational, Membership, Identity, and Logical Operators in order to determine what block of code should be executed.
+`Conditionals` often utilize `Booleans, Relational, Membership, Identity, and Logical Operators` in order to determine what block of code should be executed.
+
+<br>
+
+Therefore a review of these concepts can be helpful before diving into conditionals.
 
 <br>
 
 ## `Booleans (True/False)`
-* Booleans are a data with only two states, typically True or False
+* Booleans are a data type with only two states, typically True or False
 
 
 ```python
@@ -65,8 +69,8 @@ False
 
 ## `Comparison aka Relational Operators `
 `Comparison operators` are used to compare two values.
-> * they evaluate to a boolean value (True/False)
-> * Order of Operations is Left to Right
+* these operations evaluate to a boolean value (True/False)
+* Order of Operations is Left to Right
 
 |Symbol| Inequality Operation      |
 |:----:|:-------------------------:|
@@ -148,13 +152,14 @@ This is because your code is syntatically correct, and even at run time the code
 |`Functions`, `Methods`, `Lambdas`, `Classes`|Any function, method, lambda or class is evaluated as True|
 |`Objects`|By default objects are evaluated True, but how an object is evaluated can be changed|
 
+<br>
 
-*Note on Errors:*  
-> *`Syntax/Compile Time Errors`: occur when compiling the code, and the code violates the rules of the programming language's syntax.*  
+`Note on Errors:` 
+* `Syntax/Compile Time Errors`: occur when compiling the code, and the code violates the rules of the programming language's syntax.  
 
-> *`Runtime Errors`: occur after the program has been successfully compiled and started execution. They usually result from operations that are not possible to perform.* 
+* `Runtime Errors`: occur after the program has been successfully compiled and started execution. They usually result from operations that are not possible to perform. 
 
-> *`Logical Errors`: occur when a program runs without crashing but produces incorrect results. These errors are caused by mistakes in the program's logic, meaning the code does not behave as intended.*  
+* `Logical Errors`: occur when a program runs without crashing but produces incorrect results. These errors are caused by mistakes in the program's logic, meaning the code does not behave as intended.  
 
 <br>
 
@@ -168,27 +173,24 @@ ___
 Python syntax uses `indentation` to define the scope of blocks of code.
 
 `Code blocks` are groups of statements that are executed together as a unit.
-> Each indentation level represents a higher level of code structure (conditionals, loops, functions, classes)
-
-> All statements within the same block must have the same level of indentation.
-
-> Indent 4 spaces to create a code block.  
-
-> The end of a block is indicated by the decrease in indentation level. 
+1. Each indentation level represents a higher level of code structure (conditionals, loops, functions, classes)
+1. All statements within the same block must have the same level of indentation.
+1. Indent 4 spaces to create a code block.  
+1. The end of a block is indicated by the decrease in indentation level. 
 
 *Note*:   
 `Scope/Context` is the area of a program in which a block of code exists and executes.
 
 <br>
 
-*Notes:*  
-> *`Indentation` is typically achieved using spaces or tabs.* 
+Notes:  
+* `Indentation` is typically achieved using spaces or tabs.* 
 
-> *Don't mix spaces and tabs, it can lead to syntax errors or inconsistent behavior.*  
+* Don't mix spaces and tabs, it can lead to syntax errors or inconsistent behavior.  
 
-> *Python 3 disallows mixing tabs and spaces for indentation in the same source file.* 
+* Python 3 disallows mixing tabs and spaces for indentation in the same source file.
 
-> *If you are using an editor like VScode using the tab key, and spaces is not a problem.*
+* If you are using an editor like VScode using the tab key, and spaces is not a problem.
 
 <br>
 
@@ -287,21 +289,21 @@ ___
 
 | Control Flow Statement | Description                                                                 |
 |:-:|:-|
-| `if`                   | Executes a block of code if a specified condition is true.                   |
-| `elif`                 | Checks another condition if the previous `if` condition is false.            |
-| `else`                 | Executes a block of code if all preceding conditions are false.              |
-| `for`                  | Iterates over a sequence (like a list, tuple, string, etc.).                 |
-| `while`                | Repeats a block of code as long as a condition is true.                      |
-| `break`                | Exits the nearest enclosing loop immediately.                               |
-| `continue`             | Skips the current iteration of the loop and continues with the next one.     |
-| `pass`                 | Does nothing; used as a placeholder for future code.                        |
-| `return`               | Exits a function and optionally returns a value.                            |
-| `try`                  | Defines a block of code to test for errors during execution.                 |
-| `except`               | Catches and handles exceptions (errors) that occur in the `try` block.       |
-| `finally`              | Executes code whether or not an exception occurred in the `try` block.       |
-| `raise`                | Manually raises an exception.                                                |
-| `with`                 | Used to wrap the execution of a block of code within context management.     |
-| `assert`               | Tests a condition, and if it's false, raises an `AssertionError`.            |
+| `if` | Executes a block of code if a specified condition is true. |
+| `elif` | Checks another condition if the previous `if` condition is false.|
+| `else` | Executes a block of code if all preceding conditions are false.|
+| `for`| Iterates over a sequence (like a list, tuple, string, etc.). |
+| `while`| Repeats a block of code as long as a condition is true.|
+| `break`| Exits the nearest enclosing loop immediately. |
+| `continue` | Skips the current iteration of the loop and continues with the next one. |
+| `pass` | Does nothing; used as a placeholder for future code.|
+| `return` | Exits a function and optionally returns a value.|
+| `try`| Defines a block of code to test for errors during execution. |
+| `except` | Catches and handles exceptions (errors) that occur in the `try` block. |
+| `finally`| Executes code whether or not an exception occurred in the `try` block. |
+| `raise`| Manually raises an exception.|
+| `with` | Used to wrap the execution of a block of code within context management. |
+| `assert` | Tests a condition, and if it's false, raises an `AssertionError`.|
 
 <br>
 
@@ -326,9 +328,9 @@ syntax:
         Code block to execute if the condition is True 
         ...
 
-> * If the condition is True the code block executes
-> * If the condition is False the code block is skipped.
-> * Each new `if` is a new `if statement` independant of any other `if statement`
+* If the `condition` is `True` the code block executes
+* If the `condition` is `False` the code block is skipped.
+* Each new `if` is a new `if statement` independant of any other `if statement`
 
 <br>
 
@@ -439,9 +441,13 @@ Basically: `elif statements`, short for 'else if', are additional `if` statement
 
 Specifically: An `elif statement` is a conditional branch that provides an alternative condition to be checked if the preceding `if` and `elif` statements evaluate to False. 
 
-> `elif` statements allows multiple mutually exclusive conditions to be evaluated sequentially, where only the first True condition will execute its corresponding block of code.
 
-> Each `elif` statement depends on the preceding `if` or `elif`conditions, meaning that it will only be evaluated if all prior conditions have been False
+<br>
+
+* `elif` statements allows multiple mutually exclusive conditions to be evaluated sequentially, where only the first True condition will execute its corresponding block of code.
+
+
+* Each `elif` statement depends on the preceding `if` or `elif`conditions, meaning that it will only be evaluated if all prior conditions have been False
 
 <br>
 
@@ -461,9 +467,9 @@ elif(condition3):
     ... 
 ...
 ```
-> * The `if` statement's condition is checked first.
-> * If the `if` condition is `False`, the `elif` conditions are checked in order.
-> * If an `elif` condition is `True`, its block executes, and the remaining `elif` and `else` blocks are skipped.
+* The `if` statement's condition is checked first.
+* If the `if` condition is `False`, the `elif` conditions are checked in order.
+* If an `elif` condition is `True`, its block executes, and the remaining `elif` and `else` blocks are skipped.
 
 <br>
 
@@ -638,9 +644,9 @@ else:
     Code block to execute if the condition above is False
     ...
 ```
-> * if the condition is True the `if` code block executes
-> * if the condition is False the `if` code block is skipped, and the `else` block executes
-> * The `else` is dependent on the `if`
+* if the `condition` is `True` the `if` code block executes
+* if the `condition` is `False` the `if` code block is skipped, and the `else` block executes
+* The `else` is dependent on the `if`
 
 <br>
 
@@ -786,10 +792,10 @@ else:
     Code block to execute if condition_1 AND condition_2 are False
     ...
 ```
-> * If condition_1 is True the `if` block executes
-> * If condition_1 is False and condition_2 is True the `elif` block executes
-> * If all conditions above it are False the `else` block executes
-> * `elifs` are dependent on `if`
+* If `condition_1` is `True` the `if` block executes
+* If `condition_1` is `False` and `condition_2` is True the `elif` block executes
+* If all conditions above it are `False` the `else` block executes
+* `elifs` are dependent on `if`
 
 <br>
 
