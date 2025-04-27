@@ -241,17 +241,17 @@ ___
 The factorial of a non-negative integer n, denoted as n!, is the product of all positive integers less than or equal to n. 
 * This is the most common example used when teaching Recursion as the algorithm is simple to understand.
 
-Example `5! --> 5 * 4 * 3 * 2 * 1 == 125`
+Example `5! --> 5 * 4 * 3 * 2 * 1 == 120`
 
 ```python
 def factorial(n):
     if n <= 0:      # base case
         return 1
     
-    return n * factorial(n-1) # recursive calleeeee
+    return n * factorial(n-1) # recursive call
 
 
-factorial(5) # Returns 125
+factorial(5) # Returns 120
 ```
 
 <br>
