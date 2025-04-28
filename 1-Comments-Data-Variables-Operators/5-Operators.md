@@ -7,7 +7,8 @@ Covered in this file:
 1. [`Concatenation`](#concatenation)
 1. [`Duplication`](#duplication)
 1. [`Casting (changing data type)`](#casting-changing-data-type)
-1. [`Complete Operator Precedence`](#complete-operator-precedence)
+1. [`Operators, Operands, and Precedence`](#operators-operands-and-precedence)
+    1. [`Complete Operator Precedence`](#complete-operator-precedence)
 1. [`Arithmetic operators (math)`](#arithmetic-operators-math)
 1. [`Comparison aka Relational Operators`](#comparision-aka-relational-operators)
 1. [`Membership operators`](#membership-operators)
@@ -287,8 +288,28 @@ ___
 
 <br>
 
-# `Complete Operator Precedence`
-*Operations at the same level proceed from left to right*
+# `Operators Operands and Precedence`
+
+`Operators` are the symbols used to perform operations on `operands`.
+
+`Operands` are the values or variables that operators operate on. 
+
+example:
+
+    a + b
+
+* Operator: `+`
+* Operands: `a` and `b`
+
+<br>
+
+##  `Complete Operator Precedence`
+
+`Operator precedence` refers to the rules that determine the order in which operators are evaluated in an expression. 
+
+Below is the complete operator precendance for Python.
+* From top to bottom: Top is highest precedence.
+* Operations at the same level proceed from left to right in the expression.
 
 |Operators|Description|
 |:-:|:-|

@@ -14,6 +14,7 @@ Covered in this file:
 1. [`Counting with while loops`](#counting-with-while-loops)
     1. [`Ascending: Counting Up by 1 and by multiples`](#ascending-counting-up-by-1-and-by-multiples)
     1. [`Descending: Counting Down by 1 and by multiples`](#descending-counting-down-by-1-and-by-multiples)
+1. [`While Loops and Lists`](#while-loops-and-lists)
 1. [`Common Logical Errors: Infinite Loops and Off by 1 Errors`](#common-logical-errors-infinite-loops-and-off-by-1-errors)
     1. [`Infinite Loops`](#infinite-loops)
     1. [`Off by One Errors`](#off-by-one-errors)
@@ -23,7 +24,7 @@ Covered in this file:
 1. [`Continue Statement`](#continue-statement)
 1. [`Pass Statement`](#pass-statement)
 1. [`Combining Control Flow Statements`](#combining-control-flow-statements)
-s
+
 
 <br>
 
@@ -684,6 +685,48 @@ while(i > -15):             # stop (i >= -14)
     i -= 4                  # step
 # Output: -6 -10 -14 
 ```
+
+<br>
+
+[Back to Top](#python-while-loops)
+
+___
+
+<br>
+
+# `While Loops and Lists`
+Loops are commonly used to access and operate on the elements of a collection.
+
+While loops can be used to go through each item of a collection, and perform some function with each element.
+
+<br>
+
+Generally when looping through a list:
+* The control variable (ex. `i`) should start at 0
+* The condition should stop the loop at the end of the list (ex. `i < len(list)`)
+* The operation should be performed.
+* Then the control variable should be incremented (ex. `i += 1`)
+
+example:
+```python
+lst = ["a","b","c","d"]
+
+i = 0                           # start at the 1st element
+
+while(i < len(lst)):            # stop at the last element
+    print(lst[i], end = " ")    # print each element out with a space after
+
+    i += 1                      # step by 1
+
+# Output: a b c d
+```
+
+<br>
+
+More on looping with lists:
+* [`3-Iterate1DCollections.md`](./3-Iterate1DCollections.md)
+* [`4-Iterate2DCollections.md`](./4-Iterate2DCollections.md)
+
 
 <br>
 
