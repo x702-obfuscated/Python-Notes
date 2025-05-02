@@ -39,6 +39,9 @@ Constraints:
 * Your function must work for any value of `var`.
 * You must use a conditional in the function definition.
 
+
+`Hint: Check the notes on Truthiness`
+
 ---
 <br>
 

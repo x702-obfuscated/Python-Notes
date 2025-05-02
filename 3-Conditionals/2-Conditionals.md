@@ -154,6 +154,30 @@ This is because your code is syntatically correct, and even at run time the code
 
 <br>
 
+Example:
+
+*`Write a conditional that checks if any value is True or False in Python.`*
+```python
+value = ...           #Replace ... with any value
+
+if(value):            # Evaluates 'var' based on Truthiness
+    print(True)
+else:
+    print(False)
+```
+``` python
+# Function Definition that returns the truthiness of a value
+
+def get_truth(value):
+    if value:           # Evaluates any value based on Truthiness
+        return True
+    else:
+        return False
+```
+
+<br>
+
+
 `Note on Errors:` 
 * `Syntax/Compile Time Errors`: occur when compiling the code, and the code violates the rules of the programming language's syntax.  
 
