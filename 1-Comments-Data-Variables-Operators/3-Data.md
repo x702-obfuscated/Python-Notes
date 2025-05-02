@@ -11,6 +11,7 @@ Data Types
 1. [`Determining Data Type with type()`](#determining-data-type-with-type)
 
 Data Literals
+1. [`All Python Data Types`](#all-python-data-types)
 1. [`NULL`](#null-literals-class-nonetype)
 1. [`Boolean`](#boolean-literals-class-bool)
 1. [`Integer`](#integer-literals-class-int)
@@ -134,6 +135,53 @@ None                # Null type meaning nothing
 # Data Literals
 > * Literal: refers to a notation for representing a fixed actual value
 > * Literals do not represent something else
+
+<br>
+
+[Back to Top](#python-data)
+
+___
+
+<br>
+
+# `All Python Data Types`
+| Category        | Data Type        | Description                                                 | Example                      |
+|----------------|------------------|-------------------------------------------------------------|------------------------------|
+| Null Type       | `NoneType`       | Represents the absence of a value  (ie. nothingness)       | `None`                       |
+
+<br>
+
+| Category        | Data Type        | Description                                                 | Example                      |
+|----------------|------------------|-------------------------------------------------------------|------------------------------|
+| Boolean         | `bool`           | Boolean value  (represents two states)                     | `True`, `False`              |
+
+<br>
+
+| Category        | Data Type        | Description                                                 | Example                      |
+|----------------|------------------|-------------------------------------------------------------|------------------------------|
+| Numeric         | `int`            | Integer numbers   (whole numbers)                          | `42`, `-7`, `0`              |
+|                 | `float`          | Floating-point numbers  (fractional numbers)               | `3.14`, `-0.001`, `0.0`      |
+|                 | `complex`        | Complex numbers      (imaginary numbers)                   | `1 + 2j`, `-3j`              |
+
+<br>
+
+| Category        | Data Type        | Description                                                 | Example                      |
+|----------------|------------------|-------------------------------------------------------------|------------------------------|
+| Sequence        | `str`            | String of characters (Immutable)                            | `"hello"`, `'abc123'`        |
+|                 | `list`           | Ordered, mutable collection                                | `[1, 2, 3]`, `["a", "b"]`     |
+|                 | `tuple`          | Ordered, immutable collection                              | `(1, 2, 3)`, `("x",)`        |
+| Set             | `set`            | Unordered collection of unique elements                    | `{1, 2, 3}`, `{"a", "b"}`     |
+|                 | `frozenset`      | Immutable version of set                                   | `frozenset([1, 2, 3])`       |
+| Mapping         | `dict`           | Collection of key-value pairs                              | `{"a": 1, "b": 2}`           |
+
+<br>
+
+| Category        | Data Type        | Description                                                 | Example                      |
+|----------------|------------------|-------------------------------------------------------------|------------------------------|
+| Binary          | `bytes`          | Immutable sequence of bytes                                | `b'hello'`, `bytes([1,2,3])` |
+|                 | `bytearray`      | Mutable sequence of bytes                                  | `bytearray(b"abc")`         |
+|                 | `memoryview`     | Memory view object of binary data                          | `memoryview(b"abc")`        |
+
 
 <br>
 

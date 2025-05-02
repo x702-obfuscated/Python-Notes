@@ -275,7 +275,7 @@ type(float(num)) #Returns: <class 'float'>
 
 
 ```python
-txt = 2.17
+txt = "2.17"
 float(txt)      #Returns: 2.17
 type(float(txt))#Returns: <class 'float'>
 ```
@@ -376,7 +376,7 @@ Order of operations follows PEMDAS from Algebra (BODMAS for the EU)
 
 <br>
 
-## `Regular Division` `\`
+## `Regular Division` `/`
 > * always returns a `<class 'float'>`
 
 ```python
@@ -386,7 +386,7 @@ Order of operations follows PEMDAS from Algebra (BODMAS for the EU)
 
 <br>
 
-## `Floor Division (Integer Division)` `\\`
+## `Floor Division (Integer Division)` `//`
 > * returns a `<class 'int'>`
 > * truncates (2.5 --> 2): cuts off the fractional part
 ```python
