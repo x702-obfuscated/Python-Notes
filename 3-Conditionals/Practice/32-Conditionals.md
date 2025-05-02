@@ -28,7 +28,7 @@
 
 
 ### `Q1`
-Define a function named `is_True` with a parameter named `var`. The function should use a conditional to determine if `var` is equal to True. 
+Define a function named `is_True` with a parameter named `var`. The function should use a conditional to determine if `var` is True. 
 
 * If it is, the function returns True.  
 * If it is NOT, the function returns False.
