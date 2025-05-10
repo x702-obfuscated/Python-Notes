@@ -95,13 +95,84 @@ Basically: An `expression` is a statement with a result or answer.
 Specifically: An `expression` is a combination of data, variables, and operations that is evaluated to produce a single value aka result or answer.
 
 examples:
-```python
-4 + 6       # Result: 10
-```
-```python
-num = 2
+# Comprehensive Python Expressions (From Simple to Complex)
 
-num < 100   # Result: True
+1. Literal Expressions (no variables)
+
+```python
+42                  # integer literal evaluates to itself
+3.14                # float literal evaluates to itself 
+'Hello'             # string literal evaluates to itself
+True                # boolean literal evaluates to itself
+```
+
+2. Variable-Only Expressions
+
+```python
+x                   # evaluates to the value of x
+name                # evaluates to the value of name
+```
+
+3. Arithmetic Expressions
+
+```python
+a + b               # addition
+a - 3               # subtraction with a literal
+a * b + 2           # combined operations
+(a + b) / c         # using parentheses to control order
+```
+
+4. Comparison Expressions
+
+```python
+a > b               # greater than
+a == 10             # equality with a literal
+b != c              # inequality
+(a + b) >= (c - 2)  # comparison with arithmetic
+```
+
+5. Logical Expressions
+
+```python
+a > b and c < d             # logical AND
+a == 10 or b == 5           # logical OR
+not (a < b)                 # logical NOT
+(a > b) and not (c == d)    # nested logic
+```
+
+6. Membership and Identity Expressions
+
+```python
+'x' in 'text'               # membership in a string
+5 in [1, 2, 3, 4, 5]        # membership in a list
+a is b                      # identity comparison
+a is not None               # checking if a is not None
+```
+
+7. Expressions with Lists, Dictionaries, or Tuples
+
+```python
+len(my_list)               # function call with variable
+my_dict['key']             # dictionary lookup
+my_tuple[1] + 5            # tuple access and arithmetic
+sum([a, b, c]) > 20        # list function with comparison
+```
+
+8. Expressions with Functions and Nesting
+
+```python
+max(a, b) + min(c, d)              # nested function calls
+abs(a - b) > pow(c, 2)             # function and comparison
+sorted([a, b, c])[0] == a          # list sort and comparison
+type(a) == int and isinstance(b, float)  # type checks
+```
+
+9. Ternary and Complex Conditional Expressions
+
+```python
+'yes' if a > b else 'no'           # ternary expression
+(a if a > b else b) + c            # ternary inside arithmetic
+(True if x in my_list else False) and (y == 3)  # mixed logic
 ```
 
 
