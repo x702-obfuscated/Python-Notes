@@ -5,6 +5,7 @@ ___
 
 Covered in this file:
 1. [`Introduction to the Python Programming Language`](#an-introduction-to-the-python-programming-language)
+1. [`What is a program?`](#what-is-a-program)
 1. [`Single/Multi Line Comments`](#singlemulti-line-comments)
     1. [`Single-line comments`](#single-line-comments)
     1. [`Multi-line comments`](#multi-line-comments-docstrings)
@@ -23,7 +24,7 @@ Covered in this file:
         1. [`Fixing Runtime Errors`](#fixing-runtime-errors)
     1. [`Logical Errors`](#logical-errors)
         1. [`Fixing Logical Errors`](#fixing-logical-errors)
-
+1. [`Debugging`]()
 <br>
 
 ___
@@ -61,60 +62,120 @@ The current python version and documentation can be found here: [https://www.pyt
 To install python on your computer start here: [https://www.python.org/downloads/](https://www.python.org/downloads/)
 
 
-> * Python files have the (.py) extension.   
-> * The python interpreter is invoked using the 'python' command on Windows  
->
-> * The python interpreter is invoked using the 'python3' command on UNIX like systems (Linux, Mac) 
+
+*Current Stable Python Version at the time of writting: Python 3.12.5*
+
+<br>
+
+[Back to Top](#introduction-to-python-comments-input-output-and-errors)
+___
+
+<br>
+
+# `What is a program?`
+A `program` is a set of instructions written in a programming language that a computer can execute to perform a specific task or solve a problem.
+
+
+Regardless of the language used, programs have these things in common:
+| **Part**                  | **Description**                                                                 |
+|---------------------------|---------------------------------------------------------------------------------|
+| `Input`                 | Receives data for processing (e.g., from user, file, or device).               |
+| `Processing`            | Performs operations on the input to generate results.                         |
+| `Output`                | Delivers results (e.g., prints to screen, saves to a file).                   |
+
+<br>
+
+As a programmer your job is to determine:
+* What input does the program need and how to recieve that input.
+* How will the input be processed to produce a result.
+* How will the result be delivered and as what type of output.
+
+<br>
+
+The following terms are also good to know when dealing with Programs:
+| **Term**              | **Definition**                                                                 |
+|------------------------|--------------------------------------------------------------------------------|
+| `Syntax`             | The set of rules that define the correct structure of code in a programming language. `The way the language is written.` |
+| `Comments`           | Notes written in code to explain what it does; ignored during execution. aka `Documentation`      |
+| `Data`               | Raw facts or information (like numbers or text) used by a program.            |
+| `Data Structure`     | A way to organize and store data (e.g., lists, arrays, dictionaries).         |
+| `Variable`           | A named location in memory to store data that can change during execution.    |
+| `Operator`           | A symbol that performs an action on values (e.g., `+`, `-`, `==`).            |
+| `Control Structure`  | Directs the flow of a program using decisions and repetition (e.g., `if`, `while`). |
+| `Procedure Definition` | Writing a named block of code (function) to perform a specific task.        |
+| `Procedure Call`     | Using or running a procedure (function) that was previously defined.          |
+| `Class`              | A blueprint for creating objects; defines properties and behaviors.           |
+| `Object`             | An instance of a class; contains data and functions defined by the class.     |
+| `Algorithm`          | A step-by-step set of instructions to solve a problem or perform a task.      |
+
+<br>
+<br>
+
+
+In Python:
+1. Programs are written inside of files with the `.py` extension
+1. Programs are interpreted by the Python Interpreter program and executed by the CPU
+
 
 > * The interpreter can be invoked interactively allowing you to write and execute line by line. 
 
 <br>
 
-Windows command syntax 
-> '>' represents the terminal prompt and can be omitted:
+### `Invoking the Interpreter:`
+--- 
+#### Windows
+The python interpreter is invoked using the `python` command on Windows <br>
+* `>` represents the terminal prompt and can be omitted:
+```
+> python
+```   
+The interpreter can be invoked and provided a filepath argument in order to interpret code written in a text file (`.py`)  
+syntax:
+```
+> python <filepath>
+```
+example:
+```
+> python main.py
+```
 
-    > python
-
-Linux/MacOS command syntax 
-> '$' represents the terminal prompt and can be omitted:
-
-    $ python3
 
 <br>
 
-> * The interpreter can be invoked and provided a filepath argument in order to interpret code written in a text file (.py)  
-
-Windows command syntax:
-
-    > python <filepath>
-
-Linux/MacOS command syntax:
-
-    $ python3 <filepath>
-
-Examples:
+#### Linux/MacOS command syntax 
+The python interpreter is invoked using the `python3` command on UNIX like systems (Linux, Mac) <br>
+* `$` represents the terminal prompt and can be omitted:
 ```
-> python main.py  
+$ python3
 ```
+The interpreter can be invoked and provided a filepath argument in order to interpret code written in a text file (`.py`)
+
+syntax:
+```
+$ python3 <filepath>
+```
+example:
 ```
 $ python3 main.py
 ```
 
 <br>
 
-*NOTE*: 
-> * <> angle brackets indicate a variable part of the command. For example: \<filepath> indicates any filepath  
-> * For simplicity commands with a leading `>` should be understood as Windows Commands unless otherwise specified 
-> * For simplicity commands with leading `$` should be understood to be Linux/MacOS commands unless otherwise specified  
-
+On any system invoking the interpreter without a filepath argument will run the interpreter in interactive mode, allowing you to execute code line by line as you type it. This is useful for understanding what code is doing as a beginner. 
 
 <br>
 
-Now that you have the basics, create a new file that ends in .py, open it in your favorite text editor and let's begin learning about the Python Programming Language.
+`*IMPORTANT NOTE*` <br>
+In these notes:
+* `<>` angle brackets indicate a variable part of the command. For example: \<filepath> indicates any filepath  
+* For simplicity commands with a leading `>` should be understood as Windows Commands unless otherwise specified 
+* For simplicity commands with leading `$` should be understood to be Linux/MacOS commands unless otherwise specified  
+---
+
+<br>
+
+Now that you have the basics, create a new file that ends in `.py`, open it in your favorite text editor and let's begin learning about the Python Programming Language.
 > * If it is your first time programming I recommend VScode as a text editor you can get it here: [https://code.visualstudio.com/](https://code.visualstudio.com/)
-
-*Current Stable Python Version at the time of writting: Python 3.12.5*
-
 <br>
 
 [Back to Top](#introduction-to-python-comments-input-output-and-errors)
@@ -185,8 +246,8 @@ To build your first program use the built-in `print()` function call to send out
 
 <br>
 
-> Here we will print out "Hello World".   
-> Literal text must be written in quotes, and is called a string. 
+> Here we will print out the text "Hello World".   
+> `Text data` also called `literal text` must be written in quotes (`'` or `"`), and is called a `string`. 
 
 
 ```python
@@ -527,6 +588,7 @@ ___
 
 ### Lets try an example with a common beginner mistake
 *In this problem we will be printing out the first 8 powers of 2*
+
 Here is what we expect:
 |2^n|Answer|
 |:-:|:-:|
@@ -656,5 +718,43 @@ ___
 
 <br>
 
+# `Debugging`
+`Debugging` is the process of identifying, analyzing, and fixing bugs or errors in software.
+
+<br>
+<br>
+
+Debugging occurs in the following steps:
+| Step Number | Step Name       | Description|
+|-|---|-------|
+| 1 | `Detection` | Identifying that a bug exists, typically through user reports, test failures, or odd behavior. |
+| 2 | `Reproduction`| Reproducing the problem consistently to understand how and when it occurs. |
+| 3 | `Diagnosis` | Investigating and determining the root cause of the bug within the code or system. |
+| 4 | `Correction`| Making the necessary code or configuration changes to fix the bug. |
+| 5 | `Testing` | Verifying that the fix works and does not introduce new issues.|
+| 6 | `Documentation` | Recording details about the bug, its cause, the fix applied, and any relevant notes. |
+| 7 | `Prevention`| Implementing safeguards like tests, code reviews, or design changes to avoid future bugs.|
+
+
+
+<br> 
+
+Common Methods of Debugging:
+| Technique | Definition | Description |
+|------------------------------|------------------------------------|-----------------------------------------------------------------------------------------------|
+| `Hand Tracing` | Manually reading through the code | Stepping through code line by line (on paper or mentally) to track variable values and logic flow. |
+| `Adding Output Statements` | Print values during execution| Inserting `print()` or logging statements to display variable values and check the program’s progress or logic. |
+| `Test Cases` | Check input-output behavior| Designing specific scenarios with known inputs and expected outputs to ensure code correctness and isolate bugs. |
+| `Debugging Tools`| Using a software tool to find bugs  | Employing tools like IDE debuggers to set breakpoints, inspect memory, and step through code interactively. |
+
+
+
+
+<br>
+
+[Back to Top](#introduction-to-python-comments-input-output-and-errors)
+___
+
+<br>
 *Created and maintained by Mr. Merritt* 
-    
+  

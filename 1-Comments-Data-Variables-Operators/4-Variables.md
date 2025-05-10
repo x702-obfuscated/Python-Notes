@@ -38,7 +38,14 @@ ___
 Basically: `variables` are like containers that store literal data 
 
 Specifically: `variables` are pointers that reference a location in memory where the literal data is physically stored
-> * The data a variable points to can change
+* The data a variable points to can change
+* quotes are used to distinguish text data from a variable.
+
+```python
+"example"       # Text Data
+
+example         # Variable
+```
 
 <br>
 
@@ -55,10 +62,11 @@ ___
 <br>
 
 # `Creating a Variable`
-To define a variable write the name of the variable followed by a single equal sign `=`
-> * a single equals sign `=` is used to assign a variable to the data it references
+To define a variable write the name of the variable to the left followed by a single equal sign `=`
+* a single equals sign `=` is used to assign a variable to the data it references
+* When defining a variable it must always be on the `left side` of the `=`
 
-> * **For source code readability variable names should represent the data they store**
+**`For source code readability variable names should represent the data they store`**
 
 <br>
 

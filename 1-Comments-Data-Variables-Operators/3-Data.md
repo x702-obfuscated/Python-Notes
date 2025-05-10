@@ -332,7 +332,9 @@ ___
 <br>
 
 # `String Literals <class 'str'>`
-Strings are a collection of characters.
+Basically: Strings are text data written in quotes.
+
+Specifically: Strings are a collection of characters enclosed in quotes.
 > * Strings are surronded by single `''` or double quotes `""`
 
 ```python

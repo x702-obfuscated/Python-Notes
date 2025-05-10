@@ -4,11 +4,12 @@
 ___
 
 Covered in this file:
+1. [`Operators, Operands, and Precedence`](#operators-operands-and-precedence)
+    1. [`Complete Operator Precedence`](#complete-operator-precedence)
+    1. [`Expressions`](#expressions)
 1. [`Concatenation`](#concatenation)
 1. [`Duplication`](#duplication)
 1. [`Casting (changing data type)`](#casting-changing-data-type)
-1. [`Operators, Operands, and Precedence`](#operators-operands-and-precedence)
-    1. [`Complete Operator Precedence`](#complete-operator-precedence)
 1. [`Arithmetic operators (math)`](#arithmetic-operators-math)
 1. [`Comparison aka Relational Operators`](#comparision-aka-relational-operators)
 1. [`Membership operators`](#membership-operators)
@@ -35,6 +36,78 @@ Covered in this file:
 
 
 <br>
+
+___
+
+<br>
+
+# `Operators Operands and Precedence`
+
+`Operators` are the symbols used to perform operations on `operands`.
+
+`Operands` are the values or variables that operators operate on. 
+
+example:
+
+    a + b
+
+* Operator: `+`
+* Operands: `a` and `b`
+
+<br>
+
+##  `Complete Operator Precedence`
+
+`Operator precedence` refers to the rules that determine the order in which operators are evaluated in an expression. 
+
+Below is the complete operator precendance for Python.
+* From top to bottom: Top is highest precedence.
+* Operations at the same level proceed from left to right in the expression.
+
+|Operators|Description|
+|:-:|:-|
+| `()`          | Parentheses                     |
+| `**`          | Exponentiation                  |
+| `+x` `-x` `~x`    | Unary plus, unary minus, and bitwise NOT |
+| `*` `/` `//` `%`    | Multiplication, division, floor division, and modulus |
+| `+` `-`         | Addition and subtraction        |
+| `<<` `>>`       | Bitwise left and right shifts   |
+| `&`           | Bitwise AND                     |
+| `^`           | Bitwise XOR                     |
+| `\|`          | Bitwise OR                      |
+| `==` `!=` `>` `>=` `<` `<=` | Comparisons             |
+| `is`, `is not`      | Identity                        |
+| `in`, `not in`   | Membership operators            |
+| `not`         | Logical NOT                     |
+| `and `        | Logical AND                     |
+| `or`          | Logical OR                      |
+
+*NOTE*:   
+> *If you have trouble remembering operation precedence remember that you can always use parenthesis to make your code clear*
+
+<br>
+
+## `Expressions`
+--- 
+
+Basically: An `expression` is a statement with a result or answer.
+
+Specifically: An `expression` is a combination of data, variables, and operations that is evaluated to produce a single value aka result or answer.
+
+examples:
+```python
+4 + 6       # Result: 10
+```
+```python
+num = 2
+
+num < 100   # Result: True
+```
+
+
+<br>
+
+[Back to Top](#python-operators)
 
 ___
 
@@ -288,57 +361,6 @@ ___
 
 <br>
 
-# `Operators Operands and Precedence`
-
-`Operators` are the symbols used to perform operations on `operands`.
-
-`Operands` are the values or variables that operators operate on. 
-
-example:
-
-    a + b
-
-* Operator: `+`
-* Operands: `a` and `b`
-
-<br>
-
-##  `Complete Operator Precedence`
-
-`Operator precedence` refers to the rules that determine the order in which operators are evaluated in an expression. 
-
-Below is the complete operator precendance for Python.
-* From top to bottom: Top is highest precedence.
-* Operations at the same level proceed from left to right in the expression.
-
-|Operators|Description|
-|:-:|:-|
-| `()`          | Parentheses                     |
-| `**`          | Exponentiation                  |
-| `+x` `-x` `~x`    | Unary plus, unary minus, and bitwise NOT |
-| `*` `/` `//` `%`    | Multiplication, division, floor division, and modulus |
-| `+` `-`         | Addition and subtraction        |
-| `<<` `>>`       | Bitwise left and right shifts   |
-| `&`           | Bitwise AND                     |
-| `^`           | Bitwise XOR                     |
-| `\|`          | Bitwise OR                      |
-| `==` `!=` `>` `>=` `<` `<=` | Comparisons             |
-| `is`, `is not`      | Identity                        |
-| `in`, `not in`   | Membership operators            |
-| `not`         | Logical NOT                     |
-| `and `        | Logical AND                     |
-| `or`          | Logical OR                      |
-
-*NOTE*:   
-> *If you have trouble remembering operation precedence remember that you can always use parenthesis to make your code clear*
-
-<br>
-
-[Back to Top](#python-operators)
-
-___
-
-<br>
 
 # `Arithmetic Operators (Math)`
 Arithmetic operations are used to perform arithmetic.
