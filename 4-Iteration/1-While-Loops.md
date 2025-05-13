@@ -1,6 +1,8 @@
 # `Python While Loops`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
+
+[Python3 Documentation](https://docs.python.org/3/)
 ___
 
 Covered in this file:
