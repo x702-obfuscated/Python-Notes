@@ -5,10 +5,10 @@ ___
 
 Covered in this File:
 
-Data Types
-1. [`Beginner Data Types`](#beginner-data-types)
-1. [`Mutable vs. Immutable`](#mutable-vs-immutable-data)
-1. [`Determining Data Type with type()`](#determining-data-type-with-type)
+1. [`Data, Types, and Data Structures`](#data-types-and-data-structures)
+    1. [`Beginner Data Types`](#beginner-data-types)
+    1. [`Mutable vs. Immutable`](#mutable-vs-immutable-data)
+    1. [`Determining Data Type with type()`](#determining-data-type-with-type)
 
 Data Literals
 1. [`All Python Data Types`](#all-python-data-types)
@@ -28,9 +28,17 @@ Data Literals
 
 <br>
 
-# Data Types
-To work with data it must by classified into types, we will begin with `literal` data
+# `Data, Types, and Data Structures`
+`Data` are raw facts or information (like numbers or text) used by a program.
 * `Literal Data`: actual fixed data values that do not represent any other data and written directly into code.
+
+* `Variables` : are names used to point to data stored in memory.
+
+<br>
+
+A `Data Type` is a classification for the kind of data being stored. 
+
+A `Data Structure` is a way to organize and store data (e.g., lists, arrays, dictionaries).
 
 <br>
 
@@ -239,14 +247,43 @@ ___
 -11               # integer literal
 ```
 
-> For large numbers you can use underscores( _ ) to make them more readable
+### Underscores
+For large numbers you can use underscores( _ ) to make them more readable
 ```python
 1_000_000_000 # Returns: 1000000000 --> Notice it doesn't return with the underscores
 ```
 
-> Scientific notation is also available, use E to represent (x 10^)
+<br>
+
+## `Base Prefixing`
+`Base Prefixing` is the use of a special prefix to indicate the base of the number literal you are using.
+
+|Name| Base| Prefix|
+|:-|:-|:-|
+|Decimal|10|no prefix|
+|Binary|2|`0b`|
+|Octal|8|`0o`|
+|Hexadecimal|16|`0x`|
+
+<br>
+
+base 2 (binary) (prefix: 0b)
 ```python
-1E9 # Returns: 1000000000.0 --> Notice it returns a float
+0b101010    # 42 in decimal
+```
+
+<br>
+
+base 8 (octal) (prefix: 0o)
+```python
+0o52        # 42 in decimal
+```
+
+<br>
+
+base 16 (hexadecimal) (prefix: 0x)
+```python
+0x2A        # 42 in decimal
 ```
 
 <br>
@@ -268,6 +305,13 @@ ___
 6.023           #float literal
 -10.1           #float literal
 -78.91          #float literal
+```
+
+## `Scientific Notation`
+Floats can be written in scientific notation using E to represent (x 10^)
+
+```python
+1E9 # Returns: 1000000000.0 --> Notice it returns a float
 ```
 
 <br>
@@ -389,7 +433,7 @@ dict1d = {"a": 1, "b": 2,"c": 3}
 
 |`List`|`Tuple`|`Set`|`Dictionary`|
 |:-:|:-:|:-:|:-:|
-|ordered (numerically indexed)|ordered (numerically indexed)|unordered (not indexed)|ordered (indexed with a key)|
+|ordered (numerically indexed)|ordered (numerically indexed)|unordered (not indexed)|ordered (key indexed)|
 |mutable|immutable|mutable|mutable|
 |duplicates|duplicates|NO duplicates|NO duplicates|
 |`[ ]`|`( )`|`{ }`|`{ : }`| 
