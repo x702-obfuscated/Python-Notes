@@ -10,7 +10,7 @@ Covered in this file:
     1. [`Assigning Multiple Variables on the same line`](#assigning-multiple-variables-on-the-same-line)
     1. [`Reassigning a Variable`](#reassigning-a-variable)
 1. [`Rules For Naming Variables`](#rules-for-naming-variables)
-1. [`Variables are Pointers to Locations in Memory`](#variables-are-pointers-to-locations-in-memory)
+1. [`Variables are mapped to memory locations`](#variables-are-mapped-to-memory-locations)
     1. [`A Lower Level Explanation of Variables`](#a-lower-level-explanation-of-variables)
     1. [`NameError: name is not defined`](#nameerror-name-is-not-defined)
 1. [`Variable Aliasing`](#variable-aliasing)
@@ -35,11 +35,12 @@ ___
 <br>
 
 # `Defining a Variable`
-Basically: `variables` are like containers that store literal data 
+Basically: `Variables` are like containers that store literal data 
 
-Specifically: `variables` are pointers that reference a location in memory where the literal data is physically stored
+Specifically: `Variables` are names that are map to a location in memory where the literal data is physically stored
 * The data a variable points to can change
-* quotes are used to distinguish text data from a variable.
+* Quotes are used to distinguish text data from a variable.
+* In Python variables are stored in a dictionary and mapped to their values.
 
 ```python
 "example"       # Text Data
@@ -208,10 +209,10 @@ ___
 
 <br>
 
-# `Variables are pointers to locations in memory`
+# `Variables are mapped to memory locations`
 
 ## `A Lower Level Explanation of Variables`
-This following is a lower level explaination of how variables work in Python.  
+The following is a lower level explaination of how variables work in Python.  
 >
 > * The basic definition of variables will work most of the time for beginners, but to understand some higher level concepts this information is required.
 
@@ -223,24 +224,24 @@ What happens when you assign 10 to x:
 x = 10
 ```
 1. Python allocates memory for and creates an integer object in memory with the data literal `10`.
-2. The variable `x` is assigned a reference to the memory location of the integer object `10`.
-    * Python maintains a table that associates variables and their assigned references
+2. The variable `x` is mapped to the memory location of the integer object `10`.
+    * Python maintains a hash table (dictionary) that associates variables and their assigned memory locations.
 3. When you access or modify a variable, Python uses the reference(memory address) to locate the actual object in memory
 
 <br>
 
 We can visualize this idea using the `id()` function call
-* Use the `id()` function call to return the memory location to which variable points.
+* Use the `id()` function call to return the memory location to which variable is assigned.
 * Returns a integer `<class 'int'>` that is a unique identifier for a location in memory where the data is stored.
 * The number will potentially be different each time the program is executed. 
 
 
 ```python
-memory_pointer = "Hello World"
-id(memory_pointer) # Returns: 139029363861936
+memory_key = "memory value"
+id(memory_key) # Returns: 139029363861936
 
-memory_pointer = 10
-id(memory_pointer) # Returns: 139029373780496
+memory_key = 10
+id(memory_key) # Returns: 139029373780496
 
 # id() returns the memory location of the data to which a variable points 
 # The value that is returned will be different from the examples above
@@ -264,9 +265,9 @@ ___
 
 # `Variable Aliasing`
 
-`Aliasing` is the act of assigning one variable to the same reference as another variable  
+`Aliasing` is the act of assigning one variable to the same memory location as another variable  
 > * aliases all point to the same memory location   
-> * the act of assigning one variable to another passes a reference to the memory location of the data  
+> * the act of assigning one variable to another copies a reference to the memory location of the data  
 
 <br>
 

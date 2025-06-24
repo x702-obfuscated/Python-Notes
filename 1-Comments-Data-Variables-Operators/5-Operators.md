@@ -1,6 +1,8 @@
 # `Python Operators`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
+
+[Python Documentation](https://docs.python.org/3/)
 ___
 
 Covered in this file:
@@ -62,6 +64,8 @@ example:
 
 Below is the complete operator precendance for Python.
 * From top to bottom: Top is highest precedence.
+
+`Associativity` defines the order in which operators of the same precedence level are evaluated when they appear next to each other in an expression.
 * Operations at the same level proceed from left to right in the expression.
 
 |Operators|Description|
