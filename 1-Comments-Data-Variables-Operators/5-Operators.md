@@ -202,16 +202,16 @@ example:
 ```python
 # Concatenating strings
 "Hello" + "World"
-#Result: Hello World
+#Result: HelloWorld
 
 print("Hello" + "World")
-#Output: Hello World
+#Output: HelloWorld
 
 #Using Variables
 first = "Hello"
 second = "World"
 print(first + second)
-#Output: Hello World
+#Output: HelloWorld
 ```
 
 
