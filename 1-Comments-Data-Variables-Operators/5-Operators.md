@@ -812,19 +812,27 @@ Order of Operations
 * AND
 * OR
     
-|Operator| Operation| Description|
-|:------:|:--------:|:-----------|
-| `not`    | NOT      | opposite   |
-| `and`    | AND      | both       |
-| `or`     | OR       | at least one |
+| Operator | Operation |  Logic Name | Description               |
+| :------: | :-------: | :---------: | :------------------------ |
+|   `not`  |    NOT    |   Negation  | `Opposite` of the condition |
+|   `and`  |    AND    | Conjunction | `Both` must be true         |
+|   `or`   |     OR    | Disjunction | `At least one` must be true |
 
-`Truth Tables` are used to illustrate the evaluation of a logical expression. In this case they show how we evaluate, `not`, `and`, and `or`.  
+
+`Truth Tables` are used to illustrate the evaluation of a logical expression. 
+* In this case they show how we evaluate, `not`, `and`, and `or`.  
 
 <br>
 
 ## `NOT truth table`
 NOT is a negation operation
-> * `not` returns the opposite
+* `not` returns the opposite
+
+<br>
+
+### *`evaluates opposite`*
+
+<br>
 
 
 |a|NOT a|
@@ -854,9 +862,13 @@ not is_sunny and is_raining # Returns: True
 
 ## `AND truth table`
 AND is a conjunction operation.
-> * `and` returns True when both operands are True  
+* `and` returns True when both operands are True  
 
-*both must be True to evaluate True*
+<br>
+
+### *`both must be True to evaluate True`*
+
+<br>
 
 |a|b|a AND b|
 |:-:|:-:|:-:|
@@ -906,9 +918,9 @@ age >= 18 and has_license
 
 ## `OR truth table`
 OR is a disjuntion operation.
-> * or returns True when at least one operand is True
+* or returns True when at least one operand is True
 
-*at least one must be True to evaluate True*
+### *`at least one must be True to evaluate True`*
 
 |a|b|a OR b|
 |:-:|:-:|:-:|
@@ -960,6 +972,9 @@ ___
 
 <br>
 
+### Law 1
+The negation (NOT) of a conjunction (AND) is the disjunction (OR) of the negations.
+
 |This|Same As|
 |:-:|:-:|
 |not(a and b)|(not a or not b)|
@@ -979,6 +994,9 @@ not(a and b) == (not a or not b)  # Returns: True
 ```
 
 <br>
+
+### Law 2
+The negation (NOT) of a disjunction (OR) is the conjunction (AND) of the negations.
 
 |This|Same As|
 |:-:|:-:|
@@ -1206,7 +1224,7 @@ not 0   #Returns: 1
 
 <br>
 
-### Left Shift
+### Left Shift <<
 > * equivalent to (x * 2**shift_amount)
 
 
@@ -1220,7 +1238,7 @@ print( x << 3) #8 --> 0b1000
 
 <br>
 
-### Right Shift
+### Right Shift >>
 > * equivalent to (x / 2** shift_amount)
 
 
