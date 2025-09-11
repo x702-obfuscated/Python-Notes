@@ -252,7 +252,7 @@ ___
 
 # `Duplication`
 `Duplication` is the operation of copying an object or repeating a sequence.
-> * use the `*` sign to duplicate
+* use the `*` sign to duplicate
 
 syntax:
 ```
